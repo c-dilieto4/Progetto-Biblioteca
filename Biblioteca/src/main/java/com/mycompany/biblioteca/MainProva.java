@@ -13,4 +13,5 @@ package com.mycompany.biblioteca;
 public class MainProva {
     
     int a;
+    int b;
 }
