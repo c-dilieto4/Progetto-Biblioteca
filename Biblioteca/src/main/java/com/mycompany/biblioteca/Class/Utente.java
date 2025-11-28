@@ -15,15 +15,15 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
-    private .... prestitiAttivi;
+   // private .... prestitiAttivi;
     
-    public Utente(String matricola, String nome, String cognome, String email, .... prestitiAttivi){
+    public Utente(String matricola, String nome, String cognome, String email){
         
         this.matricola=matricola;
         this.nome=nome;
         this.cognome=cognome;
         this.email=email;
-        this.prestitiAttivi=prestitiAttivi;
+       // this.prestitiAttivi=prestitiAttivi;
         
     }
 
