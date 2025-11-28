@@ -54,5 +54,4 @@ public class Libro {
         return copieDisponibili;
     }
     
-    
 }
