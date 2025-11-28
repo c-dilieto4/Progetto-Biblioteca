@@ -46,4 +46,6 @@ public class Utente {
     public ... getPrestitiAttivi(){
         return;
     }
+    
+    
 }
