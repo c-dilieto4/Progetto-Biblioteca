@@ -43,9 +43,9 @@ public class Utente {
         return email;
     }
     
-    public ... getPrestitiAttivi(){
+    /*public ... getPrestitiAttivi(){
         return;
     }
-    
+    */
     
 }
