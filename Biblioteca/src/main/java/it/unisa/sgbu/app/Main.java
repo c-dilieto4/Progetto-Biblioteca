@@ -1,4 +1,4 @@
-package com.mycompany.biblioteca;
+package it.unisa.sgbu.app;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
