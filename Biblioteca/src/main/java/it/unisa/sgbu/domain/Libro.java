@@ -20,9 +20,10 @@ public class Libro {
     private int copieTotali;
     private int copieDisponibili;
     
-    public Libro(String ISBN, String titolo, LocalDate annoPubblicazione, int copieTotali){
+    public Libro(String ISBN, String titolo,String autore, LocalDate annoPubblicazione, int copieTotali){
         
         this.ISBN=ISBN;
+        this.autore=autore;
         this.titolo=titolo;
         this.annoPubblicazione=annoPubblicazione;
         this.copieTotali=copieTotali;
