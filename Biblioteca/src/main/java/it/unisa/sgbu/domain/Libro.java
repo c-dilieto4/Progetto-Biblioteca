@@ -23,7 +23,7 @@ public class Libro {
     
     
     
-    public Libro(String ISBN, String titolo,List<String> autore, int annoPubblicazione, int copieTotali){      
+    public Libro(String ISBN, String titolo, List<String> autore, int annoPubblicazione, int copieTotali){      
     }
 
     
