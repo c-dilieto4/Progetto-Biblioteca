@@ -5,10 +5,22 @@
  */
 package it.unisa.sgbu.io;
 
+import java.util.*;
+
 /**
  *
  * @author dilie
  */
 public interface ILogger {
+    
+    public void registraAzione(String azione){
+    }
+    
+    public List<String> caricaLog(){
+    }
+    
+    public void salvaLog(){
+    }
+    
     
 }

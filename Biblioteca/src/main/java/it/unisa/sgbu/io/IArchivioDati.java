@@ -11,4 +11,12 @@ package it.unisa.sgbu.io;
  */
 public interface IArchivioDati {
     
+    public boolean salvaStato(Object dati, String nomeFile){
+    }
+    
+    public Object caricaStato(String nomeFile){
+    }
+    
+    public boolean verificaEsistenzaFile(String nomeFile){
+    }
 }

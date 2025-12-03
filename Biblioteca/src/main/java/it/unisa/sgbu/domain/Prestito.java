@@ -13,7 +13,7 @@ import java.time.*;
  */
 public class Prestito {
     
-    private int idPrestito;
+    private final int idPrestito;
     private Libro libro;
     private Utente utente;
     private LocalDate dataInizio;

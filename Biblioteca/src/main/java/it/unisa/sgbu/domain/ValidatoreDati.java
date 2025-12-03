@@ -11,4 +11,18 @@ package it.unisa.sgbu.domain;
  */
 public class ValidatoreDati {
     
+    public boolean validaISBN(String isbn){
+    }
+    
+    public boolean validaMatricola(String matricola){
+    }
+    
+    public boolean validaEmail(String email){
+    }
+    
+    public boolean validaAnnoPubblicazione(int anno){
+    }
+    
+    public boolean validaNomeCognome(String nome, String cognome){
+    }
 }
