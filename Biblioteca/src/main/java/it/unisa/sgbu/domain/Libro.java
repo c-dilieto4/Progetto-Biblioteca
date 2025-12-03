@@ -6,7 +6,7 @@
 package it.unisa.sgbu.domain;
 
 import java.time.*;
-import java.util.*;
+import java.util.List;
         
 /**
  *

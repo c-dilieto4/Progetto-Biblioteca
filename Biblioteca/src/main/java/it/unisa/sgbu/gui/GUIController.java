@@ -9,6 +9,6 @@ package it.unisa.sgbu.gui;
  *
  * @author dilie
  */
-public class GUIBibliotecario {
+public class GUIController {
     
 }

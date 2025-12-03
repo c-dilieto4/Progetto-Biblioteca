@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.unisa.sgbu.controller;
+package it.unisa.sgbu.gui;
 
 /**
  *
  * @author dilie
  */
-public class SistemaBiblioteca {
+public class GUIView {
     
 }
