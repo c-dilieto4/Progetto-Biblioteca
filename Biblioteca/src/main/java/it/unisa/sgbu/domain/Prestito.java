@@ -5,10 +5,39 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.time.*;
+
 /**
  *
  * @author dilie
  */
 public class Prestito {
+    
+    private int idPrestito;
+    private Libro libro;
+    private Utente utente;
+    private LocalDate dataInizio;
+    private LocalDate dataPrevistaRestituzione;
+    private LocalDate dataEffettivaRestituzione;
+    
+    
+    public Prestito(int idPrestito, Libro libro, Utente utente, LocalDate dataInizio, LocalDate dataPrevistaRestituzione){
+    }
+
+    public int getIdPrestito() {
+    }
+
+    public Libro getLibro() {
+    }
+
+    public Utente getUtente() {
+    }
+        
+    public void chiudiPrestito(LocalDate dataEffettiva){
+    }
+    
+    public boolean verificaRitardo(){
+    }
+    
     
 }
