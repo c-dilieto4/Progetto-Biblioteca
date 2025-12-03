@@ -5,6 +5,8 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.util.*;
+
 /**
  *
  * @author alessandro
@@ -15,39 +17,28 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
-   // private .... prestitiAttivi;
+    private List<Prestito> prestitiAttivi;
     
-    public Utente(String matricola, String nome, String cognome, String email){
-        
-        this.matricola=matricola;
-        this.nome=nome;
-        this.cognome=cognome;
-        this.email=email;
-       // this.prestitiAttivi=prestitiAttivi;
-        
+    public Utente(String matricola, String nome, String cognome, String email,List<Prestito> prestitiAttivi){   
     }
 
     public String getMatricola() {
-        return matricola;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
+    
     public String getCognome() {
-        return cognome;
     }
 
-    public String getEmail() {
-        return email;
+    public int getNumeroPrestitiAttivi(){
     }
     
-    /*public ... getPrestitiAttivi(){
-        return;
+    public void aggiungiPrestito(Prestito p){
     }
-    */
     
+    public void rimuoviPrestito(Prestito p){
+    }
+    
+    public boolean verificaLimite(){
+    }
     
     
 }
