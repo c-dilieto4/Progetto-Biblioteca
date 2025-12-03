@@ -6,6 +6,7 @@
 package it.unisa.sgbu.domain;
 
 import java.time.*;
+import java.util.*;
         
 /**
  *
@@ -15,44 +16,39 @@ public class Libro {
     
     private final String ISBN;
     private String titolo;
-    private String autore;
-    private LocalDate annoPubblicazione;
+    private List<String> autore;
+    private int annoPubblicazione;
     private int copieTotali;
     private int copieDisponibili;
     
-    public Libro(String ISBN, String titolo,String autore, LocalDate annoPubblicazione, int copieTotali){
-        
-        this.ISBN=ISBN;
-        this.autore=autore;
-        this.titolo=titolo;
-        this.annoPubblicazione=annoPubblicazione;
-        this.copieTotali=copieTotali;
-        this.copieDisponibili=copieTotali;
-        
+    
+    
+    public Libro(String ISBN, String titolo,List<String> autore, int annoPubblicazione, int copieTotali){      
     }
 
+    
+    
     public String getISBN() {
-        return ISBN;
     }
 
     public String getTitolo() {
-        return titolo;
     }
 
     public String getAutore() {
-        return autore;
-    }
-
-    public LocalDate getAnnoPubblicazione() {
-        return annoPubblicazione;
     }
 
     public int getCopieTotali() {
-        return copieTotali;
     }
 
     public int getCopieDisponibili() {
-        return copieDisponibili;
     }
     
+    public void incrementaDisponibilità(){
+    }
+    
+    public void decrementaDisponibilità(){
+    }
+    
+    public boolean isDisponibile(){
+    }
 }
