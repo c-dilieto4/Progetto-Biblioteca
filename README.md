@@ -1,4 +1,6 @@
-# Progetto Biblioteca - Ingegneria del Software
-Progetto Sistema di Gestione Biblioteca Universitaria.
-Team composto da: Christian Pio Di Lieto, Lorenzo Allocco, Alessandro Atripaldi, Gerardo Graziosi.
-Anno Accademico 2025-2026
+# Sistema di Gestione Biblioteca Universitaria - Prova d'esame - Ingegneria del Software
+Team composto da:
+Allocco Lorenzo
+Atripaldi Alessandro
+Di Lieto Christian Pio
+Graziosi Gerardo.
