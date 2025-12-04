@@ -1,0 +1,8 @@
+@startuml
+class it.unisa.sgbu.domain.Libro
+class it.unisa.sgbu.domain.Prestito
+class it.unisa.sgbu.domain.Utente
+class it.unisa.sgbu.domain.ValidatoreDati
+class java.util.List
+it.unisa.sgbu.domain.Libro ..> java.util.List
+@enduml

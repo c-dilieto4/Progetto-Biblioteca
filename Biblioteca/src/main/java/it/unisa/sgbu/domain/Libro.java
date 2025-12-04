@@ -29,26 +29,33 @@ public class Libro {
     
     
     public String getISBN() {
+        
     }
 
     public String getTitolo() {
+         
     }
 
     public String getAutore() {
+         
     }
 
     public int getCopieTotali() {
+         
     }
 
     public int getCopieDisponibili() {
+         
     }
     
     public void incrementaDisponibilità(){
+        
     }
     
     public void decrementaDisponibilità(){
     }
     
     public boolean isDisponibile(){
+        
     }
 }
