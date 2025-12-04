@@ -1,68 +1,69 @@
 @startuml
 ' Definizioni delle Classi
 class Libro {
-  -String isbn
-  -String titolo
-  -List<String> autore
-  -int annoPub
-  -int copieTotali
-  -int copieDisponibili
+  -isbn: String 
+  -titolo: String 
+  -autore: List<String> 
+  -anno: int 
+  -copieTotali: int 
+  -copieDisponibili: int 
+  +Libro(isbn: String, titolo: String, autore: List<String>, anno: int)
   +getIsbn(): String
+  +getTitolo(): String
+  +getAutore(): List<String>
   +getCopieDisponibili(): int
   +incrementaDisponibilita(): void
   +decrementaDisponibilita(): void
-  +setLibro(titolo, autore, anno): void
   +isDisponibile(): boolean
 }
 
 class Utente {
-  -String matricola
-  -String nome
-  -String cognome
-  -String email
-  -List<Prestito> prestitiAttivi
+  -matricola: String 
+  -nome: String 
+  -cognome: String 
+  -email: String 
+  -prestitiAttivi: List<Prestito> 
+  +Utente(matricola: String, nome: String, cognome: String, email: String)
   +getMatricola(): String
   +getNumeroPrestitiAttivi(): int
   +aggiungiPrestito(p: Prestito): void
   +rimuoviPrestito(p: Prestito): void
-  +setUtente(nome, cognome, email): void
   +verificaLimite(max: int): boolean
-  +getNumPrestiti(): int
 }
 
 class Prestito {
-  -Libro libro
-  -Utente utente
-  -Date dataInizio
-  -Date dataRegistrazionePrevista
-  -Date dataRegistrazioneEffettiva
-  -String idPrestito
-  +setPrestito(): void
-  +chiudiPrestito(dataEffettiva: Date): void
-  +verificaRitardo(): boolean
+  -idPrestito: int
+  -libro: Libro 
+  -utente: Utente 
+  -dataInizioPrestito: LocalDate 
+  -dataRestituzionePrevista: LocalDate 
+  -dataRestituzioneeEffettiva: LocalDate 
+  +Prestito(idPrestito: int, libro: Libro, utente: Utente, dataInizioPrestito: LocalDate, dataRestituzionePrevista: LocalDate)
   +getLibro(): Libro
   +getUtente(): Utente
+  +chiudiPrestito(dataEffettiva: LocalDate): void
+  +verificaRitardo(): boolean
 }
 
 class Catalogo {
-  -Map<String, Libro> collezioneLibri
-  +Catalogo(archivio: ArchivioDati)
+  -collezioneLibri: Map<String, Libro> 
+  +Catalogo()
+  +getLibro(isbn: String): Libro
   +aggiungiLibro(l: Libro): boolean
   +rimuoviLibro(isbn: String): boolean
-  +modificaLibro(isbn: String, nuoviDati): Libro
-  +getLibro(isbn: String): Libro
-  +ricerca(query: String): List<Libro>
+  +modificaLibro(isbn: String, l: Libro): boolean
+  +cercaLibro(query: String, campo: String): List<Libro>
   +visualizzaOrdinata(): List<Libro>
 }
 
 class Anagrafica {
-  -Map<String, Utente> registroUtenti
-  +Anagrafica(archivio: ArchivioDati)
-  +aggiungiUtente(u: Utente): void
+  -registroUtenti: Map<String, Utente> 
+  +Anagrafica()
+  +aggiungiUtente(u: Utente): boolean
   +rimuoviUtente(matr: String): boolean
-  +modificaUtente(matr: String, nuoviDati): boolean
+  +modificaUtente(matr: String, u: Utente): boolean
   +getUtente(matr: String): Utente
-  +cercaUtente(query: String)
+  +cercaUtente(query: String, campo: String)
   +visualizzaOrdinata(): List<Utente>
 }
 
