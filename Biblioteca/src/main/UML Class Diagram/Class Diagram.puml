@@ -22,10 +22,8 @@ class Utente {
   -nome: String 
   -cognome: String 
   -email: String 
-  -prestitiAttivi: List<Prestito> 
   +Utente(matricola: String, nome: String, cognome: String, email: String)
   +getMatricola(): String
-  +getNumeroPrestitiAttivi(): int
   +aggiungiPrestito(p: Prestito): void
   +rimuoviPrestito(p: Prestito): void
   +verificaLimite(max: int): boolean
@@ -68,21 +66,23 @@ class Anagrafica {
 }
 
 class RegistroPrestiti {
-  -List<Prestito> prestitiAttivi
-  -int LIMITE_PRESTITI
-  -Catalogo catalogo
-  -AnagraficaUtenti anagrafica 'AnagraficaUtenti nel campo, Anagrafica nella relazione'
-  +RegistroPrestiti(audit, catalogo, anagrafica)
-  +registraPrestito(isbn, matr, dataPrev): Prestito
-  +registraRestituzione(idPrestito): boolean
+  -catalogo: Catalogo 
+  -anagrafica: Anagrafica
+  -prestitiAttivi: List<Prestito> 
+  -limitePrestiti: int 
+  +RegistroPrestiti(catalogo: Catalogo, anagrafica: Anagrafica)
+  +registraPrestito(isbn: String, matr: String, dataPrevistaRestituzione: LocalDate): Prestito
+  +registraRestituzione(idPrestito: int): boolean
   +getPrestitiAttivi(): List<Prestito>
+  +getPrestitiAttivi(u: Utente): List<Prestito>
   +getPrestitiInRitardo(): List<Prestito>
+  +utenteHaPrestitiAttivi(u: Utente): boolean
 }
 
 class GUIController {
-  -Catalogo catalogo
-  -Anagrafica anagrafica
-  -RegistroPrestiti registro
+  -catalogo: Catalogo 
+  -anagrafica: Anagrafica 
+  -registro: RegistroPrestiti 
   +GUIController()
   +avviaSistema(): boolean
   +chiudiSistema(): boolean
