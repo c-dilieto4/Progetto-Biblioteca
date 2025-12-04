@@ -1,6 +1,0 @@
-@startuml
-class it.unisa.sgbu.gui.GUIController
-class it.unisa.sgbu.gui.MessaggiInterfaccia
-class java.time.LocalDate
-it.unisa.sgbu.gui.GUIController ..> java.time.LocalDate
-@enduml
