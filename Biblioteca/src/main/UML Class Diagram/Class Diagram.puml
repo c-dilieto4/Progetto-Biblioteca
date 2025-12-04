@@ -83,29 +83,50 @@ class GUIController {
   -catalogo: Catalogo 
   -anagrafica: Anagrafica 
   -registro: RegistroPrestiti 
-  +GUIController()
+  -archivio: IArchivioDati
+  -validatore: ValidatoreDati
+  -logger: ILogger
+  +GUIController(archivio: IArchivioDati, validatore: ValidatoreDati)
   +avviaSistema(): boolean
   +chiudiSistema(): boolean
-  +gestisciPrestito(isbn, matr, dataPrev): boolean
-  +gestisciRestituzione(idPrestito): boolean
+  +aggiungiUtente(matricola: String, nome: String, cognome: String, email: String): boolean
+  +aggiungiUtente(isbn: String, titolo: String, autore: List<String>, anno: int, CopieTotali: int): boolean
+  +rimuoviUtente(matr: String): boolean
+  +rimuoviLibro(isbn: String): boolean 
+  +gestisciPrestito(isbn: String, matr: String): boolean
+  +gestisciRestituzione(idPrestito: int): boolean
   +ottieniReportPrestiti(): List<Prestito>
   +ottieniCatalogoOrdinato(): List<Libro>
+  +ottieniAnagraficaOrdinato(): List<Utente>
 }
 
-class AuditTrail {
-  -List<String> logRecords
-  -ArchivioDati archivio
-  +AuditTrail(archivio: ArchivioDati)
+interface IArchivioDati{
+   +salvaStato(dati: Object, nomeFile: String): boolean
+   +caricaStato(nomeFile: String): Object
+   +verificaEsistenzaFile(nomeFile: String): boolean
+}
+
+interface ILogger{
   +registraAzione(azione: String): void
   +caricaLog(): List<String>
   +salvaLog(): void
   +visualizzaLog(): List<String>
 }
 
-class ArchivioDati {
-  -String pathDati
-  -Logger logErrori
-  +ArchivioDati(path: String)
+class AuditTrail {
+  -logRecords: List<String>
+  -archivioDati: IArchivioDati
+  +AuditTrail(archivio: IArchivioDati)
+  +registraAzione(azione: String): void
+  +caricaLog(): List<String>
+  +salvaLog(): void
+  +visualizzaLog(): List<String>
+}
+
+class FileArchivio {
+  -pathDati: String
+  -logErrori: ILogger
+  +FileArchivio(path: String)
   +salvaStato(dati: Object, nomeFile: String): boolean
   +caricaStato(nomeFile: String): Object
   +verificaEsistenzaFile(nomeFile: String): boolean
@@ -120,15 +141,15 @@ class ValidatoreDati {
 }
 
 class GUIView {
-  -GUIController sistema
-  -MessaggiInterfaccia messaggi
-  +GUI(sistema: GUIController)
+  -sistema: GUIController
+  -messaggi: MessaggiInterfaccia
+  +GUIView(sistema: GUIController)
   +avviaInterfaccia(): void
   +gestisciAggiuntaLibro(): void
   +gestisciRegistrazionePrestito(): void
-  +mostraListaLibri(lista): void
-  +mostraListaPrestiti(lista): void
-  +mostraMessaggio(msg): void
+  +mostraListaLibri(lista: List<Libro>): void
+  +mostraListaPrestiti(lista: List<Prestito>): void
+  +mostraMessaggio(msg: MessaggiInterfaccia): void
 }
 
 class MessaggiInterfaccia {
@@ -157,33 +178,39 @@ ArchivioDati .up.|> IArchivioDati
 
 ' Correzione delle Relazioni
 ' Composizione
-Catalogo "1" *-- "0..*" Libro : contiene
-Anagrafica "1" *-- "0..*" Utente : contiene
-RegistroPrestiti "1" *-- "0..*" Prestito : registra
+Catalogo "1" *-- "0..*" Libro
+Anagrafica "1" *-- "0..*" Utente
+RegistroPrestiti "1" *-- "0..*" Prestito
 
 ' Associazione (Utente-Prestito)
-Prestito "1" -- "1" Libro : riguarda
-Utente "1" -- "0..3" Prestito : ha/effettua
+Prestito "1" -- "1" Libro
+Utente "1" -- "0..3" Prestito
 
 ' Aggregazione (GUIController usa i componenti principali)
-GUIController o-- "1" Catalogo
-GUIController o-- "1" Anagrafica
-GUIController o-- "1" RegistroPrestiti
+GUIController "1" o-- "1" Catalogo
+GUIController "1" o-- "1" Anagrafica
+GUIController "1" o-- "1" RegistroPrestiti
+
+' Implementazione
+AuditTrail ..|> ILogger
+FileArchivio ..|> IArchivioDati
 
 ' Aggregazione (RegistroPrestiti usa i cataloghi)
 RegistroPrestiti o-- "1" Catalogo
 RegistroPrestiti o-- "1" Anagrafica
 
 ' Dipendenza / Uso
-GUIController o-- "1" IArchivioDati
 AuditTrail "1" -- "1" IArchivioDati
+FileArchivio "1" -- "1" ILogger
 GUIView "1" -- "1" GUIController
+GUIController ..> "1" IArchivioDati
+GUIController ..> "1" ILogger
 
 ' Dipendenza con il Validatore (Usa)
 Catalogo "1" ..> "1" ValidatoreDati
 Anagrafica "1" ..> "1" ValidatoreDati
 
-' Associazione tra View e Messaggi
-GUIView "1" -- "1" MessaggiInterfaccia
+' Dipendenza View con MessaggiInterfaccia
+GUIView "1" ..> "1" MessaggiInterfaccia
 
 @enduml
