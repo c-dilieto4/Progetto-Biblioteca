@@ -20,7 +20,7 @@ public class Libro {
     private final String ISBN;
     private String titolo;
     private List<String> autore;
-    private int annoPubblicazione;
+    private int anno;
     private int copieTotali;
     private int copieDisponibili;
     
@@ -35,20 +35,20 @@ public class Libro {
      * @param[in] ISBN Codice identificativo univoco (International Standard Book Number).
      * @param[in] titolo Il titolo del libro.
      * @param[in] autore Lista contenente i nomi degli autori.
-     * @param[in] annoPubblicazione Anno di edizione del libro.
+     * @param[in] anno Anno di edizione del libro.
      * @param[in] copieTotali Numero totale di copie acquisite.
      * 
      * @pre 
      * - ISBN non deve essere nullo e deve essere univoco.
      * - Titolo e Autore non devono essere vuoti.
-     * - annoPubblicazione <= anno corrente e  >= 0.
+     * - anno <= anno corrente e  >= 0.
      * - copieTotali > 0.
      * 
      * @post
      * - L'oggetto Libro è creato.
      * - copieDisponibili == copieTotali.
      */
-    public Libro(String ISBN, String titolo, List<String> autore, int annoPubblicazione, int copieTotali){      
+    public Libro(String ISBN, String titolo, List<String> autore, int anno, int copieTotali){      
     }
 
     

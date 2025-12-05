@@ -222,8 +222,6 @@ RegistroPrestiti "1" --> "1" Catalogo
 RegistroPrestiti "1" --> "1" Anagrafica
 
 Prestito "1" --> "1" Libro 
-Prestito "1" --> "1" Utente
-
 Utente "1" -- "0..3" Prestito
 
 GUIController --> "1" Catalogo
@@ -235,10 +233,11 @@ GUIController --> "1" IAutenticatore
 GUIController --> "1" ILogger
 
 AuditTrail --> IArchivioDati
+FileAutenticatore --> IArchivioDati
 
 GUIView --> GUIController
 GUIView ..> MessaggiInterfaccia
-Catalogo ..> ValidatoreDati
-Anagrafica ..> ValidatoreDati
-GUIController ..> ValidatoreDati
+GUIView ..> Libro
+GUIView ..> Prestito
+GUIView ..> Utente
 @enduml
