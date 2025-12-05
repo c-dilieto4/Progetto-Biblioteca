@@ -21,7 +21,7 @@ import java.util.List;
  * Non contiene alcuna logica di business né accede direttamente ai dati.
  */
 public class GUIView {
-    private final GUIController Sistema;
+    private final GUIController sistema;
     private final MessaggiInterfaccia messaggi;
     
     
@@ -32,7 +32,7 @@ public class GUIView {
      * 
      * @param[in] Sistema Istanza del controller principale (GUIController).
      */
-    public GUIView(GUIController Sistema){
+    public GUIView(GUIController sistema){
     }
     
     
@@ -62,7 +62,7 @@ public class GUIView {
      * 
      * 1. Mostra il form di input.
      * 2. Raccoglie i dati (Matricola, Nome, Cognome, Email).
-     * 3. Chiama `Sistema.aggiungiUtente(Utente u)`.
+     * 3. Chiama `sistema.aggiungiUtente(Utente u)`.
      */
     public void gestisciAggiuntaUtente(){
     }
@@ -72,7 +72,7 @@ public class GUIView {
      * @brief Gestisce la modifica di un libro esistente.
      * 
      * Cattura l'ISBN del libro da modificare e i nuovi dati, 
-     * invocando poi `Sistema.modificaLibro(String isbnOriginale, Libro lNuovo)`.
+     * invocando poi `sistema.modificaLibro(String isbnOriginale, Libro lNuovo)`.
      */
     public void gestisciModificaLibro(){
     }
@@ -82,7 +82,7 @@ public class GUIView {
      * @brief Gestisce la modifica di un utente esistente.
      * 
      * Cattura la matricola dell'utente da modificare e i nuovi dati anagrafici,
-     * invocando poi `Sistema.modificaUtente(String matrOriginale, Utente uNuovo)`.
+     * invocando poi `sistema.modificaUtente(String matrOriginale, Utente uNuovo)`.
      */
     public void gestisciModificaUtente(){
     }
@@ -91,7 +91,7 @@ public class GUIView {
     /**
      * @brief Gestisce la cancellazione di un utente.
      * 
-     * Richiede la matricola dell'utente da eliminare e invoca `Sistema.rimuoviUtente(String matr)`.
+     * Richiede la matricola dell'utente da eliminare e invoca `sistema.rimuoviUtente(String matr)`.
      * Visualizza eventuali errori se l'utente ha prestiti attivi.
      */
     public void gestisciEliminazioneUtente(){
@@ -101,7 +101,7 @@ public class GUIView {
     /**
      * @brief Gestisce la cancellazione di un libro.
      * 
-     * Richiede l'ISBN del libro da eliminare e invoca `Sistema.rimuoviLibro(String isbn)`.
+     * Richiede l'ISBN del libro da eliminare e invoca `sistema.rimuoviLibro(String isbn)`.
      */
     public void gestisciEliminazioneLibro(){
     }
@@ -113,7 +113,7 @@ public class GUIView {
      * Implementa l'interfaccia per il relativo Caso d'Uso.
      * 1. Richiede ISBN libro e Matricola utente.
      * 2. Richiede la data prevista di restituzione.
-     * 3. Invoca `Sistema.gestisciPrestito(String isbn, String matricola, LocalDate dataPrevistaRestituzione)`.
+     * 3. Invoca `sistema.gestisciPrestito(String isbn, String matricola, LocalDate dataPrevistaRestituzione)`.
      */
     public void gestisciRegistrazionePrestito(){
     }
@@ -124,7 +124,7 @@ public class GUIView {
      * 
      * Implementa l'interfaccia per il relativo Caso d'Uso.
      * 1. Richiede l'ID del prestito o scansiona il libro.
-     * 2. Invoca `Sistema.gestisciRestituzione(int idPrestito, LocalDate dataEffettivaRestituzione)`.
+     * 2. Invoca `sistema.gestisciRestituzione(int idPrestito, LocalDate dataEffettivaRestituzione)`.
      */
     public void gestisciRestituzionePrestito(){
     }
@@ -134,7 +134,7 @@ public class GUIView {
      * @brief Gestisce la ricerca nel catalogo libri.
      * 
      * Raccoglie la query di ricerca e il campo filtro (Titolo, Autore, ISBN)
-     * e chiama `Sistema.cercaLibro(String query, String campo)`.
+     * e chiama `sstema.cercaLibro(String query, String campo)`.
      */
     public void gestisciRicercaLibro(){
     }
@@ -144,7 +144,7 @@ public class GUIView {
      * @brief Gestisce la ricerca nell'anagrafica utenti.
      * 
      * Raccoglie la query di ricerca e il campo filtro (Cognome, Matricola)
-     * e chiama `Sistema.cercaUtente(String query, String campo)`.
+     * e chiama `sistema.cercaUtente(String query, String campo)`.
      */
     public void gestisciRicercaUtente(){
     }
@@ -168,7 +168,7 @@ public class GUIView {
      * 
      * @param[in] Lista La lista di oggetti Utente da mostrare.
      */
-    public void mostraListaUtenti(List<Libro> Lista){
+    public void mostraListaUtenti(List<Utente> Lista){
     }
     
     
