@@ -4,6 +4,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
+\usepackage{array}
+\usepackage{longtable}
+
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=magenta]{hyperref}
+
+
+
 \begin{document}
 \begin{titlepage}
     \centering
@@ -29,10 +36,14 @@
     
     \vspace{2cm} % Spazio tra Autori e Versione
     
-    {\Large Versione 1.1 - 5 Dicembre 2025\par}
+    {\Large Versione 1.2 - 5 Dicembre 2025\par}
     
     \vspace*{\fill} % Spinge tutto verso l'alto bilanciando lo spazio finale
-\end{titlepage}
+	\end{titlepage}
+
+
+%\input{revision_history.tex}
+
 \renewcommand{\contentsname}{Indice}
 \newpage
 \tableofcontents
@@ -75,7 +86,7 @@ Le funzionalità principali del sistema, derivate dalla traccia del progetto, so
 \item Archiviazione dati: Salvataggio persistente e ricaricamento dell'intero stato dell'archivio (Libri, Utenti, Prestiti).
 \end{itemize}
 \subsection{Caratteristiche utente}
-All'interno del SGBU sono stati individuati i seguenti attori:
+All'interno dell'SGBU sono stati individuati i seguenti attori:
 \begin{itemize}
 \item Bibliotecario: un operatore autorizzato (es. il personale della biblioteca) che accede e utilizza l'interfaccia grafica per eseguire tutte le operazioni di gestione.
 \item Utente: Lo studente o il membro del personale universitario. Non interagisce direttamente con il sistema, ma è il soggetto delle operazioni di prestito.

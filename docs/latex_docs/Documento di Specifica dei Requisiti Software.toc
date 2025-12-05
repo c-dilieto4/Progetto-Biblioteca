@@ -1,77 +1,77 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {1}Introduzione}{3}{}%
-\contentsline {subsection}{\numberline {1.1}Scopo}{3}{}%
-\contentsline {subsection}{\numberline {1.2}Obiettivi}{3}{}%
-\contentsline {subsection}{\numberline {1.3}Definizioni, acronimi ed abbreviazioni}{3}{}%
-\contentsline {subsection}{\numberline {1.4}Riferimenti}{3}{}%
-\contentsline {subsection}{\numberline {1.5}Panoramica del documento}{4}{}%
-\contentsline {section}{\numberline {2}Descrizione generale}{4}{}%
-\contentsline {subsection}{\numberline {2.1}Prospettive del prodotto}{4}{}%
-\contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{4}{}%
-\contentsline {subsection}{\numberline {2.3}Caratteristiche utente}{5}{}%
-\contentsline {subsection}{\numberline {2.4}Assunzioni e dipendenze}{5}{}%
-\contentsline {section}{\numberline {3}Requisiti Funzionali}{5}{}%
-\contentsline {subsection}{\numberline {3.1}Funzionalità individuali [IF]}{5}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}[IF-1] Gestione dati libro}{5}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}[IF-2] Gestione dati utente}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.3}[IF-3] Ricerca libro}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.4}[IF-4] Ricerca utente}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.5}[IF-5] Visualizzazione libri}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.6}[IF-6] Visualizzazione utenti}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.7}[IF-7] Registrazione prestito}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.8}[IF-8] Visualizzazione prestiti}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.9}[IF-9] Registrazione restituzione}{7}{}%
-\contentsline {subsubsection}{\numberline {3.1.10}[IF-10] Gestione dei ritardi}{7}{}%
-\contentsline {subsubsection}{\numberline {3.1.11}[IF-11] Audit Trail}{7}{}%
-\contentsline {subsection}{\numberline {3.2}Business Flow [BF]}{7}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}[BF-1] Flusso di registrazione nuovo libro}{7}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}[BF-2] Flusso di registrazione nuovo utente}{8}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}[BF-3] Flusso di registrazione nuovo prestito}{8}{}%
-\contentsline {subsubsection}{\numberline {3.2.4}[BF-4] Flusso di registrazione restituzione}{8}{}%
-\contentsline {subsubsection}{\numberline {3.2.5}[BF-5] Flusso di segnalazione ritardo}{9}{}%
-\contentsline {subsubsection}{\numberline {3.2.6}[BF-6] Flusso di modifica utente}{9}{}%
-\contentsline {subsubsection}{\numberline {3.2.7}[BF-7] Flusso di modifica libro}{10}{}%
-\contentsline {subsubsection}{\numberline {3.2.8}[BF-8] Flusso di eliminazione utente}{10}{}%
-\contentsline {subsubsection}{\numberline {3.2.9}[BF-9] Flusso di eliminazione libro}{10}{}%
-\contentsline {subsubsection}{\numberline {3.2.10}[BF-10] Flusso di aggiornamento audit trail}{11}{}%
-\contentsline {subsubsection}{\numberline {3.2.11}[BF-11] Flusso di Ricerca Libro}{11}{}%
-\contentsline {subsubsection}{\numberline {3.2.12}[BF-12] Flusso di Ricerca Utente}{12}{}%
-\contentsline {subsection}{\numberline {3.3}Dati e Formato Dati [DF]}{12}{}%
-\contentsline {subsubsection}{\numberline {3.3.1}[DF-1] Dati libro}{12}{}%
-\contentsline {subsubsection}{\numberline {3.3.2}[DF-2] Dati utente}{12}{}%
-\contentsline {subsubsection}{\numberline {3.3.3}[DF-3] Dati prestito}{13}{}%
-\contentsline {subsection}{\numberline {3.4}Requisiti di Interfaccia Esterna (EI)}{13}{}%
-\contentsline {subsubsection}{\numberline {3.4.1}[EI-1] Interfaccia grafica utente (GUI)}{13}{}%
-\contentsline {subsubsection}{\numberline {3.4.2}[EI-2] Interfaccia Hardware}{13}{}%
-\contentsline {subsubsection}{\numberline {3.4.3}[EI-3] Interfaccia Software}{13}{}%
-\contentsline {subsection}{\numberline {3.5}Vincoli [FC]}{13}{}%
-\contentsline {subsubsection}{\numberline {3.5.1}[FC-1] Vincolo di disponibilità}{13}{}%
-\contentsline {subsubsection}{\numberline {3.5.2}[FC-2] Vincolo limite prestiti per singolo utente}{14}{}%
-\contentsline {subsubsection}{\numberline {3.5.3}[FC-3] Vincolo cancellazione dati}{14}{}%
-\contentsline {subsubsection}{\numberline {3.5.4}[FC-4] Vincolo di univocità}{14}{}%
-\contentsline {section}{\numberline {4}Requisiti Non Funzionali [RNF]}{14}{}%
-\contentsline {subsection}{\numberline {4.1}Prestazioni}{14}{}%
-\contentsline {subsubsection}{\numberline {4.1.1}[RNF-1.1] Tempi di risposta ricerca}{14}{}%
-\contentsline {subsubsection}{\numberline {4.1.2}[RNF-1.2] Tempo di caricamento dati}{14}{}%
-\contentsline {subsubsection}{\numberline {4.1.3}[RNF-1.3] Tempo di registrazione}{14}{}%
-\contentsline {subsection}{\numberline {4.2}Sicurezza}{15}{}%
-\contentsline {subsubsection}{\numberline {4.2.1}[RNF-2.1] Autenticazione Bibliotecario}{15}{}%
-\contentsline {subsubsection}{\numberline {4.2.2}[RNF-2.2] Integrità dati}{15}{}%
-\contentsline {subsection}{\numberline {4.3}Affidabilità}{15}{}%
-\contentsline {subsubsection}{\numberline {4.3.1}[RNF-3.1] Tolleranza errori}{15}{}%
-\contentsline {subsubsection}{\numberline {4.3.2}[RNF-3.2] Accuratezza calcolo}{15}{}%
-\contentsline {subsection}{\numberline {4.4}Manutenibilità e Portabilità}{15}{}%
-\contentsline {subsubsection}{\numberline {4.4.1}[RNF-4.1] Manutenibilità del codice}{15}{}%
-\contentsline {subsubsection}{\numberline {4.4.2}[RNF-4.2] Portabilità}{16}{}%
-\contentsline {subsubsection}{\numberline {4.4.3}[RNF-4.3] Compilazione standard}{16}{}%
-\contentsline {section}{\numberline {5}Definizione dei Casi d'Uso [UC]}{16}{}%
-\contentsline {subsection}{\numberline {5.1}[UC-1] Gestione catalogo libri}{16}{}%
-\contentsline {subsection}{\numberline {5.2}[UC-2] Gestione anagrafica utenti}{17}{}%
-\contentsline {subsection}{\numberline {5.3}[UC-3] Registrazione prestito}{18}{}%
-\contentsline {subsection}{\numberline {5.4}[UC-4] Registrazione restituzione}{18}{}%
-\contentsline {subsection}{\numberline {5.5}[UC-5] Monitoraggio stato prestiti}{19}{}%
-\contentsline {subsection}{\numberline {5.6}[UC-6] Gestione persistenza dati}{20}{}%
-\contentsline {subsection}{\numberline {5.7}[UC-7] Registra Tracciamento}{20}{}%
-\contentsline {subsection}{\numberline {5.8}[UC-8] Segnala Ritardo}{21}{}%
-\contentsline {section}{\numberline {6}Diagramma dei Casi d'Uso}{21}{}%
+\contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scopo}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Obiettivi}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Definizioni, acronimi ed abbreviazioni}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Riferimenti}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Panoramica del documento}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Descrizione generale}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Prospettive del prodotto}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Caratteristiche utente}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Assunzioni e dipendenze}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Requisiti Funzionali}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Funzionalità individuali [IF]}{5}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}[IF-1] Gestione dati libro}{5}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}[IF-2] Gestione dati utente}{6}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}[IF-3] Ricerca libro}{6}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}[IF-4] Ricerca utente}{6}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}[IF-5] Visualizzazione libri}{6}{subsubsection.3.1.5}%
+\contentsline {subsubsection}{\numberline {3.1.6}[IF-6] Visualizzazione utenti}{6}{subsubsection.3.1.6}%
+\contentsline {subsubsection}{\numberline {3.1.7}[IF-7] Registrazione prestito}{6}{subsubsection.3.1.7}%
+\contentsline {subsubsection}{\numberline {3.1.8}[IF-8] Visualizzazione prestiti}{6}{subsubsection.3.1.8}%
+\contentsline {subsubsection}{\numberline {3.1.9}[IF-9] Registrazione restituzione}{7}{subsubsection.3.1.9}%
+\contentsline {subsubsection}{\numberline {3.1.10}[IF-10] Gestione dei ritardi}{7}{subsubsection.3.1.10}%
+\contentsline {subsubsection}{\numberline {3.1.11}[IF-11] Audit Trail}{7}{subsubsection.3.1.11}%
+\contentsline {subsection}{\numberline {3.2}Business Flow [BF]}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}[BF-1] Flusso di registrazione nuovo libro}{7}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}[BF-2] Flusso di registrazione nuovo utente}{8}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}[BF-3] Flusso di registrazione nuovo prestito}{8}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}[BF-4] Flusso di registrazione restituzione}{8}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}[BF-5] Flusso di segnalazione ritardo}{9}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}[BF-6] Flusso di modifica utente}{9}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}[BF-7] Flusso di modifica libro}{10}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}[BF-8] Flusso di eliminazione utente}{10}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}[BF-9] Flusso di eliminazione libro}{10}{subsubsection.3.2.9}%
+\contentsline {subsubsection}{\numberline {3.2.10}[BF-10] Flusso di aggiornamento audit trail}{11}{subsubsection.3.2.10}%
+\contentsline {subsubsection}{\numberline {3.2.11}[BF-11] Flusso di Ricerca Libro}{11}{subsubsection.3.2.11}%
+\contentsline {subsubsection}{\numberline {3.2.12}[BF-12] Flusso di Ricerca Utente}{12}{subsubsection.3.2.12}%
+\contentsline {subsection}{\numberline {3.3}Dati e Formato Dati [DF]}{12}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}[DF-1] Dati libro}{12}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}[DF-2] Dati utente}{12}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}[DF-3] Dati prestito}{13}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Requisiti di Interfaccia Esterna (EI)}{13}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}[EI-1] Interfaccia grafica utente (GUI)}{13}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}[EI-2] Interfaccia Hardware}{13}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}[EI-3] Interfaccia Software}{13}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Vincoli [FC]}{13}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}[FC-1] Vincolo di disponibilità}{13}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}[FC-2] Vincolo limite prestiti per singolo utente}{14}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}[FC-3] Vincolo cancellazione dati}{14}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}[FC-4] Vincolo di univocità}{14}{subsubsection.3.5.4}%
+\contentsline {section}{\numberline {4}Requisiti Non Funzionali [RNF]}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Prestazioni}{14}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}[RNF-1.1] Tempi di risposta ricerca}{14}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}[RNF-1.2] Tempo di caricamento dati}{14}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}[RNF-1.3] Tempo di registrazione}{14}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Sicurezza}{15}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}[RNF-2.1] Autenticazione Bibliotecario}{15}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}[RNF-2.2] Integrità dati}{15}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Affidabilità}{15}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}[RNF-3.1] Tolleranza errori}{15}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}[RNF-3.2] Accuratezza calcolo}{15}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Manutenibilità e Portabilità}{15}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}[RNF-4.1] Manutenibilità del codice}{15}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}[RNF-4.2] Portabilità}{16}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}[RNF-4.3] Compilazione standard}{16}{subsubsection.4.4.3}%
+\contentsline {section}{\numberline {5}Definizione dei Casi d'Uso [UC]}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}[UC-1] Gestione catalogo libri}{16}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}[UC-2] Gestione anagrafica utenti}{17}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}[UC-3] Registrazione prestito}{18}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}[UC-4] Registrazione restituzione}{18}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}[UC-5] Monitoraggio stato prestiti}{19}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}[UC-6] Gestione persistenza dati}{20}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}[UC-7] Registra Tracciamento}{20}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}[UC-8] Segnala Ritardo}{21}{subsection.5.8}%
+\contentsline {section}{\numberline {6}Diagramma dei Casi d'Uso}{21}{section.6}%
