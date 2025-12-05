@@ -63,9 +63,9 @@ public class Libro {
     
     /**
      * @brief Restituisce il titolo del libro.
-     * @return Una stringa contenente il titolo.
+     * @return Una List<String> contenente i nomi degli autori
      */
-    public String getTitolo() {
+    public List<String> getTitolo() {
          
     }
 

@@ -93,13 +93,15 @@ public class Prestito {
      * 
      * @post
      * - Il prestito è considerato chiuso.
+     * - Il flag InRitardo è impostato a true se dataEffettiva > dataPrevistaRestituzione, altrimenti resta false.
      */
     public void chiudiPrestito(LocalDate dataEffettiva){
     }
 
 
     /**
-     * @brief Verifica se il prestito è in ritardo.
+     * @brief Verifica se il prestito è in ritardo confrontando la data prevista di restituzione 
+     * con la data odierna (o la data effettiva se già chiusa)
      * 
      * Confronta la data effettiva (o corrente) con la data prevista di restituzione
      * come descritto nel "Flusso di segnalazione ritardo".

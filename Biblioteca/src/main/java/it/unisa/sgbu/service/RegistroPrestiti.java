@@ -86,7 +86,7 @@ public class RegistroPrestiti {
      * - `Libro.copieDisponibili` viene incrementato di 1.
      * - Se in ritardo, lo stato del prestito viene aggiornato.
      */
-    public boolean registraRestituzione(String idPrestito, LocalDate dataEff){
+    public boolean registraRestituzione(int idPrestito, LocalDate dataEff){
     }
     
     

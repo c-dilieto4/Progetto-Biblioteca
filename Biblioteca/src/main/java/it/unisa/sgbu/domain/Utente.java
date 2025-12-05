@@ -8,7 +8,8 @@ package it.unisa.sgbu.domain;
 import java.util.*;
 
 /**
- * @brief Rappresenta un utente della biblioteca.
+ * @brief Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei 
+ * prestiti attivi a suo nome.
  * 
  * Questa classe gestisce i dati anagrafici dell'utente e mantiene la relazione
  * logica con i prestiti attivi a suo nome.
@@ -106,8 +107,8 @@ public class Utente {
      * Controlla se l'utente ha già 3 libri in prestito, in accordo con il
      * Vincolo limite prestiti per singolo utente.
      * 
-     * @return true se l'utente ha meno di 3 prestiti (può prenderne altri),
-     * false se ha raggiunto il limite (3).
+     * @return true se l'utente ha meno di 3 prestiti attivi (e quindi può prendere un 
+     * altro libro), false se il limite (3) è stato raggiunto.
      */
     public boolean verificaLimite(){
     }
