@@ -1,0 +1,202 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Libro Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+
+
+Rappresenta un libro all\textquotesingle{}interno del catalogo della biblioteca.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a51942c2f89f1c548bbc30c2af54b0b33}{Libro}} (String ISBN, String titolo, List$<$ String $>$ autore, int anno\+Pubblicazione, int copie\+Totali)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_afb789beae36385dc26ca335f124c4eed}{get\+ISBN}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il codice ISBN del libro. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a66cfa6890a363323c9151fe8f8b1a43a}{get\+Titolo}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il titolo del libro. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a100f81bcea6e10fc0aa4badba6343901}{get\+Autore}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}autore o gli autori del libro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a0e3b73f38eeafea3831ec416b565c809}{get\+Copie\+Disponibili}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il numero di copie attualmente disponibili. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a7b32a926b54c1d8ef06b8151d8841848}{incrementa\+Disponibilità}} ()
+\begin{DoxyCompactList}\small\item\em Incrementa il contatore delle copie disponibili. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a2ecdfc9663f783164e8f525aa23cf249}{decrementa\+Disponibilità}} ()
+\begin{DoxyCompactList}\small\item\em Decrementa il contatore delle copie disponibili. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_add2789c30a7162666630b24ad7df8f57}{is\+Disponibile}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se il libro è disponibile per il prestito. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta un libro all\textquotesingle{}interno del catalogo della biblioteca. 
+
+Questa classe gestisce i dati anagrafici del libro e il tracciamento delle copie disponibili e totali, in conformità con i requisiti dei dati. L\textquotesingle{}ISBN funge da identificativo primario e univoco. 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a51942c2f89f1c548bbc30c2af54b0b33}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!Libro@{Libro}}
+\index{Libro@{Libro}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{Libro()}{Libro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a51942c2f89f1c548bbc30c2af54b0b33} 
+it.\+unisa.\+sgbu.\+domain.\+Libro.\+Libro (\begin{DoxyParamCaption}\item[{String}]{ISBN}{, }\item[{String}]{titolo}{, }\item[{List$<$ String $>$}]{autore}{, }\item[{int}]{anno\+Pubblicazione}{, }\item[{int}]{copie\+Totali}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}. 
+
+Inizializza un nuovo libro nel sistema. All\textquotesingle{}atto della creazione, il numero di copie disponibili viene inizializzato uguale al numero di copie totali.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em ISBN} & Codice identificativo univoco (International Standard Book Number). \\
+\hline
+\mbox{\texttt{in}}  & {\em titolo} & Il titolo del libro. \\
+\hline
+\mbox{\texttt{in}}  & {\em autore} & Lista contenente i nomi degli autori. \\
+\hline
+\mbox{\texttt{in}}  & {\em anno\+Pubblicazione} & Anno di edizione del libro. \\
+\hline
+\mbox{\texttt{in}}  & {\em copie\+Totali} & Numero totale di copie acquisite.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item ISBN non deve essere nullo e deve essere univoco.
+\item Titolo e Autore non devono essere vuoti.
+\item anno\+Pubblicazione \texorpdfstring{$<$}{<}= anno corrente e \texorpdfstring{$>$}{>}= 0.
+\item copie\+Totali \texorpdfstring{$>$}{>} 0.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} è creato.
+\item copie\+Disponibili == copie\+Totali. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a2ecdfc9663f783164e8f525aa23cf249}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!decrementaDisponibilità@{decrementaDisponibilità}}
+\index{decrementaDisponibilità@{decrementaDisponibilità}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{decrementaDisponibilità()}{decrementaDisponibilità()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a2ecdfc9663f783164e8f525aa23cf249} 
+void it.\+unisa.\+sgbu.\+domain.\+Libro.\+decrementa\+Disponibilità (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Decrementa il contatore delle copie disponibili. 
+
+Da invocare durante il flusso di "{}\+Registrazione prestito"{}. Diminuisce di 1 il numero di copie disponibili a seguito dell\textquotesingle{}uscita di un libro.
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item copie\+Disponibili \texorpdfstring{$>$}{>} 0 (Vincolo di disponibilità).
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item copie\+Disponibili è decrementato di 1. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a100f81bcea6e10fc0aa4badba6343901}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!getAutore@{getAutore}}
+\index{getAutore@{getAutore}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{getAutore()}{getAutore()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a100f81bcea6e10fc0aa4badba6343901} 
+String it.\+unisa.\+sgbu.\+domain.\+Libro.\+get\+Autore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}autore o gli autori del libro. 
+
+\begin{DoxyReturn}{Returns}
+Una stringa rappresentante l\textquotesingle{}autore o la lista degli autori. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a0e3b73f38eeafea3831ec416b565c809}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!getCopieDisponibili@{getCopieDisponibili}}
+\index{getCopieDisponibili@{getCopieDisponibili}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{getCopieDisponibili()}{getCopieDisponibili()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a0e3b73f38eeafea3831ec416b565c809} 
+int it.\+unisa.\+sgbu.\+domain.\+Libro.\+get\+Copie\+Disponibili (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il numero di copie attualmente disponibili. 
+
+\begin{DoxyReturn}{Returns}
+Un intero rappresentante le copie presenti in biblioteca e non in prestito. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_afb789beae36385dc26ca335f124c4eed}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!getISBN@{getISBN}}
+\index{getISBN@{getISBN}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{getISBN()}{getISBN()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_afb789beae36385dc26ca335f124c4eed} 
+String it.\+unisa.\+sgbu.\+domain.\+Libro.\+get\+ISBN (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il codice ISBN del libro. 
+
+\begin{DoxyReturn}{Returns}
+Una stringa rappresentante l\textquotesingle{}ISBN. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a66cfa6890a363323c9151fe8f8b1a43a}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!getTitolo@{getTitolo}}
+\index{getTitolo@{getTitolo}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{getTitolo()}{getTitolo()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a66cfa6890a363323c9151fe8f8b1a43a} 
+List$<$ String $>$ it.\+unisa.\+sgbu.\+domain.\+Libro.\+get\+Titolo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il titolo del libro. 
+
+\begin{DoxyReturn}{Returns}
+Una List$<$\+String$>$ contenente i nomi degli autori 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a7b32a926b54c1d8ef06b8151d8841848}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!incrementaDisponibilità@{incrementaDisponibilità}}
+\index{incrementaDisponibilità@{incrementaDisponibilità}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{incrementaDisponibilità()}{incrementaDisponibilità()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_a7b32a926b54c1d8ef06b8151d8841848} 
+void it.\+unisa.\+sgbu.\+domain.\+Libro.\+incrementa\+Disponibilità (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Incrementa il contatore delle copie disponibili. 
+
+Da invocare durante il flusso di "{}\+Registrazione restituzione"{}. Aumenta di 1 il numero di copie disponibili a seguito del rientro di un libro.
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item copie\+Totali \texorpdfstring{$>$}{>} copie\+Disponibili
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item copie\+Disponibili è incrementato di 1. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_add2789c30a7162666630b24ad7df8f57}\index{it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}!isDisponibile@{isDisponibile}}
+\index{isDisponibile@{isDisponibile}!it.unisa.sgbu.domain.Libro@{it.unisa.sgbu.domain.Libro}}
+\doxysubsubsection{\texorpdfstring{isDisponibile()}{isDisponibile()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_add2789c30a7162666630b24ad7df8f57} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Libro.\+is\+Disponibile (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se il libro è disponibile per il prestito. 
+
+Controlla se vi è almeno una copia disponibile per soddisfare il Vincolo di disponibilità.
+
+\begin{DoxyReturn}{Returns}
+true se copie\+Disponibili \texorpdfstring{$>$}{>} 0, altrimenti false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/domain/Libro.\+java\end{DoxyCompactItemize}

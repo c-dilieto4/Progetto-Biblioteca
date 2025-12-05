@@ -1,0 +1,185 @@
+\doxysection{it.\+unisa.\+sgbu.\+service.\+Anagrafica Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+
+
+Gestisce il registro (anagrafica) degli utenti della biblioteca.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_a971a68e31ea71353c315061ea12ff438}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_a971a68e31ea71353c315061ea12ff438} 
+{\bfseries Anagrafica} ()
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}. Inizializza la struttura dati per contenere il registro degli utenti. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_adb3deeed85bc9b0148fcdaefb7e1222f}{aggiungi\+Utente}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} u)
+\begin{DoxyCompactList}\small\item\em Aggiunge un nuovo utente all\textquotesingle{}anagrafica. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_a0de7c8d0f1ed9b6a692ded714b06dee6}{rimuovi\+Utente}} (String matricola)
+\begin{DoxyCompactList}\small\item\em Rimuove un utente dall\textquotesingle{}anagrafica. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ac9ebeb6f043ffc8f12c28f3f4d922213}{modifica\+Utente}} (String matricola, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} u)
+\begin{DoxyCompactList}\small\item\em Modifica i dati di un utente esistente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_aa36d437bbb8250f704df948e159caf84}{get\+Utente}} (String matricola)
+\begin{DoxyCompactList}\small\item\em Recupera un singolo utente tramite matricola. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ace76dbaf53bfe421078b57730a2efb1f}{cerca\+Utente}} (String query, String campo)
+\begin{DoxyCompactList}\small\item\em Ricerca utenti in base a un criterio specifico. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ad9a530adf8debcefb50daaaffb685c41}{visualizza\+Ordinata}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista completa degli utenti ordinata. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestisce il registro (anagrafica) degli utenti della biblioteca. 
+
+Questa classe implementa le operazioni CRUD (Create, Read, Update, Delete) sugli utenti, garantendo il rispetto dei vincoli di unicità e integrità referenziale definiti nelle specifiche. 
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_adb3deeed85bc9b0148fcdaefb7e1222f}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}!aggiungiUtente@{aggiungiUtente}}
+\index{aggiungiUtente@{aggiungiUtente}!it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+\doxysubsubsection{\texorpdfstring{aggiungiUtente()}{aggiungiUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_adb3deeed85bc9b0148fcdaefb7e1222f} 
+boolean it.\+unisa.\+sgbu.\+service.\+Anagrafica.\+aggiungi\+Utente (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}}}]{u}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge un nuovo utente all\textquotesingle{}anagrafica. 
+
+Implementa il "{}\+Flusso di registrazione nuovo utente"{}. Verifica che la matricola non sia già presente nel sistema per soddisfare il vincolo di univocità.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em u} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} da inserire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}inserimento ha successo, false se la matricola esiste già.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}oggetto u deve essere validato (formato matricola ed email).
+\item La matricola non deve esistere nel registro.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}utente è aggiunto al registro persistente. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ace76dbaf53bfe421078b57730a2efb1f}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}!cercaUtente@{cercaUtente}}
+\index{cercaUtente@{cercaUtente}!it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+\doxysubsubsection{\texorpdfstring{cercaUtente()}{cercaUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ace76dbaf53bfe421078b57730a2efb1f} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ it.\+unisa.\+sgbu.\+service.\+Anagrafica.\+cerca\+Utente (\begin{DoxyParamCaption}\item[{String}]{query}{, }\item[{String}]{campo}{}\end{DoxyParamCaption})}
+
+
+
+Ricerca utenti in base a un criterio specifico. 
+
+Implementa la funzionalità di ricerca, permettendo di filtrare l\textquotesingle{}archivio per "{}\+Cognome"{} o "{}\+Matricola"{}. Deve garantire tempi di risposta entro 2 secondi.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em query} & La stringa da cercare. \\
+\hline
+\mbox{\texttt{in}}  & {\em campo} & Il campo su cui cercare ("{}\+Cognome"{} o "{}\+Matricola"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Una lista di utenti che soddisfano i criteri di ricerca. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_aa36d437bbb8250f704df948e159caf84}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}!getUtente@{getUtente}}
+\index{getUtente@{getUtente}!it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+\doxysubsubsection{\texorpdfstring{getUtente()}{getUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_aa36d437bbb8250f704df948e159caf84} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} it.\+unisa.\+sgbu.\+service.\+Anagrafica.\+get\+Utente (\begin{DoxyParamCaption}\item[{String}]{matricola}{}\end{DoxyParamCaption})}
+
+
+
+Recupera un singolo utente tramite matricola. 
+
+Metodo di utilità per l\textquotesingle{}accesso diretto ai dati di un utente, utilizzato nei vari flussi operativi.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matricola} & L\textquotesingle{}identificativo univoco.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} se trovato, altrimenti null. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ac9ebeb6f043ffc8f12c28f3f4d922213}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}!modificaUtente@{modificaUtente}}
+\index{modificaUtente@{modificaUtente}!it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+\doxysubsubsection{\texorpdfstring{modificaUtente()}{modificaUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ac9ebeb6f043ffc8f12c28f3f4d922213} 
+boolean it.\+unisa.\+sgbu.\+service.\+Anagrafica.\+modifica\+Utente (\begin{DoxyParamCaption}\item[{String}]{matricola}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}}}]{u}{}\end{DoxyParamCaption})}
+
+
+
+Modifica i dati di un utente esistente. 
+
+Implementa il "{}\+Flusso di modifica utente"{}. Permette l\textquotesingle{}aggiornamento dei dati anagrafici. Se la modifica coinvolge la matricola, verifica nuovamente l\textquotesingle{}univocità.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matricola} & La matricola originale dell\textquotesingle{}utente da modificare. \\
+\hline
+\mbox{\texttt{in}}  & {\em u} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con i dati aggiornati.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la modifica ha successo, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_a0de7c8d0f1ed9b6a692ded714b06dee6}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}!rimuoviUtente@{rimuoviUtente}}
+\index{rimuoviUtente@{rimuoviUtente}!it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+\doxysubsubsection{\texorpdfstring{rimuoviUtente()}{rimuoviUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_a0de7c8d0f1ed9b6a692ded714b06dee6} 
+boolean it.\+unisa.\+sgbu.\+service.\+Anagrafica.\+rimuovi\+Utente (\begin{DoxyParamCaption}\item[{String}]{matricola}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove un utente dall\textquotesingle{}anagrafica. 
+
+Implementa il "{}\+Flusso di eliminazione utente"{}. Prima di procedere alla cancellazione, verifica rigorosamente che l\textquotesingle{}utente non abbia prestiti attivi, come imposto dal relativo vincolo.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matricola} & L\textquotesingle{}identificativo dell\textquotesingle{}utente da rimuovere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}eliminazione ha successo, false se l\textquotesingle{}utente non esiste o ha prestiti attivi.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}utente deve esistere.
+\item L\textquotesingle{}utente NON deve avere prestiti attivi (Vincolo cancellazione dati).
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}utente è rimosso dal sistema. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ad9a530adf8debcefb50daaaffb685c41}\index{it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}!visualizzaOrdinata@{visualizzaOrdinata}}
+\index{visualizzaOrdinata@{visualizzaOrdinata}!it.unisa.sgbu.service.Anagrafica@{it.unisa.sgbu.service.Anagrafica}}
+\doxysubsubsection{\texorpdfstring{visualizzaOrdinata()}{visualizzaOrdinata()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_ad9a530adf8debcefb50daaaffb685c41} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ it.\+unisa.\+sgbu.\+service.\+Anagrafica.\+visualizza\+Ordinata (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista completa degli utenti ordinata. 
+
+Implementa il requisito di visualizzazione, che richiede l\textquotesingle{}ordinamento specifico per Cognome e Nome.
+
+\begin{DoxyReturn}{Returns}
+Una lista di oggetti \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} ordinata per Cognome e poi Nome. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/service/Anagrafica.\+java\end{DoxyCompactItemize}

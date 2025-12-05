@@ -1,0 +1,186 @@
+\doxysection{it.\+unisa.\+sgbu.\+service.\+Catalogo Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+
+
+Gestisce il catalogo dei libri della biblioteca.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a11a1bd6c8b1580a2e5bd5d70d103b58b}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a11a1bd6c8b1580a2e5bd5d70d103b58b} 
+{\bfseries Catalogo} ()
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}. Inizializza la collezione vuota. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_ac8a9c192f4d625410680f19792b4734a}{aggiungi\+Libro}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} l)
+\begin{DoxyCompactList}\small\item\em Aggiunge un nuovo libro al catalogo. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_ad61413a1d7acb36fd8af9a2ee1aa3e4f}{rimuovi\+Libro}} (String isbn)
+\begin{DoxyCompactList}\small\item\em Rimuove un libro dal catalogo. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_aa792319d3e18d74057b8147a362f32bb}{modifica\+Libro}} (String isbn, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} nl)
+\begin{DoxyCompactList}\small\item\em Modifica i dati di un libro esistente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a473bd09ba1c4685b8e56c7b7966e9f90}{get\+Libro}} (String isbn)
+\begin{DoxyCompactList}\small\item\em Recupera un libro tramite ISBN. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a53df01c933f598cba0772ed5aee0689b}{ricerca}} (String query, String campo)
+\begin{DoxyCompactList}\small\item\em Ricerca libri nel catalogo. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_afc71f71e1ef5c69c5e5d76ad817d758a}{visualizza\+Ordinata}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista completa dei libri ordinata. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestisce il catalogo dei libri della biblioteca. 
+
+Questa classe implementa le operazioni CRUD (Create, Read, Update, Delete) sui libri e fornisce funzionalità di ricerca e ordinamento, come specificato nel Caso d\textquotesingle{}Uso "{}\+Gestione catalogo libri"{}. 
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_ac8a9c192f4d625410680f19792b4734a}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}!aggiungiLibro@{aggiungiLibro}}
+\index{aggiungiLibro@{aggiungiLibro}!it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+\doxysubsubsection{\texorpdfstring{aggiungiLibro()}{aggiungiLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_ac8a9c192f4d625410680f19792b4734a} 
+boolean it.\+unisa.\+sgbu.\+service.\+Catalogo.\+aggiungi\+Libro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge un nuovo libro al catalogo. 
+
+Implementa il "{}\+Flusso di registrazione nuovo libro"{}. Verifica che l\textquotesingle{}ISBN non sia già presente per soddisfare il relativo vincolo.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em l} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} da inserire.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}inserimento ha successo, false se l\textquotesingle{}ISBN è già presente.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item l != null.
+\item I dati del libro devono essere conformi al relativo requisito di Dati e Formati .
+\item L\textquotesingle{}ISBN non deve esistere nel catalogo.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il libro è aggiunto alla collezione persistente. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a473bd09ba1c4685b8e56c7b7966e9f90}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}!getLibro@{getLibro}}
+\index{getLibro@{getLibro}!it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+\doxysubsubsection{\texorpdfstring{getLibro()}{getLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a473bd09ba1c4685b8e56c7b7966e9f90} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} it.\+unisa.\+sgbu.\+service.\+Catalogo.\+get\+Libro (\begin{DoxyParamCaption}\item[{String}]{isbn}{}\end{DoxyParamCaption})}
+
+
+
+Recupera un libro tramite ISBN. 
+
+Metodo di accesso diretto utilizzato nei flussi di prestito e restituzione.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn} & Il codice identificativo.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} se trovato, null altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_aa792319d3e18d74057b8147a362f32bb}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}!modificaLibro@{modificaLibro}}
+\index{modificaLibro@{modificaLibro}!it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+\doxysubsubsection{\texorpdfstring{modificaLibro()}{modificaLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_aa792319d3e18d74057b8147a362f32bb} 
+boolean it.\+unisa.\+sgbu.\+service.\+Catalogo.\+modifica\+Libro (\begin{DoxyParamCaption}\item[{String}]{isbn}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}}}]{nl}{}\end{DoxyParamCaption})}
+
+
+
+Modifica i dati di un libro esistente. 
+
+Implementa il "{}\+Flusso di modifica libro"{}. Permette l\textquotesingle{}aggiornamento dei dati (Titolo, Autore, Copie). Se la modifica coinvolge l\textquotesingle{}ISBN, verifica nuovamente l\textquotesingle{}univocità.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn} & L\textquotesingle{}ISBN originale del libro da modificare. \\
+\hline
+\mbox{\texttt{in}}  & {\em nl} & Il nuovo oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} contenente i dati aggiornati.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la modifica ha successo, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a53df01c933f598cba0772ed5aee0689b}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}!ricerca@{ricerca}}
+\index{ricerca@{ricerca}!it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+\doxysubsubsection{\texorpdfstring{ricerca()}{ricerca()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_a53df01c933f598cba0772ed5aee0689b} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ it.\+unisa.\+sgbu.\+service.\+Catalogo.\+ricerca (\begin{DoxyParamCaption}\item[{String}]{query}{, }\item[{String}]{campo}{}\end{DoxyParamCaption})}
+
+
+
+Ricerca libri nel catalogo. 
+
+Implementa la funzionalità di ricerca. Permette di filtrare per Titolo, Autore o ISBN. Deve garantire tempi di risposta rapidi entro 2 secondi.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em query} & La stringa da cercare. \\
+\hline
+\mbox{\texttt{in}}  & {\em campo} & Il criterio di filtro ("{}\+Titolo"{}, "{}\+Autore"{}, "{}\+ISBN"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista dei libri che corrispondono ai criteri. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_ad61413a1d7acb36fd8af9a2ee1aa3e4f}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}!rimuoviLibro@{rimuoviLibro}}
+\index{rimuoviLibro@{rimuoviLibro}!it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+\doxysubsubsection{\texorpdfstring{rimuoviLibro()}{rimuoviLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_ad61413a1d7acb36fd8af9a2ee1aa3e4f} 
+boolean it.\+unisa.\+sgbu.\+service.\+Catalogo.\+rimuovi\+Libro (\begin{DoxyParamCaption}\item[{String}]{isbn}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove un libro dal catalogo. 
+
+Implementa il "{}\+Flusso di eliminazione libro"{}. L\textquotesingle{}operazione è soggetta al vincolo di integrità referenziale\+: non è possibile rimuovere un libro se esistono prestiti attivi associati.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn} & Il codice identificativo del libro da rimuovere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}eliminazione ha successo, false se il libro non esiste o il vincolo è violato.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item Il libro deve esistere nel catalogo.
+\item Il libro NON deve essere attivo in alcun prestito (verificato tramite interazione con il sistema prestiti).
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il libro è rimosso dalla collezione. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_afc71f71e1ef5c69c5e5d76ad817d758a}\index{it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}!visualizzaOrdinata@{visualizzaOrdinata}}
+\index{visualizzaOrdinata@{visualizzaOrdinata}!it.unisa.sgbu.service.Catalogo@{it.unisa.sgbu.service.Catalogo}}
+\doxysubsubsection{\texorpdfstring{visualizzaOrdinata()}{visualizzaOrdinata()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo_afc71f71e1ef5c69c5e5d76ad817d758a} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ it.\+unisa.\+sgbu.\+service.\+Catalogo.\+visualizza\+Ordinata (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista completa dei libri ordinata. 
+
+Implementa il requisito di visualizzazione, che impone specificamente l\textquotesingle{}ordinamento alfabetico per Titolo. Mostra per ciascun libro il numero di copie disponibili.
+
+\begin{DoxyReturn}{Returns}
+Lista di libri ordinata per Titolo. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/service/Catalogo.\+java\end{DoxyCompactItemize}

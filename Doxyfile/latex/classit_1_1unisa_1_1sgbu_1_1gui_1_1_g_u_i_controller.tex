@@ -1,0 +1,402 @@
+\doxysection{it.\+unisa.\+sgbu.\+gui.\+GUIController Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller}{}\label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+
+
+Controller principale del sistema (Pattern MVC).  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a326f5bc587ef2e3099a93586f74596b4}{GUIController}} (\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}} archivio, \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{ILogger}} logger, \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}{IAutenticatore}} autenticatore, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}} catalogo, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}} anagrafica, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti}} registro, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati}{Validatore\+Dati}} valida)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller}{GUIController}. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_ac5c4ef95ea32cf64cdec2c4ac473eb84}{avvia\+Sistema}} ()
+\begin{DoxyCompactList}\small\item\em Avvia il sistema caricando i dati persistenti. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_affeddc30bea0bca290709212a4fb059c}{chiudi\+Sistema}} ()
+\begin{DoxyCompactList}\small\item\em Chiude il sistema salvando lo stato corrente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a30ff520d961595504707f14309a2aa12}{aggiungi\+Utente}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} u)
+\begin{DoxyCompactList}\small\item\em Coordina l\textquotesingle{}aggiunta di un nuovo utente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a4d898759877c0b6fe073e217dd747c35}{aggiungi\+Libro}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} l)
+\begin{DoxyCompactList}\small\item\em Coordina l\textquotesingle{}aggiunta di un nuovo libro. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_ad23f7f05e3216f3a048ce8422e46397f}{modifica\+Utente}} (String matr\+Originale, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} u\+Nuovo)
+\begin{DoxyCompactList}\small\item\em Coordina la modifica di un utente esistente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a76d31726fa70878a9dc6e17395caf84c}{modifica\+Libro}} (String isbn\+Originale, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} l\+Nuovo)
+\begin{DoxyCompactList}\small\item\em Coordina la modifica di un libro esistente. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a113a33dbacb9fef7f597a17e8289ee68}{cerca\+Libro}} (String query, String campo)
+\begin{DoxyCompactList}\small\item\em Esegue la ricerca di libri nel catalogo. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a92e03ceac78317f70f215f2f04f218b0}{cerca\+Utente}} (String query, String campo)
+\begin{DoxyCompactList}\small\item\em Esegue la ricerca di utenti nell\textquotesingle{}anagrafica. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a92e3bf7cbd93a477307345fb95c6d575}{rimuovi\+Utente}} (String matr)
+\begin{DoxyCompactList}\small\item\em Coordina la rimozione di un utente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_af6614560e5cf161edac4fede376d40e0}{rimuovi\+Libro}} (String isbn)
+\begin{DoxyCompactList}\small\item\em Coordina la rimozione di un libro. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a7578596f7cddde24ddda9d85aaa885c3}{gestisci\+Prestito}} (String isbn, String matricola, Local\+Date data\+Prevista\+Restituzione)
+\begin{DoxyCompactList}\small\item\em Gestisce l\textquotesingle{}intero flusso di registrazione di un prestito. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a673a6a9fb6ca4be6031d835ea13ea181}{gestisci\+Restituzione}} (int id\+Prestito, Local\+Date data\+Effettiva\+Restituzione)
+\begin{DoxyCompactList}\small\item\em Gestisce il flusso di restituzione di un libro. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a4ac7b0adaa34f5db0ccdc48ede2789bf}{ottieni\+Report\+Prestiti}} ()
+\begin{DoxyCompactList}\small\item\em Recupera il report dei prestiti attivi. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a0ba85116566dd49032472d5009793a31}{ottieni\+Catalogo\+Ordinato}} ()
+\begin{DoxyCompactList}\small\item\em Recupera il catalogo completo per la visualizzazione. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a393b938a8850bc01e2f698d83de4aca3}{ottieni\+Anagrafica\+Ordinata}} ()
+\begin{DoxyCompactList}\small\item\em Recupera l\textquotesingle{}elenco utenti per la visualizzazione. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a7b1a009caa95c7559e292a1b8e0f188f}{gestisci\+Login}} (String user, String pass)
+\begin{DoxyCompactList}\small\item\em Gestisce la procedura di login del Bibliotecario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller principale del sistema (Pattern MVC). 
+
+Questa classe funge da orchestratore centrale per la logica applicativa. Riceve gli input dall\textquotesingle{}interfaccia utente (\doxylink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view}{GUIView}), coordina le operazioni di validazione tramite le Utility, delega l\textquotesingle{}esecuzione della logica di business ai servizi (\doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}, \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}, \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti}) e gestisce gli aspetti trasversali come il Logging e la Persistenza. Implementa il principio di "{}\+Inversione delle Dipendenze"{} interagendo con i servizi esterni tramite interfacce (\doxylink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}, \doxylink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{ILogger}, \doxylink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}{IAutenticatore}). 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a326f5bc587ef2e3099a93586f74596b4}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!GUIController@{GUIController}}
+\index{GUIController@{GUIController}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{GUIController()}{GUIController()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a326f5bc587ef2e3099a93586f74596b4} 
+it.\+unisa.\+sgbu.\+gui.\+GUIController.\+GUIController (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}}}]{archivio}{, }\item[{\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{ILogger}}}]{logger}{, }\item[{\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}{IAutenticatore}}}]{autenticatore}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}}}]{catalogo}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}}}]{anagrafica}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti}}}]{registro}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati}{Validatore\+Dati}}}]{valida}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller}{GUIController}. 
+
+Inizializza il controller iniettando tutte le dipendenze necessarie.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em archivio} & Il gestore della persistenza dei dati. \\
+\hline
+\mbox{\texttt{in}}  & {\em logger} & Il gestore del tracciamento delle operazioni (Audit Trail). \\
+\hline
+\mbox{\texttt{in}}  & {\em autenticatore} & Il servizio per la verifica delle credenziali. \\
+\hline
+\mbox{\texttt{in}}  & {\em catalogo} & Il gestore del catalogo libri. \\
+\hline
+\mbox{\texttt{in}}  & {\em anagrafica} & Il gestore dell\textquotesingle{}anagrafica utenti. \\
+\hline
+\mbox{\texttt{in}}  & {\em registro} & Il gestore delle transazioni di prestito. \\
+\hline
+\mbox{\texttt{in}}  & {\em valida} & Il componente per la validazione formale dei dati. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a4d898759877c0b6fe073e217dd747c35}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!aggiungiLibro@{aggiungiLibro}}
+\index{aggiungiLibro@{aggiungiLibro}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{aggiungiLibro()}{aggiungiLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a4d898759877c0b6fe073e217dd747c35} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+aggiungi\+Libro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Coordina l\textquotesingle{}aggiunta di un nuovo libro. 
+
+Esegue la validazione formale dei dati e delega l\textquotesingle{}inserimento al \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}. Se l\textquotesingle{}operazione ha successo, registra l\textquotesingle{}evento nel Log.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em l} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} da aggiungere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il libro è stato aggiunto, false se i dati non sono validi o l\textquotesingle{}ISBN è duplicato. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a30ff520d961595504707f14309a2aa12}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!aggiungiUtente@{aggiungiUtente}}
+\index{aggiungiUtente@{aggiungiUtente}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{aggiungiUtente()}{aggiungiUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a30ff520d961595504707f14309a2aa12} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+aggiungi\+Utente (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}}}]{u}{}\end{DoxyParamCaption})}
+
+
+
+Coordina l\textquotesingle{}aggiunta di un nuovo utente. 
+
+Esegue la validazione formale dei dati tramite \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati}{Validatore\+Dati} e, se superata, delega l\textquotesingle{}inserimento all\textquotesingle{}\doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}. Se l\textquotesingle{}operazione ha successo, registra l\textquotesingle{}evento nel Log.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em u} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} da aggiungere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}utente è stato aggiunto, false se i dati non sono validi o la matricola è duplicata. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_ac5c4ef95ea32cf64cdec2c4ac473eb84}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!avviaSistema@{avviaSistema}}
+\index{avviaSistema@{avviaSistema}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{avviaSistema()}{avviaSistema()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_ac5c4ef95ea32cf64cdec2c4ac473eb84} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+avvia\+Sistema (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Avvia il sistema caricando i dati persistenti. 
+
+Implementa il Caso d\textquotesingle{}Uso "{}\+Gestione persistenza dati"{} (Avvio). Tenta di recuperare lo stato salvato (Libri, Utenti, Prestiti) tramite l\textquotesingle{}archivio. Rispetta il requisito sui tempi di caricamento.
+
+\begin{DoxyReturn}{Returns}
+true se il sistema è avviato correttamente (dati caricati o nuovo archivio inizializzato), false in caso di errore critico. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a113a33dbacb9fef7f597a17e8289ee68}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!cercaLibro@{cercaLibro}}
+\index{cercaLibro@{cercaLibro}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{cercaLibro()}{cercaLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a113a33dbacb9fef7f597a17e8289ee68} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ it.\+unisa.\+sgbu.\+gui.\+GUIController.\+cerca\+Libro (\begin{DoxyParamCaption}\item[{String}]{query}{, }\item[{String}]{campo}{}\end{DoxyParamCaption})}
+
+
+
+Esegue la ricerca di libri nel catalogo. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em query} & La stringa da cercare. \\
+\hline
+\mbox{\texttt{in}}  & {\em campo} & Il campo su cui filtrare (es. Titolo, Autore).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Una lista di libri che corrispondono ai criteri. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a92e03ceac78317f70f215f2f04f218b0}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!cercaUtente@{cercaUtente}}
+\index{cercaUtente@{cercaUtente}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{cercaUtente()}{cercaUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a92e03ceac78317f70f215f2f04f218b0} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ it.\+unisa.\+sgbu.\+gui.\+GUIController.\+cerca\+Utente (\begin{DoxyParamCaption}\item[{String}]{query}{, }\item[{String}]{campo}{}\end{DoxyParamCaption})}
+
+
+
+Esegue la ricerca di utenti nell\textquotesingle{}anagrafica. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em query} & La stringa da cercare. \\
+\hline
+\mbox{\texttt{in}}  & {\em campo} & Il campo su cui filtrare (es. Cognome, Matricola).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Una lista di utenti che corrispondono ai criteri. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_affeddc30bea0bca290709212a4fb059c}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!chiudiSistema@{chiudiSistema}}
+\index{chiudiSistema@{chiudiSistema}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{chiudiSistema()}{chiudiSistema()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_affeddc30bea0bca290709212a4fb059c} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+chiudi\+Sistema (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Chiude il sistema salvando lo stato corrente. 
+
+Implementa il Caso d\textquotesingle{}Uso "{}\+Gestione persistenza dati"{} (Chiusura). Serializza lo stato attuale dei gestori (\doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}, \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}, Registro) su file.
+
+\begin{DoxyReturn}{Returns}
+true se il salvataggio ha successo, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a7b1a009caa95c7559e292a1b8e0f188f}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!gestisciLogin@{gestisciLogin}}
+\index{gestisciLogin@{gestisciLogin}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{gestisciLogin()}{gestisciLogin()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a7b1a009caa95c7559e292a1b8e0f188f} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+gestisci\+Login (\begin{DoxyParamCaption}\item[{String}]{user}{, }\item[{String}]{pass}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce la procedura di login del Bibliotecario. 
+
+Soddisfa il relativo requisito. Delega la verifica delle credenziali al componente \doxylink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}{IAutenticatore}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em user} & Username inserito. \\
+\hline
+\mbox{\texttt{in}}  & {\em pass} & Password inserita.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se le credenziali sono valide, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a7578596f7cddde24ddda9d85aaa885c3}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!gestisciPrestito@{gestisciPrestito}}
+\index{gestisciPrestito@{gestisciPrestito}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{gestisciPrestito()}{gestisciPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a7578596f7cddde24ddda9d85aaa885c3} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+gestisci\+Prestito (\begin{DoxyParamCaption}\item[{String}]{isbn}{, }\item[{String}]{matricola}{, }\item[{Local\+Date}]{data\+Prevista\+Restituzione}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce l\textquotesingle{}intero flusso di registrazione di un prestito. 
+
+Implementa relativo il Caso d\textquotesingle{}Uso.
+\begin{DoxyEnumerate}
+\item Valida i formati di ISBN e Matricola.
+\item Delega al \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti} la verifica dei vincoli di business (Disponibilità, Limite \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}) e la creazione.
+\item Se il prestito viene creato, invoca il Logger per il tracciamento.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn} & Codice del libro. \\
+\hline
+\mbox{\texttt{in}}  & {\em matricola} & Matricola dell\textquotesingle{}utente. \\
+\hline
+\mbox{\texttt{in}}  & {\em data\+Prevista\+Restituzione} & Data di scadenza del prestito.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il prestito è registrato, false se falliscono i controlli. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a673a6a9fb6ca4be6031d835ea13ea181}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!gestisciRestituzione@{gestisciRestituzione}}
+\index{gestisciRestituzione@{gestisciRestituzione}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{gestisciRestituzione()}{gestisciRestituzione()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a673a6a9fb6ca4be6031d835ea13ea181} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+gestisci\+Restituzione (\begin{DoxyParamCaption}\item[{int}]{id\+Prestito}{, }\item[{Local\+Date}]{data\+Effettiva\+Restituzione}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce il flusso di restituzione di un libro. 
+
+Implementa il relativo Caso d\textquotesingle{}Uso. Delega al \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti} la chiusura del prestito e l\textquotesingle{}aggiornamento delle disponibilità. Se l\textquotesingle{}operazione ha successo, registra l\textquotesingle{}evento nel Log.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em id\+Prestito} & Identificativo univoco del prestito. \\
+\hline
+\mbox{\texttt{in}}  & {\em data\+Effettiva\+Restituzione} & Data del rientro.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la restituzione è registrata, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a76d31726fa70878a9dc6e17395caf84c}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!modificaLibro@{modificaLibro}}
+\index{modificaLibro@{modificaLibro}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{modificaLibro()}{modificaLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a76d31726fa70878a9dc6e17395caf84c} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+modifica\+Libro (\begin{DoxyParamCaption}\item[{String}]{isbn\+Originale}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}}}]{l\+Nuovo}{}\end{DoxyParamCaption})}
+
+
+
+Coordina la modifica di un libro esistente. 
+
+Implementa il relativo Business Flow. Verifica la validità dei nuovi dati e delega l\textquotesingle{}aggiornamento al \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn\+Originale} & L\textquotesingle{}ISBN originale del libro da modificare. \\
+\hline
+\mbox{\texttt{in}}  & {\em l\+Nuovo} & L\textquotesingle{}oggetto con i dati aggiornati.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la modifica ha successo, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_ad23f7f05e3216f3a048ce8422e46397f}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!modificaUtente@{modificaUtente}}
+\index{modificaUtente@{modificaUtente}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{modificaUtente()}{modificaUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_ad23f7f05e3216f3a048ce8422e46397f} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+modifica\+Utente (\begin{DoxyParamCaption}\item[{String}]{matr\+Originale}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}}}]{u\+Nuovo}{}\end{DoxyParamCaption})}
+
+
+
+Coordina la modifica di un utente esistente. 
+
+Implementa il relativo Business Flow. Verifica la validità dei nuovi dati e delega l\textquotesingle{}aggiornamento all\textquotesingle{}\doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matr\+Originale} & La matricola originale dell\textquotesingle{}utente da modificare. \\
+\hline
+\mbox{\texttt{in}}  & {\em u\+Nuovo} & L\textquotesingle{}oggetto con i dati aggiornati.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la modifica ha successo, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a393b938a8850bc01e2f698d83de4aca3}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!ottieniAnagraficaOrdinata@{ottieniAnagraficaOrdinata}}
+\index{ottieniAnagraficaOrdinata@{ottieniAnagraficaOrdinata}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{ottieniAnagraficaOrdinata()}{ottieniAnagraficaOrdinata()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a393b938a8850bc01e2f698d83de4aca3} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ it.\+unisa.\+sgbu.\+gui.\+GUIController.\+ottieni\+Anagrafica\+Ordinata (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera l\textquotesingle{}elenco utenti per la visualizzazione. 
+
+\begin{DoxyReturn}{Returns}
+Lista di utenti ordinata per Cognome. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a0ba85116566dd49032472d5009793a31}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!ottieniCatalogoOrdinato@{ottieniCatalogoOrdinato}}
+\index{ottieniCatalogoOrdinato@{ottieniCatalogoOrdinato}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{ottieniCatalogoOrdinato()}{ottieniCatalogoOrdinato()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a0ba85116566dd49032472d5009793a31} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ it.\+unisa.\+sgbu.\+gui.\+GUIController.\+ottieni\+Catalogo\+Ordinato (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera il catalogo completo per la visualizzazione. 
+
+\begin{DoxyReturn}{Returns}
+Lista di libri ordinata per Titolo. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a4ac7b0adaa34f5db0ccdc48ede2789bf}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!ottieniReportPrestiti@{ottieniReportPrestiti}}
+\index{ottieniReportPrestiti@{ottieniReportPrestiti}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{ottieniReportPrestiti()}{ottieniReportPrestiti()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a4ac7b0adaa34f5db0ccdc48ede2789bf} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ it.\+unisa.\+sgbu.\+gui.\+GUIController.\+ottieni\+Report\+Prestiti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera il report dei prestiti attivi. 
+
+\begin{DoxyReturn}{Returns}
+Lista di prestiti ordinata per data di scadenza. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_af6614560e5cf161edac4fede376d40e0}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!rimuoviLibro@{rimuoviLibro}}
+\index{rimuoviLibro@{rimuoviLibro}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{rimuoviLibro()}{rimuoviLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_af6614560e5cf161edac4fede376d40e0} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+rimuovi\+Libro (\begin{DoxyParamCaption}\item[{String}]{isbn}{}\end{DoxyParamCaption})}
+
+
+
+Coordina la rimozione di un libro. 
+
+Verifica il vincolo di integrità referenziale (nessun prestito attivo per questo libro) prima di chiamare il \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo} per la rimozione. Se la rimozione avviene, l\textquotesingle{}azione viene loggata.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn} & L\textquotesingle{}ISBN del libro da rimuovere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se rimosso con successo, false se il libro è in prestito o non esiste. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a92e3bf7cbd93a477307345fb95c6d575}\index{it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}!rimuoviUtente@{rimuoviUtente}}
+\index{rimuoviUtente@{rimuoviUtente}!it.unisa.sgbu.gui.GUIController@{it.unisa.sgbu.gui.GUIController}}
+\doxysubsubsection{\texorpdfstring{rimuoviUtente()}{rimuoviUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller_a92e3bf7cbd93a477307345fb95c6d575} 
+boolean it.\+unisa.\+sgbu.\+gui.\+GUIController.\+rimuovi\+Utente (\begin{DoxyParamCaption}\item[{String}]{matr}{}\end{DoxyParamCaption})}
+
+
+
+Coordina la rimozione di un utente. 
+
+Prima di delegare la rimozione all\textquotesingle{}\doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}, interroga il \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti} per verificare che l\textquotesingle{}utente non abbia prestiti attivi. Se la rimozione avviene, l\textquotesingle{}azione viene loggata.
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matr} & La matricola dell\textquotesingle{}utente da rimuovere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se rimosso con successo, false se l\textquotesingle{}utente ha prestiti attivi o non esiste. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/gui/GUIController.\+java\end{DoxyCompactItemize}

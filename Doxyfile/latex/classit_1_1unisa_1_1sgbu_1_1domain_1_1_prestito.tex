@@ -1,0 +1,196 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Prestito Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+
+
+Rappresenta una transazione di prestito attiva o conclusa.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2647a71f099026e00a3507c096134f99}{Prestito}} (int id\+Prestito, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} libro, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} utente, Local\+Date data\+Inizio, Local\+Date data\+Prevista\+Restituzione)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace4e1cbb57b5213bdaf28e4e05b0f7ad}{get\+Id\+Prestito}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}ID del prestito. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a660ac6d1ca4f60b49cff21cc784283fe}{get\+Libro}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il libro associato al prestito. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2b96ea67abc1ee0a923e417afdb1acc5}{get\+Utente}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}utente associato al prestito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace762f9b027e2681331c61411492c9bb}{chiudi\+Prestito}} (Local\+Date data\+Effettiva)
+\begin{DoxyCompactList}\small\item\em Registra la restituzione del libro chiudendo il prestito. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ade6875214d3c42aaebde99fba73e6824}{verifica\+Ritardo}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se il prestito è in ritardo confrontando la data prevista di restituzione con la data odierna (o la data effettiva se già chiusa) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ad791288913e43d91bdd0d583868ea95f}{segna\+Ritardo}} ()
+\begin{DoxyCompactList}\small\item\em Contrassegna il prestito come "{}\+In Ritardo"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta una transazione di prestito attiva o conclusa. 
+
+Questa classe associa un utente a un libro e gestisce le date temporali del prestito, conformemente alla specifica dei dati. Gestisce inoltre lo stato di ritardo nella restituzione. 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2647a71f099026e00a3507c096134f99}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!Prestito@{Prestito}}
+\index{Prestito@{Prestito}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{Prestito()}{Prestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2647a71f099026e00a3507c096134f99} 
+it.\+unisa.\+sgbu.\+domain.\+Prestito.\+Prestito (\begin{DoxyParamCaption}\item[{int}]{id\+Prestito}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}}}]{libro}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}}}]{utente}{, }\item[{Local\+Date}]{data\+Inizio}{, }\item[{Local\+Date}]{data\+Prevista\+Restituzione}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}. 
+
+Inizializza un nuovo prestito attivo. La creazione di questa istanza avviene tipicamente all\textquotesingle{}interno del flusso di "{}\+Registrazione nuovo prestito"{}, dopo aver superato i controlli di disponibilità e limite prestiti.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em id\+Prestito} & Identificativo numerico del prestito. \\
+\hline
+\mbox{\texttt{in}}  & {\em libro} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} da prestare (deve avere copie disponibili). \\
+\hline
+\mbox{\texttt{in}}  & {\em utente} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} che richiede il prestito (non deve aver superato il limite). \\
+\hline
+\mbox{\texttt{in}}  & {\em data\+Inizio} & La data odierna di avvio prestito. \\
+\hline
+\mbox{\texttt{in}}  & {\em data\+Prevista\+Restituzione} & La data di scadenza calcolata.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item libro != null e il libro deve avere copie disponibili (copie \texorpdfstring{$>$}{>} 0), rispettando il relativo Vincolo.
+\item utente != null e l\textquotesingle{}utente deve avere meno di 3 prestiti attivi, rispettando il relativo Vincolo.
+\item data\+Inizio != null e data\+Prevista\+Restituzione != null.
+\item data\+Prevista\+Restituzione \texorpdfstring{$>$}{>}= data\+Inizio.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il prestito è creato ed è attivo (data\+Effettiva\+Restituzione è null).
+\item In\+Ritardo è inizializzato a false.
+\item Coerenza. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace762f9b027e2681331c61411492c9bb}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!chiudiPrestito@{chiudiPrestito}}
+\index{chiudiPrestito@{chiudiPrestito}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{chiudiPrestito()}{chiudiPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace762f9b027e2681331c61411492c9bb} 
+void it.\+unisa.\+sgbu.\+domain.\+Prestito.\+chiudi\+Prestito (\begin{DoxyParamCaption}\item[{Local\+Date}]{data\+Effettiva}{}\end{DoxyParamCaption})}
+
+
+
+Registra la restituzione del libro chiudendo il prestito. 
+
+Implementa parte del "{}\+Flusso di registrazione restituzione"{}. Imposta la data effettiva di restituzione. Se questa data è successiva alla data prevista, deve essere attivato il flusso di segnalazione ritardo.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em data\+Effettiva} & La data in cui il libro viene fisicamente restituito.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item data\+Effettiva != null.
+\item data\+Effettiva\+Restituzione == null\+: Il prestito deve essere ancora attivo per poter essere chiuso.
+\item data\+Effettiva \texorpdfstring{$>$}{>}= data\+Inizio\+: Non è possibile restituire un libro prima di averlo preso in prestito.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il prestito è considerato chiuso.
+\item Il flag In\+Ritardo è impostato a true se data\+Effettiva \texorpdfstring{$>$}{>} data\+Prevista\+Restituzione, altrimenti resta false. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace4e1cbb57b5213bdaf28e4e05b0f7ad}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getIdPrestito@{getIdPrestito}}
+\index{getIdPrestito@{getIdPrestito}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{getIdPrestito()}{getIdPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace4e1cbb57b5213bdaf28e4e05b0f7ad} 
+int it.\+unisa.\+sgbu.\+domain.\+Prestito.\+get\+Id\+Prestito (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}ID del prestito. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}intero identificativo. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a660ac6d1ca4f60b49cff21cc784283fe}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getLibro@{getLibro}}
+\index{getLibro@{getLibro}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{getLibro()}{getLibro()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a660ac6d1ca4f60b49cff21cc784283fe} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} it.\+unisa.\+sgbu.\+domain.\+Prestito.\+get\+Libro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il libro associato al prestito. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2b96ea67abc1ee0a923e417afdb1acc5}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getUtente@{getUtente}}
+\index{getUtente@{getUtente}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{getUtente()}{getUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2b96ea67abc1ee0a923e417afdb1acc5} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} it.\+unisa.\+sgbu.\+domain.\+Prestito.\+get\+Utente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}utente associato al prestito. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ad791288913e43d91bdd0d583868ea95f}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!segnaRitardo@{segnaRitardo}}
+\index{segnaRitardo@{segnaRitardo}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{segnaRitardo()}{segnaRitardo()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ad791288913e43d91bdd0d583868ea95f} 
+void it.\+unisa.\+sgbu.\+domain.\+Prestito.\+segna\+Ritardo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Contrassegna il prestito come "{}\+In Ritardo"{}. 
+
+Aggiorna lo stato interno del prestito per riflettere il mancato rispetto della scadenza. Questo metodo supporta la funzionalità di gestione dei ritardi e l\textquotesingle{}estensione del caso d\textquotesingle{}uso.
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item La data corrente o la data di restituzione effettiva deve essere successiva alla data prevista.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il flag In\+Ritardo è impostato a true. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ade6875214d3c42aaebde99fba73e6824}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!verificaRitardo@{verificaRitardo}}
+\index{verificaRitardo@{verificaRitardo}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{verificaRitardo()}{verificaRitardo()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ade6875214d3c42aaebde99fba73e6824} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Prestito.\+verifica\+Ritardo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se il prestito è in ritardo confrontando la data prevista di restituzione con la data odierna (o la data effettiva se già chiusa) 
+
+Confronta la data effettiva (o corrente) con la data prevista di restituzione come descritto nel "{}\+Flusso di segnalazione ritardo"{}.
+
+\begin{DoxyReturn}{Returns}
+true se data\+Effettiva \texorpdfstring{$>$}{>} data\+Prevista\+Restituzione, altrimenti false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/domain/Prestito.\+java\end{DoxyCompactItemize}

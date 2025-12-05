@@ -1,0 +1,139 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+File\+Archivio Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio}{}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio}\index{it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}}
+
+
+Implementazione concreta del meccanismo di persistenza su file.  
+
+
+Inheritance diagram for it.\+unisa.\+sgbu.\+io.\+File\+Archivio\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a0c9d7e8450e8dfa4db1cda3591c10e4a}{File\+Archivio}} (String path\+Dati, \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{ILogger}} logger)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio}{File\+Archivio}. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_abce4f984663ff8f0e97d30ad6c43b555}{salva\+Stato}} (Object dati, String nome\+File)
+\begin{DoxyCompactList}\small\item\em Salva lo stato di un oggetto su file (Serializzazione). \end{DoxyCompactList}\item 
+Object \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a29590b1b3d821d19f2807162690b3f48}{carica\+Stato}} (String nome\+File)
+\begin{DoxyCompactList}\small\item\em Carica lo stato di un oggetto da file (Deserializzazione). \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_ac80fae15b74f000f34cd92d2daee4c58}{verifica\+Esistenza\+File}} (String nome\+File)
+\begin{DoxyCompactList}\small\item\em Verifica se un file di dati esiste nel percorso specificato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementazione concreta del meccanismo di persistenza su file. 
+
+Questa classe gestisce l\textquotesingle{}interazione diretta con il file system locale per garantire il salvataggio persistente e il ricaricamento dello stato dell\textquotesingle{}archivio (Libri, Utenti, Prestiti), in conformità con il requisito di Interfaccia Software Soddisfa le esigenze di un\textquotesingle{}applicazione stand-\/alone descritte nella sezione "{}\+Prospettive del prodotto"{}. 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a0c9d7e8450e8dfa4db1cda3591c10e4a}\index{it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}!FileArchivio@{FileArchivio}}
+\index{FileArchivio@{FileArchivio}!it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}}
+\doxysubsubsection{\texorpdfstring{FileArchivio()}{FileArchivio()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a0c9d7e8450e8dfa4db1cda3591c10e4a} 
+it.\+unisa.\+sgbu.\+io.\+File\+Archivio.\+File\+Archivio (\begin{DoxyParamCaption}\item[{String}]{path\+Dati}{, }\item[{\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{ILogger}}}]{logger}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio}{File\+Archivio}. 
+
+Configura l\textquotesingle{}accesso all\textquotesingle{}archivio dati esterno.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em path\+Dati} & Il percorso base nel file system dove salvare/caricare i dati. \\
+\hline
+\mbox{\texttt{in}}  & {\em logger} & L\textquotesingle{}istanza del logger per registrare eventuali fallimenti critici. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a29590b1b3d821d19f2807162690b3f48}\index{it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}!caricaStato@{caricaStato}}
+\index{caricaStato@{caricaStato}!it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}}
+\doxysubsubsection{\texorpdfstring{caricaStato()}{caricaStato()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a29590b1b3d821d19f2807162690b3f48} 
+Object it.\+unisa.\+sgbu.\+io.\+File\+Archivio.\+carica\+Stato (\begin{DoxyParamCaption}\item[{String}]{nome\+File}{}\end{DoxyParamCaption})}
+
+
+
+Carica lo stato di un oggetto da file (Deserializzazione). 
+
+Implementa la logica di caricamento dati all\textquotesingle{}avvio del sistema. Secondo l\textquotesingle{}Assunzione n°2, si aspetta una struttura definita (es. file serializzati). L\textquotesingle{}operazione deve essere ottimizzata per rispettare il requisito prestazionale, che impone un tempo di caricamento massimo di 5 secondi.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em nome\+File} & Il nome del file da cui leggere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto deserializzato, oppure null se il caricamento fallisce. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a5861b186020aeab77e06a40fbcdbff53}{it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati}}.
+
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_abce4f984663ff8f0e97d30ad6c43b555}\index{it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}!salvaStato@{salvaStato}}
+\index{salvaStato@{salvaStato}!it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}}
+\doxysubsubsection{\texorpdfstring{salvaStato()}{salvaStato()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_abce4f984663ff8f0e97d30ad6c43b555} 
+boolean it.\+unisa.\+sgbu.\+io.\+File\+Archivio.\+salva\+Stato (\begin{DoxyParamCaption}\item[{Object}]{dati}{, }\item[{String}]{nome\+File}{}\end{DoxyParamCaption})}
+
+
+
+Salva lo stato di un oggetto su file (Serializzazione). 
+
+Implementa la logica di salvataggio persistente richiesta dal caso d\textquotesingle{}uso "{}\+Gestione persistenza dati"{} alla chiusura del sistema.
+
+Deve rispettare rigorosamente il requisito di Tolleranza agli errori\+: in caso di eccezione durante la scrittura, il metodo deve fallire in modo sicuro senza corrompere l\textquotesingle{}ultima versione stabile salvata su disco.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em dati} & L\textquotesingle{}oggetto da serializzare (es. Catalogo, Anagrafica). \\
+\hline
+\mbox{\texttt{in}}  & {\em nome\+File} & Il nome del file di destinazione.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il salvataggio ha successo, false in caso di errore I/O. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a47543280926b57161229046a5f22409e}{it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati}}.
+
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_ac80fae15b74f000f34cd92d2daee4c58}\index{it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}!verificaEsistenzaFile@{verificaEsistenzaFile}}
+\index{verificaEsistenzaFile@{verificaEsistenzaFile}!it.unisa.sgbu.io.FileArchivio@{it.unisa.sgbu.io.FileArchivio}}
+\doxysubsubsection{\texorpdfstring{verificaEsistenzaFile()}{verificaEsistenzaFile()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_ac80fae15b74f000f34cd92d2daee4c58} 
+boolean it.\+unisa.\+sgbu.\+io.\+File\+Archivio.\+verifica\+Esistenza\+File (\begin{DoxyParamCaption}\item[{String}]{nome\+File}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se un file di dati esiste nel percorso specificato. 
+
+Metodo di utilità usato durante l\textquotesingle{}avvio del sistema per determinare se procedere con il caricamento o avviare l\textquotesingle{}applicazione con un archivio vuoto.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em nome\+File} & Il nome del file da controllare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il file esiste, false altrimenti. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a9958544e0695a8a7bd20902ce2690294}{it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/io/File\+Archivio.\+java\end{DoxyCompactItemize}

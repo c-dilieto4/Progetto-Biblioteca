@@ -1,0 +1,154 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+Audit\+Trail Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail}{}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail}\index{it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}}
+
+
+Gestore del tracciamento delle operazioni di sistema (Audit Trail).  
+
+
+Inheritance diagram for it.\+unisa.\+sgbu.\+io.\+Audit\+Trail\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a98afeb88d85b062ca8b70aa28a5684fd}{Audit\+Trail}} (List$<$ String $>$ log\+Records, \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}} archivio)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail}{Audit\+Trail}. Inizializza il sistema di logging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_aafeaee1b87739e127041db1a9ead996c}{registra\+Azione}} (String azione)
+\begin{DoxyCompactList}\small\item\em Registra una specifica azione nel log. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a2e57723108735953132af1b0117c074a}{carica\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Carica lo storico dei log dall\textquotesingle{}archivio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a580c4183d603581dde47e8a45f11a286}{salva\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Salva i log su file persistente. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a423833fc9768c70ca0b5738c21647f69}{visualizza\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista corrente dei log per la visualizzazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestore del tracciamento delle operazioni di sistema (Audit Trail). 
+
+Questa classe implementa l\textquotesingle{}interfaccia \doxylink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{ILogger} per registrare automaticamente qualsiasi operazione di inserimento, modifica ed eliminazione effettuata sui dati persistenti (Libri, Utenti, Prestiti), come richiesto dal relativo requisito funzionale.
+
+Implementa la logica descritta nel caso d\textquotesingle{}uso "{}\+Registra Tracciamento"{}. 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a98afeb88d85b062ca8b70aa28a5684fd}\index{it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}!AuditTrail@{AuditTrail}}
+\index{AuditTrail@{AuditTrail}!it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}}
+\doxysubsubsection{\texorpdfstring{AuditTrail()}{AuditTrail()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a98afeb88d85b062ca8b70aa28a5684fd} 
+it.\+unisa.\+sgbu.\+io.\+Audit\+Trail.\+Audit\+Trail (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{log\+Records}{, }\item[{\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}}}]{archivio}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail}{Audit\+Trail}. Inizializza il sistema di logging. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em log\+Records} & Lista inizializzata (eventualmente vuota o pre-\/caricata). \\
+\hline
+\mbox{\texttt{in}}  & {\em archivio} & Il componente concreto per la persistenza dei file. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a2e57723108735953132af1b0117c074a}\index{it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}!caricaLog@{caricaLog}}
+\index{caricaLog@{caricaLog}!it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}}
+\doxysubsubsection{\texorpdfstring{caricaLog()}{caricaLog()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a2e57723108735953132af1b0117c074a} 
+List$<$ String $>$ it.\+unisa.\+sgbu.\+io.\+Audit\+Trail.\+carica\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Carica lo storico dei log dall\textquotesingle{}archivio. 
+
+Utilizzato all\textquotesingle{}avvio del sistema o per analisi, recupera i dati salvati tramite l\textquotesingle{}interfaccia di persistenza.
+
+\begin{DoxyReturn}{Returns}
+Lista di stringhe contenente lo storico delle operazioni. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_af668d880a91dfa66609014350277fac2}{it.\+unisa.\+sgbu.\+io.\+ILogger}}.
+
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_aafeaee1b87739e127041db1a9ead996c}\index{it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}!registraAzione@{registraAzione}}
+\index{registraAzione@{registraAzione}!it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}}
+\doxysubsubsection{\texorpdfstring{registraAzione()}{registraAzione()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_aafeaee1b87739e127041db1a9ead996c} 
+void it.\+unisa.\+sgbu.\+io.\+Audit\+Trail.\+registra\+Azione (\begin{DoxyParamCaption}\item[{String}]{azione}{}\end{DoxyParamCaption})}
+
+
+
+Registra una specifica azione nel log. 
+
+Implementa il "{}\+Flusso di aggiornamento audit trail"{}. Questo metodo viene invocato automaticamente dai Business Flow ogni volta che avviene una modifica ai dati.
+
+Il metodo deve\+:
+\begin{DoxyEnumerate}
+\item Ricevere la descrizione dell\textquotesingle{}operazione e i dati chiave.
+\item Recuperare automaticamente data e ora corrente (informazione di contesto).
+\item Creare il record e inviarlo al salvataggio persistente.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em azione} & Descrizione testuale dell\textquotesingle{}operazione effettuata (es. "{}\+Inserimento Libro ISBN..."{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Un nuovo record è aggiunto alla lista {\ttfamily log\+Records}.
+\item Viene tentato il salvataggio persistente tramite {\ttfamily \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a580c4183d603581dde47e8a45f11a286}{salva\+Log()}}. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a2a53ecf659a9a345b6e04dd7cb51b074}{it.\+unisa.\+sgbu.\+io.\+ILogger}}.
+
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a580c4183d603581dde47e8a45f11a286}\index{it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}!salvaLog@{salvaLog}}
+\index{salvaLog@{salvaLog}!it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}}
+\doxysubsubsection{\texorpdfstring{salvaLog()}{salvaLog()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a580c4183d603581dde47e8a45f11a286} 
+void it.\+unisa.\+sgbu.\+io.\+Audit\+Trail.\+salva\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Salva i log su file persistente. 
+
+Finalizza l\textquotesingle{}operazione di tracciamento scrivendo i dati su un supporto esterno, come definito nel passo finale del relativo Business Flow e nello specifico Caso d\textquotesingle{}Uso.
+
+Nota\+: Come specificato nel flusso alternativo dello specifico Caso d\textquotesingle{}Uso, se la scrittura fallisce, il sistema non deve bloccare il flusso principale, poiché il logging è una funzionalità a bassa priorità rispetto all\textquotesingle{}operatività. 
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a43b7ba79e9b9a6d074627f7ce9ac5b12}{it.\+unisa.\+sgbu.\+io.\+ILogger}}.
+
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a423833fc9768c70ca0b5738c21647f69}\index{it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}!visualizzaLog@{visualizzaLog}}
+\index{visualizzaLog@{visualizzaLog}!it.unisa.sgbu.io.AuditTrail@{it.unisa.sgbu.io.AuditTrail}}
+\doxysubsubsection{\texorpdfstring{visualizzaLog()}{visualizzaLog()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a423833fc9768c70ca0b5738c21647f69} 
+List$<$ String $>$ it.\+unisa.\+sgbu.\+io.\+Audit\+Trail.\+visualizza\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista corrente dei log per la visualizzazione. 
+
+Permette l\textquotesingle{}accesso in sola lettura allo storico delle operazioni tracciate, utile per verifiche amministrative.
+
+\begin{DoxyReturn}{Returns}
+La lista dei record di log. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_ad1cec5b39f337262f025e2acd36b717e}{it.\+unisa.\+sgbu.\+io.\+ILogger}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/io/Audit\+Trail.\+java\end{DoxyCompactItemize}

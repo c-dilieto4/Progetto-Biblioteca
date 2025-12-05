@@ -1,0 +1,59 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+IAutenticatore Interface Reference}
+\hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}{}\label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}\index{it.unisa.sgbu.io.IAutenticatore@{it.unisa.sgbu.io.IAutenticatore}}
+
+
+Interfaccia per il servizio di autenticazione del sistema.  
+
+
+Inheritance diagram for it.\+unisa.\+sgbu.\+io.\+IAutenticatore\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore_a71d1783c7f8d679346ca47b71f4b517a}{verifica\+Credenziali}} (String user, String pass)
+\begin{DoxyCompactList}\small\item\em Verifica la validità delle credenziali di accesso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interfaccia per il servizio di autenticazione del sistema. 
+
+Definisce il contratto per la verifica dell\textquotesingle{}identità dell\textquotesingle{}operatore. Questa interfaccia è fondamentale per soddisfare il requisito non funzionale di Sicurezza, garantendo che l\textquotesingle{}accesso alla GUI sia riservato esclusivamente al Bibliotecario. 
+
+\label{doc-func-members}
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore_a71d1783c7f8d679346ca47b71f4b517a}\index{it.unisa.sgbu.io.IAutenticatore@{it.unisa.sgbu.io.IAutenticatore}!verificaCredenziali@{verificaCredenziali}}
+\index{verificaCredenziali@{verificaCredenziali}!it.unisa.sgbu.io.IAutenticatore@{it.unisa.sgbu.io.IAutenticatore}}
+\doxysubsubsection{\texorpdfstring{verificaCredenziali()}{verificaCredenziali()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore_a71d1783c7f8d679346ca47b71f4b517a} 
+boolean it.\+unisa.\+sgbu.\+io.\+IAutenticatore.\+verifica\+Credenziali (\begin{DoxyParamCaption}\item[{String}]{user}{, }\item[{String}]{pass}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la validità delle credenziali di accesso. 
+
+Metodo essenziale per permettere il login del Bibliotecario. Il successo di questo metodo è la pre-\/condizione necessaria per l\textquotesingle{}accesso a tutti i casi d\textquotesingle{}uso di gestione.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em user} & Il nome utente fornito in input. \\
+\hline
+\mbox{\texttt{in}}  & {\em pass} & La password fornita in input.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se le credenziali sono corrette e l\textquotesingle{}accesso è autorizzato, false altrimenti. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a18ec1539e50d9a6dcded90971d763e08}{it.\+unisa.\+sgbu.\+io.\+File\+Autenticatore}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/io/IAutenticatore.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,114 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+ILogger Interface Reference}
+\hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}{}\label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}\index{it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}}
+
+
+Interfaccia per il sistema di tracciamento (Logging).  
+
+
+Inheritance diagram for it.\+unisa.\+sgbu.\+io.\+ILogger\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a2a53ecf659a9a345b6e04dd7cb51b074}{registra\+Azione}} (String azione)
+\begin{DoxyCompactList}\small\item\em Registra una nuova operazione nel sistema di log. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_af668d880a91dfa66609014350277fac2}{carica\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Recupera lo storico delle operazioni registrate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a43b7ba79e9b9a6d074627f7ce9ac5b12}{salva\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Rende persistente lo stato corrente dei log. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_ad1cec5b39f337262f025e2acd36b717e}{visualizza\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei log per la visualizzazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interfaccia per il sistema di tracciamento (Logging). 
+
+Definisce il contratto per la registrazione delle operazioni di sistema, supportando il requisito funzionale di Audit Trail.
+
+Permette di disaccoppiare la logica di tracciamento dalla specifica implementazione di persistenza, garantendo che ogni modifica ai dati (inserimento, modifica, eliminazione) venga storicizzata. 
+
+\label{doc-func-members}
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_af668d880a91dfa66609014350277fac2}\index{it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}!caricaLog@{caricaLog}}
+\index{caricaLog@{caricaLog}!it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}}
+\doxysubsubsection{\texorpdfstring{caricaLog()}{caricaLog()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_af668d880a91dfa66609014350277fac2} 
+List$<$ String $>$ it.\+unisa.\+sgbu.\+io.\+ILogger.\+carica\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera lo storico delle operazioni registrate. 
+
+Permette il caricamento dei log dall\textquotesingle{}archivio persistente, utile per analisi o verifiche amministrative successive.
+
+\begin{DoxyReturn}{Returns}
+Una lista di stringhe contenente i record di log recuperati. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a2e57723108735953132af1b0117c074a}{it.\+unisa.\+sgbu.\+io.\+Audit\+Trail}}.
+
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a2a53ecf659a9a345b6e04dd7cb51b074}\index{it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}!registraAzione@{registraAzione}}
+\index{registraAzione@{registraAzione}!it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}}
+\doxysubsubsection{\texorpdfstring{registraAzione()}{registraAzione()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a2a53ecf659a9a345b6e04dd7cb51b074} 
+void it.\+unisa.\+sgbu.\+io.\+ILogger.\+registra\+Azione (\begin{DoxyParamCaption}\item[{String}]{azione}{}\end{DoxyParamCaption})}
+
+
+
+Registra una nuova operazione nel sistema di log. 
+
+Metodo fondamentale per il "{}\+Flusso di aggiornamento audit trail"{}. Deve essere invocato dai Business Flow principali ogni volta che avviene una modifica ai dati persistenti.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em azione} & La descrizione testuale dell\textquotesingle{}evento da tracciare (es. tipo operazione e dati chiave). \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_aafeaee1b87739e127041db1a9ead996c}{it.\+unisa.\+sgbu.\+io.\+Audit\+Trail}}.
+
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a43b7ba79e9b9a6d074627f7ce9ac5b12}\index{it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}!salvaLog@{salvaLog}}
+\index{salvaLog@{salvaLog}!it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}}
+\doxysubsubsection{\texorpdfstring{salvaLog()}{salvaLog()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_a43b7ba79e9b9a6d074627f7ce9ac5b12} 
+void it.\+unisa.\+sgbu.\+io.\+ILogger.\+salva\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Rende persistente lo stato corrente dei log. 
+
+Implementa la scrittura su file esterno come richiesto dallo specifico Caso d\textquotesingle{}Uso e \mbox{[}UC-\/7\mbox{]} e dal relativo requisito di Interfaccia Esterna. Nota\+: Secondo i flussi alternativi, eventuali fallimenti in questa operazione (es. file non accessibile) non devono interrompere il flusso principale dell\textquotesingle{}applicazione, in quanto il logging è considerato a bassa priorità rispetto all\textquotesingle{}operatività. 
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a580c4183d603581dde47e8a45f11a286}{it.\+unisa.\+sgbu.\+io.\+Audit\+Trail}}.
+
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_ad1cec5b39f337262f025e2acd36b717e}\index{it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}!visualizzaLog@{visualizzaLog}}
+\index{visualizzaLog@{visualizzaLog}!it.unisa.sgbu.io.ILogger@{it.unisa.sgbu.io.ILogger}}
+\doxysubsubsection{\texorpdfstring{visualizzaLog()}{visualizzaLog()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger_ad1cec5b39f337262f025e2acd36b717e} 
+List$<$ String $>$ it.\+unisa.\+sgbu.\+io.\+ILogger.\+visualizza\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista dei log per la visualizzazione. 
+
+Fornisce accesso in lettura ai dati di audit correnti presenti in memoria.
+
+\begin{DoxyReturn}{Returns}
+La lista dei log. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_a423833fc9768c70ca0b5738c21647f69}{it.\+unisa.\+sgbu.\+io.\+Audit\+Trail}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/io/ILogger.\+java\end{DoxyCompactItemize}

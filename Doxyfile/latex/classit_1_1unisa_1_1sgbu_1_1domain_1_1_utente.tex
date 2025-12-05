@@ -1,0 +1,180 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Utente Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+
+
+Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo nome.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aec10c30adf466b8f1969b7c0f8604d43}{Utente}} (String matricola, String nome, String cognome, String email)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aea0baa822875b951a60747b01f92789f}{get\+Matricola}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la matricola dell\textquotesingle{}utente. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_abdb56e0dc4d3d5b01f29a203dc96a9b8}{get\+Cognome}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il cognome dell\textquotesingle{}utente. Utilizzato per l\textquotesingle{}ordinamento nella visualizzazione e per la ricerca. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ab2dfa775ec6a4787c733c4a42e2f5a30}{aggiungi\+Prestito}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} p)
+\begin{DoxyCompactList}\small\item\em Associa un nuovo prestito all\textquotesingle{}utente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4}{rimuovi\+Prestito}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} p)
+\begin{DoxyCompactList}\small\item\em Rimuove un prestito dalla lista dell\textquotesingle{}utente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aa72409a20d63c658fd3250cdb250f089}{verifica\+Limite}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se l\textquotesingle{}utente ha raggiunto il limite di prestiti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo nome. 
+
+Questa classe gestisce i dati anagrafici dell\textquotesingle{}utente e mantiene la relazione logica con i prestiti attivi a suo nome. 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aec10c30adf466b8f1969b7c0f8604d43}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!Utente@{Utente}}
+\index{Utente@{Utente}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{Utente()}{Utente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aec10c30adf466b8f1969b7c0f8604d43} 
+it.\+unisa.\+sgbu.\+domain.\+Utente.\+Utente (\begin{DoxyParamCaption}\item[{String}]{matricola}{, }\item[{String}]{nome}{, }\item[{String}]{cognome}{, }\item[{String}]{email}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}. 
+
+Inizializza un nuovo profilo utente nel sistema. Viene invocato durante il "{}\+Flusso di registrazione nuovo utente"{}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matricola} & Codice identificativo (10 cifre). \\
+\hline
+\mbox{\texttt{in}}  & {\em nome} & Nome dell\textquotesingle{}utente. \\
+\hline
+\mbox{\texttt{in}}  & {\em cognome} & Cognome dell\textquotesingle{}utente. \\
+\hline
+\mbox{\texttt{in}}  & {\em email} & Indirizzo di posta elettronica.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item matricola deve essere di 10 cifre numeriche (Assunzione n°3) e univoca.
+\item nome e cognome devono contenere solo caratteri alfabetici.
+\item email deve essere in un formato valido.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} è creato con i dati forniti.
+\item La lista dei prestiti associata è inizializzata vuota. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ab2dfa775ec6a4787c733c4a42e2f5a30}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!aggiungiPrestito@{aggiungiPrestito}}
+\index{aggiungiPrestito@{aggiungiPrestito}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{aggiungiPrestito()}{aggiungiPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ab2dfa775ec6a4787c733c4a42e2f5a30} 
+void it.\+unisa.\+sgbu.\+domain.\+Utente.\+aggiungi\+Prestito (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Associa un nuovo prestito all\textquotesingle{}utente. 
+
+Questo metodo viene chiamato durante la registrazione di un prestito, dopo aver verificato che il limite massimo non sia stato raggiunto.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em p} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} da associare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item p != null.
+\item Il numero di prestiti attivi deve essere minore di 3.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il prestito viene aggiunto alla lista dei prestiti attivi dell\textquotesingle{}utente. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_abdb56e0dc4d3d5b01f29a203dc96a9b8}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getCognome@{getCognome}}
+\index{getCognome@{getCognome}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{getCognome()}{getCognome()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_abdb56e0dc4d3d5b01f29a203dc96a9b8} 
+String it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Cognome (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il cognome dell\textquotesingle{}utente. Utilizzato per l\textquotesingle{}ordinamento nella visualizzazione e per la ricerca. 
+
+\begin{DoxyReturn}{Returns}
+Stringa contenente il cognome. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aea0baa822875b951a60747b01f92789f}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getMatricola@{getMatricola}}
+\index{getMatricola@{getMatricola}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{getMatricola()}{getMatricola()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aea0baa822875b951a60747b01f92789f} 
+String it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Matricola (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la matricola dell\textquotesingle{}utente. 
+
+\begin{DoxyReturn}{Returns}
+Stringa contenente la matricola. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!rimuoviPrestito@{rimuoviPrestito}}
+\index{rimuoviPrestito@{rimuoviPrestito}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{rimuoviPrestito()}{rimuoviPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4} 
+void it.\+unisa.\+sgbu.\+domain.\+Utente.\+rimuovi\+Prestito (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove un prestito dalla lista dell\textquotesingle{}utente. 
+
+Questo metodo viene chiamato durante la registrazione di una restituzione, per dissociare il prestito attivo dall\textquotesingle{}utente.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em p} & L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} da rimuovere.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item Il prestito p deve essere presente nella lista dell\textquotesingle{}utente.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Il prestito viene rimosso dai prestiti attivi. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aa72409a20d63c658fd3250cdb250f089}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!verificaLimite@{verificaLimite}}
+\index{verificaLimite@{verificaLimite}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{verificaLimite()}{verificaLimite()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aa72409a20d63c658fd3250cdb250f089} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Utente.\+verifica\+Limite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se l\textquotesingle{}utente ha raggiunto il limite di prestiti. 
+
+Controlla se l\textquotesingle{}utente ha già 3 libri in prestito, in accordo con il Vincolo limite prestiti per singolo utente.
+
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}utente ha meno di 3 prestiti attivi (e quindi può prendere un altro libro), false se il limite (3) è stato raggiunto. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/domain/Utente.\+java\end{DoxyCompactItemize}

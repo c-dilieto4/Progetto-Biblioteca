@@ -1,0 +1,97 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+File\+Autenticatore Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore}{}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore}\index{it.unisa.sgbu.io.FileAutenticatore@{it.unisa.sgbu.io.FileAutenticatore}}
+
+
+Implementazione del meccanismo di autenticazione basato su file.  
+
+
+Inheritance diagram for it.\+unisa.\+sgbu.\+io.\+File\+Autenticatore\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a5cdd4374f1e080e2fb6ff1ca57f1e387}{File\+Autenticatore}} (String credentials\+File, \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}} archivio\+Dati)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore}{File\+Autenticatore}. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a18ec1539e50d9a6dcded90971d763e08}{verifica\+Credenziali}} (String user, String pass)
+\begin{DoxyCompactList}\small\item\em Verifica la validità delle credenziali fornite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementazione del meccanismo di autenticazione basato su file. 
+
+Questa classe verifica le credenziali del Bibliotecario leggendole da un supporto di memorizzazione persistente. Soddisfa il requisito Non Funzionale di Sicurezza, garantendo che l\textquotesingle{}accesso alle funzionalità di gestione sia limitato al solo personale autorizzato (Attore\+: Bibliotecario). 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a5cdd4374f1e080e2fb6ff1ca57f1e387}\index{it.unisa.sgbu.io.FileAutenticatore@{it.unisa.sgbu.io.FileAutenticatore}!FileAutenticatore@{FileAutenticatore}}
+\index{FileAutenticatore@{FileAutenticatore}!it.unisa.sgbu.io.FileAutenticatore@{it.unisa.sgbu.io.FileAutenticatore}}
+\doxysubsubsection{\texorpdfstring{FileAutenticatore()}{FileAutenticatore()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a5cdd4374f1e080e2fb6ff1ca57f1e387} 
+it.\+unisa.\+sgbu.\+io.\+File\+Autenticatore.\+File\+Autenticatore (\begin{DoxyParamCaption}\item[{String}]{credentials\+File}{, }\item[{\mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{IArchivio\+Dati}}}]{archivio\+Dati}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore}{File\+Autenticatore}. 
+
+Configura il sistema di autenticazione.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em credentials\+File} & Il percorso del file dove risiedono username e password corretti. \\
+\hline
+\mbox{\texttt{in}}  & {\em archivio\+Dati} & L\textquotesingle{}interfaccia per la lettura del file. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a18ec1539e50d9a6dcded90971d763e08}\index{it.unisa.sgbu.io.FileAutenticatore@{it.unisa.sgbu.io.FileAutenticatore}!verificaCredenziali@{verificaCredenziali}}
+\index{verificaCredenziali@{verificaCredenziali}!it.unisa.sgbu.io.FileAutenticatore@{it.unisa.sgbu.io.FileAutenticatore}}
+\doxysubsubsection{\texorpdfstring{verificaCredenziali()}{verificaCredenziali()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_a18ec1539e50d9a6dcded90971d763e08} 
+boolean it.\+unisa.\+sgbu.\+io.\+File\+Autenticatore.\+verifica\+Credenziali (\begin{DoxyParamCaption}\item[{String}]{user}{, }\item[{String}]{pass}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la validità delle credenziali fornite. 
+
+Implementa il controllo di sicurezza. Confronta l\textquotesingle{}input fornito con le credenziali memorizzate su file. Il successo di questa operazione è la Pre-\/condizione necessaria per l\textquotesingle{}esecuzione di tutti i casi d\textquotesingle{}uso gestionali.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em user} & Il nome utente inserito dall\textquotesingle{}operatore. \\
+\hline
+\mbox{\texttt{in}}  & {\em pass} & La password inserita dall\textquotesingle{}operatore.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se le credenziali corrispondono a quelle autorizzate, false altrimenti.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item Il file delle credenziali deve esistere ed essere leggibile.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Se restituisce true, il Bibliotecario è considerato "{}\+Autenticato"{} nel sistema. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+Implements \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore_a71d1783c7f8d679346ca47b71f4b517a}{it.\+unisa.\+sgbu.\+io.\+IAutenticatore}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/io/File\+Autenticatore.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Credenziali Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali}\index{it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}}
+
+
+Rappresenta le credenziali di accesso al sistema.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a79897bdc9906099a051b3dd31a2cebf1}{Credenziali}} (String user, String password)
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali}{Credenziali}. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a7a4d50789733721c35e636f9eec42fdf}{get\+User}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il nome utente. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a775bfe8df2fcc4bf20f23717f2fa8b6c}{get\+Password}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la password. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta le credenziali di accesso al sistema. 
+
+Questa classe incapsula le informazioni di autenticazione necessarie per il login. È destinata all\textquotesingle{}uso esclusivo dell\textquotesingle{}attore Bibliotecario, l\textquotesingle{}unico autorizzato ad accedere all\textquotesingle{}interfaccia grafica per eseguire operazioni di gestione.
+
+Implementa la struttura dati richiesta per soddisfare il requisito di sicurezza sull\textquotesingle{}Autenticazione. 
+
+\label{doc-constructors}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a79897bdc9906099a051b3dd31a2cebf1}\index{it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}!Credenziali@{Credenziali}}
+\index{Credenziali@{Credenziali}!it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}}
+\doxysubsubsection{\texorpdfstring{Credenziali()}{Credenziali()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a79897bdc9906099a051b3dd31a2cebf1} 
+it.\+unisa.\+sgbu.\+domain.\+Credenziali.\+Credenziali (\begin{DoxyParamCaption}\item[{String}]{user}{, }\item[{String}]{password}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali}{Credenziali}. 
+
+Crea un oggetto credenziali immutabile da utilizzare durante la fase di login all\textquotesingle{}avvio dell\textquotesingle{}applicazione o della sessione di lavoro.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em user} & L\textquotesingle{}identificativo dell\textquotesingle{}operatore (Bibliotecario). \\
+\hline
+\mbox{\texttt{in}}  & {\em password} & La chiave di accesso segreta.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item user e password non devono essere nulli o vuoti per permettere un tentativo di autenticazione valido.
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali}{Credenziali} è inizializzato. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a775bfe8df2fcc4bf20f23717f2fa8b6c}\index{it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}!getPassword@{getPassword}}
+\index{getPassword@{getPassword}!it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}}
+\doxysubsubsection{\texorpdfstring{getPassword()}{getPassword()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a775bfe8df2fcc4bf20f23717f2fa8b6c} 
+String it.\+unisa.\+sgbu.\+domain.\+Credenziali.\+get\+Password (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la password. 
+
+\begin{DoxyReturn}{Returns}
+Una stringa contenente la password. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a7a4d50789733721c35e636f9eec42fdf}\index{it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}!getUser@{getUser}}
+\index{getUser@{getUser}!it.unisa.sgbu.domain.Credenziali@{it.unisa.sgbu.domain.Credenziali}}
+\doxysubsubsection{\texorpdfstring{getUser()}{getUser()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_credenziali_a7a4d50789733721c35e636f9eec42fdf} 
+String it.\+unisa.\+sgbu.\+domain.\+Credenziali.\+get\+User (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il nome utente. 
+
+\begin{DoxyReturn}{Returns}
+Una stringa contenente lo username. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/domain/Credenziali.\+java\end{DoxyCompactItemize}

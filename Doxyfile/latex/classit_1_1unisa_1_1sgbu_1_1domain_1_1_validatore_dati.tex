@@ -1,0 +1,137 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Validatore\+Dati Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati}\index{it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}}
+
+
+Classe di utilità per la validazione sintattica e logica dei dati di input.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a3886d9d4764dcc5d881c79c7a1387be7}{valida\+ISBN}} (String isbn)
+\begin{DoxyCompactList}\small\item\em Verifica il formato del codice ISBN. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a2b5b7c6880c3299b8e25a969c24fb365}{valida\+Matricola}} (String matricola)
+\begin{DoxyCompactList}\small\item\em Verifica il formato della matricola utente. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_aabb0daea83aaac9f699dc5381145b157}{valida\+Email}} (String email)
+\begin{DoxyCompactList}\small\item\em Verifica il formato dell\textquotesingle{}indirizzo email. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a70817e261a1e281ac8fbbfc92fd9a852}{valida\+Anno\+Pubblicazione}} (int anno)
+\begin{DoxyCompactList}\small\item\em Verifica la validità dell\textquotesingle{}anno di pubblicazione. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a33abbac435fbf7d672f2d476cc1be0b0}{valida\+Nome\+Cognome}} (String nome, String cognome)
+\begin{DoxyCompactList}\small\item\em Verifica il formato di Nome e Cognome. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe di utilità per la validazione sintattica e logica dei dati di input. 
+
+Questa classe centralizza le regole di validazione definite nella sezione "{}\+Dati e Formato Dati \mbox{[}\+DF\mbox{]}"{} . Viene utilizzata dai flussi di registrazione e modifica per garantire l\textquotesingle{}integrità dei dati prima della persistenza. 
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a70817e261a1e281ac8fbbfc92fd9a852}\index{it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}!validaAnnoPubblicazione@{validaAnnoPubblicazione}}
+\index{validaAnnoPubblicazione@{validaAnnoPubblicazione}!it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}}
+\doxysubsubsection{\texorpdfstring{validaAnnoPubblicazione()}{validaAnnoPubblicazione()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a70817e261a1e281ac8fbbfc92fd9a852} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Validatore\+Dati.\+valida\+Anno\+Pubblicazione (\begin{DoxyParamCaption}\item[{int}]{anno}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la validità dell\textquotesingle{}anno di pubblicazione. 
+
+Implementa la logica temporale definita dal requisito dei Dati e Formati\+: l\textquotesingle{}anno deve essere un intero non negativo e non può essere superiore all\textquotesingle{}anno corrente rilevato dal sistema operativo.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em anno} & L\textquotesingle{}anno di pubblicazione da verificare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se 0 \texorpdfstring{$<$}{<}= anno \texorpdfstring{$<$}{<}= anno corrente, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_aabb0daea83aaac9f699dc5381145b157}\index{it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}!validaEmail@{validaEmail}}
+\index{validaEmail@{validaEmail}!it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}}
+\doxysubsubsection{\texorpdfstring{validaEmail()}{validaEmail()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_aabb0daea83aaac9f699dc5381145b157} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Validatore\+Dati.\+valida\+Email (\begin{DoxyParamCaption}\item[{String}]{email}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il formato dell\textquotesingle{}indirizzo email. 
+
+Controlla che l\textquotesingle{}email rispetti il formato standard (es. \href{mailto:utente@dominio.it}{\texttt{utente@dominio.\+it}}) come richiesto dal requisito dei Dati e Formati e verificato nel relativo flusso.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em email} & L\textquotesingle{}indirizzo email da validare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il formato è valido, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a3886d9d4764dcc5d881c79c7a1387be7}\index{it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}!validaISBN@{validaISBN}}
+\index{validaISBN@{validaISBN}!it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}}
+\doxysubsubsection{\texorpdfstring{validaISBN()}{validaISBN()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a3886d9d4764dcc5d881c79c7a1387be7} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Validatore\+Dati.\+valida\+ISBN (\begin{DoxyParamCaption}\item[{String}]{isbn}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il formato del codice ISBN. 
+
+Controlla che la stringa fornita sia un identificativo valido secondo le relative specifiche.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em isbn} & La stringa rappresentante il codice ISBN.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il formato è valido, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a2b5b7c6880c3299b8e25a969c24fb365}\index{it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}!validaMatricola@{validaMatricola}}
+\index{validaMatricola@{validaMatricola}!it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}}
+\doxysubsubsection{\texorpdfstring{validaMatricola()}{validaMatricola()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a2b5b7c6880c3299b8e25a969c24fb365} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Validatore\+Dati.\+valida\+Matricola (\begin{DoxyParamCaption}\item[{String}]{matricola}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il formato della matricola utente. 
+
+Implementa il controllo rigoroso definito nell\textquotesingle{}Assunzione n°3 e richiamato nello specifico requisito\+: la matricola deve essere composta esclusivamente da 10 cifre numeriche. L\textquotesingle{}input di identificativi non conformi non è supportato.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em matricola} & La stringa da validare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la matricola è numerica e di 10 cifre, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a33abbac435fbf7d672f2d476cc1be0b0}\index{it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}!validaNomeCognome@{validaNomeCognome}}
+\index{validaNomeCognome@{validaNomeCognome}!it.unisa.sgbu.domain.ValidatoreDati@{it.unisa.sgbu.domain.ValidatoreDati}}
+\doxysubsubsection{\texorpdfstring{validaNomeCognome()}{validaNomeCognome()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati_a33abbac435fbf7d672f2d476cc1be0b0} 
+boolean it.\+unisa.\+sgbu.\+domain.\+Validatore\+Dati.\+valida\+Nome\+Cognome (\begin{DoxyParamCaption}\item[{String}]{nome}{, }\item[{String}]{cognome}{}\end{DoxyParamCaption})}
+
+
+
+Verifica il formato di Nome e Cognome. 
+
+Assicura che i campi contengano esclusivamente caratteri alfabetici, vietando numeri o caratteri speciali, come esplicitamente richiesto dal requisito dei Dati e Formati.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em nome} & Il nome da validare. \\
+\hline
+\mbox{\texttt{in}}  & {\em cognome} & Il cognome da validare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se entrambi contengono solo caratteri alfabetici, false altrimenti. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/domain/Validatore\+Dati.\+java\end{DoxyCompactItemize}

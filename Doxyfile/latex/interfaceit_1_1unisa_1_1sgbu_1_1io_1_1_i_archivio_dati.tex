@@ -1,0 +1,111 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati Interface Reference}
+\hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}{}\label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}\index{it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}}
+
+
+Interfaccia per la gestione della persistenza dei dati.  
+
+
+Inheritance diagram for it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a47543280926b57161229046a5f22409e}{salva\+Stato}} (Object dati, String nome\+File)
+\begin{DoxyCompactList}\small\item\em Salva lo stato di un oggetto in modo persistente. \end{DoxyCompactList}\item 
+Object \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a5861b186020aeab77e06a40fbcdbff53}{carica\+Stato}} (String nome\+File)
+\begin{DoxyCompactList}\small\item\em Carica lo stato di un oggetto dall\textquotesingle{}archivio. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a9958544e0695a8a7bd20902ce2690294}{verifica\+Esistenza\+File}} (String nome\+File)
+\begin{DoxyCompactList}\small\item\em Verifica la presenza fisica dell\textquotesingle{}archivio dati. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interfaccia per la gestione della persistenza dei dati. 
+
+Definisce il contratto per l\textquotesingle{}interazione con l\textquotesingle{}archivio dati esterno (sistema operativo/file system), come richiesto dal requisito di Interfaccia Software. Questa astrazione permette al sistema di effettuare il salvataggio persistente e il ricaricamento dello stato (Libri, Utenti, Prestiti) indipendentemente dalla tecnologia sottostante, supportando il caso d\textquotesingle{}uso "{}\+Gestione persistenza dati"{}. 
+
+\label{doc-func-members}
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a5861b186020aeab77e06a40fbcdbff53}\index{it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}!caricaStato@{caricaStato}}
+\index{caricaStato@{caricaStato}!it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}}
+\doxysubsubsection{\texorpdfstring{caricaStato()}{caricaStato()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a5861b186020aeab77e06a40fbcdbff53} 
+Object it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati.\+carica\+Stato (\begin{DoxyParamCaption}\item[{String}]{nome\+File}{}\end{DoxyParamCaption})}
+
+
+
+Carica lo stato di un oggetto dall\textquotesingle{}archivio. 
+
+Implementa l\textquotesingle{}operazione di ricaricamento richiesta all\textquotesingle{}avvio dell\textquotesingle{}applicazione. Si basa sull\textquotesingle{}Assunzione n°2 presupponendo che l\textquotesingle{}archivio abbia una struttura definita e leggibile dall\textquotesingle{}applicazione.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em nome\+File} & Il nome o percorso del file sorgente.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto recuperato, oppure null se il caricamento fallisce. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_a29590b1b3d821d19f2807162690b3f48}{it.\+unisa.\+sgbu.\+io.\+File\+Archivio}}.
+
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a47543280926b57161229046a5f22409e}\index{it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}!salvaStato@{salvaStato}}
+\index{salvaStato@{salvaStato}!it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}}
+\doxysubsubsection{\texorpdfstring{salvaStato()}{salvaStato()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a47543280926b57161229046a5f22409e} 
+boolean it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati.\+salva\+Stato (\begin{DoxyParamCaption}\item[{Object}]{dati}{, }\item[{String}]{nome\+File}{}\end{DoxyParamCaption})}
+
+
+
+Salva lo stato di un oggetto in modo persistente. 
+
+Implementa l\textquotesingle{}operazione di salvataggio richiesta alla chiusura dell\textquotesingle{}applicazione. L\textquotesingle{}implementazione concreta di questo metodo deve garantire la Tolleranza agli errori\+: in caso di fallimento della scrittura, l\textquotesingle{}archivio precedente non deve essere corrotto.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em dati} & L\textquotesingle{}oggetto contenente lo stato da salvare (es. l\textquotesingle{}intera collezione di dati). \\
+\hline
+\mbox{\texttt{in}}  & {\em nome\+File} & Il nome o percorso della destinazione di salvataggio.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se l\textquotesingle{}operazione è completata con successo, false altrimenti. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_abce4f984663ff8f0e97d30ad6c43b555}{it.\+unisa.\+sgbu.\+io.\+File\+Archivio}}.
+
+\Hypertarget{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a9958544e0695a8a7bd20902ce2690294}\index{it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}!verificaEsistenzaFile@{verificaEsistenzaFile}}
+\index{verificaEsistenzaFile@{verificaEsistenzaFile}!it.unisa.sgbu.io.IArchivioDati@{it.unisa.sgbu.io.IArchivioDati}}
+\doxysubsubsection{\texorpdfstring{verificaEsistenzaFile()}{verificaEsistenzaFile()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati_a9958544e0695a8a7bd20902ce2690294} 
+boolean it.\+unisa.\+sgbu.\+io.\+IArchivio\+Dati.\+verifica\+Esistenza\+File (\begin{DoxyParamCaption}\item[{String}]{nome\+File}{}\end{DoxyParamCaption})}
+
+
+
+Verifica la presenza fisica dell\textquotesingle{}archivio dati. 
+
+Metodo di supporto utilizzato per gestire i flussi alternativi del relativo Caso d\textquotesingle{}Uso\+: se il file non esiste, il sistema deve essere in grado di avviarsi con un archivio vuoto senza generare errori critici.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em nome\+File} & Il nome o percorso del file da controllare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il file esiste, false altrimenti. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_ac80fae15b74f000f34cd92d2daee4c58}{it.\+unisa.\+sgbu.\+io.\+File\+Archivio}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/io/IArchivio\+Dati.\+java\end{DoxyCompactItemize}
