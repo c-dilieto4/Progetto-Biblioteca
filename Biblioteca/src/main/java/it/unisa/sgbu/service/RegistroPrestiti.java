@@ -20,24 +20,29 @@ public class RegistroPrestiti {
     private final int LimitePrestiti=3;
     private Catalogo catologo;
     private Anagrafica anagrafica;
-    private ILogger logger;
     
-    public RegistroPrestiti(Catalogo catologo, Anagrafica anagrafica, ILogger logger){
+    public RegistroPrestiti(Catalogo catologo, Anagrafica anagrafica){
     }
     
-    public Prestito registraPrestito(String isbn, LocalDate dataPrev){
+    public Prestito registraPrestito(String isbn, String matr, LocalDate dataPrev){
     }
     
-    public boolean registraRestituzione(String idPrestito){
+    public boolean registraRestituzione(String idPrestito, LocalDate dataEff){
     }
     
     public List<Prestito> getPrestitiAttivi(){
+    }
+    
+    public List<Prestito> getPrestitiAttivi(Utente u){
     }
     
     public List<Prestito> getPrestitiInRitardo(){
     }
     
     public boolean haPrestitiAttivi(String matricola){
+    }
+    
+    public Prestito trovaPrestito(int idPrestito){
     }
     
 }

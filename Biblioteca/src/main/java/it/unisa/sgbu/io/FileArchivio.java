@@ -9,7 +9,7 @@ package it.unisa.sgbu.io;
  *
  * @author dilie
  */
-public class FileArchivio {
+public class FileArchivio implements IArchivioDati{
    
     private String pathDati;
     private ILogger logger;
@@ -17,12 +17,15 @@ public class FileArchivio {
     public FileArchivio(String pathDati, ILogger logger){
     }
     
+    @Override
     public boolean salvaStato(Object dati, String nomeFile){
     }
  
+    @Override
     public Object caricaStato(String nomeFile){
     }
     
+    @Override
     public boolean verificaEsistenzaFile(String nomeFile){
     }
 }

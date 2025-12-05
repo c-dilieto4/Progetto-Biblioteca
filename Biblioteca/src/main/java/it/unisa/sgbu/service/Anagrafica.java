@@ -17,22 +17,20 @@ import java.util.*;
 public class Anagrafica {
     
     private Map<String, Utente> registroUtenti;
-    private IArchivioDati archivio;
-    private ILogger logger;
     
-    public Anagrafica(IArchivioDati archivio, ILogger logger){
+    public Anagrafica(){
     }
     
     public boolean aggiungiUtente(Utente u){
     }
     
-    public boolean rimuoviUtente(String matiricola){
+    public boolean rimuoviUtente(String matricola){
     }
     
-    public boolean modificaUtente(String matiricola, Utente u){
+    public boolean modificaUtente(String matricola, Utente u){
     }
     
-    public Utente getUtente(String matiricola){
+    public Utente getUtente(String matricola){
     }
     
     public List<Utente> cercaUtente(String query, String campo){

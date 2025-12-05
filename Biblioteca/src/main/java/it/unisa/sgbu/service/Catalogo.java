@@ -16,10 +16,8 @@ import java.util.*;
 public class Catalogo {
     
     private Map<String, Libro> collezione;
-    private IArchivioDati archivio;
-    private ILogger logger;
     
-    public Catalogo(IArchivioDati archivio, ILogger logger){
+    public Catalogo(){
     }
     
     public boolean aggiungiLibro(Libro l){

@@ -19,6 +19,7 @@ public class Prestito {
     private LocalDate dataInizio;
     private LocalDate dataPrevistaRestituzione;
     private LocalDate dataEffettivaRestituzione;
+    private boolean InRitardo; 
     
     
     public Prestito(int idPrestito, Libro libro, Utente utente, LocalDate dataInizio, LocalDate dataPrevistaRestituzione){
@@ -37,6 +38,9 @@ public class Prestito {
     }
     
     public boolean verificaRitardo(){
+    }
+    
+    public void segnaRitardo(){
     }
     
     

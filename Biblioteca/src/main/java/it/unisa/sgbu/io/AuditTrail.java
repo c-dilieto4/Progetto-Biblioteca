@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author dilie
  */
-public class AuditTrail {
+public class AuditTrail implements ILogger{
     
     private List<String> logRecords;
     private IArchivioDati archivio;
@@ -19,15 +19,19 @@ public class AuditTrail {
     public AuditTrail(List<String> logRecords, IArchivioDati archivio) {
     }
     
+    @Override
     public void registraAzione(String azione){
     }
     
+    @Override
     public List<String> caricaLog(){
     }
     
+    @Override
     public void salvaLog(){
     }
     
+    @Override
     public List<String> visualizzaLog(){
     }
     

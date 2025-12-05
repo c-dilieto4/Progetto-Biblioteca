@@ -23,5 +23,6 @@ public class MessaggiInterfaccia {
     public static final String INPUT_MATRICOLA_NON_VALIDO = "Formato matricola non valido.";
     public static final String RITARDO_SEGNALATO = "Il prestito (ID: %d) è in ritardo (superata data prevista di restituzione).";
     public static final String AVVISO_CARICAMENTO_FALLITO = "Caricamento Dati Fallito. Creazione Archivio Vuoto";
+    public static final String CREDENZIALI_NON_VALIDE = "Le credenziali inserite non sono valide, riprova";
     
 }

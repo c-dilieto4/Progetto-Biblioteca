@@ -3,27 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.unisa.sgbu.io;
-
-import java.util.*;
+package it.unisa.sgbu.domain;
 
 /**
  *
  * @author dilie
  */
-public interface ILogger {
+public class Credenziali {
+    private final String user;
+    private final String password;
     
-    public void registraAzione(String azione){
+    public Credenziali(String user, String password){
     }
     
-    public List<String> caricaLog(){
+    public String getUser(){
     }
     
-    public void salvaLog(){
+    public String getPassword(){
     }
-    
-    public List<String> visualizzaLog(){
-    }
-    
-    
 }

@@ -27,7 +27,6 @@ public class Libro {
     }
 
     
-    
     public String getISBN() {
         
     }
@@ -37,10 +36,6 @@ public class Libro {
     }
 
     public String getAutore() {
-         
-    }
-
-    public int getCopieTotali() {
          
     }
 
@@ -56,6 +51,5 @@ public class Libro {
     }
     
     public boolean isDisponibile(){
-        
     }
 }

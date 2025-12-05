@@ -17,18 +17,14 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
-    private List<Prestito> prestitiAttivi;
     
-    public Utente(String matricola, String nome, String cognome, String email,List<Prestito> prestitiAttivi){   
+    public Utente(String matricola, String nome, String cognome, String email){   
     }
 
     public String getMatricola() {
     }
     
     public String getCognome() {
-    }
-
-    public int getNumeroPrestitiAttivi(){
     }
     
     public void aggiungiPrestito(Prestito p){
