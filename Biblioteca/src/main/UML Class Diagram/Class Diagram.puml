@@ -111,7 +111,7 @@ class GUIController {
   +gestisciLogin(user: String, pass: String): boolean
 }
 
-class GUiView{
+class GUIView{
    -sistema: GUIController
    -messaggi: MessaggiInterfaccia
    +GUIView(sistema: GUIController)
@@ -186,18 +186,6 @@ class ValidatoreDati {
   +validaNomeCognome(str: String)
 }
 
-class GUIView {
-  -sistema: GUIController
-  -messaggi: MessaggiInterfaccia
-  +GUIView(sistema: GUIController)
-  +avviaInterfaccia(): void
-  +gestisciAggiuntaLibro(): void
-  +gestisciRegistrazionePrestito(): void
-  +mostraListaLibri(lista: List<Libro>): void
-  +mostraListaPrestiti(lista: List<Prestito>): void
-  +mostraMessaggio(msg: MessaggiInterfaccia): void
-}
-
 class MessaggiInterfaccia {
   +String SUCCESSO_AGGIUNTA_LIBRO
   +String SUCCESSO_PRESTITO
@@ -220,39 +208,35 @@ interface IAuditTrail <<Interface>>
 interface IArchivioDati <<Interface>>
 
 ' Correzione dei nomi delle classi che implementano le interfacce per evitare ambiguità
-AuditTrail .up.|> IAuditTrail
+AuditTrail .up.|> ILogger
 ArchivioDati .up.|> IArchivioDati
 
-' Ereditarietà / Implementazione
 AuditTrail ..|> ILogger
 FileArchivio ..|> IArchivioDati
+FileAutentiticatore ..|> IAutenticatore
 
-' Composizioni (Il tutto gestisce le parti)
 Catalogo "1" *--> "0..*" Libro
 Anagrafica "1" *--> "0..*" Utente
 RegistroPrestiti "1" *--> "0..*" Prestito
+RegistroPrestiti "1" --> "1" Catalogo
+RegistroPrestiti "1" --> "1" Anagrafica
 
-' Associazioni Unidirezionali (Il prestito punta a Libro e Utente, non viceversa)
-Prestito --> "1" Libro 
-Prestito --> "1" Utente
+Prestito "1" --> "1" Libro 
+Prestito "1" --> "1" Utente
 
-' Dipendenza "soft" (L'utente ha una lista interna per cache/limite, ma è gestita dal registro)
-Utente "1" ..> "0..3" Prestito
+Utente "1" -- "0..3" Prestito
 
-' Aggregazioni del Controller (Facade)
-GUIController o--> "1" Catalogo
-GUIController o--> "1" Anagrafica
-GUIController o--> "1" RegistroPrestiti
+GUIController --> "1" Catalogo
+GUIController --> "1" Anagrafica
+GUIController --> "1" RegistroPrestiti
+GUIController --> "1" ValidatoreDati
+GUIController --> "1" IArchivioDati
+GUIController --> "1" IAutenticatore
+GUIController --> "1" ILogger
 
-' Dipendenze Architetturali (Risolto il ciclo: FileArchivio non dipende più da ILogger)
-GUIController ..> IArchivioDati
-GUIController ..> ILogger
-
-' AuditTrail usa l'archivio per salvare
 AuditTrail --> IArchivioDati
 
-' Dipendenze d'uso (Use)
-GUIView ..> GUIController
+GUIView --> GUIController
 GUIView ..> MessaggiInterfaccia
 Catalogo ..> ValidatoreDati
 Anagrafica ..> ValidatoreDati
