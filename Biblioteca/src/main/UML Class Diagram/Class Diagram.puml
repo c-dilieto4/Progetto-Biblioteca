@@ -90,7 +90,7 @@ class GUIController {
   +avviaSistema(): boolean
   +chiudiSistema(): boolean
   +aggiungiUtente(matricola: String, nome: String, cognome: String, email: String): boolean
-  +aggiungiUtente(isbn: String, titolo: String, autore: List<String>, anno: int, CopieTotali: int): boolean
+  +aggiungiLibro(isbn: String, titolo: String, autore: List<String>, anno: int, CopieTotali: int): boolean
   +rimuoviUtente(matr: String): boolean
   +rimuoviLibro(isbn: String): boolean 
   +gestisciPrestito(isbn: String, matr: String): boolean
@@ -176,41 +176,38 @@ interface IArchivioDati <<Interface>>
 AuditTrail .up.|> IAuditTrail
 ArchivioDati .up.|> IArchivioDati
 
-' Correzione delle Relazioni
-' Composizione
-Catalogo "1" *-- "0..*" Libro
-Anagrafica "1" *-- "0..*" Utente
-RegistroPrestiti "1" *-- "0..*" Prestito
-
-' Associazione (Utente-Prestito)
-Prestito "1" -- "1" Libro
-Utente "1" -- "0..3" Prestito
-
-' Aggregazione (GUIController usa i componenti principali)
-GUIController "1" o-- "1" Catalogo
-GUIController "1" o-- "1" Anagrafica
-GUIController "1" o-- "1" RegistroPrestiti
-
-' Implementazione
+' Ereditarietà / Implementazione
 AuditTrail ..|> ILogger
 FileArchivio ..|> IArchivioDati
 
-' Aggregazione (RegistroPrestiti usa i cataloghi)
-RegistroPrestiti o-- "1" Catalogo
-RegistroPrestiti o-- "1" Anagrafica
+' Composizioni (Il tutto gestisce le parti)
+Catalogo "1" *--> "0..*" Libro
+Anagrafica "1" *--> "0..*" Utente
+RegistroPrestiti "1" *--> "0..*" Prestito
 
-' Dipendenza / Uso
-AuditTrail "1" -- "1" IArchivioDati
-FileArchivio "1" -- "1" ILogger
-GUIView "1" -- "1" GUIController
-GUIController ..> "1" IArchivioDati
-GUIController ..> "1" ILogger
+' Associazioni Unidirezionali (Il prestito punta a Libro e Utente, non viceversa)
+Prestito --> "1" Libro 
+Prestito --> "1" Utente
 
-' Dipendenza con il Validatore (Usa)
-Catalogo "1" ..> "1" ValidatoreDati
-Anagrafica "1" ..> "1" ValidatoreDati
+' Dipendenza "soft" (L'utente ha una lista interna per cache/limite, ma è gestita dal registro)
+Utente "1" ..> "0..3" Prestito
 
-' Dipendenza View con MessaggiInterfaccia
-GUIView "1" ..> "1" MessaggiInterfaccia
+' Aggregazioni del Controller (Facade)
+GUIController o--> "1" Catalogo
+GUIController o--> "1" Anagrafica
+GUIController o--> "1" RegistroPrestiti
 
+' Dipendenze Architetturali (Risolto il ciclo: FileArchivio non dipende più da ILogger)
+GUIController ..> IArchivioDati
+GUIController ..> ILogger
+
+' AuditTrail usa l'archivio per salvare
+AuditTrail --> IArchivioDati
+
+' Dipendenze d'uso (Use)
+GUIView ..> GUIController
+GUIView ..> MessaggiInterfaccia
+Catalogo ..> ValidatoreDati
+Anagrafica ..> ValidatoreDati
+GUIController ..> ValidatoreDati
 @enduml
