@@ -204,16 +204,13 @@ class MessaggiInterfaccia {
 }
 
 ' Interfacce (come da tue specifiche)
-interface IAuditTrail <<Interface>>
+interface IAutenticatore <<Interface>>
 interface IArchivioDati <<Interface>>
-
-' Correzione dei nomi delle classi che implementano le interfacce per evitare ambiguità
-AuditTrail .up.|> ILogger
-ArchivioDati .up.|> IArchivioDati
+interface ILogger <<Interface>>
 
 AuditTrail ..|> ILogger
 FileArchivio ..|> IArchivioDati
-FileAutentiticatore ..|> IAutenticatore
+FileAutenticatore ..|> IAutenticatore
 
 Catalogo "1" *--> "0..*" Libro
 Anagrafica "1" *--> "0..*" Utente
@@ -224,18 +221,17 @@ RegistroPrestiti "1" --> "1" Anagrafica
 Prestito "1" --> "1" Libro 
 Utente "1" -- "0..3" Prestito
 
-GUIController --> "1" Catalogo
-GUIController --> "1" Anagrafica
-GUIController --> "1" RegistroPrestiti
-GUIController --> "1" ValidatoreDati
-GUIController --> "1" IArchivioDati
-GUIController --> "1" IAutenticatore
-GUIController --> "1" ILogger
+GUIController "1" --> "1" Catalogo
+GUIController "1" --> "1" Anagrafica
+GUIController "1" --> "1" RegistroPrestiti
+GUIController "1" --> "1" ValidatoreDati
+GUIController "1" --> "1" IArchivioDati
+GUIController "1" --> "1" IAutenticatore
+GUIController "1" --> "1" ILogger
 
-AuditTrail --> IArchivioDati
-FileAutenticatore --> IArchivioDati
+AuditTrail "1" --> "1" IArchivioDati
 
-GUIView --> GUIController
+GUIView "1" --> "1" GUIController
 GUIView ..> MessaggiInterfaccia
 GUIView ..> Libro
 GUIView ..> Prestito
