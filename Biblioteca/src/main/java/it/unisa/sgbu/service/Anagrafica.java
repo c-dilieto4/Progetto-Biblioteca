@@ -11,31 +11,124 @@ import it.unisa.sgbu.io.*;
 import java.util.*;
 
 /**
- *
- * @author dilie
+ * @brief Gestisce il registro (anagrafica) degli utenti della biblioteca.
+ * 
+ * Questa classe implementa le operazioni CRUD (Create, Read, Update, Delete)
+ * sugli utenti, garantendo il rispetto dei vincoli di unicità e integrità referenziale
+ * definiti nelle specifiche.
  */
 public class Anagrafica {
     
     private Map<String, Utente> registroUtenti;
     
+    
+    /**
+     * @brief Costruttore della classe Anagrafica.
+     * Inizializza la struttura dati per contenere il registro degli utenti.
+     */
     public Anagrafica(){
     }
     
+    
+    /**
+     * @brief Aggiunge un nuovo utente all'anagrafica.
+     * 
+     * Implementa il "Flusso di registrazione nuovo utente".
+     * Verifica che la matricola non sia già presente nel sistema per soddisfare
+     * il vincolo di univocità.
+     * 
+     * @param[in] u L'oggetto Utente da inserire.
+     * 
+     * @return true se l'inserimento ha successo, false se la matricola esiste già.
+     * 
+     * @pre 
+     * - L'oggetto u deve essere validato (formato matricola ed email).
+     * - La matricola non deve esistere nel registro.
+     * 
+     * @post
+     * - L'utente è aggiunto al registro persistente.
+     */
     public boolean aggiungiUtente(Utente u){
     }
     
+    
+    /**
+     * @brief Rimuove un utente dall'anagrafica.
+     * 
+     * Implementa il "Flusso di eliminazione utente".
+     * Prima di procedere alla cancellazione, verifica rigorosamente che l'utente
+     * non abbia prestiti attivi, come imposto dal relativo vincolo.
+     * 
+     * @param[in] matricola L'identificativo dell'utente da rimuovere.
+     * 
+     * @return true se l'eliminazione ha successo, false se l'utente non esiste o ha prestiti attivi.
+     * 
+     * @pre
+     * - L'utente deve esistere.
+     * - L'utente NON deve avere prestiti attivi (Vincolo cancellazione dati).
+     * 
+     * @post
+     * - L'utente è rimosso dal sistema.
+     */
     public boolean rimuoviUtente(String matricola){
     }
     
+    
+    /**
+     * @brief Modifica i dati di un utente esistente.
+     * 
+     * Implementa il "Flusso di modifica utente".
+     * Permette l'aggiornamento dei dati anagrafici. Se la modifica coinvolge la matricola,
+     * verifica nuovamente l'univocità.
+     * 
+     * @param[in] matricola La matricola originale dell'utente da modificare.
+     * @param[in] u L'oggetto Utente con i dati aggiornati.
+     * 
+     * @return true se la modifica ha successo, false altrimenti.
+     */
     public boolean modificaUtente(String matricola, Utente u){
     }
     
+    
+    /**
+     * @brief Recupera un singolo utente tramite matricola.
+     * 
+     * Metodo di utilità per l'accesso diretto ai dati di un utente,
+     * utilizzato nei vari flussi operativi.
+     * 
+     * @param[in] matricola L'identificativo univoco.
+     * 
+     * @return L'oggetto Utente se trovato, altrimenti null.
+     */
     public Utente getUtente(String matricola){
     }
     
+    
+    /**
+     * @brief Ricerca utenti in base a un criterio specifico.
+     * 
+     * Implementa la funzionalità di ricerca, permettendo di filtrare
+     * l'archivio per "Cognome" o "Matricola".
+     * Deve garantire tempi di risposta entro 2 secondi.
+     * 
+     * @param[in] query La stringa da cercare.
+     * @param[in] campo Il campo su cui cercare ("Cognome" o "Matricola").
+     * 
+     * @return Una lista di utenti che soddisfano i criteri di ricerca.
+     * 
+     */
     public List<Utente> cercaUtente(String query, String campo){
     }
     
+    
+    /**
+     * @brief Restituisce la lista completa degli utenti ordinata.
+     * 
+     * Implementa il requisito di visualizzazione, che richiede
+     * l'ordinamento specifico per Cognome e Nome.
+     * 
+     * @return Una lista di oggetti Utente ordinata per Cognome e poi Nome.
+     */
     public List<Utente> visualizzaOrdinata(){
     }
 }
