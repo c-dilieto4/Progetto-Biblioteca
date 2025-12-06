@@ -1,0 +1,572 @@
+\documentclass{article}
+\usepackage{authblk}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{array}
+\usepackage{longtable}
+
+%\usepackage[colorlinks=true, linkcolor=blue, urlcolor=magenta]{hyperref}
+
+
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vspace*{1cm} 
+    
+    {\Large \textsc{Università degli Studi di Salerno} \par}
+    
+    \vspace{2.5cm} 
+    
+    {\huge \bfseries Sistema di Gestione Biblioteca Universitaria \par}	
+    
+    \vspace{0.5cm} % Spazio verticale tra titolo e sottotitolo
+
+    \begin{center}
+    {\Large Documento di Specifica dei Requisiti}
+    \end{center}
+    
+    
+    
+    \vspace{2cm} % Spazio tra Titolo e Autori
+    
+    % --- Blocco Autori (Spostato qui e ingrandito) ---
+    {\Large % Inizio ingrandimento testo
+    \textbf{Autori:}\\
+    Allocco Lorenzo\\
+    Atripaldi Alessandro\\
+    Di Lieto Christian Pio\\
+    Graziosi Gerardo
+    \par} % Fine ingrandimento
+    % ------------------------------------------------
+    
+    \vspace{2cm} % Spazio tra Autori e Versione
+    
+    {\Large Versione 1.2 - 5 Dicembre 2025\par}
+    
+    \vspace*{\fill} % Spinge tutto verso l'alto bilanciando lo spazio finale
+	\end{titlepage}
+
+
+%\input{revision_history.tex}
+
+\renewcommand{\contentsname}{Indice}
+\newpage
+\tableofcontents
+\newpage
+\section{Introduzione}
+\subsection{Scopo}
+Il presente documento ha lo scopo di definire in modo completo, accurato e non ambiguo i requisiti funzionali e non funzionali del Sistema di Gestione della Biblioteca Universitaria, inclusa la descrizione dei Casi d'Uso e la loro rappresentazione grafica (Diagramma dei Casi d'Uso). Inoltre questo documento è destinato principalmente a servire come base formale di accordo con il Committente per la validazione e l'approvazione finale dei requisiti e come strumento di riferimento essenziale per il Team di Sviluppo per la realizzazione delle funzionalità. Il Project Manager potrà usufruire di questo documento per la pianificazione e l'allocazione delle attività, costituendo la fondazione per le successive fasi di design, implementazione e validazione del prodotto.
+\subsection{Obiettivi}
+L’obiettivo primario del Sistema di Gestione della Biblioteca Universitaria è l'automazione e l'efficientamento dei processi operativi fondamentali della biblioteca all'interno dell'ambiente accademico.
+L’ambito del sistema si concentra su tre aree chiave:
+\begin{itemize}
+\item Gestione del Patrimonio Librario: Procedure di catalogazione e consultazione dei libri.
+\item Gestione degli Utenti: Registrazione e profilazione degli utenti universitari (studenti, docenti e personale).
+\item Gestione delle Transazioni: Automazione completa delle operazioni di prestito e restituzione, rispettando, ove previsto, i vincoli imposti dal committente.
+\end{itemize}
+\subsection{Definizioni, acronimi ed abbreviazioni}
+SGBU: Sistema di Gestione della Biblioteca Universitaria
+\\SRS: Documento di Specifica dei Requisiti Software
+\\GUI: Graphical User Interface (Interfaccia Grafica Utente)
+\\ISBN: International Standard Book Number (Codice identificativo univoco del libro)
+\subsection{Riferimenti}
+Project Assignment.pdf: Traccia del progetto e descrizione informale delle funzionalità attese. \\Materiale didattico di riferimento per la metodologia di specifica dei requisiti e dei casi d'uso.\\Standard IEEE 830 -1993 per la scrittura di questo documento.
+\subsection{Panoramica del documento}
+La sezione due di questo Documento delinea il contesto generale del SGBU, descrivendone le sue funzionalità di alto livello, gli attori principali e le assunzioni del progetto. La sezione tre contiene i requisiti specifici, suddividendoli in:
+\begin{itemize}
+\item Requisiti Funzionali: Definisce le azioni che il sistema deve compiere, raggruppandole a loro volta in Funzionalità individuali (IF), Business Flow (BF), Dati e Formato Dati (DF), Requisiti di interfaccia Esterna (EI) e Vincoli (FC).
+\item Requisiti Non Funzionali: Specifica i vincoli di qualità del sistema come prestazioni, sicurezza, affidabilità e manutenibilità.
+\item Definizione dei Casi d'Uso: Fornisce la descrizione dettagliata, con Flussi di Eventi, dei requisiti funzionali più complessi.
+\item Diagramma dei Casi d'Uso: Presenta la rappresentazione grafica (UML) delle interazioni tra gli attori e le funzionalità del sistema.
+\end{itemize}
+\section{Descrizione generale}
+\subsection{Prospettive del prodotto}
+Il Sistema di Gestione della Biblioteca Universitaria sarà sviluppato come un’applicazione autonoma (stand-alone), progettato per essere utilizzato su un computer desktop all'interno del contesto della biblioteca. Non è parte di un sistema software più grande. L'interazione fondamentale, per la persistenza delle informazioni (libri, utenti, prestiti), è con la componente archivio dati della macchina su cui risiede il sistema.
+\subsection{Funzionalità del prodotto}
+Le funzionalità principali del sistema, derivate dalla traccia del progetto, sono raggruppabili in quattro macro-aree:
+\begin{itemize}
+\item Gestione dei libri: Inserimento, modifica, cancellazione e ricerca del catalogo di libri. Visualizzazione della lista ordinata per titolo. Cercare un libro per titolo, autore o codice identificativo.
+\item Gestione utenti: Inserimento, modifica, cancellazione e ricerca dei dati anagrafici degli utenti. Visualizzazione della lista ordinata per cognome e nome. Cercare un utente per cognome o matricola.
+\item Gestione prestiti: Registrazione del prestito e della restituzione. Visualizzazione dell'elenco dei prestiti attivi, con identificazione dei ritardi.
+\item Archiviazione dati: Salvataggio persistente e ricaricamento dell'intero stato dell'archivio (Libri, Utenti, Prestiti).
+\end{itemize}
+\subsection{Caratteristiche utente}
+All'interno dell'SGBU sono stati individuati i seguenti attori:
+\begin{itemize}
+\item Bibliotecario: un operatore autorizzato (es. il personale della biblioteca) che accede e utilizza l'interfaccia grafica per eseguire tutte le operazioni di gestione.
+\item Utente: Lo studente o il membro del personale universitario. Non interagisce direttamente con il sistema, ma è il soggetto delle operazioni di prestito.
+\item Sistema (Archivio Dati): Il componente software/hardware che gestisce la persistenza e il recupero di tutti i dati della biblioteca.
+\end{itemize}
+\subsection{Assunzioni e dipendenze}
+Presupponendo che il sistema sia installato ed utilizzato esclusivamente su un computer desktop, vengono individuate le seguenti assunzioni e dipendenze:
+\begin{itemize}
+\item Assunzione n°1: Il sistema sarà eseguito in un ambiente operativo stabile con risorse hardware standard (RAM, CPU, spazio su disco) adeguate al carico di una piccola-media biblioteca universitaria.
+\item Assunzione n°2: L'Archivio Dati, pur essendo definito come un componente software esterno (par. 3.4.3), avrà una sua struttura definita e accessibile all'applicazione (ad esempio un set di file serializzati).
+\item Assunzione n°3: Il sistema è configurato per elaborare esclusivamente matricole nel formato numerico standard a 10 cifre. L'input di identificativi non conformi a questo standard, incluso il codice ESI (European Student Identifier), non è supportato.
+\item Dipendenza n°1: La corretta operatività delle funzioni di prestito dipende dal mantenimento dell'integrità dei dati (ad esempio, ISBN e Matricola Utente devono essere univoci).
+\end{itemize}
+\section{Requisiti Funzionali}
+\subsection{Funzionalità individuali [IF]}
+\subsubsection{[IF-1] Gestione dati libro}
+Il sistema deve permettere l’inserimento, la modifica e la cancellazione dei dati di un libro. \\
+Business Value: Alto\\
+Rischio Tecnico: Alto
+\subsubsection{[IF-2] Gestione dati utente}
+Il sistema deve permettere l’inserimento, la modifica e la cancellazione dei dati di un utente. \\
+Business Value: Alto\\
+Rischio Tecnico: Alto
+\subsubsection{[IF-3] Ricerca libro}
+Il sistema deve consentire la ricerca di un libro filtrando per Titolo, Autore o Codice Identificativo (ISBN).\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-4] Ricerca utente}
+Il sistema deve consentire la ricerca di un utente filtrando per Cognome o Matricola.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-5] Visualizzazione libri}
+Il sistema deve visualizzare la lista completa dei libri, ordinata per Titolo, mostrando per ciascuno il numero di copie disponibili.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-6] Visualizzazione utenti}
+Il sistema deve visualizzare la lista completa degli utenti, ordinata per Cognome e Nome.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-7] Registrazione prestito}
+Il sistema deve registrare un prestito, associando un utente, un libro e una data prevista per la restituzione, verificando la disponibilità e aggiornando le copie.\\
+Business Value: Alto\\
+Rischio Tecnico: Medio
+\subsubsection{[IF-8] Visualizzazione prestiti}
+Il sistema deve visualizzare l’elenco di tutti i prestiti attivi, ordinati per data prevista di restituzione.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-9] Registrazione restituzione}
+Il sistema deve registrare la restituzione di un libro, chiudendo il prestito attivo e incrementando il numero di copie disponibili del libro.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-10] Gestione dei ritardi}
+Il sistema deve permettere al Bibliotecario di visualizzare le scadenze dei prestiti di ciascun utente e gestire le notifiche dei ritardi.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[IF-11] Audit Trail}
+Il sistema deve permettere di tracciare e registrare automaticamente qualsiasi operazione di inserimento, modifica ed eliminazione effettuata sui dati persistenti di tutte le entità primarie della biblioteca (es. Libri, Utenti, Prestiti...). \\
+Business Value: Alto\\
+Rischio Tecnico: Medio
+\subsection{Business Flow [BF]}
+\subsubsection{[BF-1] Flusso di registrazione nuovo libro}
+Questo flusso definisce la sequenza di azioni necessarie per inserire un nuovo libro nel catalogo della biblioteca:
+\begin{itemize}
+\item Il Bibliotecario seleziona l’opzione “Aggiungi nuovo libro” e inserisce i dati richiesti (ISBN, titolo, anno di pubblicazione, autore e numero di copie totali).
+\item Il sistema deve verificare che tutti i campi obbligatori siano popolati come descritto in [DF-1].
+\item Il sistema verifica il campo ISBN rispettando il vincolo [FC-4].
+\item Il sistema controlla che il numero di copie rispetti il vincolo [FC-1].
+\item Se tutte le verifiche sono positive, il Bibliotecario salva il nuovo libro. Il sistema aggiorna automaticamente il campo Copie Disponibili.
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsubsection{[BF-2] Flusso di registrazione nuovo utente}
+Questo flusso definisce la sequenza di azioni necessarie per inserire un nuovo utente autorizzato al prestito:
+\begin{itemize}
+\item Il Bibliotecario seleziona l’opzione “Aggiungi nuovo utente” e inserisce i dati richiesti (matricola, nome, cognome, email ecc).
+\item Il sistema valida la matricola inserita rispettando il vincolo [FC-4].
+\item Il sistema verifica che il formato della matricola sia conforme all'Assunzione n°3 e che l'e-mail segua il formato previsto, come specificato in [DF-2].
+\item Se tutte le verifiche sono positive, il sistema salva il nuovo utente nell’anagrafica.
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsubsection{[BF-3] Flusso di registrazione nuovo prestito}
+Questo flusso definisce la sequenza di azioni e controlli per registrare con successo il prestito:
+\begin{itemize}
+\item Il sistema verifica che il libro richiesto abbia almeno una copia disponibile rispettando il vincolo [FC-1].
+\item Il sistema verifica che l’utente non abbia già raggiunto il limite massimo di prestiti attivi (3), rispettando il vincolo [FC-2].
+\item Se entrambe le verifiche sono superate, il sistema crea il record di prestito (con data prestito e data restituzione prevista, come da [DF-3]) e decrementa di uno il campo Copie Disponibili del libro.
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsubsection{[BF-4] Flusso di registrazione restituzione}
+Questo flusso definisce la sequenza di azioni per chiudere un prestito attivo e aggiornare correttamente l’inventario:
+\begin{itemize}
+\item Il Bibliotecario identifica il prestito attivo da chiudere (es. tramite ISBN del libro).
+\item Il sistema chiude il record di prestito (registrando la data di restituzione effettiva, come da [DF-3]) e incrementa di uno il campo Copie Disponibili del libro (rispettando [DF-1]).
+\item Se la data effettiva di restituzione è successiva alla data prevista di restituzione, il sistema deve attivare il flusso di segnalazione ritardo [BF-5].
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Alto
+\subsubsection{[BF-5] Flusso di segnalazione ritardo}
+Descrizione: Questo flusso descrive le azioni intraprese dal sistema in caso di rilevamento di un ritardo nella restituzione di un libro:
+\begin{itemize}
+\item Il sistema rileva che la data effettiva di restituzione è successiva a quella prevista (confrontando i dati di [DF-3])
+\item Il sistema aggiorna il record di prestito segnalando il ritardo.
+\item Il ritardo viene segnalato visivamente al Bibliotecario coerentemente con [IF-10].
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Alto
+\subsubsection{[BF-6] Flusso di modifica utente}
+Questo flusso definisce la sequenza di azioni per aggiornare i dati di un utente esistente mantenendo la coerenza dei dati.
+\begin{itemize}
+\item Il Bibliotecario seleziona l’utente, visualizza e modifica i dati (Nome, Cognome, Email, ecc.). Il sistema salva le modifiche.
+\item Se la matricola viene modificata, il sistema deve verificare che il nuovo valore sia univoco e non già assegnato a un altro utente, rispettando il vincolo [FC-4].
+\item Il sistema verifica che i dati aggiornati (in particolare la matricola e l'email) siano conformi al formato definito in [DF-2].
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Alto
+\subsubsection{[BF-7] Flusso di modifica libro}
+Questo flusso definisce la sequenza di azioni per aggiornare i dati di un libro esistente mantenendo la coerenza dei dati.
+\begin{itemize}
+\item Il Bibliotecario identifica il libro da voler aggiornare (es. tramite ISBN del libro)
+\item Il sistema permette al Bibliotecario di visualizzare il libro e di modificarne i dati.
+\item Se l'ISBN viene modificato, il sistema deve verificare che il nuovo ISBN sia univoco, rispettando il vincolo [FC-4].
+\item Il sistema verifica che i dati aggiornati (in particolare ISBN, Copie Totali, Copie Disponibili) siano conformi al formato definito in [DF-1].
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Alto
+\subsubsection{[BF-8] Flusso di eliminazione utente}
+Questo flusso definisce la sequenza di azioni per eliminare un utente dall’anagrafica.
+\begin{itemize}
+\item Il Bibliotecario identifica l’utente da eliminare (es. tramite matricola).
+\item Il sistema mostra l’utente da eliminare. 
+\item Il sistema verifica che l'utente non abbia prestiti attivi associati, rispettando il vincolo [FC-3].
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsubsection{[BF-9] Flusso di eliminazione libro}
+Questo flusso definisce la sequenza di azioni per l’eliminazione di un libro dalla lista.
+\begin{itemize}
+\item Il Bibliotecario identifica il libro da eliminare e lo seleziona.
+\item Il sistema verifica che il libro non sia attivo in alcun prestito, rispettando il vincolo [FC-3].
+\item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsubsection{[BF-10] Flusso di aggiornamento audit trail}
+\begin{itemize}
+\item Il sistema, per ogni operazione effettuata dal Bibliotecario, aggiorna in autonomia l’Audit Trail, come richiesto da [IF-11]. Nota: Questo flusso è incluso in ogni Business Flow che modifica i dati persistenti. 
+\item Il sistema riceve una richiesta di tracciamento contenente il tipo di operazione e i dati chiave coinvolti.
+\item Il sistema recupera in modo automatico l'informazione di contesto (data e ora dell'operazione).
+\item Il sistema crea un record di log e lo invia al componente che si occupa di registrarlo in modo permanente su un file esterno, come definito in [EI-3].
+\end{itemize}
+Business Value: Basso
+\\Rischio Tecnico: Alto
+\subsubsection{[BF-11] Flusso di Ricerca Libro}
+\begin{itemize}
+\item Questo flusso definisce le azioni necessarie per consentire al Bibliotecario di trovare un libro nel catalogo in base a specifici criteri di ricerca. 
+\item Il bibliotecario accede alla funzione di Ricerca Libro e inserisce una query (stringa) nel campo di ricerca.
+\item Il Bibliotecario seleziona il criterio di filtro desiderato (Titolo, Autore o Codice Identificativo - ISBN)
+\item Il sistema esegue la ricerca nella sua collezione interna.
+\item Il sistema visualizza una lista di libri che corrispondono parzialmente o totalmente ai criteri forniti.
+\item Se nessun libro corrisponde ai criteri, il sistema notifica il Bibliotecario con un messaggio appropriato.
+\item La durata della ricerca rispetta il vincolo di performance [RNF-1.1] (entro 2 secondi)
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Basso
+\subsubsection{[BF-12] Flusso di Ricerca Utente}
+\begin{itemize}
+\item Questo flusso definisce le azioni necessarie per consentire al Bibliotecario di trovare un utente nell'anagrafica in base a specifici criteri di ricerca.
+\item Il bibliotceario accede alla funzione di Ricerca Utente e inserisce una query (stringa o numerica) nel campo di ricerca.
+\item Il Bibliotecario seleziona il criterio di filtro desiderato (Cognome o Matricola).
+\item Il sistema esegue la ricerca sulla sua collezione interna.
+\item Il sistema visualizza una lista di utenti che corrispondono parzialmente o totalmente ai criteri forniti.
+\item Se nessun utente corrisponde ai criteri, il sistema notifica il Bibliotecario con un messaggio appropriato.
+\item La durata della ricerca rispetta il vincolo di performance [RNF-1.1] (entro 2 secondi)
+\end{itemize}
+Business Value: Alto
+\\Rischio Tecnico: Basso
+\subsection{Dati e Formato Dati [DF]}
+\subsubsection{[DF-1] Dati libro}
+L’ISBN deve essere l’identificativo primario e univoco e a 13 cifre. I campi Titolo e Autore sono obbligatori. L'anno di pubblicazione deve essere un numero intero non negativo e non può essere superiore all'anno corrente rilevato dal sistema operativo. Le Copie Totali e Copie Disponibili devono essere numeri interi positivi.\\
+Business Value: Alto
+\\Rischio Tecnico: Basso
+\subsubsection{[DF-2] Dati utente}
+La matricola deve essere l’identificativo primario e univoco. I campi Nome e Cognome sono obbligatori e devono contenere esclusivamente caratteri alfabetici (non sono ammessi caratteri speciali o numerici). L’email deve rispettare un formato di indirizzo e-mail valido (es. utente@dominio.it). L’utente deve essere logicamente correlato all’elenco dei prestiti attivi a suo nome. \\
+Business Value: Alto
+\\Rischio Tecnico: Basso
+\subsubsection{[DF-3] Dati prestito}
+Ogni record di prestito deve contenere un riferimento diretto e valido all’ISBN del libro e alla matricola dell’utente, oltre alle date di prestito e di restituzione prevista.\\
+Business Value: Alto
+\\Rischio Tecnico: Basso
+\subsection{Requisiti di Interfaccia Esterna (EI)}
+\subsubsection{[EI-1] Interfaccia grafica utente (GUI)}
+L’applicazione deve garantire un’interfaccia grafica utente chiara e intuitiva, utilizzabile esclusivamente dal Bibliotecario o da altro personale addetto.\\
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsubsection{[EI-2] Interfaccia Hardware}
+Non è prevista una particolare interazione hardware per il funzionamento del sistema. Tuttavia ci si rifà alla prospettive del prodotto (paragrafo 2.1), dunque lo specifico computer desktop dovrà garantire all'utilizzatore un monitor su cui visualizzare l'interfaccia e i dispositivi per l'inserimento dei dati (mouse e tastiera).\\
+Business Value: Basso
+\\Rischio Tecnico: Basso
+\subsubsection{[EI-3] Interfaccia Software}
+Il sistema deve essere in grado di interagire con un archivio dati esterno (fornito dal sistema operativo della macchina su cui risiede il sistema) per garantire il salvataggio persistente e il ricaricamento di tutti i dati (libri, utenti, prestito) all’avvio/chiusura del sistema. \\
+Business Value: Alto
+\\Rischio Tecnico: Medio
+\subsection {Vincoli [FC]}
+\subsubsection{[FC-1] Vincolo di disponibilità}
+L’SGBU non deve autorizzare la registrazione di un prestito se il libro richiesto ha un numero di Copie Disponibili uguale a 0.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[FC-2] Vincolo limite prestiti per singolo utente}
+L’SGBU non deve autorizzare la registrazione di un prestito se l’utente selezionato ha già tre libri attivi in prestito. \\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[FC-3] Vincolo cancellazione dati}
+L’SGBU non deve permettere la cancellazione di un libro o di un utente se esistono prestiti attivi correlati a tali entità.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsubsection{[FC-4] Vincolo di univocità}
+L’SGBU non deve permettere la registrazione di un libro il cui Codice Identificativo (ISBN) è già presente e la registrazione di un utente la cui Matricola è già presente.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+
+\section{Requisiti Non Funzionali [RNF]}
+
+\subsection{Prestazioni}
+\subsubsection{[RNF-1.1] Tempi di risposta ricerca}
+La ricerca di un libro o utenti deve essere completata e i risultati visualizzati entro 2 secondi.\\
+Business Value: Medio\\
+Rischio Tecnico: Basso
+
+\subsubsection{[RNF-1.2] Tempo di caricamento dati}
+Il tempo necessario per caricare l’intero archivio all’avvio dell’applicazione non deve superare i 5 secondi.\\
+Business Value: Medio\\
+Rischio Tecnico: Basso
+
+\subsubsection{[RNF-1.3] Tempo di registrazione}
+Le operazioni di registrazione prestito e registrazione restituzione devono essere completate entro 1 secondo dall’invio dei dati da parte del bibliotecario.\\
+Business Value: Alto\\
+Rischio Tecnico: Basso
+\subsection{Sicurezza}
+\subsubsection{[RNF-2.1] Autenticazione Bibliotecario}
+Il sistema deve implementare un meccanismo di autenticazione tramite credenziali ad esso dedicate (es. login con nome utente e password) per garantire che solo il personale autorizzato possa accedere e operare sul sistema.\\
+Business Value: Alto\\
+Rischio Tecnico: Medio
+\subsubsection{[RNF-2.2] Integrità dati}
+Il sistema deve garantire che l'archivio dei dati (libri, utenti, prestiti) possa essere modificato esclusivamente attraverso le interfacce e i flussi di business previsti dall'applicazione. Ciò impedisce la manipolazione diretta dei file di archiviazione da parte di utenti non autorizzati e assicura la coerenza dei dati.\\
+Business Value: Alto\\
+Rischio Tecnico: Medio
+
+\subsection{Affidabilità}
+\subsubsection{[RNF-3.1] Tolleranza errori}
+In caso di errore durante l’operazione di salvataggio persistente dei dati, il sistema deve garantire che l’ultima versione stabile e salvata dell’archivio non venga corrotta.\\
+Business Value: Alto\\
+Rischio Tecnico: Alto
+
+\subsubsection{[RNF-3.2] Accuratezza calcolo}
+Il sistema deve garantire che il contatore Copie Disponibili sia sempre accurato, riflettendo esattamente il numero di copie disponibili in base ai prestiti attivi.
+Business Value: Alto\\
+Rischio Tecnico: Alto
+
+\subsection{Manutenibilità e Portabilità}
+
+\subsubsection{[RNF-4.1] Manutenibilità del codice}
+Il codice sorgente del sistema deve essere commentato adeguatamente e strutturato in moduli logici per facilitare modifiche e debug.\\
+Business Value: Alto\\
+Rischio Tecnico: Alto
+
+\subsubsection{[RNF-4.2] Portabilità}
+Dovendo essere un’applicazione autonoma, deve poter compilare, per essere eseguibile sulle principali piattaforme Desktop (Windows, Linux, macOS) che supportano la Java Virtual Machine 8 (JVM).\\
+Business Value: Alto\\
+Rischio Tecnico: Alto
+
+
+\subsubsection{[RNF-4.3] Compilazione standard}
+Il sistema deve essere compilabile usando lo strumento di build Maven, garantendo la tracciabilità delle dipendenze. \\
+Business Value: Alto\\
+Rischio Tecnico: Medio\\
+
+\section{Definizione dei Casi d'Uso [UC]}
+
+\subsection{[UC-1] Gestione catalogo libri}
+Permette al bibliotecario di gestire il ciclo di vita completo dei libri: inserimento, modifica, cancellazione, ricerca e visualizzazione dell’inventario con lo stato di disponibilità.\\
+Pre-condizioni: Il bibliotecario ha effettuato il login ed è autenticato.\\
+Flusso normale:
+\begin{itemize}
+\item Il bibliotecario accede alla sezione “Gestione Libri”.
+\item Sceglie l'operazione (Inserisci, Modifica, Cancella o Ricerca).
+\item Se Inserisce o Modifica, il sistema verifica la completezza dei dati richiesti secondo [DF-1] e l'unicità dell'ISBN ([FC-4]).
+\item Se Cancella, il sistema verifica l'assenza di prestiti attivi per quel libro ([FC-3]).
+\item Se Ricerca, il sistema verifica l'esistenza del libro nel catalogo.
+\item La registrazione dell'operazione avviene tramite il flusso [BF-10] Flusso di aggiornamento audit trail.\\
+\end{itemize}
+Flussi alternativi:
+\begin{itemize}
+\item Se l'ISBN è già presente, l'inserimento o la modifica vengono bloccati ([FC-4]).
+\item Se sono presenti prestiti attivi, la cancellazione viene bloccata e viene mostrato un errore ([FC-3]).
+\end{itemize}
+Post-condizioni:
+\begin{itemize}
+\item Il Catalogo Libri è aggiornato con le modifiche.
+\item L'integrità dei dati è mantenuta (coerenza con [DF-1]).
+\item Viene eseguita l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+\subsection{[UC-2] Gestione anagrafica utenti}
+Il bibliotecario inserisce i dati di un nuovo utente (matricola, nome, cognome, email) e verifica l'univocità della matricola e la correttezza del formato email prima di salvare il profilo.\\
+Pre-condizioni: Il bibliotecario ha effettuato il login ed è autenticato.\\
+Flusso normale:
+\begin{itemize}
+\item Il bibliotecario accedere alla sezione “Gestione Utenti”
+\item Sceglie l’operazione (Inserisci, Modifica, Cancella o Ricerca).
+\item Se Inserisce o Modifica, il sistema verifica la conformità dei dati alla specifica [DF-2] (inclusi i formati di Matricola secondo Assunzione n°3 e l'email) e l'univocità della Matricola ([FC-4]).
+\item Se Ricerca, il sistema verifica l'esistenza dell'utente.
+\item Se Cancella, il sistema verifica l'assenza di prestiti attivi ([FC-3]).
+\item La registrazione dell'operazione avviene tramite il flusso [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+Flussi alternativi:
+\begin{itemize}
+\item Se la matricola è già presente, l’inserimento o la modifica vengono bloccati ([FC-4]).
+\item Se l'utente ha prestiti attivi, la cancellazione viene bloccata ([FC-3]).
+\item Se l’utente da eliminare non è presente nell’anagrafica, l’operazione viene bloccata e viene mostrato un errore.
+\end{itemize}
+Post-Condizioni:
+\begin{itemize}
+\item L’anagrafica degli utenti è aggiornata con le modifiche 
+\item L’integrità dei dati è mantenuta (coerenza con [DF-1]).
+\item Viene eseguita l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+
+\subsection{[UC-3] Registrazione prestito}
+Permette al bibliotecario di registrare e gestire un prestito, assegnando a un utente un libro, specificando la data di restituzione prevista. Il sistema verifica gli eventuali vincoli.\\
+Pre-condizioni: Il bibliotecario ha effettuato il login ed è autenticato. Il libro esiste e sono disponibili copie.\\
+Flusso normale:
+\begin{itemize}
+\item Il bibliotecario accede alla sezione “Prestito”
+\item Specifica la Matricola (utente), l'ISBN (libro) e la data prevista di restituzione (come da [DF-3]).
+\item Il Sistema verifica che il libro richiesto abbia copie disponibili ([FC-1]).
+\item Il Sistema verifica che l'utente non abbia già 3 libri in prestito ([FC-2]).
+\item Se tutti i vincoli sono soddisfatti, il Sistema registra il Prestito (creando un record [DF-3]) e decrementa le Copie Disponibili del libro.
+\item La registrazione dell'operazione avviene tramite il flusso [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+Flussi Alternativi
+\begin{itemize}
+\item Se l'ISBN è inesistente, la registrazione del prestito viene bloccata.
+\item Se non sono disponibili copie del libro per il prestito, la registrazione viene bloccata ([FC-1]).
+\item Se l'utente ha raggiunto il limite massimo di prestiti attivi (3), la registrazione viene bloccata ([FC-2]).
+\end{itemize}
+Post-Condizioni
+\begin{itemize}
+\item Viene creato il record di prestito ([DF-3]).
+\item Le copie disponibili del libro diminuiscono di 1.
+\item Il libro è aggiunto alla lista prestiti dell’utente.
+\item Viene eseguita l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+\subsection{[UC-4] Registrazione restituzione}
+Registra la restituzione di un libro, chiudendo il prestito attivo e aggiornando la disponibilità del libro.\\
+Pre-condizioni: Il bibliotecario ha effettuato il login ed è autenticato. Esiste un record di prestito attivo corrispondente al libro da restituire.\\
+Flusso normale:
+\begin{itemize}
+\item Il bibliotecario identifica e seleziona il prestito attivo da chiudere. 
+\item Il Sistema imposta la data effettiva di restituzione nel record ([DF-3]). 
+\item Il Sistema incrementa il contatore Copie Disponibili del libro ([DF-1]).
+\item Se la Data Effettiva è successiva a quella Prevista ([DF-3]), viene attivato il flusso esteso: [BF-5] Flusso di segnalazione ritardo.
+\item Il Sistema notifica il successo dell'operazione.
+\item Viene eseguita l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+Flussi Alternativi:
+\begin{itemize}
+\item Se il prestito non è identificabile, il sistema mostra un errore e termina
+\end{itemize}
+Post-Condizioni:
+\begin{itemize}
+\item Il record di prestito è stato chiuso ([DF-3]).
+\item Il contatore Copie Disponibili del libro è aumentato di 1 (mantenendo l'integrità [DF-1]).
+\item Viene eseguita l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+
+\subsection{[UC-5] Monitoraggio stato prestiti}
+Permette al Bibliotecario di visualizzare un elenco in tempo reale di tutti i prestiti attivi identificando visivamente i ritardi.\\
+Pre-condizioni: Il bibliotecario ha effettuato il login ed è autenticato. Esiste un record di prestito attivo corrispondente al libro da restituire.\\
+Flusso normale:
+\begin{itemize}
+\item Il Bibliotecario accede alla sezione "Visualizza Prestiti Attivi" ([IF-8]). 
+\item Il Sistema recupera e visualizza la lista dei prestiti attivi (utilizzando i dati [DF-3]).
+\item ll Sistema ordina la lista per Data Prevista di Restituzione.
+\item Il Sistema calcola lo stato di ritardo per ogni prestito e lo evidenzia visivamente (in coerenza con [IF-10] e la logica di [BF-5]).
+\end{itemize}
+Flussi alternativi:
+\begin{itemize}
+\item Se l'archivio non contiene prestiti attivi, il sistema visualizza un messaggio di notifica
+\end{itemize}
+Post-Condizioni:
+\begin{itemize}
+\item Il bibliotecario ha monitorato lo stato dei prestiti
+\item Lo stato dei dati nell'archivio rimane invariato (operazione di sola lettura)
+\item L'operazione di accesso al monitoraggio viene tracciata attraverso l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+
+\subsection{[UC-6] Gestione persistenza dati}
+Gestisce il corretto Avvio del sistema (caricamento dei dati dall'archivio persistente su file) e la Chiusura del sistema (salvataggio persistente dell'intero stato dell'archivio - Libri, Utenti, Prestiti). Questo caso d'uso è attivato direttamente dal Bibliotecario all'inizio e alla fine della sessione di lavoro. \\
+Pre-condizioni: Il Bibliotecario avvia o tenta di chiudere l'applicazione.\\
+Flusso normale:
+\begin{itemize}
+\item All'avvio, il sistema tenta di caricare i dati dall'archivio persistente ([EI-3]).
+\item Se ha successo, il sistema notifica il Bibliotecario.
+\item Alla chiusura, il sistema esegue il salvataggio completo dello stato corrente su file ([EI-3]).
+\item Il Sistema chiude l'applicazione.
+\end{itemize}
+Flussi alternativi:
+\begin{itemize}
+\item Se il salvataggio fallisce, il sistema avvisa il Bibliotecario e chiude l'applicazione senza sovrascrivere l'ultimo stato valido, in coerenza con la Tolleranza agli Errori (RNF-3.1).
+\item Se il caricamento all'avvio fallisce, il sistema avvisa il Bibliotecario e avvia con un archivio vuoto, mantenendo l'ultima versione stabile dei dati.
+\end{itemize}
+Post-Condizioni:
+\begin{itemize}
+\item All'avvio, l'archivio dati è disponibile in memoria. 
+\item Alla chiusura, l'ultimo stato del sistema è salvato.   
+\item L'operazione di avvio/chiusura del sistema viene tracciata attraverso l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
+\end{itemize}
+
+\subsection{[UC-7] Registra Tracciamento}
+Questo caso d'uso è attivato ogni volta che un caso d'uso di base (es. Gestione Catalogo, Registrazione Prestito) apporta una modifica allo stato dei dati del sistema. Registra in modo persistente su un file di log l'esecuzione di una specifica operazione transazionale (es.Inserimento/Modifica/Cancellazione di un'entità, Prestito, Restituzione Salvataggio/Caricamento stato). \\
+Pre-condizioni: Il caso d'uso principale (base) che include UC-7 è stato eseguito con successo, producendo una modifica significativa ai dati.\\
+Flusso normale:
+\begin{itemize}
+\item Il caso d'uso principale chiama il sistema per registrare l'operazione. 
+\item Il sistema ottiene la descrizione dell'operazione, la data e l'ora correnti. 
+\item Il sistema scrive l'informazione nel file di log persistente. 
+\item Il sistema restituisce il controllo al caso d'uso principale.
+\end{itemize}
+Flussi alternativi:
+\begin{itemize}
+\item Se la scrittura del log fallisce (es. file non accessibile), il sistema notifica l'errore all'operazione chiamante, ma non impedisce la finalizzazione del caso d'uso principale (la funzionalità log è a bassa proprità) 
+\end{itemize}
+Post-Condizioni:
+\begin{itemize}
+\item L'operazione è stata registrata nel file di log.
+\end{itemize}
+
+\subsection{[UC-8] Segnala Ritardo}
+Questo caso d'uso è attivato come estensione opzionale del caso d'uso Registrazione Restituzione. Rileva e gestisce il flusso alternativo di un libro restituito dopo la sua data di restituzione prevista, in conformità con la Gestione dei Ritardi (IF-10). \\
+Pre-condizioni: La Registrazione Restituzione (UC-4) è in corso e il prestito da chiudere è stato identificato\\
+Flusso normale:
+\begin{itemize}
+\item Il sistema, attivato da UC-4, confronta la data effettiva di restituzione con la data prevista.
+\item Se la data effettiva è successiva alla data prevista, il flusso UC-8 viene attivato.
+\item Il sistema aggiorna il record del prestito con lo stato "Ritardo".
+\item Il Sistema genera una notifica visiva per il Bibliotecario nella GUI.
+\item Il Sistema ritorna il controllo al caso d'uso principale (UC-4) per la chiusura del prestito.
+\end{itemize}
+Flussi alternativi:
+\begin{itemize}
+\item Se la data effettiva è uguale o precedente alla data prevista, il flusso UC-8 non viene attivato, e UC-4 procede normalmente.
+\end{itemize}
+Post-Condizioni:
+\begin{itemize}
+\item Il record di prestito ha un flag di ritardo aggiornato
+\item Il Bibliotecario è stato notificato
+\item UC-4 può procedere con la chiusura del prestito.
+\end{itemize}
+
+\section{Diagramma dei Casi d'Uso}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{assets/Diagramma_CU}
+    \caption{Diagramma dei Casi d'Uso.}
+    \label{fig:mia_immagine}
+\end{figure}
+
+\end{document}
