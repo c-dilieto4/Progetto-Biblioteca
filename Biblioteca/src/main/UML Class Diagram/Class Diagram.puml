@@ -230,10 +230,15 @@ GUIController "1" --> "1" IAutenticatore
 GUIController "1" --> "1" ILogger
 
 AuditTrail "1" --> "1" IArchivioDati
+FileArchivio "1" --> "1" ILogger
+FileAutenticatore "1" --> "1" IArchivioDati
 
 GUIView "1" --> "1" GUIController
 GUIView ..> MessaggiInterfaccia
 GUIView ..> Libro
 GUIView ..> Prestito
 GUIView ..> Utente
+
+Main ..> GUIView
+Main ..> GUIController
 @enduml
