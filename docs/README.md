@@ -1,2 +1,3 @@
-Documento di Specifica dei Requisiti.
-Versione 1.0 Rilasciata in data 29/11/2025.
+Questa cartella contiene l'intera documentazione tecnica prodotta per la fase di analisi e progettazione del Sistema di Gestione della Biblioteca Universitaria (SGBU).
+
+
