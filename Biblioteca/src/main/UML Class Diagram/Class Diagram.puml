@@ -203,6 +203,13 @@ class MessaggiInterfaccia {
   +String CREDENZIALI_NON_VALIDE
 }
 
+class Main{
+  -controller: GUIController
+  +start(primaryStage: Stage): void
+  +stop(): void
+  +main(args: String[]): void 
+}
+
 ' Interfacce (come da tue specifiche)
 interface IAutenticatore <<Interface>>
 interface IArchivioDati <<Interface>>
