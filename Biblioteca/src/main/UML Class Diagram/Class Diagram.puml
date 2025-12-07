@@ -36,7 +36,7 @@ class Prestito {
   -utente: Utente 
   -dataInizioPrestito: LocalDate 
   -dataRestituzionePrevista: LocalDate 
-  -dataRestituzioneeEffettiva: LocalDate 
+  -dataRestituzioneEffettiva: LocalDate 
   -InRitardo: boolean
   +Prestito(idPrestito: int, libro: Libro, utente: Utente, dataInizioPrestito: LocalDate, dataRestituzionePrevista: LocalDate)
   +getIdPrestito(): int
