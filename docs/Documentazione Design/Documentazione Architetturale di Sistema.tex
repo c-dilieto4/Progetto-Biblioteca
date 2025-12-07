@@ -10,7 +10,7 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,    % Colore dei link interni (es. Figure, Sezioni)
+    linkcolor=black,    % Colore dei link interni (es. Figure, Sezioni)
     urlcolor=blue,     % Colore dei link web
     pdftitle={Documentazione SGBU}, % Titolo nei metadati del PDF
 }
@@ -23,15 +23,49 @@
     right=2.5cm
 }
 
-% Titolo del documento
-\title{\textbf{Documentazione Architetturale Sistema SGBU}\\Commento ai Diagrammi UML}
-\author{}
-\date{}
+
 
 \begin{document}
+\begin{titlepage}
+    \centering
+    \vspace*{1cm} 
+    
+    {\Large \textsc{Università degli Studi di Salerno} \par}
+    
+    \vspace{2.5cm} 
+    
+    {\huge \bfseries Sistema di Gestione Biblioteca Universitaria \par}	
+    
+    \vspace{2.5cm} % Spazio verticale tra titolo e sottotitolo
 
-\maketitle
+    \begin{center}
+    {\Large Documentazione Architetturale del Sistema}
+    \end{center}
+    
+    
+    
+    \vspace{2cm} % Spazio tra Titolo e Autori
+    
+    % --- Blocco Autori (Spostato qui e ingrandito) ---
+    {\Large % Inizio ingrandimento testo
+    \textbf{Autori:}\\
+    Allocco Lorenzo\\
+    Atripaldi Alessandro\\
+    Di Lieto Christian Pio\\
+    Graziosi Gerardo
+    \par} % Fine ingrandimento
+    % ------------------------------------------------
+    
+    \vspace{2cm} % Spazio tra Autori e Versione
+    
+    {\Large Versione 1.2 - 7 Dicembre 2025\par}
+    
+    \vspace*{\fill} % Spinge tutto verso l'alto bilanciando lo spazio finale
 
+	\end{titlepage}
+
+\tableofcontents
+\newpage
 \section{Commento al Diagramma delle Classi}
 
 Il diagramma delle classi proposto rappresenta il modello statico del sistema SGBU, progettato seguendo un approccio Object-Oriented e adottando il pattern architetturale MVC (Model-View-Controller) a strati.\\
