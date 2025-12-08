@@ -28,6 +28,8 @@ public class FileAutenticatore implements IAutenticatore{
      * @param[in] archivioDati L'interfaccia per la lettura del file.
      */
     public FileAutenticatore(String credentialsFile, IArchivioDati archivioDati){
+        this.credentialsFile = credentialsFile;
+        this.archivioDati = archivioDati;
     }
     
     
@@ -52,5 +54,6 @@ public class FileAutenticatore implements IAutenticatore{
      */
     @Override
     public boolean verificaCredenziali(String user, String pass){
+        return false;
     }
 }

@@ -48,6 +48,7 @@ public class FileArchivio implements IArchivioDati{
      */
     @Override
     public boolean salvaStato(Object dati, String nomeFile){
+        return false;
     }
  
     
@@ -65,6 +66,7 @@ public class FileArchivio implements IArchivioDati{
      */
     @Override
     public Object caricaStato(String nomeFile){
+        return false;
     }
     
     
@@ -80,5 +82,6 @@ public class FileArchivio implements IArchivioDati{
      */
     @Override
     public boolean verificaEsistenzaFile(String nomeFile){
+        return false;
     }
 }

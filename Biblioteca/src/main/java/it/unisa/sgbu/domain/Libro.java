@@ -48,7 +48,13 @@ public class Libro {
      * - L'oggetto Libro è creato.
      * - copieDisponibili == copieTotali.
      */
-    public Libro(String ISBN, String titolo, List<String> autore, int anno, int copieTotali){      
+    public Libro(String ISBN, String titolo, List<String> autore, int anno, int copieTotali){    
+        this.ISBN = ISBN;
+        this.titolo = titolo;
+        this.autore = autore;
+        this.anno = anno;
+        this.copieTotali = copieTotali;
+        this.copieDisponibili = copieTotali;
     }
 
     
@@ -57,7 +63,7 @@ public class Libro {
      * @return Una stringa rappresentante l'ISBN.
      */
     public String getISBN() {
-        
+        return ISBN;
     }
 
     
@@ -65,8 +71,8 @@ public class Libro {
      * @brief Restituisce il titolo del libro.
      * @return Una List<String> contenente i nomi degli autori
      */
-    public List<String> getTitolo() {
-         
+    public String getTitolo() {
+         return titolo;
     }
 
     
@@ -74,8 +80,8 @@ public class Libro {
      * @brief Restituisce l'autore o gli autori del libro.
      * @return Una stringa rappresentante l'autore o la lista degli autori.
      */
-    public String getAutore() {
-         
+    public List<String> getAutore() {
+         return autore;
     }
 
     
@@ -84,7 +90,7 @@ public class Libro {
      * @return Un intero rappresentante le copie presenti in biblioteca e non in prestito.
      */
     public int getCopieDisponibili() {
-         
+         return copieDisponibili;
     }
     
     
@@ -101,7 +107,9 @@ public class Libro {
      * - copieDisponibili è incrementato di 1.
      */
     public void incrementaDisponibilità(){
-        
+        if (copieDisponibili < copieTotali) {
+            this.copieDisponibili++;
+        }
     }
     
     
@@ -118,6 +126,9 @@ public class Libro {
      * - copieDisponibili è decrementato di 1.
      */
     public void decrementaDisponibilità(){
+        if (copieDisponibili > 0) {
+            this.copieDisponibili--;
+        }
     }
     
     
@@ -130,5 +141,6 @@ public class Libro {
      * @return true se copieDisponibili > 0, altrimenti false.
      */
     public boolean isDisponibile(){
+        return copieDisponibili > 0;
     }
 }

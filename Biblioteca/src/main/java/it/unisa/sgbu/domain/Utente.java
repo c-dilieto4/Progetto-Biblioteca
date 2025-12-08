@@ -43,7 +43,11 @@ public class Utente {
      * - L'oggetto Utente è creato con i dati forniti.
      * - La lista dei prestiti associata è inizializzata vuota.
      */
-    public Utente(String matricola, String nome, String cognome, String email){   
+    public Utente(String matricola, String nome, String cognome, String email){  
+        this.matricola = matricola;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
     }
 
     
@@ -52,6 +56,7 @@ public class Utente {
      * @return Stringa contenente la matricola.
      */
     public String getMatricola() {
+        return null;
     }
     
     
@@ -61,6 +66,7 @@ public class Utente {
      * @return Stringa contenente il cognome.
      */
     public String getCognome() {
+        return null;
     }
     
     
@@ -111,6 +117,7 @@ public class Utente {
      * altro libro), false se il limite (3) è stato raggiunto.
      */
     public boolean verificaLimite(){
+        return false;
     }
     
     

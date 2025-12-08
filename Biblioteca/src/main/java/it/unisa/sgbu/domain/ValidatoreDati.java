@@ -26,6 +26,7 @@ public class ValidatoreDati {
      * @return true se il formato è valido, false altrimenti.
      */
     public boolean validaISBN(String isbn){
+        return false;
     }
 
     
@@ -41,6 +42,7 @@ public class ValidatoreDati {
      * @return true se la matricola è numerica e di 10 cifre, false altrimenti.
      */
     public boolean validaMatricola(String matricola){
+        return false;
     }
 
     
@@ -55,6 +57,7 @@ public class ValidatoreDati {
      * @return true se il formato è valido, false altrimenti.
      */
     public boolean validaEmail(String email){
+        return false;
     }
     
     
@@ -70,6 +73,7 @@ public class ValidatoreDati {
      * @return true se 0 <= anno <= anno corrente, false altrimenti.
      */
     public boolean validaAnnoPubblicazione(int anno){
+        return false;
     }
     
     
@@ -86,5 +90,6 @@ public class ValidatoreDati {
      * @return true se entrambi contengono solo caratteri alfabetici, false altrimenti.
      */
     public boolean validaNomeCognome(String nome, String cognome){
+        return false;
     }
 }

@@ -65,6 +65,7 @@ public class RegistroPrestiti {
      * - `Libro.copieDisponibili` viene decrementato di 1.
      */
     public Prestito registraPrestito(String isbn, String matr, LocalDate dataPrev){
+        return null;
     }
     
     
@@ -87,6 +88,7 @@ public class RegistroPrestiti {
      * - Se in ritardo, lo stato del prestito viene aggiornato.
      */
     public boolean registraRestituzione(int idPrestito, LocalDate dataEff){
+        return false;
     }
     
     
@@ -100,6 +102,7 @@ public class RegistroPrestiti {
      * @return Lista di oggetti Prestito non ancora chiusi.
      */
     public List<Prestito> getPrestitiAttivi(){
+        return null;
     }
     
     
@@ -114,6 +117,7 @@ public class RegistroPrestiti {
      * @return Lista dei prestiti associati all'utente.
      */
     public List<Prestito> getPrestitiAttivi(Utente u){
+        return null;
     }
     
     
@@ -126,6 +130,7 @@ public class RegistroPrestiti {
      * @return Lista di prestiti scaduti.
      */
     public List<Prestito> getPrestitiInRitardo(){
+        return null;
     }
     
     
@@ -141,6 +146,7 @@ public class RegistroPrestiti {
      * @return true se esistono prestiti attivi, false altrimenti.
      */
     public boolean haPrestitiAttivi(String matricola){
+        return false;
     }
     
     
@@ -155,6 +161,7 @@ public class RegistroPrestiti {
      * @return L'oggetto Prestito se trovato, null altrimenti.
      */
     public Prestito trovaPrestito(int idPrestito){
+        return null;
     }
     
 }

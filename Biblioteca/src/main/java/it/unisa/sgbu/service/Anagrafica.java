@@ -49,6 +49,7 @@ public class Anagrafica {
      * - L'utente è aggiunto al registro persistente.
      */
     public boolean aggiungiUtente(Utente u){
+        return false;
     }
     
     
@@ -71,6 +72,7 @@ public class Anagrafica {
      * - L'utente è rimosso dal sistema.
      */
     public boolean rimuoviUtente(String matricola){
+        return false;
     }
     
     
@@ -87,6 +89,7 @@ public class Anagrafica {
      * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaUtente(String matricola, Utente u){
+        return false;
     }
     
     
@@ -101,6 +104,7 @@ public class Anagrafica {
      * @return L'oggetto Utente se trovato, altrimenti null.
      */
     public Utente getUtente(String matricola){
+        return null;
     }
     
     
@@ -118,6 +122,7 @@ public class Anagrafica {
      * 
      */
     public List<Utente> cercaUtente(String query, String campo){
+        return null;
     }
     
     
@@ -130,5 +135,6 @@ public class Anagrafica {
      * @return Una lista di oggetti Utente ordinata per Cognome e poi Nome.
      */
     public List<Utente> visualizzaOrdinata(){
+        return null;
     }
 }

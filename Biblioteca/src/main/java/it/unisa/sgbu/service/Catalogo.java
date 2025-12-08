@@ -47,6 +47,7 @@ public class Catalogo {
      * - Il libro è aggiunto alla collezione persistente.
      */
     public boolean aggiungiLibro(Libro l){
+        return false;
     }
     
     
@@ -69,6 +70,7 @@ public class Catalogo {
      * - Il libro è rimosso dalla collezione.
      */
     public boolean rimuoviLibro(String isbn){
+        return false;
     }
     
     
@@ -85,6 +87,7 @@ public class Catalogo {
      * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaLibro(String isbn, Libro nl){
+        return false;
     }
     
     
@@ -98,6 +101,7 @@ public class Catalogo {
      * @return L'oggetto Libro se trovato, null altrimenti.
      */
     public Libro getLibro(String isbn){
+        return null;
     }
     
     
@@ -114,6 +118,7 @@ public class Catalogo {
      * @return Lista dei libri che corrispondono ai criteri.
      */
     public List<Libro> ricerca(String query, String campo){
+        return null;
     }
     
     
@@ -127,6 +132,7 @@ public class Catalogo {
      * @return Lista di libri ordinata per Titolo.
      */
     public List<Libro> visualizzaOrdinata(){
+        return null;
     }
     
 }

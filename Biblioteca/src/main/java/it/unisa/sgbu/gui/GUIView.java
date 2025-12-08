@@ -33,6 +33,8 @@ public class GUIView {
      * @param[in] Sistema Istanza del controller principale (GUIController).
      */
     public GUIView(GUIController sistema){
+        this.sistema = sistema;
+        messaggi = new MessaggiInterfaccia();
     }
     
     

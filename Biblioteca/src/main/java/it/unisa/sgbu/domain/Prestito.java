@@ -50,6 +50,11 @@ public class Prestito {
      * - Coerenza.
      */
     public Prestito(int idPrestito, Libro libro, Utente utente, LocalDate dataInizio, LocalDate dataPrevistaRestituzione){
+        this.idPrestito = idPrestito;
+        this.libro = libro;
+        this.utente = utente;
+        this.dataInizio = dataInizio;
+        this.dataPrevistaRestituzione = dataPrevistaRestituzione;
     }
 
     
@@ -58,6 +63,7 @@ public class Prestito {
      * @return L'intero identificativo.
      */
     public int getIdPrestito() {
+        return 0;
     }
 
     
@@ -66,6 +72,7 @@ public class Prestito {
      * @return L'oggetto Libro.
      */
     public Libro getLibro() {
+        return null;
     }
 
     
@@ -74,6 +81,7 @@ public class Prestito {
      * @return L'oggetto Utente.
      */
     public Utente getUtente() {
+        return null;
     }
     
 
@@ -109,6 +117,7 @@ public class Prestito {
      * @return true se dataEffettiva > dataPrevistaRestituzione, altrimenti false.
      */
     public boolean verificaRitardo(){
+        return false;
     }
 
 

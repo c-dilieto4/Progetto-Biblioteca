@@ -29,8 +29,7 @@ public interface ILogger {
      * 
      * @param[in] azione La descrizione testuale dell'evento da tracciare (es. tipo operazione e dati chiave).
      */
-    public void registraAzione(String azione){
-    }
+    public void registraAzione(String azione);
     
     
     /**
@@ -41,8 +40,7 @@ public interface ILogger {
      * 
      *@return Una lista di stringhe contenente i record di log recuperati.
      */
-    public List<String> caricaLog(){
-    }
+    public List<String> caricaLog();
     
     
     /**
@@ -53,8 +51,7 @@ public interface ILogger {
      * (es. file non accessibile) non devono interrompere il flusso principale dell'applicazione,
      * in quanto il logging è considerato a bassa priorità rispetto all'operatività.
      */
-    public void salvaLog(){
-    }
+    public void salvaLog();
     
     
     /**
@@ -64,8 +61,7 @@ public interface ILogger {
      * 
      * @return La lista dei log.
      */
-    public List<String> visualizzaLog(){
-    }
+    public List<String> visualizzaLog();
     
     
 }

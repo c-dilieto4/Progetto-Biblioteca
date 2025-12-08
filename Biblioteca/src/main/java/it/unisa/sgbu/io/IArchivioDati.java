@@ -29,8 +29,7 @@ public interface IArchivioDati {
      * 
      * @return true se l'operazione è completata con successo, false altrimenti.
      */
-    public boolean salvaStato(Object dati, String nomeFile){
-    }
+    public boolean salvaStato(Object dati, String nomeFile);
  
     
     /**
@@ -44,8 +43,8 @@ public interface IArchivioDati {
      * 
      * @return L'oggetto recuperato, oppure null se il caricamento fallisce.
      */
-    public Object caricaStato(String nomeFile){
-    }
+    public Object caricaStato(String nomeFile);
+    
     
     
     /**
@@ -59,6 +58,5 @@ public interface IArchivioDati {
      * 
      * @return true se il file esiste, false altrimenti.
      */
-    public boolean verificaEsistenzaFile(String nomeFile){
-    }
+    public boolean verificaEsistenzaFile(String nomeFile);
 }

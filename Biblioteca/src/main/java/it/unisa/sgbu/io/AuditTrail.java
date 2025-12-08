@@ -66,6 +66,7 @@ public class AuditTrail implements ILogger{
      */
     @Override
     public List<String> caricaLog(){
+        return null;
     }
     
     
@@ -94,6 +95,7 @@ public class AuditTrail implements ILogger{
      */
     @Override
     public List<String> visualizzaLog(){
+        return null;
     }
     
 }

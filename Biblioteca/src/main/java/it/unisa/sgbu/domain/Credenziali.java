@@ -37,6 +37,8 @@ public class Credenziali {
      * - L'oggetto Credenziali è inizializzato.
      */
     public Credenziali(String user, String password){
+        this.user = user;
+        this.password = password;
     }
     
     
@@ -45,6 +47,7 @@ public class Credenziali {
      * @return Una stringa contenente lo username.
      */
     public String getUser(){
+        return null;
     }
     
     
@@ -53,5 +56,6 @@ public class Credenziali {
      * @return Una stringa contenente la password.
      */
     public String getPassword(){
+        return null;
     }
 }

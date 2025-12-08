@@ -59,6 +59,7 @@ public class GUIController {
      * @return true se il sistema è avviato correttamente (dati caricati o nuovo archivio inizializzato), false in caso di errore critico.
      */
     public boolean avviaSistema(){
+        return false;
     }
     
     /**
@@ -70,6 +71,7 @@ public class GUIController {
      * @return true se il salvataggio ha successo, false altrimenti.
      */
     public boolean chiudiSistema(){
+        return false;
     }
     
     /**
@@ -84,6 +86,7 @@ public class GUIController {
      * @return true se l'utente è stato aggiunto, false se i dati non sono validi o la matricola è duplicata.
      */
     public boolean aggiungiUtente(Utente u){
+        return false;
     }
     
     /**
@@ -97,6 +100,7 @@ public class GUIController {
      * @return true se il libro è stato aggiunto, false se i dati non sono validi o l'ISBN è duplicato.
      */
     public boolean aggiungiLibro(Libro l){
+        return false;
     }
     
     /**
@@ -111,6 +115,7 @@ public class GUIController {
      * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaUtente(String matrOriginale, Utente uNuovo){
+        return false;
     }
     
     /**
@@ -125,6 +130,7 @@ public class GUIController {
      * @return true se la modifica ha successo, false altrimenti. 
      */
     public boolean modificaLibro(String isbnOriginale, Libro lNuovo){
+        return false;
     }
     
     /**
@@ -136,6 +142,7 @@ public class GUIController {
      * @return Una lista di libri che corrispondono ai criteri.
      */
     public List<Libro> cercaLibro(String query, String campo){
+        return null;
     }
     
     /**
@@ -147,6 +154,7 @@ public class GUIController {
      * @return Una lista di utenti che corrispondono ai criteri.
      */
     public List<Utente> cercaUtente(String query, String campo){
+        return null;
     }
     
     /**
@@ -161,6 +169,7 @@ public class GUIController {
      * @return true se rimosso con successo, false se l'utente ha prestiti attivi o non esiste.
      */
     public boolean rimuoviUtente(String matr){
+        return false;
     }
     
     /**
@@ -175,6 +184,7 @@ public class GUIController {
      * @return true se rimosso con successo, false se il libro è in prestito o non esiste.
      */
     public boolean rimuoviLibro(String isbn){
+        return false;
     }
     
     /**
@@ -192,6 +202,7 @@ public class GUIController {
      * @return true se il prestito è registrato, false se falliscono i controlli.
      */
     public boolean gestisciPrestito(String isbn, String matricola, LocalDate dataPrevistaRestituzione){
+        return false;
     }
     
     /**
@@ -207,6 +218,7 @@ public class GUIController {
      * @return true se la restituzione è registrata, false altrimenti.
      */
     public boolean gestisciRestituzione(int idPrestito, LocalDate dataEffettivaRestituzione){
+        return false;
     }
     
     /**
@@ -214,6 +226,7 @@ public class GUIController {
      * @return Lista di prestiti ordinata per data di scadenza.
      */
     public List<Prestito> ottieniReportPrestiti(){
+        return null;
     }
         
     /**
@@ -221,6 +234,7 @@ public class GUIController {
      * @return Lista di libri ordinata per Titolo.
      */
     public List<Libro> ottieniCatalogoOrdinato(){
+        return null;
     }
     
     /**
@@ -228,6 +242,7 @@ public class GUIController {
      * @return Lista di utenti ordinata per Cognome.
      */
     public List<Utente> ottieniAnagraficaOrdinata(){
+        return null;
     }
     
     /**
@@ -242,6 +257,7 @@ public class GUIController {
      * @return true se le credenziali sono valide, false altrimenti.
      */
     public boolean gestisciLogin(String user, String pass){
+        return false;
     }
 
     
