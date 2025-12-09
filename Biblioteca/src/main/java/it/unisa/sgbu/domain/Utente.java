@@ -5,6 +5,7 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -15,12 +16,13 @@ import java.util.*;
  * logica con i prestiti attivi a suo nome.
  * 
  */
-public class Utente {
+public class Utente implements Serializable {
     
     private final String matricola;
     private String nome;
     private String cognome;
     private String email;
+    private List<Prestito> prestitiAttivi;
     
     
     /**
@@ -48,6 +50,7 @@ public class Utente {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
+        this.prestitiAttivi = new ArrayList<>();
     }
 
     
@@ -56,7 +59,7 @@ public class Utente {
      * @return Stringa contenente la matricola.
      */
     public String getMatricola() {
-        return null;
+        return matricola;
     }
     
     
@@ -66,7 +69,7 @@ public class Utente {
      * @return Stringa contenente il cognome.
      */
     public String getCognome() {
-        return null;
+        return cognome;
     }
     
     
@@ -86,6 +89,10 @@ public class Utente {
      * - Il prestito viene aggiunto alla lista dei prestiti attivi dell'utente.
      */
     public void aggiungiPrestito(Prestito p){
+        
+        if (p != null && verificaLimite()) {
+            prestitiAttivi.add(p);
+        }
     }
     
     
@@ -104,6 +111,10 @@ public class Utente {
      * - Il prestito viene rimosso dai prestiti attivi.
      */
     public void rimuoviPrestito(Prestito p){
+        
+        if (p != null) {
+            prestitiAttivi.remove(p);
+        }
     }
     
     
@@ -117,7 +128,8 @@ public class Utente {
      * altro libro), false se il limite (3) è stato raggiunto.
      */
     public boolean verificaLimite(){
-        return false;
+        
+        return prestitiAttivi.size() < 3;
     }
     
     

@@ -5,6 +5,8 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.io.Serializable;
+
 /**
  * @brief Rappresenta le credenziali di accesso al sistema.
  * 
@@ -15,7 +17,7 @@ package it.unisa.sgbu.domain;
  * Implementa la struttura dati richiesta per soddisfare il requisito di
  * sicurezza sull'Autenticazione.
  */
-public class Credenziali {
+public class Credenziali implements Serializable{
     private final String user;
     private final String password;
     
@@ -47,7 +49,7 @@ public class Credenziali {
      * @return Una stringa contenente lo username.
      */
     public String getUser(){
-        return null;
+        return user;
     }
     
     
@@ -56,6 +58,6 @@ public class Credenziali {
      * @return Una stringa contenente la password.
      */
     public String getPassword(){
-        return null;
+        return password;
     }
 }

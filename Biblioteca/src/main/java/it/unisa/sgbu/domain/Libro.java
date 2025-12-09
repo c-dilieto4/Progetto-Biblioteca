@@ -5,6 +5,7 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.io.Serializable;
 import java.time.*;
 import java.util.List;
         
@@ -15,7 +16,7 @@ import java.util.List;
  * delle copie disponibili e totali, in conformità con i requisiti dei dati.
  * L'ISBN funge da identificativo primario e univoco.
  */
-public class Libro {
+public class Libro implements Serializable{
     
     private final String ISBN;
     private String titolo;

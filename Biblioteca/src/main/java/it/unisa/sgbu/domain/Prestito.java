@@ -5,6 +5,7 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.io.Serializable;
 import java.time.*;
 
 /**
@@ -14,7 +15,7 @@ import java.time.*;
  * del prestito, conformemente alla specifica dei dati.
  * Gestisce inoltre lo stato di ritardo nella restituzione.
  */
-public class Prestito {
+public class Prestito implements Serializable{
     
     private final int idPrestito;
     private Libro libro;
@@ -63,7 +64,7 @@ public class Prestito {
      * @return L'intero identificativo.
      */
     public int getIdPrestito() {
-        return 0;
+        return idPrestito;
     }
 
     
@@ -72,7 +73,7 @@ public class Prestito {
      * @return L'oggetto Libro.
      */
     public Libro getLibro() {
-        return null;
+        return libro;
     }
 
     
@@ -81,7 +82,19 @@ public class Prestito {
      * @return L'oggetto Utente.
      */
     public Utente getUtente() {
-        return null;
+        return utente;
+    }
+    
+    public LocalDate getDataInizio() {
+        return dataInizio;
+    }
+
+    public LocalDate getDataPrevistaRestituzione() {
+        return dataPrevistaRestituzione;
+    }
+
+    public LocalDate getDataEffettivaRestituzione() {
+        return dataEffettivaRestituzione;
     }
     
 
@@ -104,6 +117,12 @@ public class Prestito {
      * - Il flag InRitardo è impostato a true se dataEffettiva > dataPrevistaRestituzione, altrimenti resta false.
      */
     public void chiudiPrestito(LocalDate dataEffettiva){
+        
+        dataEffettivaRestituzione=dataEffettiva;
+        
+        if (dataEffettiva.isAfter(dataPrevistaRestituzione)) {
+            segnaRitardo();
+        }
     }
 
 
@@ -117,7 +136,11 @@ public class Prestito {
      * @return true se dataEffettiva > dataPrevistaRestituzione, altrimenti false.
      */
     public boolean verificaRitardo(){
-        return false;
+        
+        if (dataEffettivaRestituzione != null) {
+            return dataEffettivaRestituzione.isAfter(dataPrevistaRestituzione);
+        }
+        return LocalDate.now().isAfter(dataPrevistaRestituzione);
     }
 
 
@@ -135,6 +158,11 @@ public class Prestito {
      * - Il flag InRitardo è impostato a true.
      */
     public void segnaRitardo(){
+        InRitardo=true;
+    }
+    
+    public boolean isInRitardo() {
+        return InRitardo;
     }
     
     
