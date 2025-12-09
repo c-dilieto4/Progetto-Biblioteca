@@ -22,7 +22,6 @@ public class Utente implements Serializable {
     private String nome;
     private String cognome;
     private String email;
-    private List<Prestito> prestitiAttivi;
     
     
     /**
@@ -50,7 +49,6 @@ public class Utente implements Serializable {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
-        this.prestitiAttivi = new ArrayList<>();
     }
 
     
@@ -89,10 +87,6 @@ public class Utente implements Serializable {
      * - Il prestito viene aggiunto alla lista dei prestiti attivi dell'utente.
      */
     public void aggiungiPrestito(Prestito p){
-        
-        if (p != null && verificaLimite()) {
-            prestitiAttivi.add(p);
-        }
     }
     
     
@@ -112,9 +106,6 @@ public class Utente implements Serializable {
      */
     public void rimuoviPrestito(Prestito p){
         
-        if (p != null) {
-            prestitiAttivi.remove(p);
-        }
     }
     
     
@@ -129,7 +120,6 @@ public class Utente implements Serializable {
      */
     public boolean verificaLimite(){
         
-        return prestitiAttivi.size() < 3;
     }
     
     
