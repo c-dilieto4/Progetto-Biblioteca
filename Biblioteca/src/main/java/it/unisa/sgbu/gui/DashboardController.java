@@ -38,4 +38,14 @@ public class DashboardController {
     private void onNuovoPrestito() {
         mainView.gestisciRegistrazionePrestito();
     }
+    
+    @FXML
+    private void onRimuoviLibro() {
+        mainView.gestisciEliminazioneLibro(); 
+    }
+
+    @FXML
+    private void onRegistraRestituzione() {
+        mainView.gestisciRestituzionePrestito();
+    }
 }

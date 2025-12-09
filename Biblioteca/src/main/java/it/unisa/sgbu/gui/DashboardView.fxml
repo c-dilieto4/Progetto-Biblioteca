@@ -40,7 +40,7 @@
                         <HBox spacing="10.0" layoutX="14.0" layoutY="14.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#onAggiungiLibro" text="Aggiungi Libro" />
-                              <Button mnemonicParsing="false" text="Rimuovi Libro" />
+                              <Button mnemonicParsing="false" onAction="#onRimuoviLibro" text="Rimuovi Libro" />
                            </children>
                         </HBox>
                      </children>
@@ -104,7 +104,7 @@
                         <HBox spacing="10.0" layoutX="14.0" layoutY="14.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#onNuovoPrestito" text="Registra Prestito" />
-                              <Button mnemonicParsing="false" text="Registra Restituzione" />
+                              <Button mnemonicParsing="false" onAction="#onRegistraRestituzione" text="Registra Restituzione" />
                            </children>
                         </HBox>
                      </children>
