@@ -3,38 +3,114 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.sgbu.gui.DashboardController">
-   <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-          <Button text="Aggiungi Libro" onAction="#onAggiungiLibro" />
-          <Button text="Aggiungi Utente" onAction="#onAggiungiUtente" />
-          <Button text="Nuovo Prestito" onAction="#onNuovoPrestito" />
-        </items>
-      </ToolBar>
-   </top>
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.sgbu.gui.DashboardController">
    <center>
       <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Catalogo Libri">
-               <content>
-                  <TableView fx:id="tableLibri" />
-               </content>
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableLibri" layoutX="14.0" layoutY="50.0" prefHeight="400.0" prefWidth="770.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                          <columns>
+                            <TableColumn prefWidth="120.0" text="ISBN">
+                                <cellValueFactory><PropertyValueFactory property="ISBN" /></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="250.0" text="Titolo">
+                                <cellValueFactory><PropertyValueFactory property="titolo" /></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="150.0" text="Autore">
+                                <cellValueFactory><PropertyValueFactory property="autore" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="80.0" text="Anno">
+                                <cellValueFactory><PropertyValueFactory property="anno" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="80.0" text="Disponibili">
+                                <cellValueFactory><PropertyValueFactory property="copieDisponibili" /></cellValueFactory>
+                            </TableColumn>
+                          </columns>
+                        </TableView>
+                        <HBox spacing="10.0" layoutX="14.0" layoutY="14.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onAggiungiLibro" text="Aggiungi Libro" />
+                              <Button mnemonicParsing="false" text="Rimuovi Libro" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+            </content>
           </Tab>
+          
           <Tab text="Anagrafica Utenti">
-               <content>
-                  <TableView fx:id="tableUtenti" />
-               </content>
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableUtenti" layoutX="10.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                          <columns>
+                            <TableColumn prefWidth="100.0" text="Matricola">
+                                <cellValueFactory><PropertyValueFactory property="matricola" /></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="150.0" text="Nome">
+                                <cellValueFactory><PropertyValueFactory property="nome" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="150.0" text="Cognome">
+                                <cellValueFactory><PropertyValueFactory property="cognome" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="200.0" text="Email">
+                                <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
+                            </TableColumn>
+                          </columns>
+                        </TableView>
+                        <HBox spacing="10.0" layoutX="14.0" layoutY="14.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onAggiungiUtente" text="Nuovo Utente" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+            </content>
           </Tab>
-            <Tab text="Prestiti Attivi">
-               <content>
-                  <TableView fx:id="tablePrestiti" />
-               </content>
-            </Tab>
+          
+          <Tab text="Gestione Prestiti">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tablePrestiti" layoutX="14.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                          <columns>
+                            <TableColumn prefWidth="50.0" text="ID">
+                                <cellValueFactory><PropertyValueFactory property="idPrestito" /></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="200.0" text="Libro">
+                                <cellValueFactory><PropertyValueFactory property="libro" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="200.0" text="Utente">
+                                <cellValueFactory><PropertyValueFactory property="utente" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="100.0" text="Data Inizio">
+                                <cellValueFactory><PropertyValueFactory property="dataInizio" /></cellValueFactory>
+                            </TableColumn>
+                             <TableColumn prefWidth="100.0" text="Scadenza">
+                                <cellValueFactory><PropertyValueFactory property="dataPrevistaRestituzione" /></cellValueFactory>
+                            </TableColumn>
+                          </columns>
+                        </TableView>
+                        <HBox spacing="10.0" layoutX="14.0" layoutY="14.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onNuovoPrestito" text="Registra Prestito" />
+                              <Button mnemonicParsing="false" text="Registra Restituzione" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
         </tabs>
       </TabPane>
    </center>

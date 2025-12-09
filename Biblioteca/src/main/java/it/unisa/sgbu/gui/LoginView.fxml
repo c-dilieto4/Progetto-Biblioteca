@@ -8,22 +8,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.sgbu.gui.LoginController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-    <children>
-        <Label text="SGBU - Login Bibliotecario">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
-        
-        <TextField fx:id="txtUsername" promptText="Username" />
-        <PasswordField fx:id="txtPassword" promptText="Password" />
-        
-        <Button text="Accedi" onAction="#handleLogin" />
-        
-        <Label fx:id="lblErrore" textFill="RED" visible="false" />
-    </children>
+<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.sgbu.gui.LoginController">
+   <padding>
+      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+   </padding>
+   <children>
+      <Label text="SGBU - Accesso Bibliotecario">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" promptText="Username" />
+      <PasswordField fx:id="txtPassword" promptText="Password" />
+      <Button mnemonicParsing="false" onAction="#handleLogin" text="Accedi" defaultButton="true" prefWidth="200.0" />
+      <Label fx:id="lblErrore" text="Credenziali non valide!" textFill="RED" visible="false" />
+   </children>
 </VBox>
