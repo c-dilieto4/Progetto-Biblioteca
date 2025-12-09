@@ -9,6 +9,11 @@ import it.unisa.sgbu.domain.Libro;
 import it.unisa.sgbu.domain.Prestito;
 import it.unisa.sgbu.domain.Utente;
 import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 /**
  * @brief Classe Boundary che gestisce l'interfaccia utente (View).
@@ -23,7 +28,7 @@ import java.util.List;
 public class GUIView {
     private final GUIController sistema;
     private final MessaggiInterfaccia messaggi;
-    
+    private Stage primaryStage;
     
     /**
      * @brief Costruttore della classe GUIView.
@@ -32,9 +37,10 @@ public class GUIView {
      * 
      * @param[in] Sistema Istanza del controller principale (GUIController).
      */
-    public GUIView(GUIController sistema){
+    public GUIView(GUIController sistema, Stage primaryStage){
         this.sistema = sistema;
-        messaggi = new MessaggiInterfaccia();
+        this.messaggi = new MessaggiInterfaccia();
+        this.primaryStage = primaryStage;
     }
     
     
@@ -45,6 +51,20 @@ public class GUIView {
      * Inizializza i componenti grafici della dashboard principale.
      */
     public void avviaInterfaccia(){
+        try {
+            // Carico il file XML della dashboard
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DashboardView.fxml"));
+            Parent root = loader.load();
+            
+            DashboardController controller = loader.getController();
+            controller.setSistema(this.sistema, this);
+            
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("SGBU - Biblioteca Dashboard");
+            primaryStage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     
@@ -215,6 +235,19 @@ public class GUIView {
      * Cattura Username e Password e invoca `Sistema.gestisciLogin(String user, String pass)`.
      */
     public void mostraFinestraLogin(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+            Parent root = loader.load();
+            
+            LoginController controller = loader.getController();
+            controller.setSistema(this.sistema, this);
+            
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("SGBU - Login");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
    
     
