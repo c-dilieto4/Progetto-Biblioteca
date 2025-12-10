@@ -108,9 +108,7 @@ public class Libro implements Serializable{
      * - copieDisponibili è incrementato di 1.
      */
     public void incrementaDisponibilità(){
-        if (copieDisponibili < copieTotali) {
-            this.copieDisponibili++;
-        }
+        this.copieDisponibili++;
     }
     
     
@@ -127,9 +125,7 @@ public class Libro implements Serializable{
      * - copieDisponibili è decrementato di 1.
      */
     public void decrementaDisponibilità(){
-        if (copieDisponibili > 0) {
-            this.copieDisponibili--;
-        }
+        this.copieDisponibili--;
     }
     
     
