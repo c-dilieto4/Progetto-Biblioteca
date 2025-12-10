@@ -18,91 +18,101 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class UtenteTest {
     
-    public UtenteTest() {
-    }
+    private Utente utente;
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
+    // Fixture: Eseguito prima di ogni test
     @BeforeEach
     public void setUp() {
+        // Creo un utente "pulito" senza prestiti
+        utente = new Utente("0123456789", "Mario", "Rossi", "m.rossi@unisa.it");
+    }
+
+    /**
+     * @brief Test del costruttore e stato iniziale.
+     */
+    @Test
+    public void testCostruttore() {
+        assertEquals("0123456789", utente.getMatricola());
+        assertEquals("Mario", utente.getNome());
+        assertEquals("Rossi", utente.getCognome());
+        
+        // Verifica che la lista dei prestiti esista e sia vuota (dimensione 0)
+        assertNotNull(utente.getPrestitiAttivi(), "La lista prestiti non deve essere null");
+        assertEquals(0, utente.getNumeroPrestitiAttivi(), "La lista prestiti deve essere inizialmente vuota (0)");
     }
     
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
-     * Test of getMatricola method, of class Utente.
-     */
-    @Test
-    public void testGetMatricola() {
-        System.out.println("getMatricola");
-        Utente instance = null;
-        String expResult = "";
-        String result = instance.getMatricola();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCognome method, of class Utente.
-     */
-    @Test
-    public void testGetCognome() {
-        System.out.println("getCognome");
-        Utente instance = null;
-        String expResult = "";
-        String result = instance.getCognome();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of aggiungiPrestito method, of class Utente.
-     */
-    @Test
-    public void testAggiungiPrestito() {
-        System.out.println("aggiungiPrestito");
-        Prestito p = null;
-        Utente instance = null;
-        instance.aggiungiPrestito(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of rimuoviPrestito method, of class Utente.
-     */
-    @Test
-    public void testRimuoviPrestito() {
-        System.out.println("rimuoviPrestito");
-        Prestito p = null;
-        Utente instance = null;
-        instance.rimuoviPrestito(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of verificaLimite method, of class Utente.
+     * @brief Test del metodo verificaLimite().
+     * @test Verifica il comportamento del controllo limiti in tre scenari:
+     * 1. Utente con 0 prestiti (Sotto soglia) -> Deve restituire TRUE.
+     * 2. Utente con 2 prestiti (Sotto soglia) -> Deve restituire TRUE.
+     * 3. Utente con 3 prestiti (Limite raggiunto) -> Deve restituire FALSE.
      */
     @Test
     public void testVerificaLimite() {
-        System.out.println("verificaLimite");
-        Utente instance = null;
-        boolean expResult = false;
-        boolean result = instance.verificaLimite();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Caso 1: 0 prestiti
+        assertTrue(utente.verificaLimite(), "Con 0 prestiti l'utente deve poter operare");
+        
+        // Caso 2: 2 prestiti
+        utente.aggiungiPrestito(new Prestito(1, null, utente, null, null));
+        utente.aggiungiPrestito(new Prestito(2, null, utente, null, null));
+        assertTrue(utente.verificaLimite(), "Con 2 prestiti l'utente deve poter operare");
+        
+        // Caso 3: 3 prestiti (limite raggiunto)
+        utente.aggiungiPrestito(new Prestito(3, null, utente, null, null));
+        assertFalse(utente.verificaLimite(), "Con 3 prestiti il limite deve risultare raggiunto");
     }
+
+    /**
+     * @brief Test del metodo aggiungiPrestito().
+     * @test Verifica la corretta aggiunta di un prestito alla lista:
+     * 1. Aggiunta valida: la dimensione della lista deve incrementare.
+     * 2. Aggiunta oltre limite: se l'utente ha già 3 prestiti, il quarto non deve essere inserito.
+     * 3. Robustezza: l'aggiunta di un oggetto null non deve modificare la lista.
+     */
+    @Test
+    public void testAggiungiPrestito() {
+        // 1. Aggiunta valida
+        Prestito p1 = new Prestito(1, null, utente, null, null);
+        utente.aggiungiPrestito(p1);
+        assertEquals(1, utente.getNumeroPrestitiAttivi(), "Il numero di prestiti deve essere 1");
+        
+        // Riempio fino al limite
+        utente.aggiungiPrestito(new Prestito(2, null, utente, null, null));
+        utente.aggiungiPrestito(new Prestito(3, null, utente, null, null));
+        assertEquals(3, utente.getNumeroPrestitiAttivi());
+        
+        // 2. Aggiunta oltre limite (FC-2)
+        utente.aggiungiPrestito(new Prestito(4, null, utente, null, null));
+        assertEquals(3, utente.getNumeroPrestitiAttivi(), "Non deve essere possibile superare il limite di 3");
+        
+        // 3. Robustezza (null)
+        utente.aggiungiPrestito(null);
+        assertEquals(3, utente.getNumeroPrestitiAttivi(), "L'aggiunta di null deve essere ignorata");
+    }
+
+    /**
+     * @brief Test del metodo rimuoviPrestito().
+     * @test Verifica la rimozione di un prestito dalla lista:
+     * 1. Rimozione valida: un prestito esistente viene rimosso e il contatore decresce.
+     * 2. Rimozione non valida: tentare di rimuovere un prestito non presente non deve alterare la lista.
+     */
+    @Test
+    public void testRimuoviPrestito() {
+        Prestito p1 = new Prestito(1, null, utente, null, null);
+        utente.aggiungiPrestito(p1);
+        assertEquals(1, utente.getNumeroPrestitiAttivi());
+        
+        // 1. Rimozione valida
+        utente.rimuoviPrestito(p1);
+        assertEquals(0, utente.getNumeroPrestitiAttivi(), "La lista deve tornare vuota dopo la rimozione");
+        
+        // 2. Rimozione di oggetto non presente (o nuovo oggetto uguale)
+        Prestito p2 = new Prestito(2, null, utente, null, null);
+        utente.rimuoviPrestito(p2); // Non c'è nella lista
+        assertEquals(0, utente.getNumeroPrestitiAttivi(), "Rimuovere un elemento inesistente non deve cambiare lo stato");
+    }
+
+    
     
 }

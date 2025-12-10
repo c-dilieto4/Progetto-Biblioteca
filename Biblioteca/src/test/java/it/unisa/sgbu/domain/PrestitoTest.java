@@ -6,6 +6,8 @@
 package it.unisa.sgbu.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,104 +21,83 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PrestitoTest {
     
-    public PrestitoTest() {
-    }
+    private Prestito prestito;
+    private Libro libro;
+    private Utente utente;
+    private LocalDate dataInizio;
+    private LocalDate dataScadenza;
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
+    /**
+     * @brief Fixture: Configurazione iniziale.
+     * Crea un libro, un utente e un prestito attivo con scadenza tra 30 giorni.
+     */
     @BeforeEach
     public void setUp() {
+        // Creazione oggetti dipendenti (Stub)
+        List<String> autori = new ArrayList<>();
+        autori.add("Joshua Bloch");
+        
+        libro = new Libro("1234567890", "Java Book", autori, 2020, 5);
+        utente = new Utente("0123456789", "Mario", "Rossi", "m.rossi@unisa.it");
+        
+        dataInizio = LocalDate.now();
+        dataScadenza = dataInizio.plusDays(30); // Scade tra 30 giorni
+        prestito = new Prestito(1, libro, utente, dataInizio, dataScadenza);
     }
     
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
-     * Test of getIdPrestito method, of class Prestito.
+     * @brief Test del costruttore e corretta inizializzazione.
+     * Verifica che:
+     * 1. L'ID e le associazioni (Libro, Utente) siano corretti.
+     * 2. Le date (Inizio, Scadenza) siano registrate correttamente.
+     * 3. Il prestito nasca attivo (data effettiva null) e senza ritardi.
      */
     @Test
-    public void testGetIdPrestito() {
-        System.out.println("getIdPrestito");
-        Prestito instance = null;
-        int expResult = 0;
-        int result = instance.getIdPrestito();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCostruttore() {
+        assertEquals(1, prestito.getIdPrestito());
+        assertEquals(libro, prestito.getLibro());
+        assertEquals(utente, prestito.getUtente());
+        
+        assertEquals(dataInizio, prestito.getDataInizio(), "La data di inizio non coincide");
+        assertEquals(dataScadenza, prestito.getDataPrevistaRestituzione(), "La data di scadenza non coincide");
+        assertNull(prestito.getDataEffettivaRestituzione(), "Appena creato, la data effettiva deve essere null");
     }
-
+    
     /**
-     * Test of getLibro method, of class Prestito.
+     * @brief Test di chiudiPrestito (Caso Puntuale).
+     * Verifica che restituendo entro la scadenza il prestito venga chiuso senza ritardo.
      */
     @Test
-    public void testGetLibro() {
-        System.out.println("getLibro");
-        Prestito instance = null;
-        Libro expResult = null;
-        Libro result = instance.getLibro();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testChiudiPrestitoPuntuale() {
+        LocalDate dataRestituzione = dataInizio.plusDays(10); // Restituisco prima della scadenza
+        prestito.chiudiPrestito(dataRestituzione);
+        
+        assertEquals(dataRestituzione, prestito.getDataEffettivaRestituzione(), "La data effettiva deve essere registrata");
     }
 
     /**
-     * Test of getUtente method, of class Prestito.
+     * @brief Test di chiudiPrestito (Caso Ritardo).
+     * Verifica che restituendo dopo la scadenza venga segnato il ritardo.
      */
     @Test
-    public void testGetUtente() {
-        System.out.println("getUtente");
-        Prestito instance = null;
-        Utente expResult = null;
-        Utente result = instance.getUtente();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testChiudiPrestitoInRitardo() {
+        LocalDate dataRestituzione = dataScadenza.plusDays(5); // 5 giorni dopo la scadenza
+        prestito.chiudiPrestito(dataRestituzione);
+        
+        assertEquals(dataRestituzione, prestito.getDataEffettivaRestituzione(), "La data effettiva è successiva alla data prevista");
     }
-
+    
     /**
-     * Test of chiudiPrestito method, of class Prestito.
-     */
-    @Test
-    public void testChiudiPrestito() {
-        System.out.println("chiudiPrestito");
-        LocalDate dataEffettiva = null;
-        Prestito instance = null;
-        instance.chiudiPrestito(dataEffettiva);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of verificaRitardo method, of class Prestito.
+     * @brief Test del metodo verificaRitardo (Logica Temporale).
      */
     @Test
     public void testVerificaRitardo() {
-        System.out.println("verificaRitardo");
-        Prestito instance = null;
-        boolean expResult = false;
-        boolean result = instance.verificaRitardo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Caso 1: Prestito attivo non scaduto (oggi < scadenza)
+        assertFalse(prestito.verificaRitardo(), "Non dovrebbe essere in ritardo oggi");
+        
+        // Caso 2: Prestito chiuso in ritardo
+        LocalDate dataTardi = dataScadenza.plusDays(1);
+        prestito.chiudiPrestito(dataTardi);
+        assertTrue(prestito.verificaRitardo(), "Dovrebbe rilevare il ritardo sulla data effettiva");
     }
-
-    /**
-     * Test of segnaRitardo method, of class Prestito.
-     */
-    @Test
-    public void testSegnaRitardo() {
-        System.out.println("segnaRitardo");
-        Prestito instance = null;
-        instance.segnaRitardo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

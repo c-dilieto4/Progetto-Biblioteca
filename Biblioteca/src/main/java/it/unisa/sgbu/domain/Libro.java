@@ -15,6 +15,9 @@ import java.util.List;
  * Questa classe gestisce i dati anagrafici del libro e il tracciamento
  * delle copie disponibili e totali, in conformità con i requisiti dei dati.
  * L'ISBN funge da identificativo primario e univoco.
+ * 
+ * Implementa l'interfaccia java.io.Serializable per consentire la serializzazione
+ * e il salvataggio persistente dell'oggetto su file.
  */
 public class Libro implements Serializable{
     
@@ -70,7 +73,7 @@ public class Libro implements Serializable{
     
     /**
      * @brief Restituisce il titolo del libro.
-     * @return Una List<String> contenente i nomi degli autori
+     * @return Una stringa contenente il titolo.
      */
     public String getTitolo() {
          return titolo;
@@ -79,7 +82,7 @@ public class Libro implements Serializable{
     
     /**
      * @brief Restituisce l'autore o gli autori del libro.
-     * @return Una stringa rappresentante l'autore o la lista degli autori.
+     * @return Una List<String> rappresentante l'autore o la lista degli autori.
      */
     public List<String> getAutore() {
          return autore;
@@ -87,11 +90,19 @@ public class Libro implements Serializable{
 
     
     /**
-     * @brief Restituisce il numero di copie attualmente disponibili.
-     * @return Un intero rappresentante le copie presenti in biblioteca e non in prestito.
+     * @brief Restituisce il numero di copie totali.
+     * @return Un intero rappresentante le copie presenti in biblioteca.
+     */
+    public int getCopieTotali() {
+         return copieTotali;
+    }
+    
+    /**
+     * @brief Restituisce il numero di copie attualmente disponibili per il prestito.
+     * @return Un intero rappresentante le copie attualmente presenti (non in prestito) in biblioteca.
      */
     public int getCopieDisponibili() {
-         return copieDisponibili;
+        return copieDisponibili;
     }
     
     
@@ -108,7 +119,10 @@ public class Libro implements Serializable{
      * - copieDisponibili è incrementato di 1.
      */
     public void incrementaDisponibilità(){
-        this.copieDisponibili++;
+        //PRINCIPIO DI ROBUSTEZZA
+        if (copieDisponibili < copieTotali) {
+            this.copieDisponibili++;
+        }
     }
     
     
@@ -125,7 +139,10 @@ public class Libro implements Serializable{
      * - copieDisponibili è decrementato di 1.
      */
     public void decrementaDisponibilità(){
-        this.copieDisponibili--;
+        //PRINCIPIO DI ROBUSTEZZA
+        if (copieDisponibili > 0) {
+            this.copieDisponibili--;
+        }
     }
     
     

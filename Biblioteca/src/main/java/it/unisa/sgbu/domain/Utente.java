@@ -15,6 +15,9 @@ import java.util.*;
  * Questa classe gestisce i dati anagrafici dell'utente e mantiene la relazione
  * logica con i prestiti attivi a suo nome.
  * 
+ * Implementa l'interfaccia java.io.Serializable per consentire la serializzazione
+ * e il salvataggio persistente dell'oggetto su file.
+ * 
  */
 public class Utente implements Serializable {
     
@@ -22,7 +25,7 @@ public class Utente implements Serializable {
     private String nome;
     private String cognome;
     private String email;
-    
+    private List<Prestito> prestitiAttivi;
     
     /**
      * @brief Costruttore della classe Utente.
@@ -49,11 +52,13 @@ public class Utente implements Serializable {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
+        this.prestitiAttivi = new ArrayList<>();
     }
 
     
     /**
      * @brief Restituisce la matricola dell'utente.
+     * Utilizzato per l'ordinamento nella visualizzazione e per la ricerca.
      * @return Stringa contenente la matricola.
      */
     public String getMatricola() {
@@ -68,6 +73,30 @@ public class Utente implements Serializable {
      */
     public String getCognome() {
         return cognome;
+    }
+    
+    /**
+     * @brief Restituisce il nome dell'utente.
+     * * @return Una stringa contenente il nome.
+     */
+    public String getNome() {
+        return nome;
+    }
+    
+    /**
+     * @brief Restituisce il numero attuale di prestiti in carico all'utente.
+     * @return Un intero rappresentante la dimensione della lista prestitiAttivi.
+     */
+    public int getNumeroPrestitiAttivi() {
+        return this.prestitiAttivi.size();
+    }
+    
+    /**
+     * @brief Restituisce la lista completa dei prestiti attualmente in carico all'utente.
+     * * @return La lista (List) di oggetti Prestito associati all'utente.
+     */
+    public List<Prestito> getPrestitiAttivi() {
+        return prestitiAttivi;
     }
     
     
@@ -87,6 +116,10 @@ public class Utente implements Serializable {
      * - Il prestito viene aggiunto alla lista dei prestiti attivi dell'utente.
      */
     public void aggiungiPrestito(Prestito p){
+        // Controllo di robustezza e rispetto delle precondizioni
+        if (p != null && this.verificaLimite()) {
+            this.prestitiAttivi.add(p);
+        }
     }
     
     
@@ -105,7 +138,10 @@ public class Utente implements Serializable {
      * - Il prestito viene rimosso dai prestiti attivi.
      */
     public void rimuoviPrestito(Prestito p){
-        
+        // Controllo di robustezza e rispetto delle precondizioni
+        if (p != null && this.prestitiAttivi.contains(p)) {
+            this.prestitiAttivi.remove(p);
+        }
     }
     
     
@@ -119,7 +155,7 @@ public class Utente implements Serializable {
      * altro libro), false se il limite (3) è stato raggiunto.
      */
     public boolean verificaLimite(){
-        return false;
+        return this.prestitiAttivi.size() < 3;
     }
     
     

@@ -14,6 +14,9 @@ import java.time.*;
  * Questa classe associa un utente a un libro e gestisce le date temporali
  * del prestito, conformemente alla specifica dei dati.
  * Gestisce inoltre lo stato di ritardo nella restituzione.
+ * 
+ * Implementa l'interfaccia java.io.Serializable per consentire la serializzazione
+ * e il salvataggio persistente dell'oggetto su file.
  */
 public class Prestito implements Serializable{
     
@@ -23,7 +26,7 @@ public class Prestito implements Serializable{
     private LocalDate dataInizio;
     private LocalDate dataPrevistaRestituzione;
     private LocalDate dataEffettivaRestituzione;
-    private boolean InRitardo; 
+    private boolean inRitardo; 
     
     
     /**
@@ -56,6 +59,7 @@ public class Prestito implements Serializable{
         this.utente = utente;
         this.dataInizio = dataInizio;
         this.dataPrevistaRestituzione = dataPrevistaRestituzione;
+        this.inRitardo = false;
     }
 
     
@@ -85,14 +89,24 @@ public class Prestito implements Serializable{
         return utente;
     }
     
+    /**
+     * @brief Restituisce la data di inizio del prestito.
+     * @return Un oggetto LocalDate rappresentante la data di avvio.
+     */
     public LocalDate getDataInizio() {
         return dataInizio;
     }
 
+    /**
+     * @brief Restituisce la data prevista per la restituzione.
+     * Questa data rappresenta la scadenza entro cui l'utente deve restituire il libro
+     * per evitare di incorrere in ritardi. È calcolata al momento della creazione del prestito.
+     * @return Un oggetto LocalDate rappresentante la data di scadenza.
+     */
     public LocalDate getDataPrevistaRestituzione() {
         return dataPrevistaRestituzione;
     }
-
+    
     public LocalDate getDataEffettivaRestituzione() {
         return dataEffettivaRestituzione;
     }
@@ -109,38 +123,45 @@ public class Prestito implements Serializable{
      * 
      * @pre
      * - dataEffettiva != null.
-     * - dataEffettivaRestituzione == null: Il prestito deve essere ancora attivo per poter essere chiuso.
-     * - dataEffettiva >= dataInizio: Non è possibile restituire un libro prima di averlo preso in prestito.
+     * - dataEffettiva <= dataInizio: Non è possibile restituire un libro prima di averlo preso in prestito.
      * 
      * @post
      * - Il prestito è considerato chiuso.
      * - Il flag InRitardo è impostato a true se dataEffettiva > dataPrevistaRestituzione, altrimenti resta false.
      */
     public void chiudiPrestito(LocalDate dataEffettiva){
-        
-        dataEffettivaRestituzione=dataEffettiva;
-        
-        if (dataEffettiva.isAfter(dataPrevistaRestituzione)) {
-            segnaRitardo();
+        if (dataEffettiva != null) {
+            this.dataEffettivaRestituzione = dataEffettiva;
+            // Controlla se la data effettiva è DOPO la data prevista
+            if (dataEffettiva.isAfter(dataPrevistaRestituzione)) {
+                segnaRitardo();
+            }
         }
     }
 
 
     /**
-     * @brief Verifica se il prestito è in ritardo confrontando la data prevista di restituzione 
-     * con la data odierna (o la data effettiva se già chiusa)
-     * 
-     * Confronta la data effettiva (o corrente) con la data prevista di restituzione
-     * come descritto nel "Flusso di segnalazione ritardo".
-     * 
-     * @return true se dataEffettiva > dataPrevistaRestituzione, altrimenti false.
+     * @brief Verifica se il prestito è in ritardo.
+     * Controlla lo stato temporale del prestito.
+     * - Se il prestito è CHIUSO: confronta la data effettiva con la scadenza.
+     * - Se il prestito è ATTIVO: confronta la data di oggi con la scadenza.
+     * * @return true se la data di confronto è successiva alla scadenza, false altrimenti.
      */
     public boolean verificaRitardo(){
+        LocalDate dataConfronto;
         
-        if (dataEffettivaRestituzione != null) {
-            return dataEffettivaRestituzione.isAfter(dataPrevistaRestituzione);
+        if (this.dataEffettivaRestituzione != null) {
+            // Caso 1: Il libro è stato restituito.
+            // Uso la data in cui è avvenuta la restituzione.
+            dataConfronto = this.dataEffettivaRestituzione;
+        } else {
+            // Caso 2: Il prestito è ancora in corso.
+            // Uso la data di oggi per vedere se sono fuori tempo massimo.
+            dataConfronto = LocalDate.now();
         }
-        return LocalDate.now().isAfter(dataPrevistaRestituzione);
+        
+        // Restituisce true se la data di confronto è DOPO la data prevista
+        return dataConfronto.isAfter(this.dataPrevistaRestituzione);
     }
 
 
@@ -158,11 +179,7 @@ public class Prestito implements Serializable{
      * - Il flag InRitardo è impostato a true.
      */
     public void segnaRitardo(){
-        InRitardo=true;
-    }
-    
-    public boolean isInRitardo() {
-        return InRitardo;
+        this.inRitardo = true;
     }
     
     

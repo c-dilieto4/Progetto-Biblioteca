@@ -5,9 +5,11 @@
  */
 package it.unisa.sgbu.service;
 
+import it.unisa.sgbu.domain.Libro;
 import it.unisa.sgbu.domain.Prestito;
 import it.unisa.sgbu.domain.Utente;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -22,129 +24,107 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class RegistroPrestitiTest {
     
-    public RegistroPrestitiTest() {
-    }
+    private RegistroPrestiti registro;
+    private Catalogo catalogo;
+    private Anagrafica anagrafica;
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
+    private Libro libroTest;
+    private Utente utenteTest;
+
     @BeforeEach
     public void setUp() {
+        // Inizializzo i servizi dipendenti
+        catalogo = new Catalogo();
+        anagrafica = new Anagrafica();
+        registro = new RegistroPrestiti(catalogo, anagrafica);
+        
+        // Creo dati di test
+        // Libro con 1 sola copia per testare l'esaurimento
+        List<String> autori = new ArrayList<>();
+        autori.add("Autore Test");
+        libroTest = new Libro("ISBN-123", "Libro Test", autori, 2020, 1);
+        
+        utenteTest = new Utente("MATR-001", "Mario", "Rossi", "email@test.it");
+        
+        // Popolo i "database" in memoria
+        catalogo.aggiungiLibro(libroTest);
+        anagrafica.aggiungiUtente(utenteTest);
     }
     
-    @AfterEach
-    public void tearDown() {
-    }
-
-    /**
-     * Test of registraPrestito method, of class RegistroPrestiti.
-     */
     @Test
-    public void testRegistraPrestito() {
-        System.out.println("registraPrestito");
-        String isbn = "";
-        String matr = "";
-        LocalDate dataPrev = null;
-        RegistroPrestiti instance = null;
-        Prestito expResult = null;
-        Prestito result = instance.registraPrestito(isbn, matr, dataPrev);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testRegistraPrestito_Successo() {
+        
+        LocalDate scadenza = LocalDate.now().plusDays(30);
+        Prestito p = registro.registraPrestito("ISBN-123", "MATR-001", scadenza);
+        
+        assertNotNull(p, "Il prestito dovrebbe essere creato con successo");
+        assertEquals(libroTest, p.getLibro());
+        assertEquals(utenteTest, p.getUtente());
+        
+        // Verifica
+        assertEquals(0, libroTest.getCopieDisponibili(), "Le copie del libro devono scendere a 0");
+        assertEquals(1, utenteTest.getNumeroPrestitiAttivi(), "L'utente deve avere 1 prestito attivo");
+        assertEquals(1, registro.getPrestitiAttivi().size(), "Il registro deve contenere 1 prestito");
     }
 
-    /**
-     * Test of registraRestituzione method, of class RegistroPrestiti.
-     */
+    @Test
+    public void testRegistraPrestito_Fallimento_CopieEsaurite() {
+        
+        // Consumo l'unica copia disponibile
+        registro.registraPrestito("ISBN-123", "MATR-001", LocalDate.now().plusDays(30));
+        
+        // Tento un secondo prestito dello stesso libro (con un altro utente per isolare il test)
+        Utente utente2 = new Utente("MATR-002", "Luigi", "Verdi", "l.verdi@test.it");
+        anagrafica.aggiungiUtente(utente2);
+        
+        Prestito p2 = registro.registraPrestito("ISBN-123", "MATR-002", LocalDate.now().plusDays(30));
+        
+        assertNull(p2, "Il prestito non deve essere creato se non ci sono copie");
+        assertEquals(0, utente2.getNumeroPrestitiAttivi(), "L'utente 2 non deve avere prestiti");
+    }
+
+    @Test
+    public void testRegistraPrestito_Fallimento_LimiteUtente() {
+        
+        List<String> autori = new ArrayList<>();
+        autori.add("A");
+        Libro libroInfinito = new Libro("ISBN-999", "Libro Infinito", autori, 2020, 100);
+        catalogo.aggiungiLibro(libroInfinito);
+        
+        // Assegno 3 prestiti all'utente
+        registro.registraPrestito("ISBN-999", "MATR-001", LocalDate.now().plusDays(30));
+        registro.registraPrestito("ISBN-999", "MATR-001", LocalDate.now().plusDays(30));
+        registro.registraPrestito("ISBN-999", "MATR-001", LocalDate.now().plusDays(30));
+        
+        assertEquals(3, utenteTest.getNumeroPrestitiAttivi());
+        
+        // Tento il 4° prestito
+        Prestito p4 = registro.registraPrestito("ISBN-999", "MATR-001", LocalDate.now().plusDays(30));
+        
+        assertNull(p4, "L'utente non può superare i 3 prestiti");
+        assertEquals(3, utenteTest.getNumeroPrestitiAttivi(), "I prestiti devono rimanere 3");
+    }
+
     @Test
     public void testRegistraRestituzione() {
-        System.out.println("registraRestituzione");
-        int idPrestito = 0;
-        LocalDate dataEff = null;
-        RegistroPrestiti instance = null;
-        boolean expResult = false;
-        boolean result = instance.registraRestituzione(idPrestito, dataEff);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPrestitiAttivi method, of class RegistroPrestiti.
-     */
-    @Test
-    public void testGetPrestitiAttivi_0args() {
-        System.out.println("getPrestitiAttivi");
-        RegistroPrestiti instance = null;
-        List<Prestito> expResult = null;
-        List<Prestito> result = instance.getPrestitiAttivi();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPrestitiAttivi method, of class RegistroPrestiti.
-     */
-    @Test
-    public void testGetPrestitiAttivi_Utente() {
-        System.out.println("getPrestitiAttivi");
-        Utente u = null;
-        RegistroPrestiti instance = null;
-        List<Prestito> expResult = null;
-        List<Prestito> result = instance.getPrestitiAttivi(u);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPrestitiInRitardo method, of class RegistroPrestiti.
-     */
-    @Test
-    public void testGetPrestitiInRitardo() {
-        System.out.println("getPrestitiInRitardo");
-        RegistroPrestiti instance = null;
-        List<Prestito> expResult = null;
-        List<Prestito> result = instance.getPrestitiInRitardo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of haPrestitiAttivi method, of class RegistroPrestiti.
-     */
-    @Test
-    public void testHaPrestitiAttivi() {
-        System.out.println("haPrestitiAttivi");
-        String matricola = "";
-        RegistroPrestiti instance = null;
-        boolean expResult = false;
-        boolean result = instance.haPrestitiAttivi(matricola);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of trovaPrestito method, of class RegistroPrestiti.
-     */
-    @Test
-    public void testTrovaPrestito() {
-        System.out.println("trovaPrestito");
-        int idPrestito = 0;
-        RegistroPrestiti instance = null;
-        Prestito expResult = null;
-        Prestito result = instance.trovaPrestito(idPrestito);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        // Creo un prestito
+        Prestito p = registro.registraPrestito("ISBN-123", "MATR-001", LocalDate.now().plusDays(30));
+        assertNotNull(p);
+        int idPrestito = p.getIdPrestito();
+        
+        // Eseguo restituzione
+        boolean esito = registro.registraRestituzione(idPrestito, LocalDate.now());
+        
+        assertTrue(esito, "La restituzione deve andare a buon fine");
+        assertNotNull(p.getDataEffettivaRestituzione(), "Il prestito deve avere una data di chiusura");
+        
+        // Verifiche stato
+        assertEquals(1, libroTest.getCopieDisponibili(), "La copia deve tornare disponibile");
+        assertEquals(0, utenteTest.getNumeroPrestitiAttivi(), "L'utente non deve avere più prestiti attivi");
+        
+        // Il registro non deve mostrare questo prestito tra quelli "Attivi"
+        assertEquals(0, registro.getPrestitiAttivi().size());
     }
     
 }

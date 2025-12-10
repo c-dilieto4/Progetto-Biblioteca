@@ -34,6 +34,9 @@ public class RegistroPrestiti {
      * @param[in] anagrafica Istanza valida dell'anagrafica utenti.
      */
     public RegistroPrestiti(Catalogo catologo, Anagrafica anagrafica){
+        this.catologo = catologo;
+        this.anagrafica = anagrafica;
+        this.prestitiAttivi = new ArrayList<>();
     }
     
     
@@ -65,7 +68,33 @@ public class RegistroPrestiti {
      * - `Libro.copieDisponibili` viene decrementato di 1.
      */
     public Prestito registraPrestito(String isbn, String matr, LocalDate dataPrev){
-        return null;
+        Libro libro = catologo.getLibro(isbn);
+        Utente utente = anagrafica.getUtente(matr);
+        
+        // Robustezza: se libro o utente non esistono, fallisco
+        if (libro == null || utente == null) {
+            return null;
+        }
+        
+        // Verifica Vincoli
+        if (!libro.isDisponibile()) {
+            return null; // Violazione [FC-1]
+        }
+        
+        if (!utente.verificaLimite()) {
+            return null; // Violazione [FC-2]
+        }
+        
+        // Creazione Prestito
+        int nuovoId = prestitiAttivi.size() + 1; // Generazione ID
+        Prestito nuovoPrestito = new Prestito(nuovoId, libro, utente, LocalDate.now(), dataPrev);
+        
+        // Aggiornamento Stato
+        libro.decrementaDisponibilità();       
+        utente.aggiungiPrestito(nuovoPrestito);   
+        this.prestitiAttivi.add(nuovoPrestito); 
+        
+        return nuovoPrestito;
     }
     
     
@@ -88,7 +117,21 @@ public class RegistroPrestiti {
      * - Se in ritardo, lo stato del prestito viene aggiornato.
      */
     public boolean registraRestituzione(int idPrestito, LocalDate dataEff){
-        return false;
+        
+        Prestito prestito = trovaPrestito(idPrestito);
+        
+        if (prestito == null) {
+            return false;
+        }
+        
+        Libro libro = prestito.getLibro();
+        Utente utente = prestito.getUtente();
+        
+        prestito.chiudiPrestito(dataEff); 
+        libro.incrementaDisponibilità();  
+        utente.rimuoviPrestito(prestito);
+        
+        return true;
     }
     
     
@@ -102,7 +145,25 @@ public class RegistroPrestiti {
      * @return Lista di oggetti Prestito non ancora chiusi.
      */
     public List<Prestito> getPrestitiAttivi(){
-        return null;
+        List<Prestito> attivi = new ArrayList<>();
+        
+        // 2. Scorro tutto l'archivio con un ciclo
+        for (Prestito p : this.prestitiAttivi) {
+            // Se la data effettiva è null, il prestito è ancora aperto
+            if (p.getDataEffettivaRestituzione() == null) {
+                attivi.add(p);
+            }
+        }
+        
+        // Ordino la lista per data di scadenza (richiesto dalla traccia)
+        Collections.sort(attivi, new Comparator<Prestito>() {
+            @Override
+            public int compare(Prestito p1, Prestito p2) {
+                return p1.getDataPrevistaRestituzione().compareTo(p2.getDataPrevistaRestituzione());
+            }
+        });
+        
+        return attivi;
     }
     
     
@@ -117,7 +178,9 @@ public class RegistroPrestiti {
      * @return Lista dei prestiti associati all'utente.
      */
     public List<Prestito> getPrestitiAttivi(Utente u){
-        return null;
+        if (u == null) 
+            return new ArrayList<>();
+        return u.getPrestitiAttivi();
     }
     
     
@@ -125,12 +188,20 @@ public class RegistroPrestiti {
      * @brief Identifica e restituisce i prestiti in ritardo.
      * 
      * Filtra i prestiti attivi confrontando la data prevista di restituzione
-     * con la data corrente, supportando la funzionalità "Gestione dei ritardi".
+     * con la data corrente
      * 
      * @return Lista di prestiti scaduti.
      */
     public List<Prestito> getPrestitiInRitardo(){
-        return null;
+        List<Prestito> inRitardo = new ArrayList<>();
+        
+        for (Prestito p : this.prestitiAttivi) {
+            if (p.getDataEffettivaRestituzione() == null && p.verificaRitardo()) {
+                inRitardo.add(p);
+            }
+        }
+        
+        return inRitardo;
     }
     
     
@@ -146,7 +217,9 @@ public class RegistroPrestiti {
      * @return true se esistono prestiti attivi, false altrimenti.
      */
     public boolean haPrestitiAttivi(String matricola){
-        return false;
+        Utente u = anagrafica.getUtente(matricola);
+        if (u == null) return false;
+        return !u.getPrestitiAttivi().isEmpty();
     }
     
     
@@ -161,6 +234,11 @@ public class RegistroPrestiti {
      * @return L'oggetto Prestito se trovato, null altrimenti.
      */
     public Prestito trovaPrestito(int idPrestito){
+        for(Prestito p : prestitiAttivi){
+            if(p.getIdPrestito() == idPrestito){
+                return p;
+            }
+        }
         return null;
     }
     

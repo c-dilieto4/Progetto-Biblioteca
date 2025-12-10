@@ -22,6 +22,12 @@ public class LibroTest {
     
     private Libro libro;
     
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto Libro "pulito" (con 2 copie totali)
+     * per garantire che i test siano indipendenti l'uno dall'altro.
+     */
     @BeforeEach
     public void setUp() {
         List<String> autori = new ArrayList<>();
@@ -32,13 +38,38 @@ public class LibroTest {
     }
     
 
+    /**
+     * @brief Test della coerenza dello stato iniziale.
+     * * @test Verifica che, subito dopo l'istanziazione dell'oggetto tramite costruttore:
+     *   Il numero di copie disponibili sia esattamente uguale al numero di copie totali.
+     */
     @Test
     public void testInizializzazioneCopie() {
-        System.out.println("Test Inizializzazione Copie");
-        // Verifica che le copie disponibili siano uguali a quelle totali (2)
-        assertEquals(2, libro.getCopieDisponibili(), "Le copie disponibili iniziali errate");
-        // Verifica che il libro risulti disponibile
-        assertTrue(libro.isDisponibile(), "Il libro dovrebbe essere disponibile");
+        // Appena creato, le copie disponibili devono essere uguali a quelle totali
+        assertEquals(2, libro.getCopieDisponibili(), "Le copie disponibili iniziali devono essere 2");
+    }
+    
+    /**
+     * @brief Test dei metodi di accesso ai dati anagrafici (Getter).
+     * @test Verifica che i metodi getISBN, getTitolo, getAutore e getCopieTotali
+     * restituiscano esattamente i valori passati al costruttore durante il setup.
+     */
+    @Test
+    public void testMetodiGetter() {
+        // Verifica ISBN
+        assertEquals("978-0134685991", libro.getISBN(), "L'ISBN non corrisponde");
+        
+        // Verifica Titolo
+        assertEquals("Effective Java", libro.getTitolo(), "Il titolo non corrisponde");
+        
+        // Verifica Autore (Gestione della Lista)
+        assertNotNull(libro.getAutore(), "La lista autori non deve essere null");
+        assertEquals(1, libro.getAutore().size(), "Deve esserci un solo autore");
+        assertEquals("Joshua Bloch", libro.getAutore().get(0), "Il nome dell'autore non corrisponde");
+        
+        // Verifica Copie Totali e Disponibili
+        assertEquals(2, libro.getCopieTotali(), "Le copie totali non corrispondono");
+        assertEquals(2, libro.getCopieDisponibili(), "getCopieDisponibili iniziale deve essere uguale al totale");
     }
 
     /**
@@ -47,15 +78,17 @@ public class LibroTest {
      */
     @Test
     public void testIncrementaDisponibilità() {
-        System.out.println("Test incrementaDisponibilità");
+        // Preparazione: Porto le copie a 1
+        libro.decrementaDisponibilità(); 
+        assertEquals(1, libro.getCopieDisponibili());
         
-        // Preparazione: decremento prima per poter incrementare
-        libro.decrementaDisponibilità(); // copie = 1
+        // Test: Incremento
+        libro.incrementaDisponibilità();
+        assertEquals(2, libro.getCopieDisponibili(), "Le copie dovrebbero tornare a 2");
         
-        // Azione: restituzione
-        libro.incrementaDisponibilità(); // copie = 2
-        
-        assertEquals(2, libro.getCopieDisponibili(), "Le copie dovrebbero tornare al massimo (2)");
+        // Test di robustezza: provo a incrementare oltre il totale (2)
+        libro.incrementaDisponibilità();
+        assertEquals(2, libro.getCopieDisponibili(), "Le copie non devono superare il totale");
     }
 
     /**
@@ -64,12 +97,16 @@ public class LibroTest {
      */
     @Test
     public void testDecrementaDisponibilità() {
-        System.out.println("Test decrementaDisponibilità");
+        // Stato iniziale: 2 copie
+        libro.decrementaDisponibilità();
+        assertEquals(1, libro.getCopieDisponibili(), "Dovrebbe rimanere 1 copia");
         
         libro.decrementaDisponibilità();
+        assertEquals(0, libro.getCopieDisponibili(), "Dovrebbero rimanere 0 copie");
         
-        assertEquals(1, libro.getCopieDisponibili(), "Le copie dovrebbero essere 1 dopo un prestito");
-        assertTrue(libro.isDisponibile(), "Con 1 copia il libro è ancora disponibile");
+        // Test di robustezza: provo a decrementare ancora
+        libro.decrementaDisponibilità(); 
+        assertEquals(0, libro.getCopieDisponibili(), "Le copie non devono scendere sotto zero");
     }
 
     /**
@@ -77,15 +114,14 @@ public class LibroTest {
      * Verifica che il libro NON sia disponibile quando le copie arrivano a 0.
      */
     @Test
-    public void testIsDisponibile_Falso_CopieEsaurite() {
-        System.out.println("Test isDisponibile (Copie Esaurite)");
+    public void testIsDisponibile() {
+        // Caso 1: Ci sono copie (2) -> Deve essere true
+        assertTrue(libro.isDisponibile(), "Il libro dovrebbe essere disponibile");
         
-        // Simulo due prestiti per esaurire le copie
+        // Caso 2: Esaurisco le copie -> Deve essere false
         libro.decrementaDisponibilità();
         libro.decrementaDisponibilità();
-        
-        assertEquals(0, libro.getCopieDisponibili());
-        assertFalse(libro.isDisponibile(), "Il libro non deve essere disponibile con 0 copie");
+        assertFalse(libro.isDisponibile(), "Il libro non dovrebbe essere disponibile con 0 copie");
     }
     
 }
