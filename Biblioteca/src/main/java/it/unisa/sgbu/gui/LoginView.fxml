@@ -24,9 +24,9 @@
       <PasswordField fx:id="txtPassword" promptText="Password" />
       <Button defaultButton="true" mnemonicParsing="false" onAction="#handleLogin" prefWidth="200.0" text="Accedi" />
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
+        <image>
             <Image url="@/images/logo_unisa.png" />
-         </image>
+        </image>
       </ImageView>
       <Label fx:id="lblErrore" text="Credenziali non valide!" textFill="RED" visible="false" />
    </children>
