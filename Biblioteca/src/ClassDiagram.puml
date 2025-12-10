@@ -1,0 +1,35 @@
+@startuml
+annotation java.lang.Override
+class it.unisa.sgbu.app.Main
+class it.unisa.sgbu.domain.ValidatoreDati
+class it.unisa.sgbu.gui.GUIController
+class it.unisa.sgbu.gui.GUIView
+class it.unisa.sgbu.io.AuditTrail
+class it.unisa.sgbu.io.FileArchivio
+class it.unisa.sgbu.io.FileAutenticatore
+class it.unisa.sgbu.io.IArchivioDati
+class it.unisa.sgbu.io.IAutenticatore
+class it.unisa.sgbu.io.ILogger
+class it.unisa.sgbu.service.Anagrafica
+class it.unisa.sgbu.service.Catalogo
+class it.unisa.sgbu.service.RegistroPrestiti
+class java.util.ArrayList
+class javafx.application.Application
+class javafx.stage.Stage
+it.unisa.sgbu.app.Main ..> java.lang.Override
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.domain.ValidatoreDati
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.gui.GUIController
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.gui.GUIView
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.io.AuditTrail
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.io.FileArchivio
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.io.FileAutenticatore
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.io.IArchivioDati
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.io.IAutenticatore
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.io.ILogger
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.service.Anagrafica
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.service.Catalogo
+it.unisa.sgbu.app.Main ..> it.unisa.sgbu.service.RegistroPrestiti
+it.unisa.sgbu.app.Main ..> java.util.ArrayList
+it.unisa.sgbu.app.Main --|> javafx.application.Application
+it.unisa.sgbu.app.Main ..> javafx.stage.Stage
+@enduml
