@@ -25,7 +25,7 @@
       <Button defaultButton="true" mnemonicParsing="false" onAction="#handleLogin" prefWidth="200.0" text="Accedi" />
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../../Downloads/logo_unisa.png" />
+            <Image url="@/images/logo_unisa.png" />
          </image>
       </ImageView>
       <Label fx:id="lblErrore" text="Credenziali non valide!" textFill="RED" visible="false" />
