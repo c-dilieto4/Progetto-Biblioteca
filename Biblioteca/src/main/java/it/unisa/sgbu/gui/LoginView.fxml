@@ -10,27 +10,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="376.0" prefWidth="384.0" spacing="15.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.sgbu.gui.LoginController">
-   <padding>
-      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-   </padding>
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="450.0" spacing="0.0" style="-fx-font-family: 'Segoe UI', sans-serif; -fx-background-color: #f4f6f8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.sgbu.gui.LoginController">
+   
    <children>
-      <Label prefHeight="35.0" prefWidth="244.0" text="SGBU - Accesso Bibliotecario">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      
-      <TextField fx:id="txtUsername" promptText="Username" />
-      <PasswordField fx:id="txtPassword" promptText="Password" />
-      
-      <Button defaultButton="true" mnemonicParsing="false" onAction="#handleLogin" prefWidth="200.0" text="Accedi" />
-      
-      <ImageView fx:id="imgLogo" fitHeight="120.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../images/logo_unisa.png" />
-         </image></ImageView>
-      
-      <Label fx:id="lblErrore" text="Credenziali non valide!" textFill="RED" visible="false" />
+      <VBox alignment="CENTER" maxWidth="350.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+         </padding>
+         
+         <children>
+            <ImageView fx:id="imgLogo" fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/logo_unisa.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </ImageView>
+
+            <Label text="Accesso Bibliotecario" textFill="#2c3e50">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            
+            <VBox spacing="15.0">
+               <children>
+                  <TextField fx:id="txtUsername" prefHeight="40.0" promptText="Username" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-padding: 5 15;" />
+                  
+                  <PasswordField fx:id="txtPassword" prefHeight="40.0" promptText="Password" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-padding: 5 15;" />
+               </children>
+            </VBox>
+            
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand; -fx-font-size: 14;" text="ACCEDI" />
+            
+            <Label fx:id="lblErrore" text="Credenziali non valide!" textFill="#e74c3c" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            
+         </children>
+      </VBox>
    </children>
 </VBox>
