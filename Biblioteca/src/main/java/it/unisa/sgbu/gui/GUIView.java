@@ -145,7 +145,7 @@ public class GUIView {
      * @brief Gestisce l'interazione per la restituzione di un libro.
      * 
      * Implementa l'interfaccia per il relativo Caso d'Uso.
-     * 1. Richiede l'ID del prestito o scansiona il libro.
+     * 1. Richiede l'ID del prestito.
      * 2. Invoca `sistema.gestisciRestituzione(int idPrestito, LocalDate dataEffettivaRestituzione)`.
      */
     public void gestisciRestituzionePrestito(){
@@ -198,8 +198,6 @@ public class GUIView {
      * @brief Visualizza l'elenco dei prestiti attivi.
      * 
      * Mostra la tabella dei prestiti.
-     * Supporta l'apposito requisito: evidenzia visivamente (es. colore rosso) 
-     * le righe corrispondenti ai prestiti in ritardo.
      * 
      * @param[in] Lista La lista di prestiti attivi.
      */
