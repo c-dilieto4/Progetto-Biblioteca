@@ -119,7 +119,7 @@ public class Utente implements Serializable {
      * altro libro), false se il limite (3) è stato raggiunto.
      */
     public boolean verificaLimite(){
-        
+        return false;
     }
     
     
