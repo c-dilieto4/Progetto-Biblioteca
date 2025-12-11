@@ -1,4 +1,4 @@
-/*
+//*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,7 +19,6 @@ import it.unisa.sgbu.service.Catalogo;
 import it.unisa.sgbu.service.RegistroPrestiti;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import java.util.ArrayList;
 
 /**
  * @brief Punto di ingresso (Bootstrap) dell'applicazione SGBU.
@@ -30,6 +29,10 @@ import java.util.ArrayList;
 public class Main extends Application {
 
     private GUIController controller;
+    
+    // Costanti di configurazione
+    private static final String PATH_DATI = "dati"; // Cartella salvataggio
+    private static final String FILE_CREDENZIALI = "credenziali.dat"; // File login
 
     /**
      * @brief Metodo di avvio standard di JavaFX.
@@ -39,12 +42,48 @@ public class Main extends Application {
      * 3. Viene creato il Controller, iniettando i servizi.
      * 4. Viene creata la View, collegandola al Controller.
      * 5. Viene avviato il sistema (caricamento dati).
-     * 
-     * @param primaryStage Lo stage primario fornito dalla piattaforma JavaFX.
+     * * @param primaryStage Lo stage primario fornito dalla piattaforma JavaFX.
      */
     @Override
     public void start(Stage primaryStage) {
-         
+        try {
+            // Creo l'archivio (passo null come logger temporaneamente per evitare cicli,
+            // oppure FileArchivio userà System.err se il logger è null)
+            IArchivioDati archivio = new FileArchivio(PATH_DATI, null);
+            
+            // Creo il Logger (Audit Trail)
+            ILogger logger = new AuditTrail(null, archivio);
+            
+            // Creo l'Autenticatore
+            IAutenticatore autenticatore = new FileAutenticatore(FILE_CREDENZIALI, archivio);
+            
+            ValidatoreDati validatore = new ValidatoreDati();
+            Catalogo catalogo = new Catalogo();
+            Anagrafica anagrafica = new Anagrafica();
+            
+            // Il Registro Prestiti ha bisogno di accedere a Catalogo e Anagrafica
+            RegistroPrestiti registro = new RegistroPrestiti(catalogo, anagrafica);
+            
+            controller = new GUIController(
+                    archivio, 
+                    logger, 
+                    autenticatore, 
+                    catalogo, 
+                    anagrafica, 
+                    registro, 
+                    validatore
+            );
+            
+            controller.avviaSistema();
+            
+            GUIView view = new GUIView(controller, primaryStage);
+            
+            view.mostraFinestraLogin();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Errore critico durante l'inizializzazione dell'applicazione.");
+        }
     }
 
     /**
@@ -54,7 +93,10 @@ public class Main extends Application {
      */
     @Override
     public void stop() {
-        
+        if (controller != null) {
+            System.out.println("Chiusura applicazione rilevata. Salvataggio dati in corso...");
+            controller.chiudiSistema();
+        }
     }
 
     /**
@@ -63,7 +105,5 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        
     }
-    
 }

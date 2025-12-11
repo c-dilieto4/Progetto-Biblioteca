@@ -97,6 +97,10 @@ public class Libro implements Serializable{
          return copieTotali;
     }
     
+    public int getAnno() {
+         return anno;
+    }
+    
     /**
      * @brief Restituisce il numero di copie attualmente disponibili per il prestito.
      * @return Un intero rappresentante le copie attualmente presenti (non in prestito) in biblioteca.

@@ -29,11 +29,18 @@ public class LoginController {
         String user = txtUsername.getText();
         String pass = txtPassword.getText();
 
+        if (user.isEmpty() || pass.isEmpty()) {
+            lblErrore.setText("Inserisci username e password.");
+            lblErrore.setVisible(true);
+            return;
+        }
+
         if (sistema.gestisciLogin(user, pass)) {
             mainView.avviaInterfaccia(); 
         } else {
-            lblErrore.setText("Credenziali non valide!");
+            lblErrore.setText(MessaggiInterfaccia.CREDENZIALI_NON_VALIDE);
             lblErrore.setVisible(true);
+            txtPassword.clear();
         }
     }
 }
