@@ -107,6 +107,11 @@ public class Prestito implements Serializable{
         return dataPrevistaRestituzione;
     }
     
+    
+    /**
+     * @brief Restituisce la data dell'effetiva restituzione.
+     * @return Un oggetto LocalDate rappresentante la data di restituzione.
+     */
     public LocalDate getDataEffettivaRestituzione() {
         return dataEffettivaRestituzione;
     }

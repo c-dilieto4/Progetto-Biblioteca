@@ -97,6 +97,11 @@ public class Libro implements Serializable{
          return copieTotali;
     }
     
+    
+    /**
+     * @brief Restituisce l'anno di pubblicazione del libro.
+     * @return Un intero rappresentante l'anno di pubblicazione.
+     */
     public int getAnno() {
          return anno;
     }
