@@ -43,7 +43,7 @@ public class GUIView {
      */
     public void avviaInterfaccia(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml")); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DashboardView.fxml")); 
             Parent root = loader.load();
             
             this.dashboardController = loader.getController();
@@ -326,7 +326,7 @@ public class GUIView {
     
     public void mostraFinestraLogin(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml")); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginView.fxml")); 
             Parent root = loader.load();
             
             LoginController controller = loader.getController();
