@@ -5,6 +5,8 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.time.Year;
+
 /**
  * @brief Classe di utilità per la validazione sintattica e logica dei dati di input.
  * 
@@ -26,7 +28,10 @@ public class ValidatoreDati {
      * @return true se il formato è valido, false altrimenti.
      */
     public boolean validaISBN(String isbn){
-        return false;
+        // Controlla che non sia null
+        // Controlla che contenga solo numeri (0-9) o trattini (-)
+        // Controlla che la lunghezza totale sia tra 13 e 17 caratteri
+        return isbn != null && isbn.matches("^[0-9-]{13,17}$");
     }
 
     
@@ -42,7 +47,7 @@ public class ValidatoreDati {
      * @return true se la matricola è numerica e di 10 cifre, false altrimenti.
      */
     public boolean validaMatricola(String matricola){
-        return false;
+        return matricola != null && matricola.matches("^\\d{10}$");
     }
 
     
@@ -57,7 +62,7 @@ public class ValidatoreDati {
      * @return true se il formato è valido, false altrimenti.
      */
     public boolean validaEmail(String email){
-        return false;
+        return email != null && email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     }
     
     
@@ -73,7 +78,9 @@ public class ValidatoreDati {
      * @return true se 0 <= anno <= anno corrente, false altrimenti.
      */
     public boolean validaAnnoPubblicazione(int anno){
-        return false;
+        int annoCorrente = Year.now().getValue();
+        // L'anno deve essere positivo e non nel futuro
+        return anno >= 0 && anno <= annoCorrente;
     }
     
     
@@ -90,6 +97,9 @@ public class ValidatoreDati {
      * @return true se entrambi contengono solo caratteri alfabetici, false altrimenti.
      */
     public boolean validaNomeCognome(String nome, String cognome){
-        return false;
+        if (nome == null || cognome == null) return false;
+        
+        // Verifica che contengano solo lettere, spazi o apostrofi
+        return nome.matches("^[a-zA-Z\\s']+$") && cognome.matches("^[a-zA-Z\\s']+$");
     }
 }

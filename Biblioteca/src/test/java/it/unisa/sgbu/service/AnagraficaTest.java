@@ -114,7 +114,6 @@ public class AnagraficaTest {
      */
     @Test
     public void testCercaUtente() {
-        System.out.println("Test Cerca Utente");
         
         anagrafica.aggiungiUtente(u1); // Rossi
         anagrafica.aggiungiUtente(u2); // Verdi

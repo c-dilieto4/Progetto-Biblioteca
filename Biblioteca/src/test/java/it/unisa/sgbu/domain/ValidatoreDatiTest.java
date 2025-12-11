@@ -5,6 +5,7 @@
  */
 package it.unisa.sgbu.domain;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,99 +19,97 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ValidatoreDatiTest {
     
-    public ValidatoreDatiTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
+    private ValidatoreDati validatore;
     
     @BeforeEach
     public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+        validatore = new ValidatoreDati();
     }
 
     /**
-     * Test of validaISBN method, of class ValidatoreDati.
+     * @brief Test validaISBN.
+     * Regola: Codice non vuoto che rispetta un formato base (cifre e trattini).
      */
     @Test
     public void testValidaISBN() {
-        System.out.println("validaISBN");
-        String isbn = "";
-        ValidatoreDati instance = new ValidatoreDati();
-        boolean expResult = false;
-        boolean result = instance.validaISBN(isbn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        // Casi Validi
+        assertTrue(validatore.validaISBN("978-0-13-468599-1"));
+        assertTrue(validatore.validaISBN("0134685997123"));
+        
+        // Casi Invaidi
+        assertFalse(validatore.validaISBN(""), "ISBN vuoto non valido");
+        assertFalse(validatore.validaISBN(null));
     }
-
+    
     /**
-     * Test of validaMatricola method, of class ValidatoreDati.
+     * @brief Test validaMatricola.
+     * Regola: Deve essere composta esattamente da 10 cifre numeriche.
      */
     @Test
     public void testValidaMatricola() {
-        System.out.println("validaMatricola");
-        String matricola = "";
-        ValidatoreDati instance = new ValidatoreDati();
-        boolean expResult = false;
-        boolean result = instance.validaMatricola(matricola);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Caso Valido
+        assertTrue(validatore.validaMatricola("0123456789"), "Matricola 10 cifre deve essere valida");
+        
+        // Casi Invalidi
+        assertFalse(validatore.validaMatricola("123"), "Matricola corta deve fallire");
+        assertFalse(validatore.validaMatricola("012345678900"), "Matricola lunga deve fallire");
+        assertFalse(validatore.validaMatricola("ABC1234567"), "Matricola con lettere deve fallire");
+        assertFalse(validatore.validaMatricola(null), "Matricola null deve fallire");
+        assertFalse(validatore.validaMatricola(""), "Matricola vuota deve fallire");
     }
-
+    
     /**
-     * Test of validaEmail method, of class ValidatoreDati.
+     * @brief Test validaEmail.
+     * Regola: Formato standard x@y.z
      */
     @Test
     public void testValidaEmail() {
-        System.out.println("validaEmail");
-        String email = "";
-        ValidatoreDati instance = new ValidatoreDati();
-        boolean expResult = false;
-        boolean result = instance.validaEmail(email);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        // Casi Validi
+        assertTrue(validatore.validaEmail("mario.rossi@unisa.it"));
+        assertTrue(validatore.validaEmail("test@gmail.com"));
+        
+        // Casi Invalidi
+        assertFalse(validatore.validaEmail("mariorossi.it"), "Manca la chiocciola");
+        assertFalse(validatore.validaEmail("mario@.it"), "Dominio incompleto");
+        assertFalse(validatore.validaEmail("@gmail.com"), "Manca l'utente");
+        assertFalse(validatore.validaEmail(null));
     }
-
+    
     /**
-     * Test of validaAnnoPubblicazione method, of class ValidatoreDati.
+     * @brief Test validaAnnoPubblicazione.
+     * Regola: 0 <= anno <= Anno Corrente.
      */
     @Test
     public void testValidaAnnoPubblicazione() {
-        System.out.println("validaAnnoPubblicazione");
-        int anno = 0;
-        ValidatoreDati instance = new ValidatoreDati();
-        boolean expResult = false;
-        boolean result = instance.validaAnnoPubblicazione(anno);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        int annoCorrente = LocalDate.now().getYear();
+        
+        // Casi Validi
+        assertTrue(validatore.validaAnnoPubblicazione(2000));
+        assertTrue(validatore.validaAnnoPubblicazione(annoCorrente), "L'anno corrente deve essere valido");
+        
+        // Casi Invalidi
+        assertFalse(validatore.validaAnnoPubblicazione(-100), "Anno negativo non valido");
+        assertFalse(validatore.validaAnnoPubblicazione(annoCorrente + 1), "Anno futuro non valido");
     }
-
+    
     /**
-     * Test of validaNomeCognome method, of class ValidatoreDati.
+     * @brief Test validaNomeCognome.
+     * Regola: Solo caratteri alfabetici (ammettiamo spazi e apostrofi per nomi reali).
      */
     @Test
     public void testValidaNomeCognome() {
-        System.out.println("validaNomeCognome");
-        String nome = "";
-        String cognome = "";
-        ValidatoreDati instance = new ValidatoreDati();
-        boolean expResult = false;
-        boolean result = instance.validaNomeCognome(nome, cognome);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        // Casi Validi
+        assertTrue(validatore.validaNomeCognome("Mario", "Rossi"));
+        assertTrue(validatore.validaNomeCognome("De Luca", "D'Amico"), "Spazi e apostrofi dovrebbero essere accettati");
+        
+        // Casi Invalidi
+        assertFalse(validatore.validaNomeCognome("Mario123", "Rossi"), "Numeri non ammessi");
+        assertFalse(validatore.validaNomeCognome("Mario", ""), "Stringa vuota non ammessa");
+        assertFalse(validatore.validaNomeCognome(null, "Rossi"), "Null non ammesso");
     }
     
 }

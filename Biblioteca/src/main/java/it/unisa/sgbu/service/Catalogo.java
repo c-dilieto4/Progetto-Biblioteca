@@ -18,13 +18,14 @@ import java.util.*;
  */
 public class Catalogo {
     
-    private Map<String, Libro> collezione;
+    private Map<String, Libro> registroLibri;
     
     /**
      * @brief Costruttore della classe Catalogo.
      * Inizializza la collezione vuota.
      */
     public Catalogo(){
+        this.registroLibri = new HashMap<>();
     }
     
     
@@ -47,7 +48,15 @@ public class Catalogo {
      * - Il libro è aggiunto alla collezione persistente.
      */
     public boolean aggiungiLibro(Libro l){
-        return false;
+        if (l == null) return false;
+        
+        // Vincolo unicità ISBN
+        if (registroLibri.containsKey(l.getISBN())) {
+            return false;
+        }
+        
+        registroLibri.put(l.getISBN(), l);
+        return true;
     }
     
     
@@ -70,7 +79,13 @@ public class Catalogo {
      * - Il libro è rimosso dalla collezione.
      */
     public boolean rimuoviLibro(String isbn){
-        return false;
+        if (isbn == null || !registroLibri.containsKey(isbn)) {
+            return false;
+        }
+        // La verifica dei prestiti attivi è demandata al Controller/RegistroPrestiti
+        // prima di chiamare questo metodo.
+        registroLibri.remove(isbn);
+        return true;
     }
     
     
@@ -87,7 +102,26 @@ public class Catalogo {
      * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaLibro(String isbn, Libro nl){
-        return false;
+        if (isbn == null || nl == null) return false;
+        
+        if (!registroLibri.containsKey(isbn)) {
+            return false;
+        }
+        
+        // Se l'ISBN cambia, devo gestire la chiave nella mappa
+        if (!isbn.equals(nl.getISBN())) {
+            // Se il nuovo ISBN è già usato da un ALTRO libro -> Errore
+            if (registroLibri.containsKey(nl.getISBN())) {
+                return false;
+            }
+            // Rimuovo vecchio, aggiungo nuovo
+            registroLibri.remove(isbn);
+            registroLibri.put(nl.getISBN(), nl);
+        } else {
+            // Sostituzione semplice
+            registroLibri.put(isbn, nl);
+        }
+        return true;
     }
     
     
@@ -101,7 +135,7 @@ public class Catalogo {
      * @return L'oggetto Libro se trovato, null altrimenti.
      */
     public Libro getLibro(String isbn){
-        return null;
+        return registroLibri.get(isbn);
     }
     
     
@@ -118,7 +152,39 @@ public class Catalogo {
      * @return Lista dei libri che corrispondono ai criteri.
      */
     public List<Libro> ricerca(String query, String campo){
-        return null;
+        List<Libro> risultati = new ArrayList<>();
+        
+        if (query == null || campo == null) return risultati;
+        String qLower = query.toLowerCase();
+        
+        for (Libro l : registroLibri.values()) {
+            boolean trovato = false;
+            
+            if (campo.equalsIgnoreCase("Titolo")) {
+                if (l.getTitolo().toLowerCase().contains(qLower)){
+                    trovato = true;
+                }
+                
+            } else if (campo.equalsIgnoreCase("ISBN")) {
+                if (l.getISBN().contains(query)){
+                    trovato = true;
+                }
+                
+            } else if (campo.equalsIgnoreCase("Autore")) {
+                // Per gli autori (Lista), controllo se ALMENO UNO corrisponde
+                for (String autore : l.getAutore()) {
+                    if (autore.toLowerCase().contains(qLower)) {
+                        trovato = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (trovato) {
+                risultati.add(l);
+            }
+        }
+        return risultati;
     }
     
     
@@ -132,7 +198,16 @@ public class Catalogo {
      * @return Lista di libri ordinata per Titolo.
      */
     public List<Libro> visualizzaOrdinata(){
-        return null;
+        List<Libro> lista = new ArrayList<>(registroLibri.values());
+        
+        Collections.sort(lista, new Comparator<Libro>() {
+            @Override
+            public int compare(Libro l1, Libro l2) {
+                return l1.getTitolo().compareToIgnoreCase(l2.getTitolo());
+            }
+        });
+        
+        return lista;
     }
     
 }
