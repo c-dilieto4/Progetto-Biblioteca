@@ -109,6 +109,11 @@ public class MessaggiInterfaccia {
      */
     public static final String AVVISO_CARICAMENTO_FALLITO = "Caricamento Dati Fallito. Creazione Archivio Vuoto";
     
+    /**
+     * @brief Errore generico di salvataggio.
+     * Usato quando non è possibile determinare la causa specifica (es. prestito fallito per cause multiple).
+     */
+    public static final String ERRORE_GENERICO_SALVATAGGIO = "Impossibile completare l'operazione. Verificare i dati e riprovare.";
     
     /**
      * @brief Errore: Autenticazione fallita.

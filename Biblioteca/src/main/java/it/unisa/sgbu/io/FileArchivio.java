@@ -5,6 +5,16 @@
  */
 package it.unisa.sgbu.io;
 
+import it.unisa.sgbu.gui.MessaggiInterfaccia;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  * @brief Implementazione concreta del meccanismo di persistenza su file.
  * 
@@ -28,6 +38,16 @@ public class FileArchivio implements IArchivioDati{
      * @param[in] logger L'istanza del logger per registrare eventuali fallimenti critici.
      */
     public FileArchivio(String pathDati, ILogger logger){
+        this.pathDati = pathDati;
+        this.logger = logger;
+        
+        // Verifica preliminare: se la cartella base non esiste, prova a crearla
+        if (this.pathDati != null) {
+            File directory = new File(this.pathDati);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        }
     }
     
     
@@ -48,7 +68,29 @@ public class FileArchivio implements IArchivioDati{
      */
     @Override
     public boolean salvaStato(Object dati, String nomeFile){
-        return false;
+        if (dati == null || nomeFile == null || this.pathDati == null) return false;
+        
+        File fileDestinazione = new File(this.pathDati, nomeFile);
+        
+        // Catena di Stream: File -> Buffer -> Object (come nei tuoi appunti)
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new BufferedOutputStream(new FileOutputStream(fileDestinazione)))) {
+            
+            oos.writeObject(dati); // Serializza l'intero oggetto
+            return true;
+            
+        } catch (IOException e) {
+            String baseMsg = String.format(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO, nomeFile);
+            String logMessage = baseMsg + " Dettagli: " + e.getMessage();
+            
+            if (logger != null) {
+                logger.registraAzione(logMessage);
+            } else {
+                System.err.println("[FileArchivio] " + logMessage);
+            }
+            
+            return false;
+        }
     }
  
     
@@ -66,7 +108,28 @@ public class FileArchivio implements IArchivioDati{
      */
     @Override
     public Object caricaStato(String nomeFile){
-        return false;
+        if (nomeFile == null || this.pathDati == null) return null;
+        
+        File fileSorgente = new File(this.pathDati, nomeFile);
+        if (!fileSorgente.exists()) return null;
+        
+        try (ObjectInputStream ois = new ObjectInputStream(
+                new BufferedInputStream(new FileInputStream(fileSorgente)))) {
+            
+            return ois.readObject();
+            
+        } catch (IOException | ClassNotFoundException e) {
+            String baseMsg = String.format(MessaggiInterfaccia.AVVISO_CARICAMENTO_FALLITO, nomeFile);
+            String logMessage = baseMsg + " Dettagli: " + e.getMessage();
+            
+            if (logger != null) {
+                logger.registraAzione(logMessage);
+            } else {
+                System.err.println("[FileArchivio] " + logMessage);
+            }
+            
+            return null;
+        }
     }
     
     
@@ -82,6 +145,8 @@ public class FileArchivio implements IArchivioDati{
      */
     @Override
     public boolean verificaEsistenzaFile(String nomeFile){
-        return false;
+        if (nomeFile == null || this.pathDati == null) return false;
+        File f = new File(this.pathDati, nomeFile);
+        return f.exists() && f.isFile();
     }
 }

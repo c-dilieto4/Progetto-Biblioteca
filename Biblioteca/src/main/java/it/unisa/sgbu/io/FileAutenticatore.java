@@ -5,6 +5,8 @@
  */
 package it.unisa.sgbu.io;
 
+import it.unisa.sgbu.domain.Credenziali;
+
 /**
  * @brief Implementazione del meccanismo di autenticazione basato su file.
  * 
@@ -54,6 +56,22 @@ public class FileAutenticatore implements IAutenticatore{
      */
     @Override
     public boolean verificaCredenziali(String user, String pass){
+        // Controllo robustezza input
+        if (user == null || pass == null) return false;
+        
+        // Carico l'oggetto dal file usando il servizio di I/O
+        Object dati = archivioDati.caricaStato(this.credentialsFile);
+        
+        // Verifico che il caricamento sia andato a buon fine e che il tipo sia giusto
+        if (dati != null && dati instanceof Credenziali) {
+            Credenziali credenzialiSalvate = (Credenziali) dati;
+            
+            // Confronto (Case Sensitive)
+            return user.equals(credenzialiSalvate.getUser()) && 
+                   pass.equals(credenzialiSalvate.getPassword());
+        }
+        
+        // Se il file non esiste o è corrotto, l'autenticazione fallisce per sicurezza
         return false;
     }
 }

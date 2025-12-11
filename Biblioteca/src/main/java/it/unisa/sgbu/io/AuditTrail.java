@@ -5,6 +5,8 @@
  */
 package it.unisa.sgbu.io;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -20,6 +22,8 @@ public class AuditTrail implements ILogger{
     
     private List<String> logRecords;
     private IArchivioDati archivio;
+    private static final String NOME_FILE_LOG = "audit_log.dat"; // File di salvataggio
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     
     /**
@@ -30,6 +34,13 @@ public class AuditTrail implements ILogger{
      * @param[in] archivio Il componente concreto per la persistenza dei file.
      */
     public AuditTrail(List<String> logRecords, IArchivioDati archivio) {
+        this.archivio = archivio;
+        // Se la lista passata è null, ne creo una nuova
+        if(logRecords != null){
+            this.logRecords = logRecords;
+        } else {
+            this.logRecords = new ArrayList<>();
+        }
     }
     
     
@@ -53,6 +64,19 @@ public class AuditTrail implements ILogger{
      */
     @Override
     public void registraAzione(String azione){
+        if (azione == null || azione.isEmpty()) return;
+        
+        // Recupero Timestamp
+        String timestamp = LocalDateTime.now().format(FORMATTER);
+        
+        // Creo il record formattato
+        String record = String.format("[%s] %s", timestamp, azione);
+        
+        // Aggiungo alla lista in memoria
+        this.logRecords.add(record);
+        
+        // Tento il salvataggio persistente (non bloccante)
+        salvaLog();
     }
     
     
@@ -66,7 +90,18 @@ public class AuditTrail implements ILogger{
      */
     @Override
     public List<String> caricaLog(){
-        return null;
+        Object caricato = archivio.caricaStato(NOME_FILE_LOG);
+        
+        if (caricato != null && caricato instanceof List) {
+            try {
+                // Cast sicuro (unchecked ma controllato dalla logica)
+                this.logRecords = (List<String>) caricato;
+            } catch (ClassCastException e) {
+                // Se il file è corrotto, reinizializzo
+                this.logRecords = new ArrayList<>();
+            }
+        }
+        return this.logRecords;
     }
     
     
@@ -82,6 +117,7 @@ public class AuditTrail implements ILogger{
      */
     @Override
     public void salvaLog(){
+        archivio.salvaStato(this.logRecords, NOME_FILE_LOG);
     }
     
     
@@ -95,7 +131,7 @@ public class AuditTrail implements ILogger{
      */
     @Override
     public List<String> visualizzaLog(){
-        return null;
+        return new ArrayList<>(this.logRecords);
     }
     
 }
