@@ -72,7 +72,7 @@ public class FileArchivio implements IArchivioDati{
         
         File fileDestinazione = new File(this.pathDati, nomeFile);
         
-        // Catena di Stream: File -> Buffer -> Object (come nei tuoi appunti)
+        // Catena di Stream: File -> Buffer -> Object 
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 new BufferedOutputStream(new FileOutputStream(fileDestinazione)))) {
             
