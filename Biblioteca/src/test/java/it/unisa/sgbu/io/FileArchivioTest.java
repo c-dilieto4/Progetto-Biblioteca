@@ -15,16 +15,20 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
+
 public class FileArchivioTest {
     
     private FileArchivio archivio;
     private final String TEST_DIR = "./test_data/"; // Cartella separata per i test
     private final String TEST_FILE = "archivio_test.dat";
     
+    
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto FileArchivio.
+     */
     @BeforeEach
     public void setUp() {
         // Passo null come logger perché stiamo testando solo la logica di file

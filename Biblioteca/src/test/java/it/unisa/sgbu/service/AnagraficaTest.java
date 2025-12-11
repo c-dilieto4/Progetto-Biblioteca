@@ -14,17 +14,20 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
+
 public class AnagraficaTest {
     
     private Anagrafica anagrafica;
     private Utente u1;
     private Utente u2;
     
-    //anagrafica con 2 utenti
+    
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto Anagrafica.
+     */
     @BeforeEach
     public void setUp() {
         anagrafica = new Anagrafica();

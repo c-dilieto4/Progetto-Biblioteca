@@ -15,10 +15,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
+
 public class AuditTrailTest {
     
     private AuditTrail auditTrail;
@@ -26,6 +24,12 @@ public class AuditTrailTest {
     private final String TEST_DIR = "./test_logs/";
     private final String FILE_LOG = "audit_log.dat";
     
+    
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto AuditTrail.
+     */
     @BeforeEach
     public void setUp() {
         // Uso FileArchivio reale per testare l'integrazione I/O

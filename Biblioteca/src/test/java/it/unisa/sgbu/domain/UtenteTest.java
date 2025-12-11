@@ -12,15 +12,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
 public class UtenteTest {
     
     private Utente utente;
     
-    // Fixture: Eseguito prima di ogni test
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto Utente per garantire 
+     * che i test siano indipendenti l'uno dall'altro.
+     */
     @BeforeEach
     public void setUp() {
         // Creo un utente "pulito" senza prestiti

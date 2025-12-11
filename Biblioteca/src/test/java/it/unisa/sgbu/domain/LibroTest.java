@@ -14,10 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
 public class LibroTest {
     
     private Libro libro;
@@ -40,7 +37,7 @@ public class LibroTest {
 
     /**
      * @brief Test della coerenza dello stato iniziale.
-     * * @test Verifica che, subito dopo l'istanziazione dell'oggetto tramite costruttore:
+     * @test Verifica che, subito dopo l'istanziazione dell'oggetto tramite costruttore:
      *   Il numero di copie disponibili sia esattamente uguale al numero di copie totali.
      */
     @Test
@@ -73,7 +70,7 @@ public class LibroTest {
     }
 
     /**
-     * Test of incrementaDisponibilità method.
+     * @brief Test of incrementaDisponibilità method.
      * Verifica che il contatore salga correttamente dopo una restituzione.
      */
     @Test
@@ -92,7 +89,7 @@ public class LibroTest {
     }
 
     /**
-     * Test of decrementaDisponibilità method.
+     * @brief Test of decrementaDisponibilità method.
      * Verifica che il contatore scenda correttamente.
      */
     @Test
@@ -110,7 +107,7 @@ public class LibroTest {
     }
 
     /**
-     * Test of isDisponibile method (Caso Limite).
+     * @brief Test of isDisponibile method (Caso Limite).
      * Verifica che il libro NON sia disponibile quando le copie arrivano a 0.
      */
     @Test

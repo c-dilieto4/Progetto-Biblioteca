@@ -15,10 +15,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
 public class CatalogoTest {
     
     private Catalogo catalogo;
@@ -26,6 +23,12 @@ public class CatalogoTest {
     private Libro l2;
     private Libro l3;
     
+    
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto Catalogo.
+     */
     @BeforeEach
     public void setUp() {
         catalogo = new Catalogo();

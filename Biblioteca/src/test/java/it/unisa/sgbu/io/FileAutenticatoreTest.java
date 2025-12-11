@@ -14,10 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
 public class FileAutenticatoreTest {
     
     private FileAutenticatore autenticatore;
@@ -25,6 +22,12 @@ public class FileAutenticatoreTest {
     private final String TEST_DIR = "./test_auth/";
     private final String FILE_CREDENZIALI = "credenziali_test.dat";
     
+    
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto FileAutenticatore.
+     */
     @BeforeEach
     public void setUp() {
         // Preparo l'archivio (dipendenza)

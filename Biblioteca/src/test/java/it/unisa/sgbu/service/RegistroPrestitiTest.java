@@ -18,10 +18,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author dilie
- */
+
 public class RegistroPrestitiTest {
     
     private RegistroPrestiti registro;
@@ -30,7 +27,13 @@ public class RegistroPrestitiTest {
     
     private Libro libroTest;
     private Utente utenteTest;
-
+    
+    
+    /**
+     * @brief Fixture di test: Configurazione iniziale.
+     * Questo metodo viene eseguito automaticamente prima di ogni singolo test.
+     * Si occupa di istanziare un nuovo oggetto RegistroPrestiti.
+     */
     @BeforeEach
     public void setUp() {
         // Inizializzo i servizi dipendenti
@@ -51,6 +54,10 @@ public class RegistroPrestitiTest {
         anagrafica.aggiungiUtente(utenteTest);
     }
     
+    
+    /**
+    * @brief Test della registrazione di un prestito con successo.
+    */
     @Test
     public void testRegistraPrestito_Successo() {
         
@@ -67,6 +74,11 @@ public class RegistroPrestitiTest {
         assertEquals(1, registro.getPrestitiAttivi().size(), "Il registro deve contenere 1 prestito");
     }
 
+    
+    /**
+    * @brief Test della registrazione di un prestito con fallimento 
+    * a causa della mancanza di copie disponibili.
+    */
     @Test
     public void testRegistraPrestito_Fallimento_CopieEsaurite() {
         
@@ -83,6 +95,10 @@ public class RegistroPrestitiTest {
         assertEquals(0, utente2.getNumeroPrestitiAttivi(), "L'utente 2 non deve avere prestiti");
     }
 
+    
+    /**
+    * @brief Test della registrazione di un prestito con fallimeto a causa del limite prestiti attivi.
+    */
     @Test
     public void testRegistraPrestito_Fallimento_LimiteUtente() {
         
@@ -105,6 +121,10 @@ public class RegistroPrestitiTest {
         assertEquals(3, utenteTest.getNumeroPrestitiAttivi(), "I prestiti devono rimanere 3");
     }
 
+    
+    /**
+    * @brief Test della registrazione di una restituzione
+    */
     @Test
     public void testRegistraRestituzione() {
         
