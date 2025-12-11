@@ -62,6 +62,7 @@ public class RegistroPrestiti {
      * - isbn e matr devono corrispondere a entità esistenti.
      * - Il libro deve avere `copieDisponibili > 0`.
      * - L'utente deve avere `prestitiAttivi < 3`.
+     * - Se la data effettiva è null, il prestito è ancora aperto
      * 
      * @post
      * - Viene creato un nuovo record di prestito attivo.
@@ -147,7 +148,7 @@ public class RegistroPrestiti {
     public List<Prestito> getPrestitiAttivi(){
         List<Prestito> attivi = new ArrayList<>();
         
-        // 2. Scorro tutto l'archivio con un ciclo
+        // Scorro tutto l'archivio con un ciclo
         for (Prestito p : this.prestitiAttivi) {
             // Se la data effettiva è null, il prestito è ancora aperto
             if (p.getDataEffettivaRestituzione() == null) {

@@ -55,6 +55,13 @@ public class Utente implements Serializable {
         this.prestitiAttivi = new ArrayList<>();
     }
 
+    /**
+     * @brief Restituisce l'indirizzo email dell'utente.
+     * @return Una stringa contenente l'email.
+     */
+    public String getEmail() {
+        return email;
+    }
     
     /**
      * @brief Restituisce la matricola dell'utente.

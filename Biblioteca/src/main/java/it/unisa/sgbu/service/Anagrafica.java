@@ -19,6 +19,7 @@ import java.util.*;
  */
 public class Anagrafica {
     
+    //Mappa per accesso rapido O(1)
     private Map<String, Utente> registroUtenti;
     
     
@@ -27,6 +28,7 @@ public class Anagrafica {
      * Inizializza la struttura dati per contenere il registro degli utenti.
      */
     public Anagrafica(){
+        this.registroUtenti = new HashMap<>();
     }
     
     
@@ -49,7 +51,15 @@ public class Anagrafica {
      * - L'utente è aggiunto al registro persistente.
      */
     public boolean aggiungiUtente(Utente u){
-        return false;
+        if (u == null) return false;
+        
+        // Verifica unicità matricola (la chiave della mappa)
+        if (registroUtenti.containsKey(u.getMatricola())) {
+            return false;
+        }
+        
+        registroUtenti.put(u.getMatricola(), u);
+        return true;
     }
     
     
@@ -72,7 +82,15 @@ public class Anagrafica {
      * - L'utente è rimosso dal sistema.
      */
     public boolean rimuoviUtente(String matricola){
-        return false;
+        if (matricola == null || !registroUtenti.containsKey(matricola)) {
+            return false;
+        }
+        
+        // Nota: Il controllo sui prestiti attivi deve essere fatto PRIMA di chiamare questo metodo
+        // dal livello superiore (GUIController) usando RegistroPrestiti.haPrestitiAttivi().
+        
+        registroUtenti.remove(matricola);
+        return true;
     }
     
     
@@ -89,7 +107,26 @@ public class Anagrafica {
      * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaUtente(String matricola, Utente u){
-        return false;
+        if (matricola == null || u == null) return false;
+        
+        if (!registroUtenti.containsKey(matricola)) {
+            return false;
+        }
+        
+        // Se la matricola cambia, devo verificare che la nuova non esista già
+        if (!matricola.equals(u.getMatricola())) {
+            if (registroUtenti.containsKey(u.getMatricola())) {
+                return false; // La nuova matricola è già occupata
+            }
+            // Rimuovo la vecchia entry e metto la nuova
+            registroUtenti.remove(matricola);
+            registroUtenti.put(u.getMatricola(), u);
+        } else {
+            // Aggiorno solo i dati (sovrascrivo)
+            registroUtenti.put(matricola, u);
+        }
+        
+        return true;
     }
     
     
@@ -104,7 +141,7 @@ public class Anagrafica {
      * @return L'oggetto Utente se trovato, altrimenti null.
      */
     public Utente getUtente(String matricola){
-        return null;
+        return registroUtenti.get(matricola);
     }
     
     
@@ -122,7 +159,28 @@ public class Anagrafica {
      * 
      */
     public List<Utente> cercaUtente(String query, String campo){
-        return null;
+        List<Utente> risultati = new ArrayList<>();
+        
+        if (query == null || campo == null) return risultati;
+        
+        for (Utente u : registroUtenti.values()) {
+            boolean trovato = false;
+            
+            if (campo.equalsIgnoreCase("Matricola")) {
+                if (u.getMatricola().contains(query)){
+                    trovato = true;
+                }
+            } else if (campo.equalsIgnoreCase("Cognome")) {
+                if (u.getCognome().toLowerCase().contains(query.toLowerCase())){
+                    trovato = true;
+                }
+            }
+            
+            if (trovato) {
+                risultati.add(u);
+            }
+        }
+        return risultati;
     }
     
     
@@ -135,6 +193,19 @@ public class Anagrafica {
      * @return Una lista di oggetti Utente ordinata per Cognome e poi Nome.
      */
     public List<Utente> visualizzaOrdinata(){
-        return null;
+        List<Utente> lista = new ArrayList<>(registroUtenti.values());
+        
+        Collections.sort(lista, new Comparator<Utente>() {
+            @Override
+            public int compare(Utente u1, Utente u2) {
+                int res = u1.getCognome().compareToIgnoreCase(u2.getCognome());
+                if (res == 0) {
+                    return u1.getNome().compareToIgnoreCase(u2.getNome());
+                }
+                return res;
+            }
+        });
+        
+        return lista;
     }
 }

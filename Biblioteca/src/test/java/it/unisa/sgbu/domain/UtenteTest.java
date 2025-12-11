@@ -35,6 +35,7 @@ public class UtenteTest {
         assertEquals("0123456789", utente.getMatricola());
         assertEquals("Mario", utente.getNome());
         assertEquals("Rossi", utente.getCognome());
+        assertEquals("m.rossi@unisa.it", utente.getEmail());
         
         // Verifica che la lista dei prestiti esista e sia vuota (dimensione 0)
         assertNotNull(utente.getPrestitiAttivi(), "La lista prestiti non deve essere null");
