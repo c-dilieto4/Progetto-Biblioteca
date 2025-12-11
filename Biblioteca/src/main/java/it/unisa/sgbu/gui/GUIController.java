@@ -13,7 +13,7 @@ import java.util.*;
 
 /**
  * @brief Controller principale del sistema (Pattern MVC).
- * * Questa classe funge da orchestratore centrale per la logica applicativa.
+ * Questa classe funge da orchestratore centrale per la logica applicativa.
  * Riceve gli input dall'interfaccia utente (GUIView), coordina le operazioni
  * di validazione tramite le Utility, delega l'esecuzione della logica di business
  * ai servizi (Catalogo, Anagrafica, RegistroPrestiti) e gestisce gli aspetti trasversali

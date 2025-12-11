@@ -155,13 +155,12 @@ public class Catalogo {
         List<Libro> risultati = new ArrayList<>();
         
         if (query == null || campo == null) return risultati;
-        String qLower = query.toLowerCase();
         
         for (Libro l : registroLibri.values()) {
             boolean trovato = false;
             
             if (campo.equalsIgnoreCase("Titolo")) {
-                if (l.getTitolo().toLowerCase().contains(qLower)){
+                if (l.getTitolo().toLowerCase().contains(query.toLowerCase())){
                     trovato = true;
                 }
                 
@@ -173,9 +172,8 @@ public class Catalogo {
             } else if (campo.equalsIgnoreCase("Autore")) {
                 // Per gli autori (Lista), controllo se ALMENO UNO corrisponde
                 for (String autore : l.getAutore()) {
-                    if (autore.toLowerCase().contains(qLower)) {
+                    if (autore.toLowerCase().contains(query.toLowerCase())) {
                         trovato = true;
-                        break;
                     }
                 }
             }
