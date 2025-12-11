@@ -38,8 +38,10 @@ public class GUIController {
 
     /**
      * @brief Costruttore della classe GUIController.
-     * * Inizializza il controller iniettando tutte le dipendenze necessarie.
-     * * @param[in] archivio Il gestore della persistenza dei dati.
+     * 
+     * Inizializza il controller iniettando tutte le dipendenze necessarie.
+     * 
+     * @param[in] archivio Il gestore della persistenza dei dati.
      * @param[in] logger Il gestore del tracciamento delle operazioni (Audit Trail).
      * @param[in] autenticatore Il servizio per la verifica delle credenziali.
      * @param[in] catalogo Il gestore del catalogo libri.
@@ -59,10 +61,12 @@ public class GUIController {
     
     /**
      * @brief Avvia il sistema caricando i dati persistenti.
-     * * Implementa il Caso d'Uso "Gestione persistenza dati" (Avvio).
+     * 
+     * Implementa il Caso d'Uso "Gestione persistenza dati" (Avvio).
      * Tenta di recuperare lo stato salvato (Libri, Utenti, Prestiti) tramite l'archivio.
      * Rispetta il requisito sui tempi di caricamento.
-     * * @return true se il sistema è avviato correttamente, false in caso di errore critico.
+     * 
+     * @return true se il sistema è avviato correttamente, false in caso di errore critico.
      */
     public boolean avviaSistema(){
         try {
@@ -79,9 +83,11 @@ public class GUIController {
     
     /**
      * @brief Chiude il sistema salvando lo stato corrente.
-     * * Implementa il Caso d'Uso "Gestione persistenza dati" (Chiusura).
+     * 
+     * Implementa il Caso d'Uso "Gestione persistenza dati" (Chiusura).
      * Serializza lo stato attuale dei gestori su file.
-     * * @return true se il salvataggio ha successo, false altrimenti.
+     * 
+     * @return true se il salvataggio ha successo, false altrimenti.
      */
     public boolean chiudiSistema(){
         try {
@@ -100,11 +106,14 @@ public class GUIController {
     
     /**
      * @brief Coordina l'aggiunta di un nuovo utente.
-     * * Esegue la validazione formale dei campi tramite ValidatoreDati e, se superata,
+     * 
+     * Esegue la validazione formale dei campi tramite ValidatoreDati e, se superata,
      * delega l'inserimento all'Anagrafica.
      * Se l'operazione ha successo, registra l'evento nel Log.
-     * * @param[in] u L'oggetto Utente da aggiungere.
-     * * @return true se l'utente è stato aggiunto, false se i dati non sono validi o la matricola è duplicata.
+     * 
+     * @param[in] u L'oggetto Utente da aggiungere.
+     * 
+     * @return true se l'utente è stato aggiunto, false se i dati non sono validi o la matricola è duplicata.
      */
     public boolean aggiungiUtente(Utente u){
         // Validazione completa dell'oggetto Utente campo per campo
@@ -124,10 +133,13 @@ public class GUIController {
     
     /**
      * @brief Coordina l'aggiunta di un nuovo libro.
-     * * Esegue la validazione formale dei dati e delega l'inserimento al Catalogo.
+     * 
+     * Esegue la validazione formale dei dati e delega l'inserimento al Catalogo.
      * Se l'operazione ha successo, registra l'evento nel Log.
-     * * @param[in] l L'oggetto Libro da aggiungere.
-     * * @return true se il libro è stato aggiunto, false se i dati non sono validi o l'ISBN è duplicato.
+     * 
+     * @param[in] l L'oggetto Libro da aggiungere.
+     * 
+     * @return true se il libro è stato aggiunto, false se i dati non sono validi o l'ISBN è duplicato.
      */
     public boolean aggiungiLibro(Libro l){
         // Validazione completa dell'oggetto Libro campo per campo
@@ -148,11 +160,14 @@ public class GUIController {
     
     /**
      * @brief Coordina la modifica di un utente esistente.
-     * * Implementa il relativo Business Flow.
+     * 
+     * Implementa il relativo Business Flow.
      * Verifica la validità dei nuovi dati e delega l'aggiornamento all'Anagrafica.
-     * * @param[in] matrOriginale La matricola originale dell'utente da modificare.
+     * 
+     * @param[in] matrOriginale La matricola originale dell'utente da modificare.
      * @param[in] uNuovo L'oggetto con i dati aggiornati.
-     * * @return true se la modifica ha successo, false altrimenti.
+     * 
+     * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaUtente(String matrOriginale, Utente uNuovo){
         // Valido la matricola originale per la ricerca
@@ -174,11 +189,14 @@ public class GUIController {
     
     /**
      * @brief Coordina la modifica di un libro esistente.
-     * * Implementa il relativo Business Flow.
+     * 
+     * Implementa il relativo Business Flow.
      * Verifica la validità dei nuovi dati e delega l'aggiornamento al Catalogo.
-     * * @param[in] isbnOriginale L'ISBN originale del libro da modificare.
+     * 
+     * @param[in] isbnOriginale L'ISBN originale del libro da modificare.
      * @param[in] lNuovo L'oggetto con i dati aggiornati.
-     * * @return true se la modifica ha successo, false altrimenti. 
+     * 
+     * @return true se la modifica ha successo, false altrimenti. 
      */
     public boolean modificaLibro(String isbnOriginale, Libro lNuovo){
         // Valido l'ISBN originale per la ricerca
@@ -200,9 +218,11 @@ public class GUIController {
     
     /**
      * @brief Esegue la ricerca di libri nel catalogo.
-     * * @param[in] query La stringa da cercare.
+     * 
+     * @param[in] query La stringa da cercare.
      * @param[in] campo Il campo su cui filtrare (es. Titolo, Autore).
-     * * @return Una lista di libri che corrispondono ai criteri.
+     * 
+     * @return Una lista di libri che corrispondono ai criteri.
      */
     public List<Libro> cercaLibro(String query, String campo){
         // Se la query è vuota, restituisco tutto
@@ -214,9 +234,11 @@ public class GUIController {
     
     /**
      * @brief Esegue la ricerca di utenti nell'anagrafica.
-     * * @param[in] query La stringa da cercare.
+     * 
+     * @param[in] query La stringa da cercare.
      * @param[in] campo Il campo su cui filtrare (es. Cognome, Matricola).
-     * * @return Una lista di utenti che corrispondono ai criteri.
+     * 
+     * @return Una lista di utenti che corrispondono ai criteri.
      */
     public List<Utente> cercaUtente(String query, String campo){
         if (query == null || query.isEmpty()) {
@@ -227,11 +249,14 @@ public class GUIController {
     
     /**
      * @brief Coordina la rimozione di un utente.
-     * * Prima di delegare la rimozione all'Anagrafica, interroga il RegistroPrestiti
+     * 
+     * Prima di delegare la rimozione all'Anagrafica, interroga il RegistroPrestiti
      * per verificare che l'utente non abbia prestiti attivi.
      * Se la rimozione avviene, l'azione viene loggata.
-     * * @param[in] matr La matricola dell'utente da rimuovere.
-     * * @return true se rimosso con successo, false se l'utente ha prestiti attivi o non esiste.
+     * 
+     * @param[in] matr La matricola dell'utente da rimuovere.
+     * 
+     * @return true se rimosso con successo, false se l'utente ha prestiti attivi o non esiste.
      */
     public boolean rimuoviUtente(String matr){
         if (!valida.validaMatricola(matr)) return false;
@@ -251,11 +276,14 @@ public class GUIController {
     
     /**
      * @brief Coordina la rimozione di un libro.
-     * * Verifica il vincolo di integrità referenziale (nessun prestito attivo per questo libro)
+     * 
+     * Verifica il vincolo di integrità referenziale (nessun prestito attivo per questo libro)
      * prima di chiamare il Catalogo per la rimozione.
      * Se la rimozione avviene, l'azione viene loggata.
-     * * @param[in] isbn L'ISBN del libro da rimuovere.
-     * * @return true se rimosso con successo, false se il libro è in prestito o non esiste.
+     * 
+     * @param[in] isbn L'ISBN del libro da rimuovere.
+     * 
+     * @return true se rimosso con successo, false se il libro è in prestito o non esiste.
      */
     public boolean rimuoviLibro(String isbn){
         if (!valida.validaISBN(isbn)) return false;
@@ -285,14 +313,17 @@ public class GUIController {
     
     /**
      * @brief Gestisce l'intero flusso di registrazione di un prestito.
-     * * Implementa relativo il Caso d'Uso.
+     * 
+     * Implementa relativo il Caso d'Uso.
      * 1. Valida i formati di ISBN e Matricola.
      * 2. Delega al RegistroPrestiti la verifica dei vincoli di business (Disponibilità, Limite Utente) e la creazione.
      * 3. Se il prestito viene creato, invoca il Logger per il tracciamento.
-     * * @param[in] isbn Codice del libro.
+     * 
+     * @param[in] isbn Codice del libro.
      * @param[in] matricola Matricola dell'utente.
      * @param[in] dataPrevistaRestituzione Data di scadenza del prestito.
-     * * @return true se il prestito è registrato, false se falliscono i controlli.
+     * 
+     * @return true se il prestito è registrato, false se falliscono i controlli.
      */
     public boolean gestisciPrestito(String isbn, String matricola, LocalDate dataPrevistaRestituzione){
         // Validazione formale specifica
@@ -313,12 +344,15 @@ public class GUIController {
     
     /**
      * @brief Gestisce il flusso di restituzione di un libro.
-     * * Implementa il relativo Caso d'Uso.
+     * 
+     * Implementa il relativo Caso d'Uso.
      * Delega al RegistroPrestiti la chiusura del prestito e l'aggiornamento delle disponibilità.
      * Se l'operazione ha successo, registra l'evento nel Log.
-     * * @param[in] idPrestito Identificativo univoco del prestito.
+     * 
+     * @param[in] idPrestito Identificativo univoco del prestito.
      * @param[in] dataEffettivaRestituzione Data del rientro.
-     * * @return true se la restituzione è registrata, false altrimenti.
+     * 
+     * @return true se la restituzione è registrata, false altrimenti.
      */
     public boolean gestisciRestituzione(int idPrestito, LocalDate dataEffettivaRestituzione){
         boolean esito = registro.registraRestituzione(idPrestito, dataEffettivaRestituzione);
@@ -355,11 +389,14 @@ public class GUIController {
     
     /**
      * @brief Gestisce la procedura di login del Bibliotecario.
-     * * Soddisfa il relativo requisito.
+     * 
+     * Soddisfa il relativo requisito.
      * Delega la verifica delle credenziali al componente IAutenticatore.
-     * * @param[in] user Username inserito.
+     * 
+     * @param[in] user Username inserito.
      * @param[in] pass Password inserita.
-     * * @return true se le credenziali sono valide, false altrimenti.
+     * 
+     * @return true se le credenziali sono valide, false altrimenti.
      */
     public boolean gestisciLogin(String user, String pass){
         boolean esito = autenticatore.verificaCredenziali(user, pass);

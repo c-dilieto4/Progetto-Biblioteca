@@ -23,7 +23,7 @@ import java.time.LocalDate;
 public class GUIView {
     
     private final GUIController sistema;
-    private final MessaggiInterfaccia messaggi; // Mantenuto come da tua richiesta
+    private final MessaggiInterfaccia messaggi;
     private Stage primaryStage;
     
     // Riferimento al controller grafico per aggiornare le tabelle

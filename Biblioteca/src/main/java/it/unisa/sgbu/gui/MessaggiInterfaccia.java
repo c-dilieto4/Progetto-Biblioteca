@@ -51,7 +51,7 @@ public class MessaggiInterfaccia {
     
     
     /**
-     * @brief Errore: Matricola duplicata [FC-4].
+     * @brief Errore: Matricola duplicata.
      * @param %s La matricola che viola l'univocità.
      */
     public static final String ERRORE_MATRICOLA_DUPLICATA = "La matricola '%s' è già presente nell'anagrafe.";

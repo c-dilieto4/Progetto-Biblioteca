@@ -36,6 +36,7 @@ public class DashboardController {
         tableUtenti.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tablePrestiti.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
+    
     @FXML
     private void onCercaLibro() {
         String query = txtCercaLibro.getText();
