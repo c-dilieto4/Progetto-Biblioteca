@@ -5,7 +5,7 @@
  */
 package it.unisa.sgbu.app;
 
-import it.unisa.sgbu.domain.Credenziali; // <--- AGGIUNTO QUESTO IMPORT
+import it.unisa.sgbu.domain.Credenziali;
 import it.unisa.sgbu.domain.ValidatoreDati;
 import it.unisa.sgbu.gui.GUIController;
 import it.unisa.sgbu.gui.GUIView;
@@ -22,7 +22,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * @brief Punto di ingresso (Bootstrap) dell'applicazione SGBU.
+ * @brief Punto di ingresso dell'applicazione SGBU.
  */
 public class Main extends Application {
 
@@ -40,13 +40,11 @@ public class Main extends Application {
             
             // Se il file credenziali non esiste, ne creo uno con dei dati
             if (!archivio.verificaEsistenzaFile(FILE_CREDENZIALI)) {
-                // MODIFICA QUI 
                 Credenziali mieCredenziali = new Credenziali("admin", "password");
                 archivio.salvaStato(mieCredenziali, FILE_CREDENZIALI);
                 System.out.println("Credenziali create: admin / password");
             }
-            // --- FINE MODIFICA ESSENZIALE ---
-            
+
             // Creo il Logger (Audit Trail)
             ILogger logger = new AuditTrail(null, archivio);
             
