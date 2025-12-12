@@ -170,7 +170,7 @@
                            <children>
                               <TableView fx:id="tableAuditTrail" prefHeight="619.0" prefWidth="950.0" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                                  <columns>
-                                    <TableColumn fx:id="auditTrailColumn" editable="false" maxWidth="949.0" minWidth="50.0" prefWidth="878.0" sortType="DESCENDING" text="Tracciamento">
+                                    <TableColumn fx:id="auditTrailColumn" editable="false" maxWidth="949.0" minWidth="50.0" prefWidth="878.0" sortable="false" text="Tracciamento">
                                        <cellValueFactory>
                                           <PropertyValueFactory property="idPrestito" />
                                        </cellValueFactory>

@@ -27,6 +27,7 @@ public class GUIView {
     private final GUIController sistema;
     private final MessaggiInterfaccia messaggi;
     private Stage primaryStage;
+    private ObservableList<String> datiAuditTrail;
     
     // Riferimento al controller grafico per aggiornare le tabelle
     private DashboardController dashboardController;
@@ -151,6 +152,7 @@ public class GUIView {
             if (sistema.aggiungiUtente(u)) {
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
                 mostraMessaggio("Utente registrato con successo."); 
+                
             } else {
 
                 String msg = String.format(MessaggiInterfaccia.ERRORE_MATRICOLA_DUPLICATA, u.getMatricola());
@@ -319,13 +321,13 @@ public void mostraListaAuditTrail(List<String> Lista) {
         Lista = new ArrayList<>(); // Evita NullPointerException se la lista è null
     }
     
-    ObservableList<String> datiObservable = FXCollections.observableArrayList(Lista);
+    this.datiAuditTrail = FXCollections.observableArrayList(Lista);
     
     // 2. Usiamo le parentesi graffe per racchiudere entrambe le operazioni
     if (dashboardController != null && dashboardController.getTableAuditTrail() != null) {
         // La creazione dell'istanza ora avviene FUORI dall'if, dopo aver controllato il null.
         
-        dashboardController.getTableAuditTrail().setItems(datiObservable);
+        dashboardController.getTableAuditTrail().setItems(datiAuditTrail);
     }
 }
     

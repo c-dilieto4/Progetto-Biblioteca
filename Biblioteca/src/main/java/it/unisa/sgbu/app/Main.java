@@ -18,6 +18,8 @@ import it.unisa.sgbu.io.ILogger;
 import it.unisa.sgbu.service.Anagrafica;
 import it.unisa.sgbu.service.Catalogo;
 import it.unisa.sgbu.service.RegistroPrestiti;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -44,9 +46,6 @@ public class Main extends Application {
                 archivio.salvaStato(mieCredenziali, FILE_CREDENZIALI);
                 System.out.println("Credenziali create: admin / password");
             }
-
-            // Creo il Logger (Audit Trail)
-            ILogger logger = new AuditTrail(null, archivio);
             
             // Creo l'Autenticatore
             IAutenticatore autenticatore = new FileAutenticatore(FILE_CREDENZIALI, archivio);
@@ -57,6 +56,10 @@ public class Main extends Application {
             
             // Il Registro Prestiti ha bisogno di accedere a Catalogo e Anagrafica
             RegistroPrestiti registro = new RegistroPrestiti(catalogo, anagrafica);
+            
+            // Creo il Logger (Audit Trail)
+            List<String> logs = (List<String>)archivio.caricaStato(AuditTrail.NOME_FILE_LOG);
+            ILogger logger = new AuditTrail(logs, archivio);           
             
             controller = new GUIController(
                     archivio, 

@@ -96,8 +96,8 @@ public class GUIController {
             // archivio.salvaStato(catalogo, FILE_LIBRI);
             // archivio.salvaStato(anagrafica, FILE_UTENTI);
             // archivio.salvaStato(registro, FILE_PRESTITI);
-            archivio.salvaStato(logger, AuditTrail.NOME_FILE_LOG);
             logger.registraAzione("Sistema chiuso correttamente.");
+            archivio.salvaStato(logger, AuditTrail.NOME_FILE_LOG);
             return true;
         } catch (Exception e) {
             logger.registraAzione("Errore chiusura sistema: " + e.getMessage());

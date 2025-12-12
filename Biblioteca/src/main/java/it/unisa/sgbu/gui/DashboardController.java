@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections; 
 import javafx.collections.ObservableList; 
 import java.util.List; 
-import java.util.ArrayList; // Usato come fallback per la lista vuota (Java 8/precedenti)
+import java.util.ArrayList; 
 import it.unisa.sgbu.domain.*;
 
 public class DashboardController {
@@ -37,42 +37,25 @@ public class DashboardController {
         tableAuditTrail.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         
-        // ******************************************************
-        // CORREZIONE 1: Configurazione della Colonna Audit Trail
-        // ******************************************************
-        
         if (auditTrailColumn != null) {
-            // DEVI USARE data.getValue() per accedere alla singola Stringa
-            // della riga corrente, NON chiamare il metodo che restituisce l'intera lista.
             auditTrailColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
         }
     }
     
-// Nel file DashboardController.java
+    public void setSistema(GUIController sistema, GUIView view) {
+        this.sistema = sistema;
+        this.mainView = view;
 
-public void setSistema(GUIController sistema, GUIView view) {
-    this.sistema = sistema;
-    this.mainView = view;
-    
-    // ******************************************************
-    // MODIFICA CRUCIALE: Caricamento dei Dati Audit Trail
-    // ******************************************************
-    
-    // Verifichiamo che il sistema sia valido per evitare NPE
-    if (this.sistema != null) {
-        // 1. Otteniamo la lista di stringhe dal sistema
-        List<String> logList = this.sistema.ottieniAuditTrail();
-        
-        // 2. Carichiamo la lista nella TableView
-        // Chiamiamo il metodo che converte in ObservableList e fa il setItems()
-        caricaAuditTrail(logList);
+        // Verifichiamo che il sistema sia valido per evitare NPE
+        if (this.sistema != null) {
+            // 1. Otteniamo la lista di stringhe dal sistema
+            List<String> logList = this.sistema.ottieniAuditTrail();
+
+            // 2. Carichiamo la lista nella TableView
+            // Chiamiamo il metodo che converte in ObservableList e fa il setItems()
+            caricaAuditTrail(logList);
+        }
     }
-    
-    // Qui puoi anche chiamare i caricamenti iniziali per Utenti, Libri e Prestiti
-    // (Non richiesto nel prompt, ma è la best practice qui)
-    // caricaUtenti(this.sistema.ottieniAnagraficaOrdinata());
-    // caricaLibri(this.sistema.ottieniCatalogoOrdinato());
-}
 
     /**
      * Popola la tableAuditTrail convertendo la List<String> in ObservableList.
@@ -135,6 +118,7 @@ public void setSistema(GUIController sistema, GUIView view) {
     @FXML
     private void onAggiungiUtente() {
         mainView.gestisciAggiuntaUtente();
+        
     }
 
     @FXML
