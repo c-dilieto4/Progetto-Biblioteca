@@ -16,6 +16,8 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import java.io.IOException;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @brief Classe Boundary che gestisce l'interfaccia utente (View).
@@ -53,6 +55,7 @@ public class GUIView {
             mostraListaLibri(sistema.ottieniCatalogoOrdinato());
             mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
             mostraListaPrestiti(sistema.ottieniReportPrestiti());
+            mostraListaAuditTrail(sistema.ottieniAuditTrail());
             
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("SGBU - Biblioteca Dashboard");
@@ -307,6 +310,24 @@ public class GUIView {
         if (dashboardController != null && dashboardController.getTablePrestiti() != null)
             dashboardController.getTablePrestiti().getItems().setAll(Lista);
     }
+    
+public void mostraListaAuditTrail(List<String> Lista) {
+    
+    // 1. Dichiariamo e instanziamo l'ObservableList localmente.
+    // Usiamo 'lista' o 'Lista' come nome della variabile in ingresso, a seconda della convenzione che usi.
+    if (Lista == null) {
+        Lista = new ArrayList<>(); // Evita NullPointerException se la lista è null
+    }
+    
+    ObservableList<String> datiObservable = FXCollections.observableArrayList(Lista);
+    
+    // 2. Usiamo le parentesi graffe per racchiudere entrambe le operazioni
+    if (dashboardController != null && dashboardController.getTableAuditTrail() != null) {
+        // La creazione dell'istanza ora avviene FUORI dall'if, dopo aver controllato il null.
+        
+        dashboardController.getTableAuditTrail().setItems(datiObservable);
+    }
+}
     
     public void mostraReportUtente(Utente u){
         mostraMessaggio("Report: " + u.toString());

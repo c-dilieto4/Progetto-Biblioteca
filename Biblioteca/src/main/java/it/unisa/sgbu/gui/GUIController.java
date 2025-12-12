@@ -35,6 +35,7 @@ public class GUIController {
     private static final String FILE_LIBRI = "libri.dat";
     private static final String FILE_UTENTI = "utenti.dat";
     private static final String FILE_PRESTITI = "prestiti.dat";
+    //private static final String FILE_LOG = "au.dat";
 
     /**
      * @brief Costruttore della classe GUIController.
@@ -95,7 +96,7 @@ public class GUIController {
             // archivio.salvaStato(catalogo, FILE_LIBRI);
             // archivio.salvaStato(anagrafica, FILE_UTENTI);
             // archivio.salvaStato(registro, FILE_PRESTITI);
-            
+            archivio.salvaStato(logger, AuditTrail.NOME_FILE_LOG);
             logger.registraAzione("Sistema chiuso correttamente.");
             return true;
         } catch (Exception e) {
@@ -385,6 +386,11 @@ public class GUIController {
      */
     public List<Utente> ottieniAnagraficaOrdinata(){
         return anagrafica.visualizzaOrdinata();
+    }
+    
+    
+    public List<String> ottieniAuditTrail(){
+        return logger.visualizzaLog();
     }
     
     /**

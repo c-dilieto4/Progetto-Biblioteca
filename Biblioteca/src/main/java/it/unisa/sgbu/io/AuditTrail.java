@@ -22,7 +22,7 @@ public class AuditTrail implements ILogger{
     
     private List<String> logRecords;
     private IArchivioDati archivio;
-    private static final String NOME_FILE_LOG = "audit_log.dat"; // File di salvataggio
+    public static final String NOME_FILE_LOG = "audit_log.dat"; // File di salvataggio
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     
