@@ -8,6 +8,7 @@ package it.unisa.sgbu.service;
 
 import it.unisa.sgbu.domain.*;
 import it.unisa.sgbu.io.*;
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -17,7 +18,7 @@ import java.util.*;
  * sugli utenti, garantendo il rispetto dei vincoli di unicità e integrità referenziale
  * definiti nelle specifiche.
  */
-public class Anagrafica {
+public class Anagrafica implements Serializable{
     
     //Mappa per accesso rapido O(1)
     private Map<String, Utente> registroUtenti;
@@ -208,4 +209,5 @@ public class Anagrafica {
         
         return lista;
     }
+   
 }

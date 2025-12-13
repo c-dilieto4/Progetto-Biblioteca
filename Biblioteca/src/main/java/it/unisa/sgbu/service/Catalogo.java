@@ -7,6 +7,7 @@ package it.unisa.sgbu.service;
 
 import it.unisa.sgbu.domain.Libro;
 import it.unisa.sgbu.io.*;
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -16,7 +17,7 @@ import java.util.*;
  * sui libri e fornisce funzionalità di ricerca e ordinamento, come specificato
  * nel Caso d'Uso "Gestione catalogo libri".
  */
-public class Catalogo {
+public class Catalogo implements Serializable {
     
     private Map<String, Libro> registroLibri;
     

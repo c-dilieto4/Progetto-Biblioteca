@@ -51,15 +51,21 @@ public class Main extends Application {
             IAutenticatore autenticatore = new FileAutenticatore(FILE_CREDENZIALI, archivio);
             
             ValidatoreDati validatore = new ValidatoreDati();
+            
+            // Creo istanze VUOTE, verranno riempite dal Controller all'avvio
             Catalogo catalogo = new Catalogo();
             Anagrafica anagrafica = new Anagrafica();
-            
-            // Il Registro Prestiti ha bisogno di accedere a Catalogo e Anagrafica
             RegistroPrestiti registro = new RegistroPrestiti(catalogo, anagrafica);
             
-            // Creo il Logger (Audit Trail)
-            List<String> logs = (List<String>)archivio.caricaStato(AuditTrail.NOME_FILE_LOG);
-            ILogger logger = new AuditTrail(logs, archivio);           
+            // Carico il LOG (Audit Trail)
+            Object logObj = archivio.caricaStato(AuditTrail.NOME_FILE_LOG);
+            List<String> logs;
+            if (logObj instanceof List) {
+                 logs = (List<String>) logObj;
+            } else {
+                 logs = new ArrayList<>(); // Se non esiste, lista vuota
+            }
+            ILogger logger = new AuditTrail(logs, archivio);            
             
             controller = new GUIController(
                     archivio, 
@@ -71,7 +77,11 @@ public class Main extends Application {
                     validatore
             );
             
-            controller.avviaSistema();
+            // Avvio il sistema: qui avviene il caricamento vero e proprio dei dati
+            boolean avviato = controller.avviaSistema();
+            if (!avviato) {
+                System.err.println("Attenzione: Il sistema è stato avviato con dati vuoti o parziali.");
+            }
             
             GUIView view = new GUIView(controller, primaryStage);
             

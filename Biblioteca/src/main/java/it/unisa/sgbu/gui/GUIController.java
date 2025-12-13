@@ -8,49 +8,42 @@ package it.unisa.sgbu.gui;
 import it.unisa.sgbu.io.*;
 import it.unisa.sgbu.service.*;
 import it.unisa.sgbu.domain.*;
+import javafx.collections.FXCollections; // NECESSARIO PER LA GUI
+import javafx.collections.ObservableList; // NECESSARIO PER LA GUI
 import java.time.LocalDate;
 import java.util.*;
 
 /**
  * @brief Controller principale del sistema (Pattern MVC).
- * Questa classe funge da orchestratore centrale per la logica applicativa.
- * Riceve gli input dall'interfaccia utente (GUIView), coordina le operazioni
- * di validazione tramite le Utility, delega l'esecuzione della logica di business
- * ai servizi (Catalogo, Anagrafica, RegistroPrestiti) e gestisce gli aspetti trasversali
- * come il Logging e la Persistenza.
- * Implementa il principio di "Inversione delle Dipendenze" interagendo
- * con i servizi esterni tramite interfacce (IArchivioDati, ILogger, IAutenticatore).
+ * Questa classe funge da orchestratore centrale. Collega la GUI ai Servizi,
+ * gestisce la validazione, la persistenza e il logging in tempo reale.
  */
 public class GUIController {
     
     private IArchivioDati archivio;
     private ILogger logger;
+    private IAutenticatore autenticatore;
+    private ValidatoreDati valida;
+
+    // Servizi del Dominio
     private Catalogo catalogo;
     private Anagrafica anagrafica;
     private RegistroPrestiti registro;
-    private ValidatoreDati valida;
-    private IAutenticatore autenticatore;
+    
+    // Lista osservabile per aggiornare la tabella dei log in tempo reale
+    private ObservableList<String> observableLog; 
     
     // Nomi dei file di persistenza
     private static final String FILE_LIBRI = "libri.dat";
     private static final String FILE_UTENTI = "utenti.dat";
     private static final String FILE_PRESTITI = "prestiti.dat";
-    //private static final String FILE_LOG = "au.dat";
 
     /**
-     * @brief Costruttore della classe GUIController.
-     * 
-     * Inizializza il controller iniettando tutte le dipendenze necessarie.
-     * 
-     * @param[in] archivio Il gestore della persistenza dei dati.
-     * @param[in] logger Il gestore del tracciamento delle operazioni (Audit Trail).
-     * @param[in] autenticatore Il servizio per la verifica delle credenziali.
-     * @param[in] catalogo Il gestore del catalogo libri.
-     * @param[in] anagrafica Il gestore dell'anagrafica utenti.
-     * @param[in] registro Il gestore delle transazioni di prestito.
-     * @param[in] valida Il componente per la validazione formale dei dati.
+     * @brief Costruttore: Inietta tutte le dipendenze.
      */
-    public GUIController(IArchivioDati archivio, ILogger logger, IAutenticatore autenticatore, Catalogo catalogo, Anagrafica anagrafica, RegistroPrestiti registro, ValidatoreDati valida){
+    public GUIController(IArchivioDati archivio, ILogger logger, IAutenticatore autenticatore, 
+                         Catalogo catalogo, Anagrafica anagrafica, RegistroPrestiti registro, 
+                         ValidatoreDati valida){
         this.archivio = archivio;
         this.logger = logger;
         this.autenticatore = autenticatore;
@@ -58,66 +51,86 @@ public class GUIController {
         this.anagrafica = anagrafica;
         this.registro = registro;
         this.valida = valida;
+        
+        // Inizializza la lista grafica con i log già esistenti (caricati dal main)
+        this.observableLog = FXCollections.observableArrayList(logger.visualizzaLog());
     }
     
     /**
-     * @brief Avvia il sistema caricando i dati persistenti.
-     * 
-     * Implementa il Caso d'Uso "Gestione persistenza dati" (Avvio).
-     * Tenta di recuperare lo stato salvato (Libri, Utenti, Prestiti) tramite l'archivio.
-     * Rispetta il requisito sui tempi di caricamento.
-     * 
-     * @return true se il sistema è avviato correttamente, false in caso di errore critico.
+     * @brief Metodo helper per aggiornare sia il backend che la grafica.
+     * Tutte le operazioni passano di qui.
      */
+    private void scriviLog(String messaggio) {
+        // 1. Backend: Salva nella lista persistente
+        logger.registraAzione(messaggio);
+        
+        // 2. Frontend: Aggiunge in cima alla lista (indice 0) così si vede subito
+        observableLog.add(0, messaggio);
+    }
+    
+    // =========================================================================
+    // GESTIONE PERSISTENZA (Avvio e Chiusura)
+    // =========================================================================
+
     public boolean avviaSistema(){
         try {
-            // Logica di caricamento (adattabile in base all'implementazione specifica di IArchivioDati)
-            if (catalogo == null || anagrafica == null || registro == null) return false;
+            scriviLog("--- AVVIO SISTEMA ---");
 
-            logger.registraAzione("Sistema avviato.");
+            // 1. Carica CATALOGO
+            Object catObj = archivio.caricaStato(FILE_LIBRI);
+            if (catObj instanceof Catalogo) {
+                this.catalogo = (Catalogo) catObj;
+            }
+
+            // 2. Carica ANAGRAFICA
+            Object anagObj = archivio.caricaStato(FILE_UTENTI);
+            if (anagObj instanceof Anagrafica) {
+                this.anagrafica = (Anagrafica) anagObj;
+            }
+
+            // 3. Carica REGISTRO PRESTITI
+            Object regObj = archivio.caricaStato(FILE_PRESTITI);
+            if (regObj instanceof RegistroPrestiti) {
+                this.registro = (RegistroPrestiti) regObj;
+            }
+
+            // 4. RICOLLEGAMENTO DIPENDENZE
+            this.registro.setCatalogo(this.catalogo);
+            this.registro.setAnagrafica(this.anagrafica);
+
+            scriviLog("Dati caricati correttamente.");
             return true;
         } catch (Exception e) {
-            logger.registraAzione("Errore critico avvio sistema: " + e.getMessage());
+            e.printStackTrace();
+            scriviLog("Errore durante il caricamento dati: " + e.getMessage());
             return false;
         }
     }
     
-    /**
-     * @brief Chiude il sistema salvando lo stato corrente.
-     * 
-     * Implementa il Caso d'Uso "Gestione persistenza dati" (Chiusura).
-     * Serializza lo stato attuale dei gestori su file.
-     * 
-     * @return true se il salvataggio ha successo, false altrimenti.
-     */
     public boolean chiudiSistema(){
         try {
-            // Esempio logica salvataggio:
-            // archivio.salvaStato(catalogo, FILE_LIBRI);
-            // archivio.salvaStato(anagrafica, FILE_UTENTI);
-            // archivio.salvaStato(registro, FILE_PRESTITI);
-            logger.registraAzione("Sistema chiuso correttamente.");
-            archivio.salvaStato(logger, AuditTrail.NOME_FILE_LOG);
+            scriviLog("--- CHIUSURA SISTEMA ---");
+
+            archivio.salvaStato(catalogo, FILE_LIBRI);
+            archivio.salvaStato(anagrafica, FILE_UTENTI);
+            archivio.salvaStato(registro, FILE_PRESTITI);
+            
+            // Salva il Log completo su file
+            archivio.salvaStato(logger.visualizzaLog(), AuditTrail.NOME_FILE_LOG);
+
             return true;
         } catch (Exception e) {
-            logger.registraAzione("Errore chiusura sistema: " + e.getMessage());
+            // Qui usiamo logger diretto perché la GUI si sta chiudendo
+            logger.registraAzione("Errore salvataggio chiusura: " + e.getMessage());
             return false;
         }
     }
-    
-    /**
-     * @brief Coordina l'aggiunta di un nuovo utente.
-     * 
-     * Esegue la validazione formale dei campi tramite ValidatoreDati e, se superata,
-     * delega l'inserimento all'Anagrafica.
-     * Se l'operazione ha successo, registra l'evento nel Log.
-     * 
-     * @param[in] u L'oggetto Utente da aggiungere.
-     * 
-     * @return true se l'utente è stato aggiunto, false se i dati non sono validi o la matricola è duplicata.
-     */
+
+    // =========================================================================
+    // GESTIONE UTENTI
+    // =========================================================================
+
     public boolean aggiungiUtente(Utente u){
-        // Validazione completa dell'oggetto Utente campo per campo
         if (u == null) return false;
         
         if (!valida.validaMatricola(u.getMatricola())) return false;
@@ -126,219 +139,108 @@ public class GUIController {
         
         boolean esito = anagrafica.aggiungiUtente(u);
         
-        if (esito) {
-            logger.registraAzione("Aggiunto utente: " + u.getMatricola());
-        }
+        if (esito) scriviLog("Aggiunto nuovo utente: " + u.getMatricola());
+        else scriviLog("Tentativo aggiunta utente fallito (Duplicato): " + u.getMatricola());
+        
         return esito;
     }
     
-    /**
-     * @brief Coordina l'aggiunta di un nuovo libro.
-     * 
-     * Esegue la validazione formale dei dati e delega l'inserimento al Catalogo.
-     * Se l'operazione ha successo, registra l'evento nel Log.
-     * 
-     * @param[in] l L'oggetto Libro da aggiungere.
-     * 
-     * @return true se il libro è stato aggiunto, false se i dati non sono validi o l'ISBN è duplicato.
-     */
-    public boolean aggiungiLibro(Libro l){
-        // Validazione completa dell'oggetto Libro campo per campo
-        if (l == null) return false;
-        
-        if (!valida.validaISBN(l.getISBN())) return false;
-        if (!valida.validaAnnoPubblicazione(l.getAnno())) return false;
-        // Controllo base su Titolo/Autore (non vuoti) se non gestito dal ValidatoreDati
-        if (l.getTitolo() == null || l.getTitolo().isEmpty()) return false;
-        
-        boolean esito = catalogo.aggiungiLibro(l);
-        
-        if (esito) {
-            logger.registraAzione("Aggiunto libro: " + l.getISBN());
-        }
-        return esito;
-    }
-    
-    /**
-     * @brief Coordina la modifica di un utente esistente.
-     * 
-     * Implementa il relativo Business Flow.
-     * Verifica la validità dei nuovi dati e delega l'aggiornamento all'Anagrafica.
-     * 
-     * @param[in] matrOriginale La matricola originale dell'utente da modificare.
-     * @param[in] uNuovo L'oggetto con i dati aggiornati.
-     * 
-     * @return true se la modifica ha successo, false altrimenti.
-     */
     public boolean modificaUtente(String matrOriginale, Utente uNuovo){
-        // 1. Validazione input base
         if (matrOriginale == null || uNuovo == null) return false;
         
-        // 2. Validazione formale campi
-        if (!valida.validaMatricola(matrOriginale)) return false;
         if (!valida.validaMatricola(uNuovo.getMatricola())) return false;
         if (!valida.validaEmail(uNuovo.getEmail())) return false;
         if (!valida.validaNomeCognome(uNuovo.getNome(), uNuovo.getCognome())) return false;
         
-        // 3. Delega al servizio (che gestisce l'aggiornamento e il controllo duplicati se matr cambia)
         boolean esito = anagrafica.modificaUtente(matrOriginale, uNuovo);
         
-        if (esito) {
-            logger.registraAzione("Modificato utente: " + matrOriginale + " -> " + uNuovo.getMatricola());
-        }
+        if (esito) scriviLog("Modificato utente: " + matrOriginale);
         return esito;
     }
     
-    /**
-     * @brief Coordina la modifica di un libro esistente.
-     * 
-     * Implementa il relativo Business Flow.
-     * Verifica la validità dei nuovi dati e delega l'aggiornamento al Catalogo.
-     * 
-     * @param[in] isbnOriginale L'ISBN originale del libro da modificare.
-     * @param[in] lNuovo L'oggetto con i dati aggiornati.
-     * 
-     * @return true se la modifica ha successo, false altrimenti. 
-     */
-    public boolean modificaLibro(String isbnOriginale, Libro lNuovo){
-        // 1. Validazione input base
-        if (isbnOriginale == null || lNuovo == null) return false;
-
-        // 2. Validazione formale campi
-        if (!valida.validaISBN(isbnOriginale)) return false;
-        if (!valida.validaISBN(lNuovo.getISBN())) return false;
-        if (!valida.validaAnnoPubblicazione(lNuovo.getAnno())) return false;
-        if (lNuovo.getTitolo() == null || lNuovo.getTitolo().isEmpty()) return false;
-
-        // 3. Delega al servizio (che gestisce l'aggiornamento e il controllo duplicati se ISBN cambia)
-        boolean esito = catalogo.modificaLibro(isbnOriginale, lNuovo);
-        
-        if (esito) {
-            logger.registraAzione("Modificato libro: " + isbnOriginale + " -> " + lNuovo.getISBN());
-        }
-        return esito;
-    }
-    
-    /**
-     * @brief Esegue la ricerca di libri nel catalogo.
-     * 
-     * @param[in] query La stringa da cercare.
-     * @param[in] campo Il campo su cui filtrare (es. Titolo, Autore).
-     * 
-     * @return Una lista di libri che corrispondono ai criteri.
-     */
-    public List<Libro> cercaLibro(String query, String campo){
-        // Gestione query vuota o nulla -> Ritorna catalogo completo
-        if (query == null || query.trim().isEmpty()) {
-            return catalogo.visualizzaOrdinata();
-        }
-        
-        // Gestione campo nullo -> Default a Titolo
-        if (campo == null) campo = "Titolo";
-        
-        return catalogo.ricerca(query, campo);
-    }
-    
-    /**
-     * @brief Esegue la ricerca di utenti nell'anagrafica.
-     * 
-     * @param[in] query La stringa da cercare.
-     * @param[in] campo Il campo su cui filtrare (es. Cognome, Matricola).
-     * 
-     * @return Una lista di utenti che corrispondono ai criteri.
-     */
-   public List<Utente> cercaUtente(String query, String campo){
-        // Gestione query vuota o nulla -> Ritorna anagrafica completa
-        if (query == null || query.trim().isEmpty()) {
-            return anagrafica.visualizzaOrdinata();
-        }
-        
-        // Gestione campo nullo -> Default a Cognome
-        if (campo == null) campo = "Cognome";
-        
-        return anagrafica.cercaUtente(query, campo);
-    }
-    
-    /**
-     * @brief Coordina la rimozione di un utente.
-     * 
-     * Prima di delegare la rimozione all'Anagrafica, interroga il RegistroPrestiti
-     * per verificare che l'utente non abbia prestiti attivi.
-     * Se la rimozione avviene, l'azione viene loggata.
-     * 
-     * @param[in] matr La matricola dell'utente da rimuovere.
-     * 
-     * @return true se rimosso con successo, false se l'utente ha prestiti attivi o non esiste.
-     */
     public boolean rimuoviUtente(String matr){
         if (!valida.validaMatricola(matr)) return false;
         
-        // Verifica vincolo prestiti attivi tramite RegistroPrestiti
         if (registro.haPrestitiAttivi(matr)) {
-            logger.registraAzione("Rimozione utente " + matr + " fallita: ha prestiti attivi.");
+            scriviLog("Rimozione utente " + matr + " BLOCCATA: ha prestiti attivi.");
             return false;
         }
         
         boolean esito = anagrafica.rimuoviUtente(matr);
-        if (esito) {
-            logger.registraAzione("Rimosso utente: " + matr);
-        }
+        
+        if (esito) scriviLog("Rimosso utente: " + matr);
+        return esito;
+    }
+
+    public List<Utente> cercaUtente(String query, String campo){
+        return anagrafica.cercaUtente(query, campo);
+    }
+
+    public List<Utente> ottieniAnagraficaOrdinata(){
+        return anagrafica.visualizzaOrdinata();
+    }
+
+    // =========================================================================
+    // GESTIONE LIBRI
+    // =========================================================================
+    
+    public boolean aggiungiLibro(Libro l){
+        if (l == null) return false;
+        
+        if (!valida.validaISBN(l.getISBN())) return false;
+        if (!valida.validaAnnoPubblicazione(l.getAnno())) return false;
+        if (l.getTitolo() == null || l.getTitolo().isEmpty()) return false;
+        
+        boolean esito = catalogo.aggiungiLibro(l);
+        
+        if (esito) scriviLog("Aggiunto libro: " + l.getISBN());
+        else scriviLog("Tentativo aggiunta libro fallito (Duplicato): " + l.getISBN());
+        
         return esito;
     }
     
-    /**
-     * @brief Coordina la rimozione di un libro.
-     * 
-     * Verifica il vincolo di integrità referenziale (nessun prestito attivo per questo libro)
-     * prima di chiamare il Catalogo per la rimozione.
-     * Se la rimozione avviene, l'azione viene loggata.
-     * 
-     * @param[in] isbn L'ISBN del libro da rimuovere.
-     * 
-     * @return true se rimosso con successo, false se il libro è in prestito o non esiste.
-     */
+    public boolean modificaLibro(String isbnOriginale, Libro lNuovo){
+        if (isbnOriginale == null || lNuovo == null) return false;
+        
+        if (!valida.validaISBN(lNuovo.getISBN())) return false;
+        if (!valida.validaAnnoPubblicazione(lNuovo.getAnno())) return false;
+        
+        boolean esito = catalogo.modificaLibro(isbnOriginale, lNuovo);
+        
+        if (esito) scriviLog("Modificato libro: " + isbnOriginale);
+        return esito;
+    }
+    
     public boolean rimuoviLibro(String isbn){
         if (!valida.validaISBN(isbn)) return false;
         
-        // Controllo manuale se il libro è in prestito iterando sui prestiti attivi
-        // (poiché RegistroPrestiti non espone un metodo diretto isLibroInPrestito)
         List<Prestito> attivi = registro.getPrestitiAttivi();
-        boolean inPrestito = false;
         for(Prestito p : attivi){
             if(p.getLibro().getISBN().equals(isbn)){
-                inPrestito = true;
-                break;
+                scriviLog("Rimozione libro " + isbn + " BLOCCATA: è attualmente in prestito.");
+                return false;
             }
         }
         
-        if (inPrestito) {
-            logger.registraAzione("Rimozione libro " + isbn + " fallita: è in prestito.");
-            return false;
-        }
-        
         boolean esito = catalogo.rimuoviLibro(isbn);
-        if (esito) {
-            logger.registraAzione("Rimosso libro: " + isbn);
-        }
+        
+        if (esito) scriviLog("Rimosso libro: " + isbn);
         return esito;
     }
+
+    public List<Libro> cercaLibro(String query, String campo){
+        return catalogo.ricerca(query, campo);
+    }
     
-    /**
-     * @brief Gestisce l'intero flusso di registrazione di un prestito.
-     * 
-     * Implementa relativo il Caso d'Uso.
-     * 1. Valida i formati di ISBN e Matricola.
-     * 2. Delega al RegistroPrestiti la verifica dei vincoli di business (Disponibilità, Limite Utente) e la creazione.
-     * 3. Se il prestito viene creato, invoca il Logger per il tracciamento.
-     * 
-     * @param[in] isbn Codice del libro.
-     * @param[in] matricola Matricola dell'utente.
-     * @param[in] dataPrevistaRestituzione Data di scadenza del prestito.
-     * 
-     * @return true se il prestito è registrato, false se falliscono i controlli.
-     */
+    public List<Libro> ottieniCatalogoOrdinato(){
+        return catalogo.visualizzaOrdinata();
+    }
+
+    // =========================================================================
+    // GESTIONE PRESTITI
+    // =========================================================================
+
     public boolean gestisciPrestito(String isbn, String matricola, LocalDate dataPrevistaRestituzione){
-        // Validazione formale specifica
         if (!valida.validaISBN(isbn) || !valida.validaMatricola(matricola)) {
             return false;
         }
@@ -346,82 +248,44 @@ public class GUIController {
         Prestito p = registro.registraPrestito(isbn, matricola, dataPrevistaRestituzione);
         
         if (p != null) {
-            logger.registraAzione("Registrato prestito ID " + p.getIdPrestito() + ": Libro " + isbn + " a Utente " + matricola);
+            scriviLog("NUOVO PRESTITO: ID " + p.getIdPrestito() + " | Libro: " + isbn + " | Utente: " + matricola);
             return true;
         } else {
-            logger.registraAzione("Fallita registrazione prestito: Libro " + isbn + " a Utente " + matricola);
+            scriviLog("Prestito FALLITO (Limiti superati o Libro non disponibile): " + isbn + " -> " + matricola);
             return false;
         }
     }
     
-    /**
-     * @brief Gestisce il flusso di restituzione di un libro.
-     * 
-     * Implementa il relativo Caso d'Uso.
-     * Delega al RegistroPrestiti la chiusura del prestito e l'aggiornamento delle disponibilità.
-     * Se l'operazione ha successo, registra l'evento nel Log.
-     * 
-     * @param[in] idPrestito Identificativo univoco del prestito.
-     * @param[in] dataEffettivaRestituzione Data del rientro.
-     * 
-     * @return true se la restituzione è registrata, false altrimenti.
-     */
     public boolean gestisciRestituzione(int idPrestito, LocalDate dataEffettivaRestituzione){
         boolean esito = registro.registraRestituzione(idPrestito, dataEffettivaRestituzione);
         
         if (esito) {
-            logger.registraAzione("Registrata restituzione prestito ID: " + idPrestito);
+            scriviLog("RESTITUZIONE REGISTRATA: ID " + idPrestito);
+        } else {
+            scriviLog("Errore Restituzione: Prestito ID " + idPrestito + " non trovato.");
         }
         return esito;
     }
     
-    /**
-     * @brief Recupera il report dei prestiti attivi.
-     * @return Lista di prestiti ordinata per data di scadenza.
-     */
     public List<Prestito> ottieniReportPrestiti(){
         return registro.getPrestitiAttivi();
     }
-        
+
+    // =========================================================================
+    // UTILITY & LOGIN
+    // =========================================================================
+
     /**
-     * @brief Recupera il catalogo completo per la visualizzazione.
-     * @return Lista di libri ordinata per Titolo.
+     * @return La lista osservabile per la TableView della GUI
      */
-    public List<Libro> ottieniCatalogoOrdinato(){
-        return catalogo.visualizzaOrdinata();
+    public ObservableList<String> ottieniAuditTrail(){
+        return observableLog; 
     }
     
-    /**
-     * @brief Recupera l'elenco utenti per la visualizzazione.
-     * @return Lista di utenti ordinata per Cognome.
-     */
-    public List<Utente> ottieniAnagraficaOrdinata(){
-        return anagrafica.visualizzaOrdinata();
-    }
-    
-    
-    public List<String> ottieniAuditTrail(){
-        return logger.visualizzaLog();
-    }
-    
-    /**
-     * @brief Gestisce la procedura di login del Bibliotecario.
-     * 
-     * Soddisfa il relativo requisito.
-     * Delega la verifica delle credenziali al componente IAutenticatore.
-     * 
-     * @param[in] user Username inserito.
-     * @param[in] pass Password inserita.
-     * 
-     * @return true se le credenziali sono valide, false altrimenti.
-     */
     public boolean gestisciLogin(String user, String pass){
         boolean esito = autenticatore.verificaCredenziali(user, pass);
-        if (esito) {
-            logger.registraAzione("Login effettuato: " + user);
-        } else {
-            logger.registraAzione("Login fallito: " + user);
-        }
+        if (esito) scriviLog("Login effettuato: " + user);
+        else scriviLog("Login fallito: " + user);
         return esito;
     }
 }
