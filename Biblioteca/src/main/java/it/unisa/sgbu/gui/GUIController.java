@@ -52,8 +52,20 @@ public class GUIController {
         this.registro = registro;
         this.valida = valida;
         
-        // Inizializza la lista grafica con i log già esistenti (caricati dal main)
-        this.observableLog = FXCollections.observableArrayList(logger.visualizzaLog());
+        // 1. Recupera i log grezzi dal sistema (che sono in ordine cronologico 1..10)
+        List<String> logsDalFile = logger.visualizzaLog();
+        
+        // 2. Crea una NUOVA lista temporanea copiando i dati (per non toccare l'originale del logger)
+        List<String> logsPerGui = new ArrayList<>();
+        if (logsDalFile != null) {
+            logsPerGui.addAll(logsDalFile);
+        }
+        
+        // 3. Inverti la copia (10..1)
+        Collections.reverse(logsPerGui);
+        
+        // 4. Inizializza la lista osservabile della GUI con la lista invertita
+        this.observableLog = FXCollections.observableArrayList(logsPerGui);
     }
     
     /**
@@ -61,12 +73,13 @@ public class GUIController {
      * Tutte le operazioni passano di qui.
      */
     private void scriviLog(String messaggio) {
-        // 1. Backend: Salva nella lista persistente
+        // 1. Backend: Salva in coda (ordine cronologico corretto per il file)
         logger.registraAzione(messaggio);
         
-        // 2. Frontend: Aggiunge in cima alla lista (indice 0) così si vede subito
-        observableLog.add(messaggio);
-        //observableLog.notify();
+        // 2. Frontend: Aggiunge in CIMA (indice 0) per visualizzare l'ultimo evento in alto
+        if (observableLog != null) {
+            observableLog.add(0, messaggio);
+        }
     }
     
     // =========================================================================
@@ -153,6 +166,14 @@ public class GUIController {
         if (!valida.validaEmail(uNuovo.getEmail())) return false;
         if (!valida.validaNomeCognome(uNuovo.getNome(), uNuovo.getCognome())) return false;
         
+        // Se la matricola è cambiata, verifico che non ci siano prestiti sulla vecchia
+        if (!matrOriginale.equals(uNuovo.getMatricola())) {
+            if (registro.haPrestitiAttivi(matrOriginale)) {
+                scriviLog("Modifica UTENTE fallita: " + matrOriginale + " ha prestiti attivi. Impossibile cambiare Matricola.");
+                return false;
+            }
+        }
+        
         boolean esito = anagrafica.modificaUtente(matrOriginale, uNuovo);
         
         if (esito) scriviLog("Modificato utente: " + matrOriginale);
@@ -205,6 +226,17 @@ public class GUIController {
         
         if (!valida.validaISBN(lNuovo.getISBN())) return false;
         if (!valida.validaAnnoPubblicazione(lNuovo.getAnno())) return false;
+        
+        // Se l'ISBN è cambiato, verifico che il vecchio libro non sia in prestito
+        if (!isbnOriginale.equals(lNuovo.getISBN())) {
+            List<Prestito> attivi = registro.getPrestitiAttivi();
+            for(Prestito p : attivi){
+                if(p.getLibro().getISBN().equals(isbnOriginale)){
+                    scriviLog("Modifica LIBRO fallita: " + isbnOriginale + " è in prestito. Impossibile cambiare ISBN.");
+                    return false;
+                }
+            }
+        }
         
         boolean esito = catalogo.modificaLibro(isbnOriginale, lNuovo);
         

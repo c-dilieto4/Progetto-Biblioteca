@@ -88,11 +88,26 @@ public class RegistroPrestiti implements Serializable {
             return false;
         }
         
-        Libro libro = prestito.getLibro();
+        // 1. Recupero il libro 'fantasma' memorizzato nel prestito
+        Libro libroNelPrestito = prestito.getLibro();
+        
+        // 2. MODIFICA FONDAMENTALE: 
+        // Uso l'ISBN per recuperare il libro 'reale' dal Catalogo attuale
+        // Questo assicura che l'aggiornamento sia visibile nella Tabella Libri
+        Libro libroRealeNelCatalogo = catalogo.getLibro(libroNelPrestito.getISBN());
+        
+        // 3. Aggiorno la disponibilità sul libro del catalogo (se esiste)
+        if (libroRealeNelCatalogo != null) {
+            libroRealeNelCatalogo.incrementaDisponibilità();
+        } else {
+            // Fallback: se per assurdo non c'è nel catalogo, aggiorno quello del prestito
+            libroNelPrestito.incrementaDisponibilità();
+        }
+
         Utente utente = prestito.getUtente();
         
+        // Chiudo il prestito e rimuovo il link dall'utente
         prestito.chiudiPrestito(dataEff); 
-        libro.incrementaDisponibilità();  
         utente.rimuoviPrestito(prestito);
         
         return true;

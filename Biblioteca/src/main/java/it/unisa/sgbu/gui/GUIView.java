@@ -271,7 +271,7 @@ public class GUIView {
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
                 mostraMessaggio("Libro modificato con successo.");
             } else {
-                mostraMessaggio("Modifica fallita (ISBN duplicato o errore dati).");
+                mostraMessaggio("Modifica fallita.\nCause possibili:\n1. ISBN duplicato.\n2. Il libro ha prestiti attivi (Impossibile cambiare ISBN).");
             }
         });
     }
@@ -327,7 +327,7 @@ public class GUIView {
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
                 mostraMessaggio("Utente modificato con successo.");
             } else {
-                mostraMessaggio("Modifica fallita (Matricola duplicata o errore dati).");
+                mostraMessaggio("Modifica fallita.\nCause possibili:\n1. Matricola duplicata.\n2. L'utente ha prestiti attivi (Impossibile cambiare Matricola).");
             }
         });
     }
@@ -522,7 +522,7 @@ public class GUIView {
         grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
 
         ComboBox<String> comboCriterio = new ComboBox<>();
-        comboCriterio.getItems().addAll("Cognome", "Nome", "Matricola");
+        comboCriterio.getItems().addAll("Cognome", "Matricola");
         comboCriterio.setValue("Cognome"); 
 
         TextField txtQuery = new TextField();
