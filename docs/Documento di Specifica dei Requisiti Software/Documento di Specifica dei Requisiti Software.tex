@@ -158,7 +158,7 @@ Rischio Tecnico: Medio
 \subsubsection{[BF-1] Flusso di registrazione nuovo libro}
 Questo flusso definisce la sequenza di azioni necessarie per inserire un nuovo libro nel catalogo della biblioteca:
 \begin{itemize}
-\item Il Bibliotecario seleziona l’opzione “Aggiungi nuovo libro” e inserisce i dati richiesti (ISBN, titolo, anno di pubblicazione, autore e numero di copie totali).
+\item Il Bibliotecario seleziona l’opzione “Aggiungi” nella sezione "Catalogo Libri" e inserisce i dati richiesti (ISBN, titolo, anno di pubblicazione, autore e numero di copie totali).
 \item Il sistema deve verificare che tutti i campi obbligatori siano popolati come descritto in [DF-1].
 \item Il sistema verifica il campo ISBN rispettando il vincolo [FC-4].
 \item Il sistema controlla che il numero di copie rispetti il formato [DF-1].
@@ -170,7 +170,7 @@ Business Value: Alto
 \subsubsection{[BF-2] Flusso di registrazione nuovo utente}
 Questo flusso definisce la sequenza di azioni necessarie per inserire un nuovo utente autorizzato al prestito:
 \begin{itemize}
-\item Il Bibliotecario seleziona l’opzione “Aggiungi nuovo utente” e inserisce i dati richiesti (matricola, nome, cognome, email ecc).
+\item Il Bibliotecario seleziona l’opzione “Aggiungi” nella sezione "Anagrafica Utenti" e inserisce i dati richiesti (matricola, nome, cognome, email ecc).
 \item Il sistema valida la matricola inserita rispettando il vincolo [FC-4].
 \item Il sistema verifica che il formato della matricola sia conforme all'Assunzione n°3 e che l'e-mail segua il formato previsto, come specificato in [DF-2].
 \item Se tutte le verifiche sono positive, il sistema salva il nuovo utente nell’anagrafica.
@@ -209,8 +209,9 @@ Business Value: Alto
 \subsubsection{[BF-6] Flusso di modifica utente}
 Questo flusso definisce la sequenza di azioni per aggiornare i dati di un utente esistente mantenendo la coerenza dei dati.
 \begin{itemize}
-\item Il Bibliotecario seleziona l’utente, visualizza e modifica i dati (Nome, Cognome, Email, ecc.). Il sistema salva le modifiche.
+\item Il Bibliotecario seleziona l’utente cliccando sul pulsante "Modifica", visualizza e modifica i dati (Nome, Cognome, Email, ecc.). 
 \item Se la matricola viene modificata, il sistema deve verificare che il nuovo valore sia univoco e non già assegnato a un altro utente, rispettando il vincolo [FC-4].
+\item Se la matricola viene modificata, il sistema verifica che l'utente non abbia prestiti attivi in corso. Se presenti, l'operazione viene bloccata per garantire l'integrità referenziale ([FC-3]).
 \item Il sistema verifica che i dati aggiornati (in particolare la matricola e l'email) siano conformi al formato definito in [DF-2].
 \item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
 \end{itemize}
@@ -219,9 +220,10 @@ Business Value: Alto
 \subsubsection{[BF-7] Flusso di modifica libro}
 Questo flusso definisce la sequenza di azioni per aggiornare i dati di un libro esistente mantenendo la coerenza dei dati.
 \begin{itemize}
-\item Il Bibliotecario identifica il libro da voler aggiornare (es. tramite ISBN del libro)
+\item Il Bibliotecario identifica il libro da voler aggiornare (es. tramite ISBN del libro) cliccando sul tasto "Modifica".
 \item Il sistema permette al Bibliotecario di visualizzare il libro e di modificarne i dati.
 \item Se l'ISBN viene modificato, il sistema deve verificare che il nuovo ISBN sia univoco, rispettando il vincolo [FC-4].
+\item Se l'ISBN viene modificato, il sistema verifica che non esistano prestiti attivi associati a quel libro [FC-3]. Se presenti, la modifica dell'ISBN viene impedita.
 \item Il sistema verifica che i dati aggiornati (in particolare ISBN, Copie Totali, Copie Disponibili) siano conformi al formato definito in [DF-1].
 \item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
 \end{itemize}
@@ -230,7 +232,7 @@ Business Value: Alto
 \subsubsection{[BF-8] Flusso di eliminazione utente}
 Questo flusso definisce la sequenza di azioni per eliminare un utente dall’anagrafica.
 \begin{itemize}
-\item Il Bibliotecario identifica l’utente da eliminare (es. tramite matricola).
+\item Il Bibliotecario identifica l’utente da eliminare (es. tramite matricola) cliccando sull'apposito pulsante "Elimina".
 \item Il sistema mostra l’utente da eliminare. 
 \item Il sistema verifica che l'utente non abbia prestiti attivi associati, rispettando il vincolo [FC-3].
 \item Il sistema notifica il successo o mostra un errore in caso di violazione dei vincoli e formati.
@@ -314,8 +316,8 @@ Rischio Tecnico: Basso
 L’SGBU non deve autorizzare la registrazione di un prestito se l’utente selezionato ha già tre libri attivi in prestito. \\
 Business Value: Alto\\
 Rischio Tecnico: Basso
-\subsubsection{[FC-3] Vincolo cancellazione dati}
-L’SGBU non deve permettere la cancellazione di un libro o di un utente se esistono prestiti attivi correlati a tali entità.\\
+\subsubsection{[FC-3] Vincolo cancellazione/modifica dati}
+L'SGBU non deve permettere la cancellazione o la modifica del codice identificativo (ISBN/Matricola) di un libro o di un utente se esistono prestiti attivi correlati a tali entità.\\
 Business Value: Alto\\
 Rischio Tecnico: Basso
 \subsubsection{[FC-4] Vincolo di univocità}
@@ -380,6 +382,7 @@ Business Value: Alto\\
 Rischio Tecnico: Medio\\
 
 \section{Definizione dei Casi d'Uso [UC]}
+Nota di Riferimento ai Business Flow: I Casi d'Uso descritti in questa sezione rappresentano le interazioni ad alto livello tra il Bibliotecario e il Sistema. Per il dettaglio procedurale e la sequenza logica esatta delle operazioni, si rimanda esplicitamente ai Business Flow [BF] definiti nella sezione 3.2. Ogni passo del "Flusso Normale" di un Caso d'Uso che implica una transazione sui dati deve intendersi come l'esecuzione del corrispondente Business Flow.
 
 \subsection{[UC-1] Gestione catalogo libri}
 Permette al bibliotecario di gestire il ciclo di vita completo dei libri: inserimento, modifica, cancellazione, ricerca e visualizzazione dell’inventario con lo stato di disponibilità.\\
@@ -390,13 +393,13 @@ Flusso normale:
 \item Sceglie l'operazione (Inserisci, Modifica, Cancella o Ricerca).
 \item Se Inserisce o Modifica, il sistema verifica la completezza dei dati richiesti secondo [DF-1] e l'unicità dell'ISBN ([FC-4]).
 \item Se Cancella, il sistema verifica l'assenza di prestiti attivi per quel libro ([FC-3]).
-\item Se Ricerca, il sistema verifica l'esistenza del libro nel catalogo.
-\item La registrazione dell'operazione avviene tramite il flusso [BF-10] Flusso di aggiornamento audit trail.\\
+\item Se Ricerca, il sistema verifica l'esistenza del libro nel catalogo.\\
 \end{itemize}
 Flussi alternativi:
 \begin{itemize}
 \item Se l'ISBN è già presente, l'inserimento o la modifica vengono bloccati ([FC-4]).
 \item Se sono presenti prestiti attivi, la cancellazione viene bloccata e viene mostrato un errore ([FC-3]).
+\item Se l'ISBN viene modificato e sono presenti prestiti attivi per quel libro, l'operazione viene bloccata per garantire l'integrità dei dati ([FC-3]).
 \end{itemize}
 Post-condizioni:
 \begin{itemize}
@@ -414,12 +417,12 @@ Flusso normale:
 \item Se Inserisce o Modifica, il sistema verifica la conformità dei dati alla specifica [DF-2] (inclusi i formati di Matricola secondo Assunzione n°3 e l'email) e l'univocità della Matricola ([FC-4]).
 \item Se Ricerca, il sistema verifica l'esistenza dell'utente.
 \item Se Cancella, il sistema verifica l'assenza di prestiti attivi ([FC-3]).
-\item La registrazione dell'operazione avviene tramite il flusso [BF-10] Flusso di aggiornamento audit trail.
 \end{itemize}
 Flussi alternativi:
 \begin{itemize}
 \item Se la matricola è già presente, l’inserimento o la modifica vengono bloccati ([FC-4]).
 \item Se l'utente ha prestiti attivi, la cancellazione viene bloccata ([FC-3]).
+\item Se la matricola viene modificata e l'utente ha prestiti attivi in corso, l'operazione viene bloccata per garantire l'integrità dei dati ([FC-3])
 \item Se l’utente da eliminare non è presente nell’anagrafica, l’operazione viene bloccata e viene mostrato un errore.
 \end{itemize}
 Post-Condizioni:
@@ -439,7 +442,6 @@ Flusso normale:
 \item Il Sistema verifica che il libro richiesto abbia copie disponibili ([FC-1]).
 \item Il Sistema verifica che l'utente non abbia già 3 libri in prestito ([FC-2]).
 \item Se tutti i vincoli sono soddisfatti, il Sistema registra il Prestito (creando un record [DF-3]) e decrementa le Copie Disponibili del libro.
-\item La registrazione dell'operazione avviene tramite il flusso [BF-10] Flusso di aggiornamento audit trail.
 \end{itemize}
 Flussi Alternativi
 \begin{itemize}
@@ -464,7 +466,6 @@ Flusso normale:
 \item Il Sistema incrementa il contatore Copie Disponibili del libro ([DF-1]).
 \item Se la Data Effettiva è successiva a quella Prevista ([DF-3]), viene attivato il flusso esteso: [BF-5] Flusso di segnalazione ritardo.
 \item Il Sistema notifica il successo dell'operazione.
-\item Viene eseguita l'inclusione: [BF-10] Flusso di aggiornamento audit trail.
 \end{itemize}
 Flussi Alternativi:
 \begin{itemize}
@@ -564,7 +565,7 @@ Post-Condizioni:
 \section{Diagramma dei Casi d'Uso}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.1\textwidth]{assets/Diagramma_CU}
+    \includegraphics[width=1.1\textwidth]{Diagramma_CU}
     \caption{Diagramma dei Casi d'Uso.}
     \label{fig:mia_immagine}
 \end{figure}
