@@ -21,27 +21,48 @@
                 
                 <Tab text="Catalogo Libri">
                     <content>
-                        <VBox spacing="20.0"><padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+                        <VBox spacing="20.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
                             <children>
                                 <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);">
-                                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0" /></padding>
+                                    <padding>
+                                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                    </padding>
                                     <children>
                                         <Button mnemonicParsing="false" onAction="#onCercaLibro" prefWidth="120.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="🔍 Ricerca..." />
+                                        
                                         <Button mnemonicParsing="false" onAction="#onResetLibri" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="❌ Tutto" />
+                                        
                                         <Region HBox.hgrow="ALWAYS" /> 
+                                        
                                         <Button mnemonicParsing="false" onAction="#onAggiungiLibro" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="➕ Aggiungi" />
-                                        <Button mnemonicParsing="false" onAction="#onModificaLibro" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="✏️ Modifica" />
-                                        <Button mnemonicParsing="false" onAction="#onRimuoviLibro" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="🗑️ Rimuovi" />
+                                        <Button mnemonicParsing="false" onAction="#onModificaLibro" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="✎ Modifica" />
+                                        <Button mnemonicParsing="false" onAction="#onRimuoviLibro" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="☒ Rimuovi" />
                                     </children>
                                 </HBox>
-                                <TableView fx:id="tableLibri" style="-fx-background-radius: 5; -fx-border-radius: 5;" VBox.vgrow="ALWAYS">
+
+                                <TableView fx:id="tableLibri" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn prefWidth="120.0" text="ISBN"><cellValueFactory><PropertyValueFactory property="ISBN" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="250.0" text="Titolo"><cellValueFactory><PropertyValueFactory property="titolo" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="150.0" text="Autore"><cellValueFactory><PropertyValueFactory property="autore" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="80.0" text="Anno"><cellValueFactory><PropertyValueFactory property="anno" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="120" text="Copie Disp."><cellValueFactory><PropertyValueFactory property="copieDisponibili" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="100" text="Copie Tot."><cellValueFactory><PropertyValueFactory property="copieTotali" /></cellValueFactory></TableColumn>
+                                        <TableColumn prefWidth="120.0" text="ISBN">
+                                            <cellValueFactory><PropertyValueFactory property="ISBN" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="250.0" text="Titolo">
+                                            <cellValueFactory><PropertyValueFactory property="titolo" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="150.0" text="Autore">
+                                            <cellValueFactory><PropertyValueFactory property="autore" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="80.0" text="Anno">
+                                            <cellValueFactory><PropertyValueFactory property="anno" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="120" text="Copie Disp.">
+                                            <cellValueFactory><PropertyValueFactory property="copieDisponibili" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="100" text="Copie Tot.">
+                                            <cellValueFactory><PropertyValueFactory property="copieTotali" /></cellValueFactory>
+                                        </TableColumn>
                                     </columns>
                                 </TableView>
                             </children>
@@ -70,17 +91,25 @@
                                         <Region HBox.hgrow="ALWAYS" />
 
                                         <Button mnemonicParsing="false" onAction="#onAggiungiUtente" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="➕ Aggiungi" />
-                                        <Button mnemonicParsing="false" onAction="#onModificaUtente" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="✏️ Modifica" />
-                                        <Button mnemonicParsing="false" onAction="#onRimuoviUtente" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="🗑️ Rimuovi" />
+                                        <Button mnemonicParsing="false" onAction="#onModificaUtente" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="✎ Modifica" />
+                                        <Button mnemonicParsing="false" onAction="#onRimuoviUtente" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="☒ Rimuovi" />
                                     </children>
                                 </HBox>
 
                                 <TableView fx:id="tableUtenti" style="-fx-background-radius: 5; -fx-border-radius: 5;" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn prefWidth="100.0" text="Matricola"><cellValueFactory><PropertyValueFactory property="matricola" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="150.0" text="Nome"><cellValueFactory><PropertyValueFactory property="nome" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="150.0" text="Cognome"><cellValueFactory><PropertyValueFactory property="cognome" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="200.0" text="Email"><cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory></TableColumn>
+                                        <TableColumn prefWidth="100.0" text="Matricola">
+                                            <cellValueFactory><PropertyValueFactory property="matricola" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="150.0" text="Nome">
+                                            <cellValueFactory><PropertyValueFactory property="nome" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="150.0" text="Cognome">
+                                            <cellValueFactory><PropertyValueFactory property="cognome" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="200.0" text="Email">
+                                            <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
+                                        </TableColumn>
                                     </columns>
                                 </TableView>
                             </children>
@@ -100,7 +129,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </padding>
                                     <children>
-                                        <Button mnemonicParsing="false" onAction="#onResetPrestiti" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="Mostra Tutti" />
+                                        <Button mnemonicParsing="false" onAction="#onResetPrestiti" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="📋 Mostra Tutti" />
                                         
                                         <Region HBox.hgrow="ALWAYS" />
 
@@ -111,13 +140,23 @@
 
                                 <TableView fx:id="tablePrestiti" style="-fx-background-radius: 5; -fx-border-radius: 5;" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="ID"><cellValueFactory><PropertyValueFactory property="idPrestito" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="200.0" text="Libro"><cellValueFactory><PropertyValueFactory property="libro" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="200.0" text="Utente"><cellValueFactory><PropertyValueFactory property="utente" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="100.0" text="Data Inizio"><cellValueFactory><PropertyValueFactory property="dataInizio" /></cellValueFactory></TableColumn>
-                                        <TableColumn prefWidth="100.0" text="Scadenza"><cellValueFactory><PropertyValueFactory property="dataPrevistaRestituzione" /></cellValueFactory></TableColumn>
+                                        <TableColumn maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="ID">
+                                            <cellValueFactory><PropertyValueFactory property="idPrestito" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="200.0" text="Libro">
+                                            <cellValueFactory><PropertyValueFactory property="libro" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="200.0" text="Utente">
+                                            <cellValueFactory><PropertyValueFactory property="utente" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="100.0" text="Data Inizio">
+                                            <cellValueFactory><PropertyValueFactory property="dataInizio" /></cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="100.0" text="Scadenza">
+                                            <cellValueFactory><PropertyValueFactory property="dataPrevistaRestituzione" /></cellValueFactory>
+                                        </TableColumn>
                                         <TableColumn fx:id="colRitardo" prefWidth="120.0" text="Stato" />
-                                    </columns>
+                                        </columns>
                                 </TableView>
                             </children>
                         </VBox>
@@ -132,7 +171,8 @@
                                    <children>
                                       <TableView fx:id="tableAuditTrail" prefHeight="619.0" prefWidth="950.0" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                                          <columns>
-                                            <TableColumn fx:id="auditTrailColumn" editable="false" maxWidth="949.0" minWidth="50.0" prefWidth="878.0" sortable="false" text="Tracciamento"></TableColumn>
+                                            <TableColumn fx:id="auditTrailColumn" editable="false" maxWidth="949.0" minWidth="50.0" prefWidth="878.0" sortable="false" text="Tracciamento">
+                                            </TableColumn>
                                          </columns>
                                       </TableView>
                                    </children>
