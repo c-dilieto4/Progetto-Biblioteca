@@ -247,6 +247,7 @@ public class GUIController {
         }
         
         Prestito p = registro.registraPrestito(isbn, matricola, dataPrevistaRestituzione);
+        archivio.salvaStato(catalogo, FILE_LIBRI);
         
         if (p != null) {
             scriviLog("NUOVO PRESTITO: ID " + p.getIdPrestito() + " | Libro: " + isbn + " | Utente: " + matricola);
@@ -265,6 +266,8 @@ public class GUIController {
         } else {
             scriviLog("Errore Restituzione: Prestito ID " + idPrestito + " non trovato.");
         }
+        
+        archivio.salvaStato(catalogo, FILE_LIBRI);
         return esito;
     }
     
