@@ -173,18 +173,29 @@ public class GUIView {
 
         Optional<Utente> res = dialog.showAndWait();
         res.ifPresent(u -> {
+            // Controllo Matricola
             if (!u.getMatricola().matches("^\\d{10}$")) {
                 mostraMessaggio(MessaggiInterfaccia.INPUT_MATRICOLA_NON_VALIDO);
                 return;
             }
-            if (!u.getEmail().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_EMAIL_NON_VALIDO);
+
+            // --- CORREZIONE REGEX EMAIL ---
+            // Questa regex impone che dopo ogni punto ci sia del testo, vietando ".."
+            String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*\\.[a-zA-Z]{2,}$";
+            
+            if (!u.getEmail().matches(regexEmail)) {
+                mostraMessaggio(MessaggiInterfaccia.INPUT_EMAIL_NON_VALIDO + 
+                                "\n(Formato non valido o presenza di doppi punti '..')");
                 return;
             }
+            // ------------------------------
+
+            // Controllo Nome
             if (!u.getNome().matches("^[a-zA-Z\\s']+$")) {
                 mostraMessaggio(MessaggiInterfaccia.INPUT_NOME_NON_VALIDO);
                 return;
             }
+            // Controllo Cognome
             if (!u.getCognome().matches("^[a-zA-Z\\s']+$")) {
                 mostraMessaggio(MessaggiInterfaccia.INPUT_COGNOME_NON_VALIDO);
                 return;

@@ -62,7 +62,7 @@ public class ValidatoreDati {
      * @return true se il formato è valido, false altrimenti.
      */
     public boolean validaEmail(String email){
-        return email != null && email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+        return email != null && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*\\.[a-zA-Z]{2,}$");
     }
     
     
