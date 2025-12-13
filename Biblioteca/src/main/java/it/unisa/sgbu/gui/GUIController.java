@@ -171,19 +171,20 @@ public class GUIController {
      * @return true se la modifica ha successo, false altrimenti.
      */
     public boolean modificaUtente(String matrOriginale, Utente uNuovo){
-        // Valido la matricola originale per la ricerca
-        if (!valida.validaMatricola(matrOriginale)) return false;
+        // 1. Validazione input base
+        if (matrOriginale == null || uNuovo == null) return false;
         
-        // Valido i nuovi dati
-        if (uNuovo == null) return false;
+        // 2. Validazione formale campi
+        if (!valida.validaMatricola(matrOriginale)) return false;
         if (!valida.validaMatricola(uNuovo.getMatricola())) return false;
         if (!valida.validaEmail(uNuovo.getEmail())) return false;
         if (!valida.validaNomeCognome(uNuovo.getNome(), uNuovo.getCognome())) return false;
         
+        // 3. Delega al servizio (che gestisce l'aggiornamento e il controllo duplicati se matr cambia)
         boolean esito = anagrafica.modificaUtente(matrOriginale, uNuovo);
         
         if (esito) {
-            logger.registraAzione("Modificato utente: " + matrOriginale);
+            logger.registraAzione("Modificato utente: " + matrOriginale + " -> " + uNuovo.getMatricola());
         }
         return esito;
     }
@@ -200,19 +201,20 @@ public class GUIController {
      * @return true se la modifica ha successo, false altrimenti. 
      */
     public boolean modificaLibro(String isbnOriginale, Libro lNuovo){
-        // Valido l'ISBN originale per la ricerca
-        if (!valida.validaISBN(isbnOriginale)) return false;
+        // 1. Validazione input base
+        if (isbnOriginale == null || lNuovo == null) return false;
 
-        // Valido i nuovi dati
-        if (lNuovo == null) return false;
+        // 2. Validazione formale campi
+        if (!valida.validaISBN(isbnOriginale)) return false;
         if (!valida.validaISBN(lNuovo.getISBN())) return false;
         if (!valida.validaAnnoPubblicazione(lNuovo.getAnno())) return false;
         if (lNuovo.getTitolo() == null || lNuovo.getTitolo().isEmpty()) return false;
 
+        // 3. Delega al servizio (che gestisce l'aggiornamento e il controllo duplicati se ISBN cambia)
         boolean esito = catalogo.modificaLibro(isbnOriginale, lNuovo);
         
         if (esito) {
-            logger.registraAzione("Modificato libro: " + isbnOriginale);
+            logger.registraAzione("Modificato libro: " + isbnOriginale + " -> " + lNuovo.getISBN());
         }
         return esito;
     }
@@ -226,10 +228,14 @@ public class GUIController {
      * @return Una lista di libri che corrispondono ai criteri.
      */
     public List<Libro> cercaLibro(String query, String campo){
-        // Se la query è vuota, restituisco tutto
-        if (query == null || query.isEmpty()) {
+        // Gestione query vuota o nulla -> Ritorna catalogo completo
+        if (query == null || query.trim().isEmpty()) {
             return catalogo.visualizzaOrdinata();
         }
+        
+        // Gestione campo nullo -> Default a Titolo
+        if (campo == null) campo = "Titolo";
+        
         return catalogo.ricerca(query, campo);
     }
     
@@ -241,10 +247,15 @@ public class GUIController {
      * 
      * @return Una lista di utenti che corrispondono ai criteri.
      */
-    public List<Utente> cercaUtente(String query, String campo){
-        if (query == null || query.isEmpty()) {
+   public List<Utente> cercaUtente(String query, String campo){
+        // Gestione query vuota o nulla -> Ritorna anagrafica completa
+        if (query == null || query.trim().isEmpty()) {
             return anagrafica.visualizzaOrdinata();
         }
+        
+        // Gestione campo nullo -> Default a Cognome
+        if (campo == null) campo = "Cognome";
+        
         return anagrafica.cercaUtente(query, campo);
     }
     
