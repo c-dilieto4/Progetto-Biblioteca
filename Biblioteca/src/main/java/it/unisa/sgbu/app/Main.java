@@ -93,6 +93,7 @@ public class Main extends Application {
         }
     }
 
+    
     @Override
     public void stop() {
         if (controller != null) {
@@ -101,6 +102,7 @@ public class Main extends Application {
         }
     }
 
+    
     public static void main(String[] args) {
         launch(args);
     }
