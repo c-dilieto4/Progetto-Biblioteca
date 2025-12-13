@@ -10,14 +10,13 @@ import java.util.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node; // NECESSARIO PER TROVARE I PULSANTI
+import javafx.scene.Node; 
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
@@ -28,7 +27,7 @@ import javafx.util.Pair;
 public class GUIView {
     
     private final GUIController sistema;
-    private final MessaggiInterfaccia messaggi;
+    private final MessaggiInterfaccia messaggi; // Riferimento per coerenza
     private Stage primaryStage;
     private ObservableList<String> datiAuditTrail;
     
@@ -51,7 +50,7 @@ public class GUIView {
             mostraListaLibri(sistema.ottieniCatalogoOrdinato());
             mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
             mostraListaPrestiti(sistema.ottieniReportPrestiti());
-            mostraListaAuditTrail(sistema.ottieniAuditTrail()); // Passiamo la lista viva
+            mostraListaAuditTrail(sistema.ottieniAuditTrail()); 
             
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("SGBU - Biblioteca Dashboard");
@@ -69,25 +68,23 @@ public class GUIView {
     private void stilaPulsantiDialogo(Dialog<?> dialog) {
         DialogPane pane = dialog.getDialogPane();
         
-        // Cerca il pulsante OK e aggiunge l'icona
         Node btnOk = pane.lookupButton(ButtonType.OK);
         if (btnOk instanceof Button) {
             ((Button) btnOk).setText("Conferma");
-            ((Button) btnOk).setStyle("-fx-base: #2ecc71; -fx-text-fill: black; -fx-font-weight: bold;"); // Verde
+            ((Button) btnOk).setStyle("-fx-base: #2ecc71; -fx-text-fill: black; -fx-font-weight: bold;"); 
             ((Button) btnOk).setGraphic(new Label("✅")); 
         }
         
-        // Cerca il pulsante CANCEL e aggiunge l'icona
         Node btnCancel = pane.lookupButton(ButtonType.CANCEL);
         if (btnCancel instanceof Button) {
             ((Button) btnCancel).setText("Annulla");
-            ((Button) btnCancel).setStyle("-fx-base: #e74c3c; -fx-text-fill: black;"); // Rosso
+            ((Button) btnCancel).setStyle("-fx-base: #e74c3c; -fx-text-fill: black;"); 
             ((Button) btnCancel).setGraphic(new Label("❌"));
         }
     }
     
     // =========================================================================
-    // GESTIONE DIALOGHI
+    // GESTIONE DIALOGHI (PULITI E DELEGATI)
     // =========================================================================
 
     public void gestisciAggiuntaLibro(){
@@ -112,7 +109,7 @@ public class GUIView {
         grid.add(new Label("Copie:"), 0, 4); grid.add(copie, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
 
         dialog.setResultConverter(Button -> {
             if (Button == ButtonType.OK) {
@@ -126,20 +123,12 @@ public class GUIView {
 
         Optional<Libro> result = dialog.showAndWait();
         result.ifPresent(l -> {
-            if (!l.getISBN().matches("^[0-9-]{13,17}$")) {
-                mostraMessaggio("Errore: Formato ISBN non valido.");
-                return;
-            }
-            if (l.getAnno() < 0 || l.getAnno() > java.time.Year.now().getValue()) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_ANNO_NON_VALIDO);
-                return;
-            }
-
             if (sistema.aggiungiLibro(l)) {
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
                 mostraMessaggio(String.format(MessaggiInterfaccia.SUCCESSO_AGGIUNTA_LIBRO, l.getTitolo()));
             } else {
-                mostraMessaggio(String.format(MessaggiInterfaccia.ERRORE_ISBN_DUPLICATO, l.getISBN(), "presente nel catalogo"));
+                // Messaggio generico di fallimento (copre ISBN errato, duplicati, ecc.)
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO);
             }
         });
     }
@@ -164,7 +153,7 @@ public class GUIView {
         grid.add(new Label("Email:"), 0, 3); grid.add(email, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
 
         dialog.setResultConverter(b -> {
             if (b == ButtonType.OK) return new Utente(matricola.getText(), nome.getText(), cognome.getText(), email.getText());
@@ -173,39 +162,15 @@ public class GUIView {
 
         Optional<Utente> res = dialog.showAndWait();
         res.ifPresent(u -> {
-            // Controllo Matricola
-            if (!u.getMatricola().matches("^\\d{10}$")) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_MATRICOLA_NON_VALIDO);
-                return;
-            }
-
-            // --- CORREZIONE REGEX EMAIL ---
-            // Questa regex impone che dopo ogni punto ci sia del testo, vietando ".."
-            String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*\\.[a-zA-Z]{2,}$";
-            
-            if (!u.getEmail().matches(regexEmail)) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_EMAIL_NON_VALIDO + 
-                                "\n(Formato non valido o presenza di doppi punti '..')");
-                return;
-            }
-            // ------------------------------
-
-            // Controllo Nome
-            if (!u.getNome().matches("^[a-zA-Z\\s']+$")) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_NOME_NON_VALIDO);
-                return;
-            }
-            // Controllo Cognome
-            if (!u.getCognome().matches("^[a-zA-Z\\s']+$")) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_COGNOME_NON_VALIDO);
-                return;
-            }
-
+            // DELEGA TOTALE: Il ValidatoreDati nel controller gestisce Regex Email e Matricola.
             if (sistema.aggiungiUtente(u)) {
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
-                mostraMessaggio("Utente registrato con successo."); 
+                mostraMessaggio(MessaggiInterfaccia.SUCCESSO_AGGIUNTA_UTENTE); 
             } else {
-                mostraMessaggio(String.format(MessaggiInterfaccia.ERRORE_MATRICOLA_DUPLICATA, u.getMatricola()));
+                // Se fallisce, può essere un dato non valido o una matricola duplicata.
+                // MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO è appropriato qui se vogliamo delegare tutto.
+                // Oppure possiamo assumere che sia la matricola se i formati sono corretti (ma qui non controlliamo i formati).
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO);
             }
         });
     }
@@ -214,7 +179,7 @@ public class GUIView {
         Libro libroSelezionato = dashboardController.getLibroSelezionato();
         
         if (libroSelezionato == null) {
-            mostraMessaggio("Seleziona prima un libro dalla tabella!");
+            mostraMessaggio(MessaggiInterfaccia.ERRORE_SELEZIONE_LIBRO);
             return;
         }
         
@@ -222,7 +187,7 @@ public class GUIView {
 
         Dialog<Libro> dialog = new Dialog<>();
         dialog.setTitle("Modifica Libro");
-        dialog.setHeaderText("✏️ Modifica i dati del libro: " + libroSelezionato.getTitolo());
+        dialog.setHeaderText("✎ Modifica i dati del libro: " + libroSelezionato.getTitolo());
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
@@ -244,7 +209,7 @@ public class GUIView {
         grid.add(new Label("Copie Totali:"), 0, 4); grid.add(copie, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
 
         dialog.setResultConverter(Button -> {
             if (Button == ButtonType.OK) {
@@ -258,20 +223,12 @@ public class GUIView {
 
         Optional<Libro> result = dialog.showAndWait();
         result.ifPresent(lNuovo -> {
-            if (!lNuovo.getISBN().matches("^[0-9-]{13,17}$")) {
-                mostraMessaggio("Errore: Formato ISBN non valido.");
-                return;
-            }
-            if (lNuovo.getAnno() < 0 || lNuovo.getAnno() > java.time.Year.now().getValue()) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_ANNO_NON_VALIDO);
-                return;
-            }
-
+            // DELEGA TOTALE
             if (sistema.modificaLibro(isbnOriginale, lNuovo)) {
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
-                mostraMessaggio("Libro modificato con successo.");
+                mostraMessaggio(MessaggiInterfaccia.SUCCESSO_MODIFICA_LIBRO);
             } else {
-                mostraMessaggio("Modifica fallita.\nCause possibili:\n1. ISBN duplicato.\n2. Il libro ha prestiti attivi (Impossibile cambiare ISBN).");
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_MODIFICA_LIBRO);
             }
         });
     }
@@ -280,7 +237,7 @@ public class GUIView {
         Utente utenteSelezionato = dashboardController.getUtenteSelezionato();
         
         if (utenteSelezionato == null) {
-            mostraMessaggio("Seleziona prima un utente dalla tabella!");
+            mostraMessaggio(MessaggiInterfaccia.ERRORE_SELEZIONE_UTENTE);
             return;
         }
         
@@ -288,7 +245,7 @@ public class GUIView {
 
         Dialog<Utente> dialog = new Dialog<>();
         dialog.setTitle("Modifica Utente");
-        dialog.setHeaderText("✏️ Modifica dati utente: " + utenteSelezionato.getCognome());
+        dialog.setHeaderText("✎ Modifica dati utente: " + utenteSelezionato.getCognome());
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
@@ -305,7 +262,7 @@ public class GUIView {
         grid.add(new Label("Email:"), 0, 3); grid.add(email, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
 
         dialog.setResultConverter(b -> {
             if (b == ButtonType.OK) return new Utente(matricola.getText(), nome.getText(), cognome.getText(), email.getText());
@@ -314,20 +271,12 @@ public class GUIView {
 
         Optional<Utente> res = dialog.showAndWait();
         res.ifPresent(uNuovo -> {
-            if (!uNuovo.getMatricola().matches("^\\d{10}$")) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_MATRICOLA_NON_VALIDO);
-                return;
-            }
-            if (!uNuovo.getEmail().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-                mostraMessaggio(MessaggiInterfaccia.INPUT_EMAIL_NON_VALIDO);
-                return;
-            }
-            
+            // DELEGA TOTALE
             if(sistema.modificaUtente(matricolaOriginale, uNuovo)){
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
-                mostraMessaggio("Utente modificato con successo.");
+                mostraMessaggio(MessaggiInterfaccia.SUCCESSO_MODIFICA_UTENTE);
             } else {
-                mostraMessaggio("Modifica fallita.\nCause possibili:\n1. Matricola duplicata.\n2. L'utente ha prestiti attivi (Impossibile cambiare Matricola).");
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_MODIFICA_UTENTE);
             }
         });
     }
@@ -335,20 +284,20 @@ public class GUIView {
     public void gestisciEliminazioneUtente(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Elimina Utente");
-        dialog.setHeaderText("🗑️ Inserisci Matricola per confermare");
+        dialog.setHeaderText("☒ Inserisci Matricola per confermare eliminazione");
         
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
-
         Utente sel = dashboardController.getUtenteSelezionato();
         if(sel != null) dialog.getEditor().setText(sel.getMatricola());
+
+        stilaPulsantiDialogo(dialog); 
 
         Optional<String> res = dialog.showAndWait();
         res.ifPresent(matr -> {
             if(sistema.rimuoviUtente(matr)){
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
-                mostraMessaggio("Utente rimosso.");
+                mostraMessaggio(MessaggiInterfaccia.SUCCESSO_RIMOZIONE_UTENTE);
             } else {
-                mostraMessaggio(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO);
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_RIMOZIONE_UTENTE);
             }
         });
     }
@@ -356,25 +305,25 @@ public class GUIView {
     public void gestisciEliminazioneLibro(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Elimina Libro");
-        dialog.setHeaderText("🗑️ Inserisci ISBN per confermare");
-        
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        dialog.setHeaderText("☒ Inserisci ISBN per confermare eliminazione");
         
         Libro sel = dashboardController.getLibroSelezionato();
         if(sel != null) dialog.getEditor().setText(sel.getISBN());
+
+        stilaPulsantiDialogo(dialog); 
 
         Optional<String> res = dialog.showAndWait();
         res.ifPresent(isbn -> {
             if(sistema.rimuoviLibro(isbn)){
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
-                mostraMessaggio("Libro rimosso.");
+                mostraMessaggio(MessaggiInterfaccia.SUCCESSO_RIMOZIONE_LIBRO);
             } else {
-                mostraMessaggio(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO);
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_RIMOZIONE_LIBRO);
             }
         });
     }
     
-   public void gestisciRegistrazionePrestito(){
+    public void gestisciRegistrazionePrestito(){
         Dialog<Boolean> dialog = new Dialog<>();
         dialog.setTitle("Nuovo Prestito");
         dialog.setHeaderText("📚 Registra Prestito");
@@ -392,59 +341,39 @@ public class GUIView {
         grid.add(new Label("Scadenza:"), 0, 2); grid.add(data, 1, 2);
         
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
         
         dialog.setResultConverter(b -> {
             if (b == ButtonType.OK) {
-                // Validazione formati base
-                if (!isbn.getText().matches("^[0-9-]{13,17}$")) {
-                    // Nota: Non mostriamo messaggi qui per evitare conflitti col thread grafico, 
-                    // ritorniamo null per indicare input non valido se vogliamo bloccare, 
-                    // oppure gestiamo l'errore nel controller. 
-                    // Per semplicità qui ritorniamo false se il formato è errato.
-                    return false; 
-                }
-                if (!matr.getText().matches("^\\d{10}$")) {
-                    return false;
-                }
-                // Prova a registrare il prestito
+                // Passiamo i dati grezzi. Il controller restituirà false se ISBN/Matricola sono invalidi.
                 return sistema.gestisciPrestito(isbn.getText(), matr.getText(), data.getValue());
             }
-            return null; // Se preme Annulla
+            return null; // Annulla
         });
         
         Optional<Boolean> esito = dialog.showAndWait();
         
-        // --- LOGICA CORRETTA ---
         if (esito.isPresent()) {
             if (esito.get()) {
-                // CASO SUCCESSO (True)
+                // Successo
                 mostraListaPrestiti(sistema.ottieniReportPrestiti());
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
                 String msg = String.format(MessaggiInterfaccia.SUCCESSO_PRESTITO, 0);
                 mostraMessaggio(new MessaggiInterfaccia() { @Override public String toString() { return msg; }});
             } else {
-                // CASO ERRORE (False) - Questo è quello che mancava!
-                // L'utente ha premuto OK, ma il sistema ha detto "NO" (libro non disp, utente pieno, o input errato)
-                mostraMessaggio("❌ Errore Registrazione Prestito:\n"
-                        + "L'operazione è fallita. Verifica che:\n"
-                        + "1. Il libro esista e ci siano copie disponibili.\n"
-                        + "2. L'utente esista e non abbia superato il limite prestiti.\n"
-                        + "3. I formati (ISBN/Matricola) siano corretti.");
+                // Errore: il controller ha restituito false (dati non validi o vincoli violati)
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_REGISTRAZIONE_PRESTITO);
             }
         }
-        // Se esito non è presente, l'utente ha premuto Annulla o chiuso la finestra (non facciamo nulla).
     }
-   
-   
+    
     public void gestisciRestituzionePrestito(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Restituzione");
         dialog.setHeaderText("↩️ Inserisci ID Prestito");
         
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog);
         
-        // Pre-compilazione se selezionato
         Prestito pSel = dashboardController.getPrestitoSelezionato();
         if(pSel != null) dialog.getEditor().setText(String.valueOf(pSel.getIdPrestito()));
         
@@ -455,12 +384,12 @@ public class GUIView {
                 if(sistema.gestisciRestituzione(id, LocalDate.now())){
                     mostraListaPrestiti(sistema.ottieniReportPrestiti());
                     mostraListaLibri(sistema.ottieniCatalogoOrdinato());
-                    mostraMessaggio("Restituzione effettuata.");
+                    mostraMessaggio(MessaggiInterfaccia.SUCCESSO_RESTITUZIONE);
                 } else {
-                    mostraMessaggio(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO);
+                    mostraMessaggio(MessaggiInterfaccia.ERRORE_RESTITUZIONE_NON_TROVATO);
                 }
             } catch(NumberFormatException e) {
-                mostraMessaggio(MessaggiInterfaccia.ERRORE_GENERICO_SALVATAGGIO);
+                mostraMessaggio(MessaggiInterfaccia.ERRORE_ID_NON_NUMERICO);
             }
         });
     }
@@ -487,7 +416,7 @@ public class GUIView {
         grid.add(txtQuery, 1, 1);
 
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
 
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
@@ -497,18 +426,12 @@ public class GUIView {
         });
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
-        
         result.ifPresent(pair -> {
             String criterio = pair.getKey();
             String testo = pair.getValue();
-            
             List<Libro> risultati = sistema.cercaLibro(testo, criterio);
-            
             mostraListaLibri(risultati);
-            
-            if (risultati.isEmpty()) {
-                mostraMessaggio("Nessun libro trovato con " + criterio + ": " + testo);
-            }
+            if (risultati.isEmpty()) mostraMessaggio(MessaggiInterfaccia.NESSUN_LIBRO_TROVATO);
         });
     }
     
@@ -522,11 +445,11 @@ public class GUIView {
         grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
 
         ComboBox<String> comboCriterio = new ComboBox<>();
-        comboCriterio.getItems().addAll("Cognome", "Matricola");
+        comboCriterio.getItems().addAll("Cognome", "Nome", "Matricola");
         comboCriterio.setValue("Cognome"); 
 
         TextField txtQuery = new TextField();
-        txtQuery.setPromptText("Cosa vuoi cercare?");
+        txtQuery.setPromptText("Testo da cercare...");
 
         grid.add(new Label("Cerca per:"), 0, 0);
         grid.add(comboCriterio, 1, 0);
@@ -534,7 +457,7 @@ public class GUIView {
         grid.add(txtQuery, 1, 1);
 
         dialog.getDialogPane().setContent(grid);
-        stilaPulsantiDialogo(dialog); // APPLICA STILE
+        stilaPulsantiDialogo(dialog); 
 
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
@@ -544,18 +467,12 @@ public class GUIView {
         });
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
-        
         result.ifPresent(pair -> {
             String criterio = pair.getKey();
             String testo = pair.getValue();
-            
             List<Utente> risultati = sistema.cercaUtente(testo, criterio);
-            
             mostraListaUtenti(risultati);
-            
-            if (risultati.isEmpty()) {
-                mostraMessaggio("Nessun utente trovato con " + criterio + ": " + testo);
-            }
+            if (risultati.isEmpty()) mostraMessaggio(MessaggiInterfaccia.NESSUN_UTENTE_TROVATO);
         });
     }
     
@@ -578,7 +495,6 @@ public class GUIView {
         if (Lista == null) {
             Lista = new ArrayList<>(); 
         }
-        // Utilizziamo direttamente la lista osservabile dal controller per sincronizzazione
         if (dashboardController != null && dashboardController.getTableAuditTrail() != null) {
             dashboardController.getTableAuditTrail().setItems(sistema.ottieniAuditTrail());
         }
