@@ -65,7 +65,8 @@ public class GUIController {
         logger.registraAzione(messaggio);
         
         // 2. Frontend: Aggiunge in cima alla lista (indice 0) così si vede subito
-        observableLog.add(0, messaggio);
+        observableLog.add(messaggio);
+        //observableLog.notify();
     }
     
     // =========================================================================
@@ -279,7 +280,7 @@ public class GUIController {
      * @return La lista osservabile per la TableView della GUI
      */
     public ObservableList<String> ottieniAuditTrail(){
-        return observableLog; 
+        return (ObservableList<String>)observableLog; 
     }
     
     public boolean gestisciLogin(String user, String pass){

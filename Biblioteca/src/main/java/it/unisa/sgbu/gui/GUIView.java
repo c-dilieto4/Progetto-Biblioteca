@@ -531,7 +531,7 @@ public class GUIView {
         this.datiAuditTrail = FXCollections.observableArrayList(Lista);
         
         if (dashboardController != null && dashboardController.getTableAuditTrail() != null) {
-            dashboardController.getTableAuditTrail().setItems(datiAuditTrail);
+            dashboardController.getTableAuditTrail().setItems(sistema.ottieniAuditTrail());
         }
     }
     
