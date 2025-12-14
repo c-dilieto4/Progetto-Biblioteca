@@ -58,7 +58,7 @@
     
     \vspace{2cm} % Spazio tra Autori e Versione
     
-    {\Large Versione 1.2 - 7 Dicembre 2025\par}
+    {\Large Versione 1.4 - 14 Dicembre 2025\par}
     
     \vspace*{\fill} % Spinge tutto verso l'alto bilanciando lo spazio finale
 
@@ -70,10 +70,10 @@
 
 Il diagramma delle classi proposto rappresenta il modello statico del sistema SGBU, progettato seguendo un approccio Object-Oriented e adottando il pattern architetturale MVC (Model-View-Controller) a strati.\\
 
-\noindent \textit{Per esaminare il Diagramma delle Classi,}\href{https://github.com/c-dilieto4/Progetto-Biblioteca/blob/9e7c84b20ea23e49bb8368b3449a6e5250b50442/docs/Documentazione%20Design/Diagramma%20delle%20Classi.pdf}{\textit{ clicca qui per andare alla figura}.}
+\noindent \textit{Per esaminare il Diagramma delle Classi,}\href{https://github.com/c-dilieto4/Progetto-Biblioteca/blob/main/docs/Documentazione%20Design/Diagramma%20delle%20Classi.pdf}{\textit{ clicca qui per andare alla figura}.}
 
 
-\subsection{Struttura Logica}
+\subsection{Organizzazione Logica}
 Il sistema è decomposto in quattro livelli logici distinti, ciascuno con una responsabilità chiara e ben definita:
 
 \begin{itemize}
@@ -97,98 +97,3 @@ Le decisioni di decomposizione modulare sono state guidate dalla necessità di m
 Tutte le classi identificate presentano un livello di Coesione Funzionale (il livello più alto e desiderabile), in quanto ogni modulo è focalizzato su un singolo compito ben definito.
 \begin{itemize}
     \item La classe \texttt{ValidatoreDati} si occupa esclusivamente della verifica sintattica.
-    \item La classe \texttt{AuditTrail} si occupa esclusivamente di registrare le operazioni svolte, separando il tracciamento dalla logica specifica dei prestiti.
-    \item Il \texttt{RegistroPrestiti} accentra tutte le regole relative alle transazioni.
-\end{itemize}
-
-\subsubsection{Basso Accoppiamento e Gestione delle Dipendenze}
-Abbiamo strutturato le relazioni per evitare un accoppiamento stretto (come il Content o Control Coupling).
-\begin{itemize}
-    \item Le dipendenze sono gestite tramite \textbf{Accoppiamento per Dati}, passando solo le informazioni strettamente necessarie.
-    \item L'introduzione delle interfacce (\texttt{IArchivioDati}, \texttt{ILogger}, \texttt{IAutenticatore}) ha disaccoppiato il \texttt{GUIController} dalle implementazioni concrete.
-\end{itemize}
-
-\subsection{Principi di Progettazione Adottati}
-Il diagramma riflette l'applicazione dei principi di buona progettazione orientata agli oggetti:
-
-\begin{itemize}
-    \item\textbf{Separazione delle Preoccupazioni (SoC):} Il sistema rispetta la separazione tra logica di presentazione, logica di business e gestione dati. La \texttt{GUIView} non contiene logica applicativa; il \texttt{GUIController} è un puro orchestratore.
-    
-    \item\textbf{Single Responsibility Principle (SRP):} Ogni classe ha una sola responsabilità. La divisione tra \texttt{FileArchivio} (persistenza) e \texttt{Catalogo} (logica di dominio) ne è un esempio.
-    
-    \item\textbf{Dependency Inversion Principle (DIP):} I moduli di alto livello dipendono dalle astrazioni. Il \texttt{GUIController} dipende da \texttt{IArchivioDati}, non dai dettagli di basso livello come \texttt{FileArchivio}, rendendo il sistema pronto per future strategie di memorizzazione (es. Database).
-    
-    \item \textbf{Open-Closed Principle (OCP):} Grazie alle interfacce, il sistema è "aperto all'estensione ma chiuso alla modifica". È possibile introdurre nuovi meccanismi di log o autenticazione senza alterare le classi esistenti.
-\end{itemize}
-
-\section{Commento al Diagramma di Sequenza: Registrazione Prestito}
-
-Il diagramma dettaglia il flusso di interazione per assegnare un libro a un utente, rispettando il pattern MVC.\\
-
-\noindent \textit{Per esaminare il Diagramma di Sequenza per la Registrazione Prestito,}\href{https://github.com/c-dilieto4/Progetto-Biblioteca/blob/main/docs/Documentazione%20Design/Diagramma%20di%20sequenza%20Registrazione%20Prestito.pdf}{\textit{ clicca qui per andare alla figura}.}
-
-\subsection{Analisi del Flusso e Scelte Progettuali}
-
-\begin{itemize}
-    \item \textbf{Gestione dell'Input e Validazione (Controller):} L'attore \textit{Bibliotecario} interagisce con la \texttt{GUIView}, che delega al \texttt{GUIController}. Quest'ultimo esegue una validazione formale tramite \texttt{ValidatoreDati} prima di coinvolgere la logica di business.
-    
-    \item \textbf{Logica di Business e Gestione dei Vincoli (Service Layer):} La classe \texttt{RegistroPrestiti} gestisce l'elaborazione. Un \textit{Frame di Interazione alt} modella i vincoli:
-    \begin{itemize}
-        \item \textbf{Limite Prestiti [FC-2]:} Verifica se l'utente ha superato il limite di prestiti.
-        \item \textbf{Disponibilità [FC-1]:} Verifica la presenza di copie fisiche.
-    \end{itemize}
-    Se una guardia fallisce, il flusso termina con un errore.
-    
-    \item \textbf{Creazione e Aggiornamento di Stato:} Nel ramo di successo, il \texttt{RegistroPrestiti} istanzia il nuovo \texttt{Prestito} e aggiorna \texttt{Libro} e \texttt{Utente} invocando i loro metodi, mantenendo l'incapsulamento.
-    
-    \item \textbf{Tracciamento (Audit Trail):} Al termine, il controller invoca l'interfaccia \texttt{ILogger}, soddisfacendo il requisito [IF-11] senza inquinare la logica del prestito.
-\end{itemize}
-
-\newpage
-\section{Commento al Diagramma di Sequenza: Registrazione Restituzione}
-
-Il diagramma illustra il processo di chiusura di un prestito e il ripristino della disponibilità del libro.\\
-
-\noindent \textit{Per esaminare il Diagramma di Sequenza per la Registrazione Restituzione,}\href{https://github.com/c-dilieto4/Progetto-Biblioteca/blob/main/docs/Documentazione%20Design/Diagramma%20di%20sequenza%20Restituzione.pdf}{\textit{ clicca qui per andare alla figura}.}
-
-
-
-\subsection{Analisi del Flusso e Scelte Progettuali}
-
-\begin{itemize}
-    \item \textbf{Orchestrazione e Delega:} Il \texttt{GUIController} delega immediatamente l'intera logica transazionale al \texttt{RegistroPrestiti}, centralizzando la responsabilità del ciclo di vita del prestito.
-    
-    \item \textbf{Gestione delle Eccezioni di Business:} Un \textit{Frame di Interazione opt} modella il requisito [UC-8] sui ritardi. Se la data di restituzione effettiva è successiva a quella prevista, viene eseguita la logica di gestione del ritardo.
-    
-    \item \textbf{Aggiornamento Consistente dello Stato:} Il \texttt{RegistroPrestiti} coordina una sequenza atomica di aggiornamenti:
-    \begin{enumerate}
-        \item Incremento delle copie disponibili del \texttt{Libro}.
-        \item Rimozione del prestito dalla lista dell'\texttt{Utente}.
-        \item Chiusura definitiva dell'oggetto \texttt{Prestito}.
-    \end{enumerate}
-    
-    \item \textbf{Tracciamento:} Viene invocata l'interfaccia \texttt{ILogger} per storicizzare la modifica allo stato persistente.
-\end{itemize}
-
-\newpage
-\section{Commento al Diagramma dei Package}
-
-Il Diagramma dei Package illustra l'organizzazione logica del codice sorgente, strutturato per gestire la complessità e garantire la \textit{Separazione delle Preoccupazioni}.\\\\
-\noindent \textit{Per esaminare il Diagramma dei Package,}\href{https://github.com/c-dilieto4/Progetto-Biblioteca/blob/main/docs/Documentazione%20Design/Diagramma%20dei%20package.pdf}{\textit{ clicca qui per andare alla figura}.}
-
-
-\subsection{Organizzazione Architetturale}
-Il sistema segue un'architettura a strati che riflette il pattern MVC:
-
-\begin{itemize}
-    \item \textbf{it.unisa.sgbu.domain (Dominio):} Il nucleo stabile del sistema. Contiene le entità (\texttt{Libro}, \texttt{Utente}, \texttt{Prestito}) e utility di validazione. È indipendente da tutti gli altri package.
-    
-    \item \textbf{it.unisa.sgbu.service (Logica di Business):} Contiene i gestori (\texttt{RegistroPrestiti}, \texttt{Catalogo}, \texttt{Anagrafica}). Dipende dal dominio ma non conosce l'interfaccia utente.
-    
-    \item \textbf{it.unisa.sgbu.io (Infrastruttura e Servizi):} Raggruppa componenti tecnici per persistenza, logging e sicurezza (\texttt{IArchivioDati}, \texttt{FileArchivio}, ecc.). L'isolamento permette di modificare le tecnologie senza impatto sul sistema.
-    
-    \item \textbf{it.unisa.sgbu.gui (Presentazione e Controllo):} Contiene \texttt{GUIView} e \texttt{GUIController}. Agisce da livello superiore orchestrando le interazioni.
-    
-    \item \textbf{it.unisa.sgbu.app (Avvio):} Contiene solo il \texttt{Main} per il bootstrap.
-\end{itemize}
-\end{document}
