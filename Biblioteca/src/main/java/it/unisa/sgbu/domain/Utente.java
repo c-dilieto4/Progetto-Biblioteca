@@ -165,10 +165,10 @@ public class Utente implements Serializable {
         return this.prestitiAttivi.size() < 3;
     }
     
-    @Override
+    /*@Override
     public String toString() {
         // Ritorna "Nome Cognome"
         return this.matricola;
         
-    }
+    }*/
 }

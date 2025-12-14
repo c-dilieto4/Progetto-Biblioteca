@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class Libro implements Serializable{
     
-    private final String ISBN;
+    private final String isbn;
     private String titolo;
     private List<String> autore;
     private int anno;
@@ -52,8 +52,8 @@ public class Libro implements Serializable{
      * - L'oggetto Libro è creato.
      * - copieDisponibili == copieTotali.
      */
-    public Libro(String ISBN, String titolo, List<String> autore, int anno, int copieTotali){    
-        this.ISBN = ISBN;
+    public Libro(String isbn, String titolo, List<String> autore, int anno, int copieTotali){    
+        this.isbn = isbn;
         this.titolo = titolo;
         this.autore = autore;
         this.anno = anno;
@@ -67,7 +67,7 @@ public class Libro implements Serializable{
      * @return Una stringa rappresentante l'ISBN.
      */
     public String getISBN() {
-        return ISBN;
+        return isbn;
     }
 
     
@@ -167,10 +167,10 @@ public class Libro implements Serializable{
         return copieDisponibili > 0;
     }
     
-    @Override
+    /*@Override
     public String toString() {
         // Ritorna il Titolo (o quello che vuoi vedere nella tabella)
         return this.ISBN; 
         
-    }
+    }*/
 }

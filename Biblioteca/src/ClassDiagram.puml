@@ -8,9 +8,11 @@ class Libro {
   -copieTotali: int 
   -copieDisponibili: int 
   +Libro(isbn: String, titolo: String, autore: List<String>, anno: int, copieTotali: int)
-  +getIsbn(): String
+  +getISBN(): String
   +getTitolo(): String
   +getAutore(): List<String>
+  +getCopieTotali(): int
+  +getAnno(): int
   +getCopieDisponibili(): int
   +incrementaDisponibilita(): void
   +decrementaDisponibilita(): void
@@ -22,9 +24,14 @@ class Utente {
   -nome: String 
   -cognome: String 
   -email: String 
+  -prestitiAttivi: List<Prestito>
   +Utente(matricola: String, nome: String, cognome: String, email: String)
+  +getEmail(): String
   +getMatricola(): String
   +getCognome(): String
+  +getNome(): String
+  +getNumeroPrestitiAttivi(): String
+  +getPrestitiAttivi(): List<Prestito>
   +aggiungiPrestito(p: Prestito): void
   +rimuoviPrestito(p: Prestito): void
   +verificaLimite(max: int): boolean
@@ -34,21 +41,24 @@ class Prestito {
   -idPrestito: int
   -libro: Libro 
   -utente: Utente 
-  -dataInizioPrestito: LocalDate 
-  -dataRestituzionePrevista: LocalDate 
-  -dataRestituzioneEffettiva: LocalDate 
-  -InRitardo: boolean
-  +Prestito(idPrestito: int, libro: Libro, utente: Utente, dataInizioPrestito: LocalDate, dataRestituzionePrevista: LocalDate)
+  -dataInizio: LocalDate 
+  -dataPrevistaRestituzione: LocalDate 
+  -dataEffettivaRestituzione: LocalDate 
+  -inRitardo: boolean
+  +Prestito(idPrestito: int, libro: Libro, utente: Utente, dataInizio: LocalDate, dataPrevistaRestituzione: LocalDate)
   +getIdPrestito(): int
   +getLibro(): Libro
   +getUtente(): Utente
+  +getDataInizio(): LocalDate
+  +getDataPrevistaRestituzione(): LocalDate
+  +getDataEffettivaRestituzione(): LocalDate
   +chiudiPrestito(dataEffettiva: LocalDate): void
   +verificaRitardo(): boolean
   +segnaRitardo(): void
 }
 
 class Catalogo {
-  -collezioneLibri: Map<String, Libro> 
+  -registroLibri: Map<String, Libro> 
   +Catalogo()
   +aggiungiLibro(l: Libro): boolean
   +rimuoviLibro(isbn: String): boolean
@@ -75,13 +85,23 @@ class RegistroPrestiti {
   -prestitiAttivi: List<Prestito> 
   -limitePrestiti: int 
   +RegistroPrestiti(catalogo: Catalogo, anagrafica: Anagrafica)
+  +setCatalogo(catalogo: Catalogo): void
+  +setAnagrafica(anagrafica: Anagrafica): void
   +registraPrestito(isbn: String, matr: String, dataPrev: LocalDate): Prestito
-  +registraRestituzione(idPrestito: int, dataEFF: LocalDate): boolean
+  +registraRestituzione(idPrestito: int, dataEff: LocalDate): boolean
   +getPrestitiAttivi(): List<Prestito>
   +getPrestitiAttivi(u: Utente): List<Prestito>
   +getPrestitiInRitardo(): List<Prestito>
-  +haPrestitiAttivi(matr: String): boolean
+  +haPrestitiAttivi(matricola: String): boolean
   +trovaPrestito(idPrestito: int): Prestito
+}
+
+class Credenziali{
+    -user: String
+    -password: String
+    +Credenziali(user: String, password: String)
+    +getUser(): String
+    +getPassword(): String
 }
 
 class GUIController {
@@ -92,30 +112,37 @@ class GUIController {
   -valida: ValidatoreDati
   -logger: ILogger
   -autenticatore: IAutenticatore
-  +GUIController(archivio: IArchivioDati, logger: ILogger, autenticatore: IAutenticatore, catalogo: Catalogo, anagrafica: Anagrafica, registro: RegistroPrestiti, valide: ValidatoreDati)
+  -observableLog: ObservableList<String>
+  +GUIController(archivio: IArchivioDati, logger: ILogger, autenticatore: IAutenticatore, catalogo: Catalogo, anagrafica: Anagrafica, registro: RegistroPrestiti, valida: ValidatoreDati)
+  +scriviLog(messaggio: String): void
   +avviaSistema(): boolean
   +chiudiSistema(): boolean
   +aggiungiUtente(u: Utente): boolean
-  +aggiungiLibro(l: Libro): boolean
   +modificaUtente(matrOriginale: String, uNuovo: Utente): boolean
-  +modificaLibro(isbnOriginale: String, lNuovo: Libro): boolean
-  +cercaLibro(query: iStrng, campo: String): List<Libro>
-  +cercaUtente(query: iStrng, campo: String): List<Utente>
   +rimuoviUtente(matr: String): boolean
+  +cercaUtente(query: String, campo: String): List<Utente>
+  +ottieniAnagraficaOrdinato(): List<Utente>
+  +aggiungiLibro(l: Libro): boolean
+  +modificaLibro(isbnOriginale: String, lNuovo: Libro): boolean
   +rimuoviLibro(isbn: String): boolean 
+  +cercaLibro(query: String, campo: String): List<Libro>
+  +ottieniCatalogoOrdinato(): List<Libro>
   +gestisciPrestito(isbn: String, matr: String, dataPrevistaRestituzione: LocalDate): boolean
   +gestisciRestituzione(idPrestito: int, dataEffettivaRestituzione: LocalDate): boolean
   +ottieniReportPrestiti(): List<Prestito>
-  +ottieniCatalogoOrdinato(): List<Libro>
-  +ottieniAnagraficaOrdinato(): List<Utente>
+  +ottieniAuditTrail(): ObservableList<String>
   +gestisciLogin(user: String, pass: String): boolean
 }
 
 class GUIView{
    -sistema: GUIController
    -messaggi: MessaggiInterfaccia
-   +GUIView(sistema: GUIController)
+   -primaryStage: Stage
+   -datiAuditTrail: ObservableList<String>
+   -dashboardController: DashboardController
+   +GUIView(sistema: GUIController, primaryStage: Stage)
    +avviaInterfaccia(): void
+   +stilaPulsantiDialogo(dialog: Dialog<?>): 
    +gestisciAggiuntaLibro(): void
    +gestisciAggiuntaUtente(): void
    +gestisciModificaLibro(): void
@@ -129,8 +156,9 @@ class GUIView{
    +mostraListaLibri(lista: List<Libro>): void
    +mostraListaUtenti(lista: List<Utente>: void
    +mostraListaPrestiti(lista: List<Prestito>): void
+   +mostraListaAuditTrail(lista: List<String>): void
    +mostraReportUtente(u: Utente): void
-   +mostraMessaggio(msg: MessaggiInterfaccia): void
+   +mostraMessaggio(msg: Object): void
    +mostraFinestraLogin(): void
    +mostraLogDiSistema(log: List<String>): void
 }
@@ -153,13 +181,13 @@ interface IAutenticatore{
 }
 
 class AuditTrail {
-  -logRecords: List<String>
-  -archivioDati: IArchivioDati
-  +AuditTrail(logRecords: List<String>, archivio: IArchivioDati)
-  +registraAzione(azione: String): void
-  +caricaLog(): List<String>
-  +salvaLog(): void
-  +visualizzaLog(): List<String>
+   -logRecords: List<String>
+   -archivioDati: IArchivioDati
+   +AuditTrail(logRecords: List<String>, archivio: IArchivioDati)
+   +registraAzione(azione: String): void
+   +caricaLog(): List<String>
+   +salvaLog(): void
+   +visualizzaLog(): List<String>
 }
 
 class FileArchivio {
@@ -172,18 +200,18 @@ class FileArchivio {
 }
 
 class FileAutenticatore{
-    -credentialsFile: String
-    -archivioDati: IArchivioDati
-    +FileAutenticatore(credentialsFile: String, archivioDati: Archivio)
-    +verificaCredenziali(user: String, pass: String): boolean
+   -credentialsFile: String
+   -archivioDati: IArchivioDati
+   +FileAutenticatore(credentialsFile: String, archivioDati: Archivio)
+   +verificaCredenziali(user: String, pass: String): boolean
 }
 
 class ValidatoreDati {
   +validaISBN(isbn: String): boolean
-  +validaMatricola(matr: String)
-  +validaEmail(email: String)
-  +validaAnnoPubblicazione(anno: int)
-  +validaNomeCognome(str: String)
+  +validaMatricola(matr: String): boolean
+  +validaEmail(email: String): boolean
+  +validaAnnoPubblicazione(anno: int): boolean
+  +validaNomeCognome(nome: String, cognome: String): boolean
 }
 
 class MessaggiInterfaccia {

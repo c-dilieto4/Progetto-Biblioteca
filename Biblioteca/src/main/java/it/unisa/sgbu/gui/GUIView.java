@@ -476,24 +476,24 @@ public class GUIView {
         });
     }
     
-    public void mostraListaLibri(List<Libro> Lista){
+    public void mostraListaLibri(List<Libro> lista){
         if (dashboardController != null && dashboardController.getTableLibri() != null)
-            dashboardController.getTableLibri().getItems().setAll(Lista);
+            dashboardController.getTableLibri().getItems().setAll(lista);
     }
     
-    public void mostraListaUtenti(List<Utente> Lista){
+    public void mostraListaUtenti(List<Utente> lista){
         if (dashboardController != null && dashboardController.getTableUtenti() != null)
-            dashboardController.getTableUtenti().getItems().setAll(Lista);
+            dashboardController.getTableUtenti().getItems().setAll(lista);
     }
     
-    public void mostraListaPrestiti(List<Prestito> Lista){
+    public void mostraListaPrestiti(List<Prestito> lista){
         if (dashboardController != null && dashboardController.getTablePrestiti() != null)
-            dashboardController.getTablePrestiti().getItems().setAll(Lista);
+            dashboardController.getTablePrestiti().getItems().setAll(lista);
     }
     
-    public void mostraListaAuditTrail(List<String> Lista) {
-        if (Lista == null) {
-            Lista = new ArrayList<>(); 
+    public void mostraListaAuditTrail(List<String> lista) {
+        if (lista == null) {
+            lista = new ArrayList<>(); 
         }
         if (dashboardController != null && dashboardController.getTableAuditTrail() != null) {
             dashboardController.getTableAuditTrail().setItems(sistema.ottieniAuditTrail());
@@ -501,7 +501,7 @@ public class GUIView {
     }
     
     public void mostraReportUtente(Utente u){
-        mostraMessaggio("Report: " + u.toString());
+        mostraMessaggio("Report: " + u.getMatricola());
     }
     
     public void mostraMessaggio(Object msg){

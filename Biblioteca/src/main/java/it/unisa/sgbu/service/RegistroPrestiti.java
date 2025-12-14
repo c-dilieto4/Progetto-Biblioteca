@@ -35,6 +35,20 @@ public class RegistroPrestiti implements Serializable {
         this.prestitiAttivi = new ArrayList<>();
     }
     
+    // =========================================================================
+    // METODI AGGIUNTI PER LA PERSISTENZA (SETTERS)
+    // Questi metodi vengono chiamati dal GUIController dopo il caricamento da file
+    // per ripristinare i collegamenti persi a causa di 'transient'.
+    // =========================================================================
+
+    public void setCatalogo(Catalogo catalogo) {
+        this.catalogo = catalogo;
+    }
+
+    public void setAnagrafica(Anagrafica anagrafica) {
+        this.anagrafica = anagrafica;
+    }
+    
     
     /**
      * @brief Esegue la registrazione di un nuovo prestito.
@@ -185,20 +199,6 @@ public class RegistroPrestiti implements Serializable {
             }
         }
         return null;
-    }
-
-    // =========================================================================
-    // METODI AGGIUNTI PER LA PERSISTENZA (SETTERS)
-    // Questi metodi vengono chiamati dal GUIController dopo il caricamento da file
-    // per ripristinare i collegamenti persi a causa di 'transient'.
-    // =========================================================================
-
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
-    }
-
-    public void setAnagrafica(Anagrafica anagrafica) {
-        this.anagrafica = anagrafica;
     }
     
 }
