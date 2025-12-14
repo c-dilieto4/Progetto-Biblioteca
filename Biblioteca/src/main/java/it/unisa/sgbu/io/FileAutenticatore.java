@@ -67,8 +67,7 @@ public class FileAutenticatore implements IAutenticatore{
             Credenziali credenzialiSalvate = (Credenziali) dati;
             
             // Confronto (Case Sensitive)
-            return user.equals(credenzialiSalvate.getUser()) && 
-                   pass.equals(credenzialiSalvate.getPassword());
+            return user.equals(credenzialiSalvate.getUser()) && pass.equals(credenzialiSalvate.getPassword());
         }
         
         // Se il file non esiste o è corrotto, l'autenticazione fallisce per sicurezza

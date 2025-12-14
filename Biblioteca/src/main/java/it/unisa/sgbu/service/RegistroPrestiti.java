@@ -34,12 +34,6 @@ public class RegistroPrestiti implements Serializable {
         this.anagrafica = anagrafica;
         this.prestitiAttivi = new ArrayList<>();
     }
-    
-    // =========================================================================
-    // METODI AGGIUNTI PER LA PERSISTENZA (SETTERS)
-    // Questi metodi vengono chiamati dal GUIController dopo il caricamento da file
-    // per ripristinare i collegamenti persi a causa di 'transient'.
-    // =========================================================================
 
     public void setCatalogo(Catalogo catalogo) {
         this.catalogo = catalogo;

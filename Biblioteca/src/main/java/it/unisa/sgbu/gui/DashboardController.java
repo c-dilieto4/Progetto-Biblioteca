@@ -117,19 +117,13 @@ public class DashboardController {
                 }
             });
         }
-        
-        // ==========================================
-        // AGGIUNTO: LOGICA COLONNA AUDIT TRAIL
-        // ==========================================
+
         if (auditTrailColumn != null) {
             // Dice alla colonna di stampare semplicemente la stringa contenuta nella lista
             auditTrailColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
         }
     }
 
-    // ==========================================
-    // SEZIONE LIBRI
-    // ==========================================
     @FXML 
     private void onCercaLibro() { 
         mainView.gestisciRicercaLibro(); 
@@ -157,9 +151,6 @@ public class DashboardController {
         mainView.gestisciEliminazioneLibro(); 
     }
 
-    // ==========================================
-    // SEZIONE UTENTI
-    // ==========================================
     @FXML 
     private void onCercaUtente() { 
         mainView.gestisciRicercaUtente(); 
@@ -213,10 +204,6 @@ public class DashboardController {
             }
         }
     }
-
-    // ==========================================
-    // SEZIONE PRESTITI 
-    // ==========================================
     
     @FXML
     private void onResetPrestiti() {
@@ -233,10 +220,6 @@ public class DashboardController {
     @FXML private void onRegistraRestituzione() { 
         mainView.gestisciRestituzionePrestito(); 
     }
-    
-    // ==========================================
-    // GETTERS & HELPERS
-    // ==========================================
     
     public TableView<Libro> getTableLibri() { 
         return tableLibri; 

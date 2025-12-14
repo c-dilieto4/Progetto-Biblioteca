@@ -41,9 +41,7 @@ public class GUIController {
     /**
      * @brief Costruttore: Inietta tutte le dipendenze.
      */
-    public GUIController(IArchivioDati archivio, ILogger logger, IAutenticatore autenticatore, 
-                         Catalogo catalogo, Anagrafica anagrafica, RegistroPrestiti registro, 
-                         ValidatoreDati valida){
+    public GUIController(IArchivioDati archivio, ILogger logger, IAutenticatore autenticatore, Catalogo catalogo, Anagrafica anagrafica, RegistroPrestiti registro, ValidatoreDati valida){
         this.archivio = archivio;
         this.logger = logger;
         this.autenticatore = autenticatore;
@@ -81,10 +79,6 @@ public class GUIController {
             observableLog.add(0, messaggio);
         }
     }
-    
-    // =========================================================================
-    // GESTIONE PERSISTENZA (Avvio e Chiusura)
-    // =========================================================================
 
     public boolean avviaSistema(){
         try {
@@ -140,10 +134,6 @@ public class GUIController {
         }
     }
 
-    // =========================================================================
-    // GESTIONE UTENTI
-    // =========================================================================
-
     public boolean aggiungiUtente(Utente u){
         if (u == null) return false;
         
@@ -153,8 +143,12 @@ public class GUIController {
         
         boolean esito = anagrafica.aggiungiUtente(u);
         
-        if (esito) scriviLog("Aggiunto nuovo utente: " + u.getMatricola());
-        else scriviLog("Tentativo aggiunta utente fallito (Duplicato): " + u.getMatricola());
+        if (esito){
+            scriviLog("Aggiunto nuovo utente: " + u.getMatricola());
+        }
+        else{
+            scriviLog("Tentativo aggiunta utente fallito (Duplicato): " + u.getMatricola());
+        }
         
         return esito;
     }
@@ -176,7 +170,9 @@ public class GUIController {
         
         boolean esito = anagrafica.modificaUtente(matrOriginale, uNuovo);
         
-        if (esito) scriviLog("Modificato utente: " + matrOriginale);
+        if (esito){
+            scriviLog("Modificato utente: " + matrOriginale);
+        }
         return esito;
     }
     
@@ -190,7 +186,9 @@ public class GUIController {
         
         boolean esito = anagrafica.rimuoviUtente(matr);
         
-        if (esito) scriviLog("Rimosso utente: " + matr);
+        if (esito){
+            scriviLog("Rimosso utente: " + matr);
+        }
         return esito;
     }
 
@@ -201,10 +199,6 @@ public class GUIController {
     public List<Utente> ottieniAnagraficaOrdinata(){
         return anagrafica.visualizzaOrdinata();
     }
-
-    // =========================================================================
-    // GESTIONE LIBRI
-    // =========================================================================
     
     public boolean aggiungiLibro(Libro l){
         if (l == null) return false;
@@ -215,8 +209,12 @@ public class GUIController {
         
         boolean esito = catalogo.aggiungiLibro(l);
         
-        if (esito) scriviLog("Aggiunto libro: " + l.getISBN());
-        else scriviLog("Tentativo aggiunta libro fallito (Duplicato): " + l.getISBN());
+        if (esito){
+            scriviLog("Aggiunto libro: " + l.getISBN());
+        }
+        else{
+            scriviLog("Tentativo aggiunta libro fallito (Duplicato): " + l.getISBN());
+        }
         
         return esito;
     }
@@ -240,7 +238,9 @@ public class GUIController {
         
         boolean esito = catalogo.modificaLibro(isbnOriginale, lNuovo);
         
-        if (esito) scriviLog("Modificato libro: " + isbnOriginale);
+        if (esito){
+            scriviLog("Modificato libro: " + isbnOriginale);
+        }
         return esito;
     }
     
@@ -257,7 +257,9 @@ public class GUIController {
         
         boolean esito = catalogo.rimuoviLibro(isbn);
         
-        if (esito) scriviLog("Rimosso libro: " + isbn);
+        if (esito){
+            scriviLog("Rimosso libro: " + isbn);
+        }
         return esito;
     }
 
@@ -268,10 +270,6 @@ public class GUIController {
     public List<Libro> ottieniCatalogoOrdinato(){
         return catalogo.visualizzaOrdinata();
     }
-
-    // =========================================================================
-    // GESTIONE PRESTITI
-    // =========================================================================
 
     public boolean gestisciPrestito(String isbn, String matricola, LocalDate dataPrevistaRestituzione){
         if (!valida.validaISBN(isbn) || !valida.validaMatricola(matricola)) {
@@ -306,10 +304,6 @@ public class GUIController {
     public List<Prestito> ottieniReportPrestiti(){
         return registro.getPrestitiAttivi();
     }
-
-    // =========================================================================
-    // UTILITY & LOGIN
-    // =========================================================================
 
     /**
      * @return La lista osservabile per la TableView della GUI

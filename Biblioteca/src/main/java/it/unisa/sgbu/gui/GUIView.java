@@ -62,9 +62,6 @@ public class GUIView {
         }
     }
 
-    // =========================================================================
-    // METODO HELPER PER AGGIUNGERE ICONE AI PULSANTI DEI POPUP
-    // =========================================================================
     private void stilaPulsantiDialogo(Dialog<?> dialog) {
         DialogPane pane = dialog.getDialogPane();
         
@@ -83,9 +80,6 @@ public class GUIView {
         }
     }
     
-    // =========================================================================
-    // GESTIONE DIALOGHI (PULITI E DELEGATI)
-    // =========================================================================
 
     public void gestisciAggiuntaLibro(){
         Dialog<Libro> dialog = new Dialog<>();
@@ -94,19 +88,30 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
-        TextField isbn = new TextField(); isbn.setPromptText("ISBN");
-        TextField titolo = new TextField(); titolo.setPromptText("Titolo");
-        TextField autore = new TextField(); autore.setPromptText("Autori (separati da virgola)");
-        TextField anno = new TextField(); anno.setPromptText("Anno");
-        TextField copie = new TextField(); copie.setPromptText("Copie");
+        TextField isbn = new TextField(); 
+        isbn.setPromptText("ISBN");
+        TextField titolo = new TextField(); 
+        titolo.setPromptText("Titolo");
+        TextField autore = new TextField(); 
+        autore.setPromptText("Autori (separati da virgola)");
+        TextField anno = new TextField(); 
+        anno.setPromptText("Anno");
+        TextField copie = new TextField(); 
+        copie.setPromptText("Copie");
 
-        grid.add(new Label("ISBN:"), 0, 0); grid.add(isbn, 1, 0);
-        grid.add(new Label("Titolo:"), 0, 1); grid.add(titolo, 1, 1);
-        grid.add(new Label("Autore:"), 0, 2); grid.add(autore, 1, 2);
-        grid.add(new Label("Anno:"), 0, 3); grid.add(anno, 1, 3);
-        grid.add(new Label("Copie:"), 0, 4); grid.add(copie, 1, 4);
+        grid.add(new Label("ISBN:"), 0, 0); 
+        grid.add(isbn, 1, 0);
+        grid.add(new Label("Titolo:"), 0, 1); 
+        grid.add(titolo, 1, 1);
+        grid.add(new Label("Autore:"), 0, 2); 
+        grid.add(autore, 1, 2);
+        grid.add(new Label("Anno:"), 0, 3); 
+        grid.add(anno, 1, 3);
+        grid.add(new Label("Copie:"), 0, 4); 
+        grid.add(copie, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -116,7 +121,9 @@ public class GUIView {
                 try {
                     List<String> autori = Arrays.asList(autore.getText().split(","));
                     return new Libro(isbn.getText(), titolo.getText(), autori, Integer.parseInt(anno.getText()), Integer.parseInt(copie.getText()));
-                } catch (Exception e) { return null; }
+                } catch (Exception e) { 
+                    return null; 
+                }
             }
             return null;
         });
@@ -140,17 +147,26 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10);
+        grid.setHgap(10); 
+        grid.setVgap(10);
         
-        TextField matricola = new TextField(); matricola.setPromptText("Matricola");
-        TextField nome = new TextField(); nome.setPromptText("Nome");
-        TextField cognome = new TextField(); cognome.setPromptText("Cognome");
-        TextField email = new TextField(); email.setPromptText("Email");
+        TextField matricola = new TextField(); 
+        matricola.setPromptText("Matricola");
+        TextField nome = new TextField(); 
+        nome.setPromptText("Nome");
+        TextField cognome = new TextField(); 
+        cognome.setPromptText("Cognome");
+        TextField email = new TextField(); 
+        email.setPromptText("Email");
 
-        grid.add(new Label("Matricola:"), 0, 0); grid.add(matricola, 1, 0);
-        grid.add(new Label("Nome:"), 0, 1); grid.add(nome, 1, 1);
-        grid.add(new Label("Cognome:"), 0, 2); grid.add(cognome, 1, 2);
-        grid.add(new Label("Email:"), 0, 3); grid.add(email, 1, 3);
+        grid.add(new Label("Matricola:"), 0, 0); 
+        grid.add(matricola, 1, 0);
+        grid.add(new Label("Nome:"), 0, 1); 
+        grid.add(nome, 1, 1);
+        grid.add(new Label("Cognome:"), 0, 2); 
+        grid.add(cognome, 1, 2);
+        grid.add(new Label("Email:"), 0, 3); 
+        grid.add(email, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -191,7 +207,9 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); 
+        grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextField isbn = new TextField(libroSelezionato.getISBN());
         TextField titolo = new TextField(libroSelezionato.getTitolo());
@@ -202,11 +220,16 @@ public class GUIView {
         TextField anno = new TextField(String.valueOf(libroSelezionato.getAnno()));
         TextField copie = new TextField(String.valueOf(libroSelezionato.getCopieTotali()));
 
-        grid.add(new Label("ISBN:"), 0, 0); grid.add(isbn, 1, 0);
-        grid.add(new Label("Titolo:"), 0, 1); grid.add(titolo, 1, 1);
-        grid.add(new Label("Autore:"), 0, 2); grid.add(autore, 1, 2);
-        grid.add(new Label("Anno:"), 0, 3); grid.add(anno, 1, 3);
-        grid.add(new Label("Copie Totali:"), 0, 4); grid.add(copie, 1, 4);
+        grid.add(new Label("ISBN:"), 0, 0); 
+        grid.add(isbn, 1, 0);
+        grid.add(new Label("Titolo:"), 0, 1); 
+        grid.add(titolo, 1, 1);
+        grid.add(new Label("Autore:"), 0, 2); 
+        grid.add(autore, 1, 2);
+        grid.add(new Label("Anno:"), 0, 3); 
+        grid.add(anno, 1, 3);
+        grid.add(new Label("Copie Totali:"), 0, 4); 
+        grid.add(copie, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -216,7 +239,9 @@ public class GUIView {
                 try {
                     List<String> autoriList = Arrays.asList(autore.getText().split(","));
                     return new Libro(isbn.getText(), titolo.getText(), autoriList, Integer.parseInt(anno.getText()), Integer.parseInt(copie.getText()));
-                } catch (Exception e) { return null; }
+                } catch (Exception e) { 
+                    return null; 
+                }
             }
             return null;
         });
@@ -249,17 +274,22 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10);
+        grid.setHgap(10); 
+        grid.setVgap(10);
         
         TextField matricola = new TextField(utenteSelezionato.getMatricola());
         TextField nome = new TextField(utenteSelezionato.getNome());
         TextField cognome = new TextField(utenteSelezionato.getCognome());
         TextField email = new TextField(utenteSelezionato.getEmail());
 
-        grid.add(new Label("Matricola:"), 0, 0); grid.add(matricola, 1, 0);
-        grid.add(new Label("Nome:"), 0, 1); grid.add(nome, 1, 1);
-        grid.add(new Label("Cognome:"), 0, 2); grid.add(cognome, 1, 2);
-        grid.add(new Label("Email:"), 0, 3); grid.add(email, 1, 3);
+        grid.add(new Label("Matricola:"), 0, 0); 
+        grid.add(matricola, 1, 0);
+        grid.add(new Label("Nome:"), 0, 1); 
+        grid.add(nome, 1, 1);
+        grid.add(new Label("Cognome:"), 0, 2); 
+        grid.add(cognome, 1, 2);
+        grid.add(new Label("Email:"), 0, 3); 
+        grid.add(email, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -330,15 +360,21 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
         
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10);
+        grid.setHgap(10); 
+        grid.setVgap(10);
         
-        TextField isbn = new TextField(); isbn.setPromptText("ISBN Libro");
-        TextField matr = new TextField(); matr.setPromptText("Matricola Utente");
+        TextField isbn = new TextField(); 
+        isbn.setPromptText("ISBN Libro");
+        TextField matr = new TextField(); 
+        matr.setPromptText("Matricola Utente");
         DatePicker data = new DatePicker(LocalDate.now().plusDays(30));
         
-        grid.add(new Label("ISBN:"), 0, 0); grid.add(isbn, 1, 0);
-        grid.add(new Label("Matricola:"), 0, 1); grid.add(matr, 1, 1);
-        grid.add(new Label("Scadenza:"), 0, 2); grid.add(data, 1, 2);
+        grid.add(new Label("ISBN:"), 0, 0); 
+        grid.add(isbn, 1, 0);
+        grid.add(new Label("Matricola:"), 0, 1); 
+        grid.add(matr, 1, 1);
+        grid.add(new Label("Scadenza:"), 0, 2); 
+        grid.add(data, 1, 2);
         
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -359,7 +395,11 @@ public class GUIView {
                 mostraListaPrestiti(sistema.ottieniReportPrestiti());
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
                 String msg = String.format(MessaggiInterfaccia.SUCCESSO_PRESTITO, 0);
-                mostraMessaggio(new MessaggiInterfaccia() { @Override public String toString() { return msg; }});
+                mostraMessaggio(new MessaggiInterfaccia() { 
+                    @Override public String toString() { 
+                        return msg; 
+                    }
+                });
             } else {
                 // Errore: il controller ha restituito false (dati non validi o vincoli violati)
                 mostraMessaggio(MessaggiInterfaccia.ERRORE_REGISTRAZIONE_PRESTITO);
@@ -401,7 +441,9 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); 
+        grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         ComboBox<String> comboCriterio = new ComboBox<>();
         comboCriterio.getItems().addAll("Titolo", "Autore", "ISBN");
@@ -442,10 +484,12 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); 
+        grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         ComboBox<String> comboCriterio = new ComboBox<>();
-        comboCriterio.getItems().addAll("Cognome", "Nome", "Matricola");
+        comboCriterio.getItems().addAll("Cognome", "Matricola");
         comboCriterio.setValue("Cognome"); 
 
         TextField txtQuery = new TextField();
