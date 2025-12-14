@@ -17,6 +17,7 @@ class Libro {
   +incrementaDisponibilita(): void
   +decrementaDisponibilita(): void
   +isDisponibile(): boolean
+  +toString(): String
 }
 
 class Utente {
@@ -35,6 +36,7 @@ class Utente {
   +aggiungiPrestito(p: Prestito): void
   +rimuoviPrestito(p: Prestito): void
   +verificaLimite(max: int): boolean
+  +toString(): String 
 }
 
 class Prestito {
