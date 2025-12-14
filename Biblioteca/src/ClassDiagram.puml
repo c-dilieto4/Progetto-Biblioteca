@@ -215,20 +215,52 @@ class ValidatoreDati {
 }
 
 class MessaggiInterfaccia {
-  +String SUCCESSO_AGGIUNTA_LIBRO
-  +String SUCCESSO_PRESTITO
-  +String ERRORE_LIMITE_PRESTITO
-  +String ERRORE_ISBN_DUPLICATO
-  +String ERRORE_MATRICOLA_DUPLICATA
-  +String ERRORE_ASSENZA_COPIE
-  +String INPUT_EMAIL_NON_VALIDA
-  +String INPUT_NOME_NON_VALIDO
-  +String INPUT_COGNOME_NON_VALIDO
-  +String ANNO_NON_VALIDO
-  +String INPUT_MATRICOLA_NON_VALIDO
-  +String RITARDO_SEGNALATO
-  +String AVVISO_CARICAMENTO_FALLITO
-  +String CREDENZIALI_NON_VALIDE
+  
+}
+
+class DashboardController{
+  -tabPane: TabPane
+  -tabPrestiti: Tab
+  -tableLibri: TableView<Libro>
+  -tableUtenti: TableView<Utente>
+  -tablePrestiti: TableView<Prestito>
+  -tableAuditTrail: TableView<String>
+  -colRitardo: TableColumn<Prestito, String>
+  -auditTrailColumn: TableColumn<String, String>
+  -sistema: GUIController
+  -mainView: GUIView
+  +setSistema(sistema: GUIController, mainView: GUIView): void
+  +initialize(): void
+  +onCercaLibro(): void
+  +onResetLibri(): void
+  +onAggiungiLibro(): void
+  +onModificaLibro(): void
+  +onRimuoviLibro(): void
+  +onCercaUtente(): void
+  +onResetUtenti(): void
+  +onAggiungiUtente(): void
+  +onModificaUtente(): void
+  +onRimuoviUtente(): void
+  +onVediPrestitiAttiviUtente(): void
+  +onResetPrestiti(): void
+  +onNuovoPrestito(): void
+  +onRegistraRestituzione(): void
+  +getTableLibri(): TableView<Libro>
+  +getTableUtenti(): TableView<Utente>
+  +getTablePrestiti(): TableView<Prestito>
+  +getTableAuditTrail(): TableView<String>
+  +getLibroSelezionato(): Libro
+  +getUtenteSelezionato(): Utente
+  +getPrestitoSelezionato(): Prestito
+}
+
+class LoginController{
+   -txtUsername : TextField
+   -txtPassword : PasswordField
+   -lblErrore: Label
+   -sistema: GUIController
+   -mainView: GUIView
+   +setSistema(sistema: GUIController, mainView: GUIView): void
 }
 
 class Main{
@@ -263,17 +295,37 @@ GUIController "1" --> "1" ValidatoreDati
 GUIController "1" --> "1" IArchivioDati
 GUIController "1" --> "1" IAutenticatore
 GUIController "1" --> "1" ILogger
+GUIController ..> Libro
+GUIController ..> Utente
+GUIController ..> Prestito
 
 AuditTrail "1" --> "1" IArchivioDati
 FileArchivio "1" --> "1" ILogger
+FileArchivio ..> MessaggiInterfaccia
 FileAutenticatore "1" --> "1" IArchivioDati
+FileAutenticatore ..> Credenziali
 
 GUIView "1" --> "1" GUIController
 GUIView ..> MessaggiInterfaccia
-GUIView ..> Libro
-GUIView ..> Prestito
-GUIView ..> Utente
+GUIView ..> LoginController
 
+DashboardController "1" --> "1" GUIController
+DashboardController "1" -- "1" GUIView
+DashboardController "1" ..> Libro
+DashboardController "1" ..> Utente
+DashboardController "1" ..> Prestito
+LoginController "1" --> "1" GUIController
+LoginController "1" --> "1" GUIView
+
+Main "1" --> "1" GUIController
+Main ..> FileArchivio
+Main ..> FileAutenticatore
+Main ..> AuditTrail
+Main ..> Catalogo
+Main ..> Anagrafica
+Main ..> RegistroPrestiti
+Main ..> ValidatoreDati
 Main ..> GUIView
-Main ..> GUIController
+Main ..> Credenziali
+
 @enduml

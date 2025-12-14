@@ -70,10 +70,18 @@ public class DashboardController {
     @FXML
     public void initialize() {
         // Imposta il ridimensionamento automatico delle colonne
-        if(tableLibri != null) tableLibri.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        if(tableUtenti != null) tableUtenti.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        if(tablePrestiti != null) tablePrestiti.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        if(tableAuditTrail != null) tableAuditTrail.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        if(tableLibri != null){
+            tableLibri.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        }
+        if(tableUtenti != null){
+            tableUtenti.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        }
+        if(tablePrestiti != null) {
+            tablePrestiti.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        }
+        if(tableAuditTrail != null){
+            tableAuditTrail.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        }
         
         // ==========================================
         // LOGICA COLONNA RITARDO (PRESTITI)
@@ -81,8 +89,12 @@ public class DashboardController {
         if (colRitardo != null) {
             colRitardo.setCellValueFactory(cellData -> {
                 Prestito p = cellData.getValue();
-                if (p.getDataEffettivaRestituzione() != null) return new SimpleStringProperty("Restituito");
-                if (LocalDate.now().isAfter(p.getDataPrevistaRestituzione())) return new SimpleStringProperty("⚠️ IN RITARDO");
+                if (p.getDataEffettivaRestituzione() != null){
+                    return new SimpleStringProperty("Restituito");
+                }
+                if (LocalDate.now().isAfter(p.getDataPrevistaRestituzione())){
+                    return new SimpleStringProperty("⚠️ IN RITARDO");
+                }
                 return new SimpleStringProperty("Regolare");
             });
 
@@ -94,8 +106,12 @@ public class DashboardController {
                         setText(null); setStyle("");
                     } else {
                         setText(item);
-                        if (item.contains("RITARDO")) setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
-                        else if (item.equals("Restituito")) setStyle("-fx-text-fill: green; -fx-font-style: italic;");
+                        if (item.contains("RITARDO")){
+                            setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                        }
+                        else if (item.equals("Restituito")){
+                            setStyle("-fx-text-fill: green; -fx-font-style: italic;");
+                        }
                         else setStyle("-fx-text-fill: black;");
                     }
                 }
@@ -114,20 +130,62 @@ public class DashboardController {
     // ==========================================
     // SEZIONE LIBRI
     // ==========================================
-    @FXML private void onCercaLibro() { mainView.gestisciRicercaLibro(); }
-    @FXML private void onResetLibri() { if(sistema != null) tableLibri.getItems().setAll(sistema.ottieniCatalogoOrdinato()); }
-    @FXML private void onAggiungiLibro() { mainView.gestisciAggiuntaLibro(); }
-    @FXML private void onModificaLibro() { mainView.gestisciModificaLibro(); }
-    @FXML private void onRimuoviLibro() { mainView.gestisciEliminazioneLibro(); }
+    @FXML 
+    private void onCercaLibro() { 
+        mainView.gestisciRicercaLibro(); 
+    }
+    
+    @FXML 
+    private void onResetLibri() { 
+        if(sistema != null){
+            tableLibri.getItems().setAll(sistema.ottieniCatalogoOrdinato());
+        } 
+    }
+    
+    @FXML 
+    private void onAggiungiLibro() { 
+        mainView.gestisciAggiuntaLibro(); 
+    }
+    
+    @FXML 
+    private void onModificaLibro() { 
+        mainView.gestisciModificaLibro(); 
+    }
+    
+    @FXML 
+    private void onRimuoviLibro() { 
+        mainView.gestisciEliminazioneLibro(); 
+    }
 
     // ==========================================
     // SEZIONE UTENTI
     // ==========================================
-    @FXML private void onCercaUtente() { mainView.gestisciRicercaUtente(); }
-    @FXML private void onResetUtenti() { if(sistema != null) tableUtenti.getItems().setAll(sistema.ottieniAnagraficaOrdinata()); }
-    @FXML private void onAggiungiUtente() { mainView.gestisciAggiuntaUtente(); }
-    @FXML private void onModificaUtente() { mainView.gestisciModificaUtente(); }
-    @FXML private void onRimuoviUtente() { mainView.gestisciEliminazioneUtente(); }
+    @FXML 
+    private void onCercaUtente() { 
+        mainView.gestisciRicercaUtente(); 
+    }
+    
+    @FXML 
+    private void onResetUtenti() { 
+        if(sistema != null){
+            tableUtenti.getItems().setAll(sistema.ottieniAnagraficaOrdinata());
+        } 
+    }
+    
+    @FXML 
+    private void onAggiungiUtente() { 
+        mainView.gestisciAggiuntaUtente(); 
+    }
+    
+    @FXML 
+    private void onModificaUtente() { 
+        mainView.gestisciModificaUtente(); 
+    }
+    
+    @FXML 
+    private void onRimuoviUtente() { 
+        mainView.gestisciEliminazioneUtente(); 
+    }
 
     @FXML
     private void onVediPrestitiAttiviUtente() {
@@ -167,19 +225,44 @@ public class DashboardController {
          }
     }
 
-    @FXML private void onNuovoPrestito() { mainView.gestisciRegistrazionePrestito(); }
-    @FXML private void onRegistraRestituzione() { mainView.gestisciRestituzionePrestito(); }
+    @FXML 
+    private void onNuovoPrestito() { 
+        mainView.gestisciRegistrazionePrestito(); 
+    }
+    
+    @FXML private void onRegistraRestituzione() { 
+        mainView.gestisciRestituzionePrestito(); 
+    }
     
     // ==========================================
     // GETTERS & HELPERS
     // ==========================================
     
-    public TableView<Libro> getTableLibri() { return tableLibri; }
-    public TableView<Utente> getTableUtenti() { return tableUtenti; }
-    public TableView<Prestito> getTablePrestiti() { return tablePrestiti; }
-    public TableView<String> getTableAuditTrail() { return tableAuditTrail; }
+    public TableView<Libro> getTableLibri() { 
+        return tableLibri; 
+    }
     
-    public Libro getLibroSelezionato() { return (tableLibri != null) ? tableLibri.getSelectionModel().getSelectedItem() : null; }
-    public Utente getUtenteSelezionato() { return (tableUtenti != null) ? tableUtenti.getSelectionModel().getSelectedItem() : null; }
-    public Prestito getPrestitoSelezionato() { return (tablePrestiti != null) ? tablePrestiti.getSelectionModel().getSelectedItem() : null; }
+    public TableView<Utente> getTableUtenti() { 
+        return tableUtenti; 
+    }
+    
+    public TableView<Prestito> getTablePrestiti() { 
+        return tablePrestiti; 
+    }
+    
+    public TableView<String> getTableAuditTrail() { 
+        return tableAuditTrail; 
+    }
+    
+    public Libro getLibroSelezionato() { 
+        return (tableLibri != null) ? tableLibri.getSelectionModel().getSelectedItem() : null; 
+    }
+    
+    public Utente getUtenteSelezionato() { 
+        return (tableUtenti != null) ? tableUtenti.getSelectionModel().getSelectedItem() : null; 
+    }
+    
+    public Prestito getPrestitoSelezionato() { 
+        return (tablePrestiti != null) ? tablePrestiti.getSelectionModel().getSelectedItem() : null; 
+    }
 }

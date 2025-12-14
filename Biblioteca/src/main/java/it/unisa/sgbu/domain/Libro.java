@@ -166,11 +166,4 @@ public class Libro implements Serializable{
     public boolean isDisponibile(){
         return copieDisponibili > 0;
     }
-    
-    /*@Override
-    public String toString() {
-        // Ritorna il Titolo (o quello che vuoi vedere nella tabella)
-        return this.ISBN; 
-        
-    }*/
 }
