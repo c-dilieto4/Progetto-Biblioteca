@@ -5,6 +5,12 @@
 Rappresenta una transazione di prestito attiva o conclusa.  
 
 
+Inheritance diagram for it.\+unisa.\+sgbu.\+domain.\+Prestito\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,10 +22,16 @@ int \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace4e1cbb57
 \begin{DoxyCompactList}\small\item\em Restituisce il libro associato al prestito. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a2b96ea67abc1ee0a923e417afdb1acc5}{get\+Utente}} ()
 \begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}utente associato al prestito. \end{DoxyCompactList}\item 
+Local\+Date \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a50998bfcbb5e17476fb2eba52def3069}{get\+Data\+Inizio}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la data di inizio del prestito. \end{DoxyCompactList}\item 
+Local\+Date \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a9ddd7431916e4278edd4eb276d70f203}{get\+Data\+Prevista\+Restituzione}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la data prevista per la restituzione. Questa data rappresenta la scadenza entro cui l\textquotesingle{}utente deve restituire il libro per evitare di incorrere in ritardi. È calcolata al momento della creazione del prestito. \end{DoxyCompactList}\item 
+Local\+Date \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_aeb3ea3c6452d8782f1b2617e42e1f98f}{get\+Data\+Effettiva\+Restituzione}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la data dell\textquotesingle{}effetiva restituzione. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace762f9b027e2681331c61411492c9bb}{chiudi\+Prestito}} (Local\+Date data\+Effettiva)
 \begin{DoxyCompactList}\small\item\em Registra la restituzione del libro chiudendo il prestito. \end{DoxyCompactList}\item 
 boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ade6875214d3c42aaebde99fba73e6824}{verifica\+Ritardo}} ()
-\begin{DoxyCompactList}\small\item\em Verifica se il prestito è in ritardo confrontando la data prevista di restituzione con la data odierna (o la data effettiva se già chiusa) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Verifica se il prestito è in ritardo. Controlla lo stato temporale del prestito. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ad791288913e43d91bdd0d583868ea95f}{segna\+Ritardo}} ()
 \begin{DoxyCompactList}\small\item\em Contrassegna il prestito come "{}\+In Ritardo"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -27,7 +39,9 @@ void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ad79128891
 \doxysubsection{Detailed Description}
 Rappresenta una transazione di prestito attiva o conclusa. 
 
-Questa classe associa un utente a un libro e gestisce le date temporali del prestito, conformemente alla specifica dei dati. Gestisce inoltre lo stato di ritardo nella restituzione. 
+Questa classe associa un utente a un libro e gestisce le date temporali del prestito, conformemente alla specifica dei dati. Gestisce inoltre lo stato di ritardo nella restituzione.
+
+Implementa l\textquotesingle{}interfaccia java.\+io.\+Serializable per consentire la serializzazione e il salvataggio persistente dell\textquotesingle{}oggetto su file. 
 
 \label{doc-constructors}
 \Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_doc-constructors}
@@ -100,8 +114,7 @@ Implementa parte del "{}\+Flusso di registrazione restituzione"{}. Imposta la da
 
 \begin{DoxyItemize}
 \item data\+Effettiva != null.
-\item data\+Effettiva\+Restituzione == null\+: Il prestito deve essere ancora attivo per poter essere chiuso.
-\item data\+Effettiva \texorpdfstring{$>$}{>}= data\+Inizio\+: Non è possibile restituire un libro prima di averlo preso in prestito.
+\item data\+Effettiva \texorpdfstring{$<$}{<}= data\+Inizio\+: Non è possibile restituire un libro prima di averlo preso in prestito.
 \end{DoxyItemize}
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -111,6 +124,45 @@ Implementa parte del "{}\+Flusso di registrazione restituzione"{}. Imposta la da
 \item Il flag In\+Ritardo è impostato a true se data\+Effettiva \texorpdfstring{$>$}{>} data\+Prevista\+Restituzione, altrimenti resta false. 
 \end{DoxyItemize}
 \end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_aeb3ea3c6452d8782f1b2617e42e1f98f}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getDataEffettivaRestituzione@{getDataEffettivaRestituzione}}
+\index{getDataEffettivaRestituzione@{getDataEffettivaRestituzione}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{getDataEffettivaRestituzione()}{getDataEffettivaRestituzione()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_aeb3ea3c6452d8782f1b2617e42e1f98f} 
+Local\+Date it.\+unisa.\+sgbu.\+domain.\+Prestito.\+get\+Data\+Effettiva\+Restituzione (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la data dell\textquotesingle{}effetiva restituzione. 
+
+\begin{DoxyReturn}{Returns}
+Un oggetto Local\+Date rappresentante la data di restituzione. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a50998bfcbb5e17476fb2eba52def3069}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getDataInizio@{getDataInizio}}
+\index{getDataInizio@{getDataInizio}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{getDataInizio()}{getDataInizio()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a50998bfcbb5e17476fb2eba52def3069} 
+Local\+Date it.\+unisa.\+sgbu.\+domain.\+Prestito.\+get\+Data\+Inizio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la data di inizio del prestito. 
+
+\begin{DoxyReturn}{Returns}
+Un oggetto Local\+Date rappresentante la data di avvio. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a9ddd7431916e4278edd4eb276d70f203}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getDataPrevistaRestituzione@{getDataPrevistaRestituzione}}
+\index{getDataPrevistaRestituzione@{getDataPrevistaRestituzione}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
+\doxysubsubsection{\texorpdfstring{getDataPrevistaRestituzione()}{getDataPrevistaRestituzione()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_a9ddd7431916e4278edd4eb276d70f203} 
+Local\+Date it.\+unisa.\+sgbu.\+domain.\+Prestito.\+get\+Data\+Prevista\+Restituzione (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la data prevista per la restituzione. Questa data rappresenta la scadenza entro cui l\textquotesingle{}utente deve restituire il libro per evitare di incorrere in ritardi. È calcolata al momento della creazione del prestito. 
+
+\begin{DoxyReturn}{Returns}
+Un oggetto Local\+Date rappresentante la data di scadenza. 
+\end{DoxyReturn}
 \Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_ace4e1cbb57b5213bdaf28e4e05b0f7ad}\index{it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}!getIdPrestito@{getIdPrestito}}
 \index{getIdPrestito@{getIdPrestito}!it.unisa.sgbu.domain.Prestito@{it.unisa.sgbu.domain.Prestito}}
 \doxysubsubsection{\texorpdfstring{getIdPrestito()}{getIdPrestito()}}
@@ -182,14 +234,17 @@ boolean it.\+unisa.\+sgbu.\+domain.\+Prestito.\+verifica\+Ritardo (\begin{DoxyPa
 
 
 
-Verifica se il prestito è in ritardo confrontando la data prevista di restituzione con la data odierna (o la data effettiva se già chiusa) 
+Verifica se il prestito è in ritardo. Controlla lo stato temporale del prestito. 
 
-Confronta la data effettiva (o corrente) con la data prevista di restituzione come descritto nel "{}\+Flusso di segnalazione ritardo"{}.
 
-\begin{DoxyReturn}{Returns}
-true se data\+Effettiva \texorpdfstring{$>$}{>} data\+Prevista\+Restituzione, altrimenti false. 
+\begin{DoxyItemize}
+\item Se il prestito è CHIUSO\+: confronta la data effettiva con la scadenza.
+\item Se il prestito è ATTIVO\+: confronta la data di oggi con la scadenza.
+\item \begin{DoxyReturn}{Returns}
+true se la data di confronto è successiva alla scadenza, false altrimenti. 
 \end{DoxyReturn}
 
+\end{DoxyItemize}
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

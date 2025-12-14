@@ -28,6 +28,7 @@ var NAVTREE =
     [ "Sistema di Gestione Biblioteca Universitaria - Prova d'esame - Ingegneria del Software", "md__r_e_a_d_m_e.html", [
       [ "Team composto da:", "md__r_e_a_d_m_e.html#autotoc_md1", null ]
     ] ],
+    [ "Test List", "test.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],

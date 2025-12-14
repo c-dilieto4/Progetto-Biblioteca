@@ -94,6 +94,12 @@ $(function(){initNavTree('classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html',
 
 <p>Rappresenta una transazione di prestito attiva o conclusa.  
  <a href="#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for it.unisa.sgbu.domain.Prestito:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -105,16 +111,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a660ac6d1ca4f60b49cff21cc784283fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il libro associato al prestito.  <br /></td></tr>
 <tr class="memitem:a2b96ea67abc1ee0a923e417afdb1acc5" id="r_a2b96ea67abc1ee0a923e417afdb1acc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b96ea67abc1ee0a923e417afdb1acc5">getUtente</a> ()</td></tr>
 <tr class="memdesc:a2b96ea67abc1ee0a923e417afdb1acc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce l'utente associato al prestito.  <br /></td></tr>
+<tr class="memitem:a50998bfcbb5e17476fb2eba52def3069" id="r_a50998bfcbb5e17476fb2eba52def3069"><td class="memItemLeft" align="right" valign="top">LocalDate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50998bfcbb5e17476fb2eba52def3069">getDataInizio</a> ()</td></tr>
+<tr class="memdesc:a50998bfcbb5e17476fb2eba52def3069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la data di inizio del prestito.  <br /></td></tr>
+<tr class="memitem:a9ddd7431916e4278edd4eb276d70f203" id="r_a9ddd7431916e4278edd4eb276d70f203"><td class="memItemLeft" align="right" valign="top">LocalDate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ddd7431916e4278edd4eb276d70f203">getDataPrevistaRestituzione</a> ()</td></tr>
+<tr class="memdesc:a9ddd7431916e4278edd4eb276d70f203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la data prevista per la restituzione. Questa data rappresenta la scadenza entro cui l'utente deve restituire il libro per evitare di incorrere in ritardi. È calcolata al momento della creazione del prestito.  <br /></td></tr>
+<tr class="memitem:aeb3ea3c6452d8782f1b2617e42e1f98f" id="r_aeb3ea3c6452d8782f1b2617e42e1f98f"><td class="memItemLeft" align="right" valign="top">LocalDate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb3ea3c6452d8782f1b2617e42e1f98f">getDataEffettivaRestituzione</a> ()</td></tr>
+<tr class="memdesc:aeb3ea3c6452d8782f1b2617e42e1f98f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la data dell'effetiva restituzione.  <br /></td></tr>
 <tr class="memitem:ace762f9b027e2681331c61411492c9bb" id="r_ace762f9b027e2681331c61411492c9bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace762f9b027e2681331c61411492c9bb">chiudiPrestito</a> (LocalDate dataEffettiva)</td></tr>
 <tr class="memdesc:ace762f9b027e2681331c61411492c9bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra la restituzione del libro chiudendo il prestito.  <br /></td></tr>
 <tr class="memitem:ade6875214d3c42aaebde99fba73e6824" id="r_ade6875214d3c42aaebde99fba73e6824"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade6875214d3c42aaebde99fba73e6824">verificaRitardo</a> ()</td></tr>
-<tr class="memdesc:ade6875214d3c42aaebde99fba73e6824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se il prestito è in ritardo confrontando la data prevista di restituzione con la data odierna (o la data effettiva se già chiusa)  <br /></td></tr>
+<tr class="memdesc:ade6875214d3c42aaebde99fba73e6824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se il prestito è in ritardo. Controlla lo stato temporale del prestito.  <br /></td></tr>
 <tr class="memitem:ad791288913e43d91bdd0d583868ea95f" id="r_ad791288913e43d91bdd0d583868ea95f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad791288913e43d91bdd0d583868ea95f">segnaRitardo</a> ()</td></tr>
 <tr class="memdesc:ad791288913e43d91bdd0d583868ea95f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrassegna il prestito come "In Ritardo".  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Rappresenta una transazione di prestito attiva o conclusa. </p>
-<p>Questa classe associa un utente a un libro e gestisce le date temporali del prestito, conformemente alla specifica dei dati. Gestisce inoltre lo stato di ritardo nella restituzione. </p>
+<p>Questa classe associa un utente a un libro e gestisce le date temporali del prestito, conformemente alla specifica dei dati. Gestisce inoltre lo stato di ritardo nella restituzione.</p>
+<p>Implementa l'interfaccia java.io.Serializable per consentire la serializzazione e il salvataggio persistente dell'oggetto su file. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2647a71f099026e00a3507c096134f99" name="a2647a71f099026e00a3507c096134f99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2647a71f099026e00a3507c096134f99">&#9670;&#160;</a></span>Prestito()</h2>
@@ -204,8 +217,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd><ul>
 <li>dataEffettiva != null.</li>
-<li>dataEffettivaRestituzione == null: Il prestito deve essere ancora attivo per poter essere chiuso.</li>
-<li>dataEffettiva &gt;= dataInizio: Non è possibile restituire un libro prima di averlo preso in prestito.</li>
+<li>dataEffettiva &lt;= dataInizio: Non è possibile restituire un libro prima di averlo preso in prestito.</li>
 </ul>
 </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd><ul>
@@ -213,6 +225,66 @@ Public Member Functions</h2></td></tr>
 <li>Il flag InRitardo è impostato a true se dataEffettiva &gt; dataPrevistaRestituzione, altrimenti resta false. </li>
 </ul>
 </dd></dl>
+
+</div>
+</div>
+<a id="aeb3ea3c6452d8782f1b2617e42e1f98f" name="aeb3ea3c6452d8782f1b2617e42e1f98f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb3ea3c6452d8782f1b2617e42e1f98f">&#9670;&#160;</a></span>getDataEffettivaRestituzione()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LocalDate it.unisa.sgbu.domain.Prestito.getDataEffettivaRestituzione </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la data dell'effetiva restituzione. </p>
+<dl class="section return"><dt>Returns</dt><dd>Un oggetto LocalDate rappresentante la data di restituzione. </dd></dl>
+
+</div>
+</div>
+<a id="a50998bfcbb5e17476fb2eba52def3069" name="a50998bfcbb5e17476fb2eba52def3069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50998bfcbb5e17476fb2eba52def3069">&#9670;&#160;</a></span>getDataInizio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LocalDate it.unisa.sgbu.domain.Prestito.getDataInizio </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la data di inizio del prestito. </p>
+<dl class="section return"><dt>Returns</dt><dd>Un oggetto LocalDate rappresentante la data di avvio. </dd></dl>
+
+</div>
+</div>
+<a id="a9ddd7431916e4278edd4eb276d70f203" name="a9ddd7431916e4278edd4eb276d70f203"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ddd7431916e4278edd4eb276d70f203">&#9670;&#160;</a></span>getDataPrevistaRestituzione()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LocalDate it.unisa.sgbu.domain.Prestito.getDataPrevistaRestituzione </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la data prevista per la restituzione. Questa data rappresenta la scadenza entro cui l'utente deve restituire il libro per evitare di incorrere in ritardi. È calcolata al momento della creazione del prestito. </p>
+<dl class="section return"><dt>Returns</dt><dd>Un oggetto LocalDate rappresentante la data di scadenza. </dd></dl>
 
 </div>
 </div>
@@ -319,9 +391,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Verifica se il prestito è in ritardo confrontando la data prevista di restituzione con la data odierna (o la data effettiva se già chiusa) </p>
-<p>Confronta la data effettiva (o corrente) con la data prevista di restituzione come descritto nel "Flusso di segnalazione ritardo".</p>
-<dl class="section return"><dt>Returns</dt><dd>true se dataEffettiva &gt; dataPrevistaRestituzione, altrimenti false. </dd></dl>
+<p>Verifica se il prestito è in ritardo. Controlla lo stato temporale del prestito. </p>
+<ul>
+<li>Se il prestito è CHIUSO: confronta la data effettiva con la scadenza.</li>
+<li>Se il prestito è ATTIVO: confronta la data di oggi con la scadenza.</li>
+<li><dl class="section return"><dt>Returns</dt><dd>true se la data di confronto è successiva alla scadenza, false altrimenti. </dd></dl>
+</li>
+</ul>
 
 </div>
 </div>

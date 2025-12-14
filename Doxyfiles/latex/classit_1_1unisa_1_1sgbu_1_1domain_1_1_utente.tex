@@ -5,15 +5,29 @@
 Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo nome.  
 
 
+Inheritance diagram for it.\+unisa.\+sgbu.\+domain.\+Utente\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aec10c30adf466b8f1969b7c0f8604d43}{Utente}} (String matricola, String nome, String cognome, String email)
 \begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ace749658f466dc6fd69298dfb31cefa9}{get\+Email}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}indirizzo email dell\textquotesingle{}utente. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aea0baa822875b951a60747b01f92789f}{get\+Matricola}} ()
-\begin{DoxyCompactList}\small\item\em Restituisce la matricola dell\textquotesingle{}utente. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Restituisce la matricola dell\textquotesingle{}utente. Utilizzato per l\textquotesingle{}ordinamento nella visualizzazione e per la ricerca. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_abdb56e0dc4d3d5b01f29a203dc96a9b8}{get\+Cognome}} ()
 \begin{DoxyCompactList}\small\item\em Restituisce il cognome dell\textquotesingle{}utente. Utilizzato per l\textquotesingle{}ordinamento nella visualizzazione e per la ricerca. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_af795452a84fc422a4c5dd6e14452e2e9}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il nome dell\textquotesingle{}utente. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_acedfde583d70fa2cecdaa5c4312ed4c1}{get\+Numero\+Prestiti\+Attivi}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce il numero attuale di prestiti in carico all\textquotesingle{}utente. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_adcb33fdef308ae3c88c39e27dcdcf2d5}{get\+Prestiti\+Attivi}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista completa dei prestiti attualmente in carico all\textquotesingle{}utente. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ab2dfa775ec6a4787c733c4a42e2f5a30}{aggiungi\+Prestito}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} p)
 \begin{DoxyCompactList}\small\item\em Associa un nuovo prestito all\textquotesingle{}utente. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4}{rimuovi\+Prestito}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} p)
@@ -25,7 +39,9 @@ boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aa72409a2
 \doxysubsection{Detailed Description}
 Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo nome. 
 
-Questa classe gestisce i dati anagrafici dell\textquotesingle{}utente e mantiene la relazione logica con i prestiti attivi a suo nome. 
+Questa classe gestisce i dati anagrafici dell\textquotesingle{}utente e mantiene la relazione logica con i prestiti attivi a suo nome.
+
+Implementa l\textquotesingle{}interfaccia java.\+io.\+Serializable per consentire la serializzazione e il salvataggio persistente dell\textquotesingle{}oggetto su file. 
 
 \label{doc-constructors}
 \Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_doc-constructors}
@@ -116,6 +132,19 @@ Restituisce il cognome dell\textquotesingle{}utente. Utilizzato per l\textquotes
 \begin{DoxyReturn}{Returns}
 Stringa contenente il cognome. 
 \end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ace749658f466dc6fd69298dfb31cefa9}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getEmail@{getEmail}}
+\index{getEmail@{getEmail}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{getEmail()}{getEmail()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_ace749658f466dc6fd69298dfb31cefa9} 
+String it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Email (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce l\textquotesingle{}indirizzo email dell\textquotesingle{}utente. 
+
+\begin{DoxyReturn}{Returns}
+Una stringa contenente l\textquotesingle{}email. 
+\end{DoxyReturn}
 \Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_aea0baa822875b951a60747b01f92789f}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getMatricola@{getMatricola}}
 \index{getMatricola@{getMatricola}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
 \doxysubsubsection{\texorpdfstring{getMatricola()}{getMatricola()}}
@@ -124,12 +153,57 @@ String it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Matricola (\begin{DoxyParamCap
 
 
 
-Restituisce la matricola dell\textquotesingle{}utente. 
+Restituisce la matricola dell\textquotesingle{}utente. Utilizzato per l\textquotesingle{}ordinamento nella visualizzazione e per la ricerca. 
 
 \begin{DoxyReturn}{Returns}
 Stringa contenente la matricola. 
 \end{DoxyReturn}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!rimuoviPrestito@{rimuoviPrestito}}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_af795452a84fc422a4c5dd6e14452e2e9}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getNome@{getNome}}
+\index{getNome@{getNome}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_af795452a84fc422a4c5dd6e14452e2e9} 
+String it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Nome (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il nome dell\textquotesingle{}utente. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Returns}
+Una stringa contenente il nome. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_acedfde583d70fa2cecdaa5c4312ed4c1}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getNumeroPrestitiAttivi@{getNumeroPrestitiAttivi}}
+\index{getNumeroPrestitiAttivi@{getNumeroPrestitiAttivi}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{getNumeroPrestitiAttivi()}{getNumeroPrestitiAttivi()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_acedfde583d70fa2cecdaa5c4312ed4c1} 
+int it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Numero\+Prestiti\+Attivi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce il numero attuale di prestiti in carico all\textquotesingle{}utente. 
+
+\begin{DoxyReturn}{Returns}
+Un intero rappresentante la dimensione della lista prestiti\+Attivi. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_adcb33fdef308ae3c88c39e27dcdcf2d5}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!getPrestitiAttivi@{getPrestitiAttivi}}
+\index{getPrestitiAttivi@{getPrestitiAttivi}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
+\doxysubsubsection{\texorpdfstring{getPrestitiAttivi()}{getPrestitiAttivi()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_adcb33fdef308ae3c88c39e27dcdcf2d5} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ it.\+unisa.\+sgbu.\+domain.\+Utente.\+get\+Prestiti\+Attivi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista completa dei prestiti attualmente in carico all\textquotesingle{}utente. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Returns}
+La lista (List) di oggetti \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} associati all\textquotesingle{}utente. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4}\index{it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}!rimuoviPrestito@{rimuoviPrestito}}
 \index{rimuoviPrestito@{rimuoviPrestito}!it.unisa.sgbu.domain.Utente@{it.unisa.sgbu.domain.Utente}}
 \doxysubsubsection{\texorpdfstring{rimuoviPrestito()}{rimuoviPrestito()}}
 {\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_a2158ee326fbd12be499fcdac4dca20f4} 

@@ -1,0 +1,185 @@
+\doxysection{it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller}{}\label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+
+
+Controller per la Dashboard principale (GUI).  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a59591b889b9caaa1b82db33f7192e099}{set\+Sistema}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller}{GUIController}} sistema, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view}{GUIView}} view)
+\begin{DoxyCompactList}\small\item\em Inizializza il collegamento tra GUI e logica di dominio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_afcd2d27e85f6a4f5d2b170e8046c044b}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di inizializzazione automatica Java\+FX. \end{DoxyCompactList}\item 
+Table\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_aa97fa3736abfdfde5ca77d83ceed70b3}{get\+Table\+Libri}} ()
+\begin{DoxyCompactList}\small\item\em Getter per la tabella Libri. \end{DoxyCompactList}\item 
+Table\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_aa88860d374ef632cd7b3c1c5c2041422}{get\+Table\+Utenti}} ()
+\begin{DoxyCompactList}\small\item\em Getter per la tabella Utenti. \end{DoxyCompactList}\item 
+Table\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a63ad4a077b8897d1266350a617e410f5}{get\+Table\+Prestiti}} ()
+\begin{DoxyCompactList}\small\item\em Getter per la tabella Prestiti. \end{DoxyCompactList}\item 
+Table\+View$<$ String $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a01e78f71fe7f117a1b162159d3a12fff}{get\+Table\+Audit\+Trail}} ()
+\begin{DoxyCompactList}\small\item\em Getter per la tabella Audit Trail. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_ab949d2369a06ad6e7c33274653cbbabb}{get\+Libro\+Selezionato}} ()
+\begin{DoxyCompactList}\small\item\em Recupera il libro attualmente selezionato. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a5140f7c76e6b4272196cf22fcaf0b147}{get\+Utente\+Selezionato}} ()
+\begin{DoxyCompactList}\small\item\em Recupera l\textquotesingle{}utente attualmente selezionato. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a5b9f6fd12f699c6b6fb8a93afb7e5dd6}{get\+Prestito\+Selezionato}} ()
+\begin{DoxyCompactList}\small\item\em Recupera il prestito attualmente selezionato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller per la Dashboard principale (GUI). 
+
+Gestisce l\textquotesingle{}interazione tra l\textquotesingle{}utente e il sistema attraverso l\textquotesingle{}interfaccia grafica. Si occupa di popolare le tabelle, gestire gli eventi dei pulsanti e coordinare i flussi di visualizzazione dati. 
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_ab949d2369a06ad6e7c33274653cbbabb}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getLibroSelezionato@{getLibroSelezionato}}
+\index{getLibroSelezionato@{getLibroSelezionato}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getLibroSelezionato()}{getLibroSelezionato()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_ab949d2369a06ad6e7c33274653cbbabb} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Libro\+Selezionato (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera il libro attualmente selezionato. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} selezionato o null se nessuna selezione. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a5b9f6fd12f699c6b6fb8a93afb7e5dd6}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getPrestitoSelezionato@{getPrestitoSelezionato}}
+\index{getPrestitoSelezionato@{getPrestitoSelezionato}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getPrestitoSelezionato()}{getPrestitoSelezionato()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a5b9f6fd12f699c6b6fb8a93afb7e5dd6} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Prestito\+Selezionato (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera il prestito attualmente selezionato. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} selezionato o null se nessuna selezione. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a01e78f71fe7f117a1b162159d3a12fff}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getTableAuditTrail@{getTableAuditTrail}}
+\index{getTableAuditTrail@{getTableAuditTrail}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getTableAuditTrail()}{getTableAuditTrail()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a01e78f71fe7f117a1b162159d3a12fff} 
+Table\+View$<$ String $>$ it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Table\+Audit\+Trail (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter per la tabella Audit Trail. 
+
+\begin{DoxyReturn}{Returns}
+Riferimento all\textquotesingle{}oggetto Table\+View$<$\+String$>$. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_aa97fa3736abfdfde5ca77d83ceed70b3}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getTableLibri@{getTableLibri}}
+\index{getTableLibri@{getTableLibri}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getTableLibri()}{getTableLibri()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_aa97fa3736abfdfde5ca77d83ceed70b3} 
+Table\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}} $>$ it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Table\+Libri (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter per la tabella Libri. 
+
+\begin{DoxyReturn}{Returns}
+Riferimento all\textquotesingle{}oggetto Table\+View$<$\+Libro$>$. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a63ad4a077b8897d1266350a617e410f5}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getTablePrestiti@{getTablePrestiti}}
+\index{getTablePrestiti@{getTablePrestiti}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getTablePrestiti()}{getTablePrestiti()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a63ad4a077b8897d1266350a617e410f5} 
+Table\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Table\+Prestiti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter per la tabella Prestiti. 
+
+\begin{DoxyReturn}{Returns}
+Riferimento all\textquotesingle{}oggetto Table\+View$<$\+Prestito$>$. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_aa88860d374ef632cd7b3c1c5c2041422}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getTableUtenti@{getTableUtenti}}
+\index{getTableUtenti@{getTableUtenti}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getTableUtenti()}{getTableUtenti()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_aa88860d374ef632cd7b3c1c5c2041422} 
+Table\+View$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} $>$ it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Table\+Utenti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter per la tabella Utenti. 
+
+\begin{DoxyReturn}{Returns}
+Riferimento all\textquotesingle{}oggetto Table\+View$<$\+Utente$>$. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a5140f7c76e6b4272196cf22fcaf0b147}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!getUtenteSelezionato@{getUtenteSelezionato}}
+\index{getUtenteSelezionato@{getUtenteSelezionato}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{getUtenteSelezionato()}{getUtenteSelezionato()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a5140f7c76e6b4272196cf22fcaf0b147} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+get\+Utente\+Selezionato (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recupera l\textquotesingle{}utente attualmente selezionato. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} selezionato o null se nessuna selezione. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_afcd2d27e85f6a4f5d2b170e8046c044b}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!initialize@{initialize}}
+\index{initialize@{initialize}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_afcd2d27e85f6a4f5d2b170e8046c044b} 
+void it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Metodo di inizializzazione automatica Java\+FX. 
+
+Viene invocato automaticamente dopo il caricamento del file FXML. Configura le proprietà visuali delle tabelle e le logiche delle celle personalizzate.
+
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item Le policy di ridimensionamento delle colonne sono impostate su CONSTRAINED\+\_\+\+RESIZE.
+\item La colonna "{}\+Ritardo"{} è configurata per mostrare i relativi stati.
+\item Lo stile della colonna "{}\+Ritardo"{} cambia colore (Rosso/\+Verde) in base allo stato. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a59591b889b9caaa1b82db33f7192e099}\index{it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}!setSistema@{setSistema}}
+\index{setSistema@{setSistema}!it.unisa.sgbu.gui.DashboardController@{it.unisa.sgbu.gui.DashboardController}}
+\doxysubsubsection{\texorpdfstring{setSistema()}{setSistema()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller_a59591b889b9caaa1b82db33f7192e099} 
+void it.\+unisa.\+sgbu.\+gui.\+Dashboard\+Controller.\+set\+Sistema (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller}{GUIController}}}]{sistema}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view}{GUIView}}}]{view}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza il collegamento tra GUI e logica di dominio. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em sistema} & Istanza del controller logico del sistema. \\
+\hline
+\mbox{\texttt{in}}  & {\em view} & Istanza della vista principale per la gestione delle finestre.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item I parametri sistema e view devono essere inizializzati (non null).
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item I riferimenti interni sono impostati.
+\item Le tabelle (Libri, Utenti, Prestiti) vengono popolate con i dati attuali tramite Observable\+List.
+\item La tabella Audit\+Trail viene collegata al log di sistema. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/main/java/it/unisa/sgbu/gui/Dashboard\+Controller.\+java\end{DoxyCompactItemize}

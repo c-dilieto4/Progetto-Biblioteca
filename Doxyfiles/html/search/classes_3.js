@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['guicontroller_0',['GUIController',['../classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html',1,'it::unisa::sgbu::gui']]],
-  ['guiview_1',['GUIView',['../classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html',1,'it::unisa::sgbu::gui']]]
+  ['filearchivio_0',['FileArchivio',['../classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio.html',1,'it::unisa::sgbu::io']]],
+  ['filearchiviotest_1',['FileArchivioTest',['../classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio_test.html',1,'it::unisa::sgbu::io']]],
+  ['fileautenticatore_2',['FileAutenticatore',['../classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore.html',1,'it::unisa::sgbu::io']]],
+  ['fileautenticatoretest_3',['FileAutenticatoreTest',['../classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore_test.html',1,'it::unisa::sgbu::io']]]
 ];

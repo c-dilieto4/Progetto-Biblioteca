@@ -94,15 +94,29 @@ $(function(){initNavTree('classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html',''
 
 <p>Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo nome.  
  <a href="#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for it.unisa.sgbu.domain.Utente:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aec10c30adf466b8f1969b7c0f8604d43" id="r_aec10c30adf466b8f1969b7c0f8604d43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec10c30adf466b8f1969b7c0f8604d43">Utente</a> (String matricola, String nome, String cognome, String email)</td></tr>
 <tr class="memdesc:aec10c30adf466b8f1969b7c0f8604d43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Costruttore della classe <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html" title="Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo no...">Utente</a>.  <br /></td></tr>
+<tr class="memitem:ace749658f466dc6fd69298dfb31cefa9" id="r_ace749658f466dc6fd69298dfb31cefa9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace749658f466dc6fd69298dfb31cefa9">getEmail</a> ()</td></tr>
+<tr class="memdesc:ace749658f466dc6fd69298dfb31cefa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce l'indirizzo email dell'utente.  <br /></td></tr>
 <tr class="memitem:aea0baa822875b951a60747b01f92789f" id="r_aea0baa822875b951a60747b01f92789f"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea0baa822875b951a60747b01f92789f">getMatricola</a> ()</td></tr>
-<tr class="memdesc:aea0baa822875b951a60747b01f92789f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la matricola dell'utente.  <br /></td></tr>
+<tr class="memdesc:aea0baa822875b951a60747b01f92789f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la matricola dell'utente. Utilizzato per l'ordinamento nella visualizzazione e per la ricerca.  <br /></td></tr>
 <tr class="memitem:abdb56e0dc4d3d5b01f29a203dc96a9b8" id="r_abdb56e0dc4d3d5b01f29a203dc96a9b8"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb56e0dc4d3d5b01f29a203dc96a9b8">getCognome</a> ()</td></tr>
 <tr class="memdesc:abdb56e0dc4d3d5b01f29a203dc96a9b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il cognome dell'utente. Utilizzato per l'ordinamento nella visualizzazione e per la ricerca.  <br /></td></tr>
+<tr class="memitem:af795452a84fc422a4c5dd6e14452e2e9" id="r_af795452a84fc422a4c5dd6e14452e2e9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af795452a84fc422a4c5dd6e14452e2e9">getNome</a> ()</td></tr>
+<tr class="memdesc:af795452a84fc422a4c5dd6e14452e2e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il nome dell'utente.  <br /></td></tr>
+<tr class="memitem:acedfde583d70fa2cecdaa5c4312ed4c1" id="r_acedfde583d70fa2cecdaa5c4312ed4c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acedfde583d70fa2cecdaa5c4312ed4c1">getNumeroPrestitiAttivi</a> ()</td></tr>
+<tr class="memdesc:acedfde583d70fa2cecdaa5c4312ed4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il numero attuale di prestiti in carico all'utente.  <br /></td></tr>
+<tr class="memitem:adcb33fdef308ae3c88c39e27dcdcf2d5" id="r_adcb33fdef308ae3c88c39e27dcdcf2d5"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcb33fdef308ae3c88c39e27dcdcf2d5">getPrestitiAttivi</a> ()</td></tr>
+<tr class="memdesc:adcb33fdef308ae3c88c39e27dcdcf2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la lista completa dei prestiti attualmente in carico all'utente.  <br /></td></tr>
 <tr class="memitem:ab2dfa775ec6a4787c733c4a42e2f5a30" id="r_ab2dfa775ec6a4787c733c4a42e2f5a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2dfa775ec6a4787c733c4a42e2f5a30">aggiungiPrestito</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> p)</td></tr>
 <tr class="memdesc:ab2dfa775ec6a4787c733c4a42e2f5a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associa un nuovo prestito all'utente.  <br /></td></tr>
 <tr class="memitem:a2158ee326fbd12be499fcdac4dca20f4" id="r_a2158ee326fbd12be499fcdac4dca20f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2158ee326fbd12be499fcdac4dca20f4">rimuoviPrestito</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> p)</td></tr>
@@ -112,7 +126,8 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo nome. </p>
-<p>Questa classe gestisce i dati anagrafici dell'utente e mantiene la relazione logica con i prestiti attivi a suo nome. </p>
+<p>Questa classe gestisce i dati anagrafici dell'utente e mantiene la relazione logica con i prestiti attivi a suo nome.</p>
+<p>Implementa l'interfaccia java.io.Serializable per consentire la serializzazione e il salvataggio persistente dell'oggetto su file. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aec10c30adf466b8f1969b7c0f8604d43" name="aec10c30adf466b8f1969b7c0f8604d43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec10c30adf466b8f1969b7c0f8604d43">&#9670;&#160;</a></span>Utente()</h2>
@@ -224,6 +239,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ace749658f466dc6fd69298dfb31cefa9" name="ace749658f466dc6fd69298dfb31cefa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace749658f466dc6fd69298dfb31cefa9">&#9670;&#160;</a></span>getEmail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String it.unisa.sgbu.domain.Utente.getEmail </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce l'indirizzo email dell'utente. </p>
+<dl class="section return"><dt>Returns</dt><dd>Una stringa contenente l'email. </dd></dl>
+
+</div>
+</div>
 <a id="aea0baa822875b951a60747b01f92789f" name="aea0baa822875b951a60747b01f92789f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea0baa822875b951a60747b01f92789f">&#9670;&#160;</a></span>getMatricola()</h2>
 
@@ -239,8 +274,74 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Restituisce la matricola dell'utente. </p>
+<p>Restituisce la matricola dell'utente. Utilizzato per l'ordinamento nella visualizzazione e per la ricerca. </p>
 <dl class="section return"><dt>Returns</dt><dd>Stringa contenente la matricola. </dd></dl>
+
+</div>
+</div>
+<a id="af795452a84fc422a4c5dd6e14452e2e9" name="af795452a84fc422a4c5dd6e14452e2e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af795452a84fc422a4c5dd6e14452e2e9">&#9670;&#160;</a></span>getNome()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String it.unisa.sgbu.domain.Utente.getNome </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce il nome dell'utente. </p>
+<ul>
+<li><dl class="section return"><dt>Returns</dt><dd>Una stringa contenente il nome. </dd></dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="acedfde583d70fa2cecdaa5c4312ed4c1" name="acedfde583d70fa2cecdaa5c4312ed4c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acedfde583d70fa2cecdaa5c4312ed4c1">&#9670;&#160;</a></span>getNumeroPrestitiAttivi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int it.unisa.sgbu.domain.Utente.getNumeroPrestitiAttivi </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce il numero attuale di prestiti in carico all'utente. </p>
+<dl class="section return"><dt>Returns</dt><dd>Un intero rappresentante la dimensione della lista prestitiAttivi. </dd></dl>
+
+</div>
+</div>
+<a id="adcb33fdef308ae3c88c39e27dcdcf2d5" name="adcb33fdef308ae3c88c39e27dcdcf2d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcb33fdef308ae3c88c39e27dcdcf2d5">&#9670;&#160;</a></span>getPrestitiAttivi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt; it.unisa.sgbu.domain.Utente.getPrestitiAttivi </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la lista completa dei prestiti attualmente in carico all'utente. </p>
+<ul>
+<li><dl class="section return"><dt>Returns</dt><dd>La lista (List) di oggetti <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html" title="Rappresenta una transazione di prestito attiva o conclusa.">Prestito</a> associati all'utente. </dd></dl>
+</li>
+</ul>
 
 </div>
 </div>

@@ -1,0 +1,65 @@
+\chapter{Test List }
+\hypertarget{test}{}\label{test}\index{Test List@{Test List}}
+
+\begin{DoxyRefList}
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5e1cac1bb22dcb897c334c48c9d0ffb0}{it.unisa.sgbu.domain.Libro\+Test.test\+Inizializzazione\+Copie} ()]\hfill \\
+\label{test__test000001}%
+\Hypertarget{test__test000001}%
+Verifica che, subito dopo l\textquotesingle{}istanziazione dell\textquotesingle{}oggetto tramite costruttore\+: Il numero di copie disponibili sia esattamente uguale al numero di copie totali.  
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5cc2c058ceb9f48190002f02053db69e}{it.unisa.sgbu.domain.Libro\+Test.test\+Metodi\+Getter} ()]\hfill \\
+\label{test__test000002}%
+\Hypertarget{test__test000002}%
+Verifica che i metodi get\+ISBN, get\+Titolo, get\+Autore e get\+Copie\+Totali restituiscano esattamente i valori passati al costruttore durante il setup.  
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a4c64f7297b17e70f7bce758f50c19f93}{it.unisa.sgbu.domain.Libro\+Test.test\+To\+String} ()]\hfill \\
+\label{test__test000003}%
+\Hypertarget{test__test000003}%
+Verifica che il metodo to\+String restituisca l\textquotesingle{}ISBN del libro, come ci si aspetta per la visualizzazione nelle interfacce testuali o di log.  
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a5ea4eb3ed255f8df54291228de8577ff}{it.unisa.sgbu.domain.Utente\+Test.test\+Aggiungi\+Prestito} ()]\hfill \\
+\label{test__test000005}%
+\Hypertarget{test__test000005}%
+Verifica la corretta aggiunta di un prestito alla lista\+:
+\begin{DoxyEnumerate}
+\item Aggiunta valida\+: la dimensione della lista deve incrementare.
+\item Aggiunta oltre limite\+: se l\textquotesingle{}utente ha già 3 prestiti, il quarto non deve essere inserito.
+\item Robustezza\+: l\textquotesingle{}aggiunta di un oggetto null non deve modificare la lista. 
+\end{DoxyEnumerate}
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a6c76a508269a924203ec1231d80bc3b8}{it.unisa.sgbu.domain.Utente\+Test.test\+Rimuovi\+Prestito} ()]\hfill \\
+\label{test__test000006}%
+\Hypertarget{test__test000006}%
+Verifica la rimozione di un prestito dalla lista\+:
+\begin{DoxyEnumerate}
+\item Rimozione valida\+: un prestito esistente viene rimosso e il contatore decresce.
+\item Rimozione non valida\+: tentare di rimuovere un prestito non presente non deve alterare la lista. 
+\end{DoxyEnumerate}
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a82d6c13f0680814a6b49122d2d1e7b76}{it.unisa.sgbu.domain.Utente\+Test.test\+To\+String} ()]\hfill \\
+\label{test__test000007}%
+\Hypertarget{test__test000007}%
+Verifica che il metodo to\+String restituisca la matricola dell\textquotesingle{}utente, come atteso per la rappresentazione testuale dell\textquotesingle{}oggetto (es. nelle tabelle o log).  
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a55f586319472cc52259d249eed92861e}{it.unisa.sgbu.domain.Utente\+Test.test\+Verifica\+Limite} ()]\hfill \\
+\label{test__test000004}%
+\Hypertarget{test__test000004}%
+Verifica il comportamento del controllo limiti in tre scenari\+:
+\begin{DoxyEnumerate}
+\item \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con 0 prestiti (Sotto soglia) -\/\texorpdfstring{$>$}{>} Deve restituire TRUE.
+\item \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con 2 prestiti (Sotto soglia) -\/\texorpdfstring{$>$}{>} Deve restituire TRUE.
+\item \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con 3 prestiti (Limite raggiunto) -\/\texorpdfstring{$>$}{>} Deve restituire FALSE. 
+\end{DoxyEnumerate}
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_aff490e8bb44c287e24b5d96e072f05fb}{it.unisa.sgbu.service.Anagrafica\+Test.test\+Modifica\+Utente} ()]\hfill \\
+\label{test__test000008}%
+\Hypertarget{test__test000008}%
+Verifica tre scenari di modifica\+:
+\begin{DoxyEnumerate}
+\item Modifica dati anagrafici (Nome/\+Cognome) mantenendo la matricola -\/\texorpdfstring{$>$}{>} Successo.
+\item Modifica della matricola in una nuova non esistente -\/\texorpdfstring{$>$}{>} Successo (la vecchia deve sparire).
+\item Modifica della matricola verso una già esistente -\/\texorpdfstring{$>$}{>} Fallimento (Vincolo unicità). 
+\end{DoxyEnumerate}
+\item[Global \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_a0bebb5d894c74ad7e2fbf0cb47c3bcfe}{it.unisa.sgbu.service.Anagrafica\+Test.test\+Visualizza\+Ordinata} ()]\hfill \\
+\label{test__test000009}%
+\Hypertarget{test__test000009}%
+Verifica che la lista restituita sia ordinata alfabeticamente per Cognome. Inserisce utenti in ordine sparso e controlla che l\textquotesingle{}output sia\+:
+\begin{DoxyEnumerate}
+\item Bianchi
+\item Rossi
+\item Verdi 
+\end{DoxyEnumerate}
+\end{DoxyRefList}

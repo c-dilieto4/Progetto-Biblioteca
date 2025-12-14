@@ -1,0 +1,44 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Prestito\+Test Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test}\index{it.unisa.sgbu.domain.PrestitoTest@{it.unisa.sgbu.domain.PrestitoTest}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a1357554c1f212c1b968a908fc571b0ab}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a1357554c1f212c1b968a908fc571b0ab} 
+void {\bfseries set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Fixture\+: Configurazione iniziale. Crea un libro, un utente e un prestito attivo con scadenza tra 30 giorni. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a56c9fb526f9ea6a4d752de1d146b7fc3}{test\+Costruttore}} ()
+\begin{DoxyCompactList}\small\item\em Test del costruttore e corretta inizializzazione. Verifica che\+: \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a38d4bdbed7b595108f2442207039d8e2}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a38d4bdbed7b595108f2442207039d8e2} 
+void {\bfseries test\+Chiudi\+Prestito\+Puntuale} ()
+\begin{DoxyCompactList}\small\item\em Test di chiudi\+Prestito (Caso Puntuale). Verifica che restituendo entro la scadenza il prestito venga chiuso senza ritardo. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a67f83d4fbe1ced8fda6a565b514d35f3}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a67f83d4fbe1ced8fda6a565b514d35f3} 
+void {\bfseries test\+Chiudi\+Prestito\+In\+Ritardo} ()
+\begin{DoxyCompactList}\small\item\em Test di chiudi\+Prestito (Caso Ritardo). Verifica che restituendo dopo la scadenza venga segnato il ritardo. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_ab453f2acfc615efd7195ba8559cd1bbb}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_ab453f2acfc615efd7195ba8559cd1bbb} 
+void {\bfseries test\+Verifica\+Ritardo} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo verifica\+Ritardo (Logica Temporale). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a56c9fb526f9ea6a4d752de1d146b7fc3}\index{it.unisa.sgbu.domain.PrestitoTest@{it.unisa.sgbu.domain.PrestitoTest}!testCostruttore@{testCostruttore}}
+\index{testCostruttore@{testCostruttore}!it.unisa.sgbu.domain.PrestitoTest@{it.unisa.sgbu.domain.PrestitoTest}}
+\doxysubsubsection{\texorpdfstring{testCostruttore()}{testCostruttore()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito_test_a56c9fb526f9ea6a4d752de1d146b7fc3} 
+void it.\+unisa.\+sgbu.\+domain.\+Prestito\+Test.\+test\+Costruttore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del costruttore e corretta inizializzazione. Verifica che\+: 
+
+
+\begin{DoxyEnumerate}
+\item L\textquotesingle{}ID e le associazioni (\doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro}, \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}) siano corretti.
+\item Le date (Inizio, Scadenza) siano registrate correttamente.
+\item Il prestito nasca attivo (data effettiva null) e senza ritardi. 
+\end{DoxyEnumerate}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/test/java/it/unisa/sgbu/domain/Prestito\+Test.\+java\end{DoxyCompactItemize}

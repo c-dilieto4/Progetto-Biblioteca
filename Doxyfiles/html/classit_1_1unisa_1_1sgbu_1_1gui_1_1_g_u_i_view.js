@@ -1,6 +1,6 @@
 var classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view =
 [
-    [ "GUIView", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a2027087d62c1e3573a52cdd1e76cb295", null ],
+    [ "GUIView", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#ad384bd1dd7c098d2cd1082a4c3a8726d", null ],
     [ "avviaInterfaccia", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#acad6ed642a98b26e769aa524d160ec64", null ],
     [ "gestisciAggiuntaLibro", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a680f0008d524ef0ab1842a933f603863", null ],
     [ "gestisciAggiuntaUtente", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#aa780ad41d7168c7c8c84c2abd6500309", null ],
@@ -13,10 +13,11 @@ var classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view =
     [ "gestisciRicercaLibro", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#ab0d4b4f5a551072e68deda149ba62535", null ],
     [ "gestisciRicercaUtente", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a608bf5c691d9f68bdb35c35d6ad5bc07", null ],
     [ "mostraFinestraLogin", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#aba96546ede91baeb5fceed13b4343411", null ],
-    [ "mostraListaLibri", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a157debe3abd749423fcb39d5926a147c", null ],
-    [ "mostraListaPrestiti", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#ab19d4680bbf6f2eb2b61ca7287c7b8db", null ],
-    [ "mostraListaUtenti", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#ac83d15361875615a0c287a60a013aba4", null ],
+    [ "mostraListaAuditTrail", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a946eabc8b56c19a0ce9100edddb89952", null ],
+    [ "mostraListaLibri", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#ac18495fe783283ca8883b917dc1968a1", null ],
+    [ "mostraListaPrestiti", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a2d5f1d7ab9e618e13025decb4beaa161", null ],
+    [ "mostraListaUtenti", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#adce023fc4dcf2d9363dd23e385d66f77", null ],
     [ "mostraLogDiSistema", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a504dbc9138b7a78b694abcaf8bcc044e", null ],
-    [ "mostraMessaggio", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a8fb5bfd5234ed5d6957b8ca4666ee7e8", null ],
+    [ "mostraMessaggio", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a113b3589a7f974b9e5b52826be8cc322", null ],
     [ "mostraReportUtente", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html#a9d0251d644755aeb106c9f790d841e6c", null ]
 ];

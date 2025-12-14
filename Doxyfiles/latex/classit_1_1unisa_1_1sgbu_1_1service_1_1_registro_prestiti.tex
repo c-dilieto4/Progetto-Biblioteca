@@ -5,227 +5,48 @@
 Gestore centrale delle operazioni di prestito e restituzione.  
 
 
+Inheritance diagram for it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a4519f5eb9c692a3910f2c4a279c22085}{Registro\+Prestiti}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}} catologo, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}} anagrafica)
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ac0c0718596bb0216b398ae6aa90db417}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ac0c0718596bb0216b398ae6aa90db417} 
+{\bfseries Registro\+Prestiti} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}} catalogo, \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}} anagrafica)
 \begin{DoxyCompactList}\small\item\em Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a7f1cd94ab16a94c4a638d7d166d65e36}{registra\+Prestito}} (String isbn, String matr, Local\+Date data\+Prev)
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a7f1cd94ab16a94c4a638d7d166d65e36}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a7f1cd94ab16a94c4a638d7d166d65e36} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} {\bfseries registra\+Prestito} (String isbn, String matr, Local\+Date data\+Prev)
 \begin{DoxyCompactList}\small\item\em Esegue la registrazione di un nuovo prestito. \end{DoxyCompactList}\item 
-boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a208c809c0df56e71e5c7d32be447495a}{registra\+Restituzione}} (int id\+Prestito, Local\+Date data\+Eff)
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a208c809c0df56e71e5c7d32be447495a}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a208c809c0df56e71e5c7d32be447495a} 
+boolean {\bfseries registra\+Restituzione} (int id\+Prestito, Local\+Date data\+Eff)
 \begin{DoxyCompactList}\small\item\em Registra la restituzione di un libro. \end{DoxyCompactList}\item 
-List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a0bbcd093287dd5a654d69d95a5fec695}{get\+Prestiti\+Attivi}} ()
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a0bbcd093287dd5a654d69d95a5fec695}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a0bbcd093287dd5a654d69d95a5fec695} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ {\bfseries get\+Prestiti\+Attivi} ()
 \begin{DoxyCompactList}\small\item\em Restituisce l\textquotesingle{}elenco di tutti i prestiti attivi. \end{DoxyCompactList}\item 
-List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a8dd874a7d7bf7c3ba3300d6e3a0a471f}{get\+Prestiti\+Attivi}} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} u)
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a8dd874a7d7bf7c3ba3300d6e3a0a471f}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a8dd874a7d7bf7c3ba3300d6e3a0a471f} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ {\bfseries get\+Prestiti\+Attivi} (\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}} u)
 \begin{DoxyCompactList}\small\item\em Restituisce i prestiti attivi di uno specifico utente. \end{DoxyCompactList}\item 
-List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a744bacf4d20770d7402612b3da3ae68d}{get\+Prestiti\+In\+Ritardo}} ()
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a744bacf4d20770d7402612b3da3ae68d}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a744bacf4d20770d7402612b3da3ae68d} 
+List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ {\bfseries get\+Prestiti\+In\+Ritardo} ()
 \begin{DoxyCompactList}\small\item\em Identifica e restituisce i prestiti in ritardo. \end{DoxyCompactList}\item 
-boolean \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ad4ed3ac833f648c9e217397750cde4e4}{ha\+Prestiti\+Attivi}} (String matricola)
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ad4ed3ac833f648c9e217397750cde4e4}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ad4ed3ac833f648c9e217397750cde4e4} 
+boolean {\bfseries ha\+Prestiti\+Attivi} (String matricola)
 \begin{DoxyCompactList}\small\item\em Verifica se un utente ha prestiti in corso. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a3750da6e32f528d09134a2f769e64acb}{trova\+Prestito}} (int id\+Prestito)
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a3750da6e32f528d09134a2f769e64acb}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a3750da6e32f528d09134a2f769e64acb} 
+\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} {\bfseries trova\+Prestito} (int id\+Prestito)
 \begin{DoxyCompactList}\small\item\em Ricerca un prestito tramite il suo ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Gestore centrale delle operazioni di prestito e restituzione. 
 
-Questa classe implementa la logica per la "{}\+Gestione prestiti"{} e coordina i flussi operativi principali descritti nei relativi Business Flow, verificando i vincoli trasversali prima di autorizzare le transazioni. 
-
-\label{doc-constructors}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_doc-constructors}
-\doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a4519f5eb9c692a3910f2c4a279c22085}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!RegistroPrestiti@{RegistroPrestiti}}
-\index{RegistroPrestiti@{RegistroPrestiti}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{RegistroPrestiti()}{RegistroPrestiti()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a4519f5eb9c692a3910f2c4a279c22085} 
-it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+Registro\+Prestiti (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}}}]{catologo}{, }\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}}}]{anagrafica}{}\end{DoxyParamCaption})}
-
-
-
-Costruttore della classe \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti}. 
-
-Inizializza il registro e inietta le dipendenze necessarie per operare.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em catologo} & Istanza valida del catalogo libri. \\
-\hline
-\mbox{\texttt{in}}  & {\em anagrafica} & Istanza valida dell\textquotesingle{}anagrafica utenti. \\
-\hline
-\end{DoxyParams}
-
-
-\label{doc-func-members}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_doc-func-members}
-\doxysubsection{Member Function Documentation}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a0bbcd093287dd5a654d69d95a5fec695}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!getPrestitiAttivi@{getPrestitiAttivi}}
-\index{getPrestitiAttivi@{getPrestitiAttivi}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{getPrestitiAttivi()}{getPrestitiAttivi()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a0bbcd093287dd5a654d69d95a5fec695} 
-List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+get\+Prestiti\+Attivi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Restituisce l\textquotesingle{}elenco di tutti i prestiti attivi. 
-
-Implementa il requisito funzionale. La lista restituita deve essere ordinata per data prevista di restituzione per facilitare il monitoraggio delle scadenze.
-
-\begin{DoxyReturn}{Returns}
-Lista di oggetti \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} non ancora chiusi. 
-\end{DoxyReturn}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a8dd874a7d7bf7c3ba3300d6e3a0a471f}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!getPrestitiAttivi@{getPrestitiAttivi}}
-\index{getPrestitiAttivi@{getPrestitiAttivi}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{getPrestitiAttivi()}{getPrestitiAttivi()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a8dd874a7d7bf7c3ba3300d6e3a0a471f} 
-List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+get\+Prestiti\+Attivi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente}}}]{u}{}\end{DoxyParamCaption})}
-
-
-
-Restituisce i prestiti attivi di uno specifico utente. 
-
-Utilizzato per verificare il vincolo sul numero massimo di prestiti \mbox{[}FC-\/2\mbox{]} e per visualizzare la situazione del singolo utente.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em u} & L\textquotesingle{}utente di cui cercare i prestiti.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Lista dei prestiti associati all\textquotesingle{}utente. 
-\end{DoxyReturn}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a744bacf4d20770d7402612b3da3ae68d}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!getPrestitiInRitardo@{getPrestitiInRitardo}}
-\index{getPrestitiInRitardo@{getPrestitiInRitardo}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{getPrestitiInRitardo()}{getPrestitiInRitardo()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a744bacf4d20770d7402612b3da3ae68d} 
-List$<$ \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} $>$ it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+get\+Prestiti\+In\+Ritardo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Identifica e restituisce i prestiti in ritardo. 
-
-Filtra i prestiti attivi confrontando la data prevista di restituzione con la data corrente, supportando la funzionalità "{}\+Gestione dei ritardi"{}.
-
-\begin{DoxyReturn}{Returns}
-Lista di prestiti scaduti. 
-\end{DoxyReturn}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ad4ed3ac833f648c9e217397750cde4e4}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!haPrestitiAttivi@{haPrestitiAttivi}}
-\index{haPrestitiAttivi@{haPrestitiAttivi}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{haPrestitiAttivi()}{haPrestitiAttivi()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_ad4ed3ac833f648c9e217397750cde4e4} 
-boolean it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+ha\+Prestiti\+Attivi (\begin{DoxyParamCaption}\item[{String}]{matricola}{}\end{DoxyParamCaption})}
-
-
-
-Verifica se un utente ha prestiti in corso. 
-
-Controllo critico richiesto per il "{}\+Vincolo cancellazione dati"{}. Impedisce l\textquotesingle{}eliminazione di un utente dall\textquotesingle{}anagrafica se questi detiene ancora libri della biblioteca.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em matricola} & La matricola dell\textquotesingle{}utente da controllare.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true se esistono prestiti attivi, false altrimenti. 
-\end{DoxyReturn}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a7f1cd94ab16a94c4a638d7d166d65e36}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!registraPrestito@{registraPrestito}}
-\index{registraPrestito@{registraPrestito}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{registraPrestito()}{registraPrestito()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a7f1cd94ab16a94c4a638d7d166d65e36} 
-\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+registra\+Prestito (\begin{DoxyParamCaption}\item[{String}]{isbn}{, }\item[{String}]{matr}{, }\item[{Local\+Date}]{data\+Prev}{}\end{DoxyParamCaption})}
-
-
-
-Esegue la registrazione di un nuovo prestito. 
-
-Implementa il "{}\+Flusso di registrazione nuovo prestito"{} e il relativo Caso d\textquotesingle{}Uso.
-
-Esegue le seguenti verifiche obbligatorie\+:
-\begin{DoxyEnumerate}
-\item Verifica disponibilità copie libro tramite \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo}{Catalogo}.
-\item Verifica che l\textquotesingle{}utente non abbia raggiunto il Limite\+Prestiti.
-\end{DoxyEnumerate}
-
-Se i vincoli sono soddisfatti, crea il prestito, aggiorna le copie disponibili del libro e associa il prestito all\textquotesingle{}utente.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em isbn} & Codice ISBN del libro da prestare. \\
-\hline
-\mbox{\texttt{in}}  & {\em matr} & Matricola dell\textquotesingle{}utente richiedente. \\
-\hline
-\mbox{\texttt{in}}  & {\em data\+Prev} & Data prevista per la restituzione.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} creato se l\textquotesingle{}operazione ha successo, null se sono violati i vincoli.
-\end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
 
 \begin{DoxyItemize}
-\item isbn e matr devono corrispondere a entità esistenti.
-\item Il libro deve avere {\ttfamily copie\+Disponibili \texorpdfstring{$>$}{>} 0}.
-\item L\textquotesingle{}utente deve avere {\ttfamily prestiti\+Attivi \texorpdfstring{$<$}{<} 3}.
+\item Questa classe implementa la logica per la "{}\+Gestione prestiti"{} e coordina i flussi operativi principali descritti nei relativi Business Flow. 
 \end{DoxyItemize}
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{Postcondition}
-
-\begin{DoxyItemize}
-\item Viene creato un nuovo record di prestito attivo.
-\item {\ttfamily Libro.\+copie\+Disponibili} viene decrementato di 1. 
-\end{DoxyItemize}
-\end{DoxyPostcond}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a208c809c0df56e71e5c7d32be447495a}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!registraRestituzione@{registraRestituzione}}
-\index{registraRestituzione@{registraRestituzione}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{registraRestituzione()}{registraRestituzione()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a208c809c0df56e71e5c7d32be447495a} 
-boolean it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+registra\+Restituzione (\begin{DoxyParamCaption}\item[{int}]{id\+Prestito}{, }\item[{Local\+Date}]{data\+Eff}{}\end{DoxyParamCaption})}
-
-
-
-Registra la restituzione di un libro. 
-
-Implementa il "{}\+Flusso di registrazione restituzione"{} e il relativo Caso d\textquotesingle{}Uso. Chiude il prestito attivo e incrementa le copie disponibili del libro. Innesca automaticamente il controllo per il "{}\+Flusso di segnalazione ritardo"{} se la data effettiva è successiva a quella prevista.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em id\+Prestito} & Identificativo del prestito da chiudere. \\
-\hline
-\mbox{\texttt{in}}  & {\em data\+Eff} & Data effettiva di riconsegna.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true se la restituzione è registrata con successo, false se il prestito non esiste.
-\end{DoxyReturn}
-\begin{DoxyPostcond}{Postcondition}
-
-\begin{DoxyItemize}
-\item Il record prestito viene chiuso (data effettiva impostata).
-\item {\ttfamily Libro.\+copie\+Disponibili} viene incrementato di 1.
-\item Se in ritardo, lo stato del prestito viene aggiornato. 
-\end{DoxyItemize}
-\end{DoxyPostcond}
-\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a3750da6e32f528d09134a2f769e64acb}\index{it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}!trovaPrestito@{trovaPrestito}}
-\index{trovaPrestito@{trovaPrestito}!it.unisa.sgbu.service.RegistroPrestiti@{it.unisa.sgbu.service.RegistroPrestiti}}
-\doxysubsubsection{\texorpdfstring{trovaPrestito()}{trovaPrestito()}}
-{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti_a3750da6e32f528d09134a2f769e64acb} 
-\mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito}} it.\+unisa.\+sgbu.\+service.\+Registro\+Prestiti.\+trova\+Prestito (\begin{DoxyParamCaption}\item[{int}]{id\+Prestito}{}\end{DoxyParamCaption})}
-
-
-
-Ricerca un prestito tramite il suo ID. 
-
-Metodo di utilità per recuperare l\textquotesingle{}oggetto prestito necessario per effettuare la restituzione.
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em id\+Prestito} & L\textquotesingle{}identificativo univoco del prestito.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-L\textquotesingle{}oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito}{Prestito} se trovato, null altrimenti. 
-\end{DoxyReturn}
-
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['main_0',['Main',['../classit_1_1unisa_1_1sgbu_1_1app_1_1_main.html',1,'it::unisa::sgbu::app']]],
-  ['messaggiinterfaccia_1',['MessaggiInterfaccia',['../classit_1_1unisa_1_1sgbu_1_1gui_1_1_messaggi_interfaccia.html',1,'it::unisa::sgbu::gui']]]
+  ['libro_0',['Libro',['../classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html',1,'it::unisa::sgbu::domain']]],
+  ['librotest_1',['LibroTest',['../classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test.html',1,'it::unisa::sgbu::domain']]],
+  ['logincontroller_2',['LoginController',['../classit_1_1unisa_1_1sgbu_1_1gui_1_1_login_controller.html',1,'it::unisa::sgbu::gui']]]
 ];

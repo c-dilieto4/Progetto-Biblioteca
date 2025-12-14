@@ -1,11 +1,67 @@
 \doxysection{it.\+unisa.\+sgbu.\+domain.\+Libro\+Test Class Reference}
 \hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test}\index{it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_aeb1b7ca0b0394a6c9434fe0a7368f75e}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_aeb1b7ca0b0394a6c9434fe0a7368f75e} 
+void {\bfseries set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Fixture di test\+: Configurazione iniziale. Questo metodo viene eseguito automaticamente prima di ogni singolo test. Si occupa di istanziare un nuovo oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro}{Libro} "{}pulito"{} (con 2 copie totali) per garantire che i test siano indipendenti l\textquotesingle{}uno dall\textquotesingle{}altro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5e1cac1bb22dcb897c334c48c9d0ffb0}{test\+Inizializzazione\+Copie}} ()
+\begin{DoxyCompactList}\small\item\em Test della coerenza dello stato iniziale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5cc2c058ceb9f48190002f02053db69e}{test\+Metodi\+Getter}} ()
+\begin{DoxyCompactList}\small\item\em Test dei metodi di accesso ai dati anagrafici (Getter). \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a7d7b1ed4f8fd8c8fa008cb3942b2b0fc}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a7d7b1ed4f8fd8c8fa008cb3942b2b0fc} 
+void {\bfseries test\+Incrementa\+Disponibilità} ()
+\begin{DoxyCompactList}\small\item\em Test of incrementa\+Disponibilità method. Verifica che il contatore salga correttamente dopo una restituzione. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_af6d82aebd9cee90ab3cc43f319b3d13c}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_af6d82aebd9cee90ab3cc43f319b3d13c} 
+void {\bfseries test\+Decrementa\+Disponibilità} ()
+\begin{DoxyCompactList}\small\item\em Test of decrementa\+Disponibilità method. Verifica che il contatore scenda correttamente. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a75b572ef89f43e113ea0bad4ceaef7bf}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a75b572ef89f43e113ea0bad4ceaef7bf} 
+void {\bfseries test\+Is\+Disponibile} ()
+\begin{DoxyCompactList}\small\item\em Test of is\+Disponibile method (Caso Limite). Verifica che il libro NON sia disponibile quando le copie arrivano a 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a4c64f7297b17e70f7bce758f50c19f93}{test\+To\+String}} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo to\+String(). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-\begin{DoxyAuthor}{Author}
-dilie 
-\end{DoxyAuthor}
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5e1cac1bb22dcb897c334c48c9d0ffb0}\index{it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}!testInizializzazioneCopie@{testInizializzazioneCopie}}
+\index{testInizializzazioneCopie@{testInizializzazioneCopie}!it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}}
+\doxysubsubsection{\texorpdfstring{testInizializzazioneCopie()}{testInizializzazioneCopie()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5e1cac1bb22dcb897c334c48c9d0ffb0} 
+void it.\+unisa.\+sgbu.\+domain.\+Libro\+Test.\+test\+Inizializzazione\+Copie (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test della coerenza dello stato iniziale. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000001}{Test}}]Verifica che, subito dopo l\textquotesingle{}istanziazione dell\textquotesingle{}oggetto tramite costruttore\+: Il numero di copie disponibili sia esattamente uguale al numero di copie totali. \end{DoxyRefDesc}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5cc2c058ceb9f48190002f02053db69e}\index{it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}!testMetodiGetter@{testMetodiGetter}}
+\index{testMetodiGetter@{testMetodiGetter}!it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}}
+\doxysubsubsection{\texorpdfstring{testMetodiGetter()}{testMetodiGetter()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a5cc2c058ceb9f48190002f02053db69e} 
+void it.\+unisa.\+sgbu.\+domain.\+Libro\+Test.\+test\+Metodi\+Getter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test dei metodi di accesso ai dati anagrafici (Getter). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000002}{Test}}]Verifica che i metodi get\+ISBN, get\+Titolo, get\+Autore e get\+Copie\+Totali restituiscano esattamente i valori passati al costruttore durante il setup. \end{DoxyRefDesc}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a4c64f7297b17e70f7bce758f50c19f93}\index{it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}!testToString@{testToString}}
+\index{testToString@{testToString}!it.unisa.sgbu.domain.LibroTest@{it.unisa.sgbu.domain.LibroTest}}
+\doxysubsubsection{\texorpdfstring{testToString()}{testToString()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro_test_a4c64f7297b17e70f7bce758f50c19f93} 
+void it.\+unisa.\+sgbu.\+domain.\+Libro\+Test.\+test\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del metodo to\+String(). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000003}{Test}}]Verifica che il metodo to\+String restituisca l\textquotesingle{}ISBN del libro, come ci si aspetta per la visualizzazione nelle interfacce testuali o di log. \end{DoxyRefDesc}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

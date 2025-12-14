@@ -1,0 +1,65 @@
+\doxysection{it.\+unisa.\+sgbu.\+service.\+Anagrafica\+Test Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test}{}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test}\index{it.unisa.sgbu.service.AnagraficaTest@{it.unisa.sgbu.service.AnagraficaTest}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_a911e081bdfff89d0171bbb8c58def78d}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_a911e081bdfff89d0171bbb8c58def78d} 
+void {\bfseries set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Fixture di test\+: Configurazione iniziale. Questo metodo viene eseguito automaticamente prima di ogni singolo test. Si occupa di istanziare un nuovo oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica}{Anagrafica}. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_aa36a7ccbb6a5f74e779bca7f33ee47fb}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_aa36a7ccbb6a5f74e779bca7f33ee47fb} 
+void {\bfseries test\+Aggiungi\+Utente} ()
+\begin{DoxyCompactList}\small\item\em Test di aggiunta\+Utente. Verifica l\textquotesingle{}inserimento corretto e il blocco dei duplicati. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_af894c45c99149f3b7ae3d7ceeca79be0}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_af894c45c99149f3b7ae3d7ceeca79be0} 
+void {\bfseries test\+Rimuovi\+Utente} ()
+\begin{DoxyCompactList}\small\item\em Test di rimuovi\+Utente. Verifica la rimozione corretta e la gestione di utenti inesistenti. Nota\+: Il controllo sui prestiti attivi è delegato al GUIController o \doxylink{classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti}{Registro\+Prestiti}, qui testiamo solo la rimozione dalla mappa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_aff490e8bb44c287e24b5d96e072f05fb}{test\+Modifica\+Utente}} ()
+\begin{DoxyCompactList}\small\item\em Test della modifica. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_afb1ea1ea5713d80b9109c46eab79df0e}\label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_afb1ea1ea5713d80b9109c46eab79df0e} 
+void {\bfseries test\+Cerca\+Utente} ()
+\begin{DoxyCompactList}\small\item\em Test di ricerca. Verifica che la ricerca funzioni per Cognome e Matricola. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_a0bebb5d894c74ad7e2fbf0cb47c3bcfe}{test\+Visualizza\+Ordinata}} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo visualizza\+Ordinata(). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_aff490e8bb44c287e24b5d96e072f05fb}\index{it.unisa.sgbu.service.AnagraficaTest@{it.unisa.sgbu.service.AnagraficaTest}!testModificaUtente@{testModificaUtente}}
+\index{testModificaUtente@{testModificaUtente}!it.unisa.sgbu.service.AnagraficaTest@{it.unisa.sgbu.service.AnagraficaTest}}
+\doxysubsubsection{\texorpdfstring{testModificaUtente()}{testModificaUtente()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_aff490e8bb44c287e24b5d96e072f05fb} 
+void it.\+unisa.\+sgbu.\+service.\+Anagrafica\+Test.\+test\+Modifica\+Utente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test della modifica. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000008}{Test}}]Verifica tre scenari di modifica\+:
+\begin{DoxyEnumerate}
+\item Modifica dati anagrafici (Nome/\+Cognome) mantenendo la matricola -\/\texorpdfstring{$>$}{>} Successo.
+\item Modifica della matricola in una nuova non esistente -\/\texorpdfstring{$>$}{>} Successo (la vecchia deve sparire).
+\item Modifica della matricola verso una già esistente -\/\texorpdfstring{$>$}{>} Fallimento (Vincolo unicità). 
+\end{DoxyEnumerate}\end{DoxyRefDesc}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_a0bebb5d894c74ad7e2fbf0cb47c3bcfe}\index{it.unisa.sgbu.service.AnagraficaTest@{it.unisa.sgbu.service.AnagraficaTest}!testVisualizzaOrdinata@{testVisualizzaOrdinata}}
+\index{testVisualizzaOrdinata@{testVisualizzaOrdinata}!it.unisa.sgbu.service.AnagraficaTest@{it.unisa.sgbu.service.AnagraficaTest}}
+\doxysubsubsection{\texorpdfstring{testVisualizzaOrdinata()}{testVisualizzaOrdinata()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica_test_a0bebb5d894c74ad7e2fbf0cb47c3bcfe} 
+void it.\+unisa.\+sgbu.\+service.\+Anagrafica\+Test.\+test\+Visualizza\+Ordinata (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del metodo visualizza\+Ordinata(). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000009}{Test}}]Verifica che la lista restituita sia ordinata alfabeticamente per Cognome. Inserisce utenti in ordine sparso e controlla che l\textquotesingle{}output sia\+:
+\begin{DoxyEnumerate}
+\item Bianchi
+\item Rossi
+\item Verdi 
+\end{DoxyEnumerate}\end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/test/java/it/unisa/sgbu/service/Anagrafica\+Test.\+java\end{DoxyCompactItemize}

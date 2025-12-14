@@ -1,0 +1,91 @@
+\doxysection{it.\+unisa.\+sgbu.\+domain.\+Utente\+Test Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test}{}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test}\index{it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a925637fe6cfe4c95b0244104c329bb31}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a925637fe6cfe4c95b0244104c329bb31} 
+void {\bfseries set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Fixture di test\+: Configurazione iniziale. Questo metodo viene eseguito automaticamente prima di ogni singolo test. Si occupa di istanziare un nuovo oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} per garantire che i test siano indipendenti l\textquotesingle{}uno dall\textquotesingle{}altro. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a6ca9e0b44892d389c3dfa37b5a4aa10d}\label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a6ca9e0b44892d389c3dfa37b5a4aa10d} 
+void {\bfseries test\+Costruttore} ()
+\begin{DoxyCompactList}\small\item\em Test del costruttore e stato iniziale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a55f586319472cc52259d249eed92861e}{test\+Verifica\+Limite}} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo verifica\+Limite(). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a5ea4eb3ed255f8df54291228de8577ff}{test\+Aggiungi\+Prestito}} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo aggiungi\+Prestito(). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a6c76a508269a924203ec1231d80bc3b8}{test\+Rimuovi\+Prestito}} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo rimuovi\+Prestito(). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a82d6c13f0680814a6b49122d2d1e7b76}{test\+To\+String}} ()
+\begin{DoxyCompactList}\small\item\em Test del metodo to\+String(). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a5ea4eb3ed255f8df54291228de8577ff}\index{it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}!testAggiungiPrestito@{testAggiungiPrestito}}
+\index{testAggiungiPrestito@{testAggiungiPrestito}!it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}}
+\doxysubsubsection{\texorpdfstring{testAggiungiPrestito()}{testAggiungiPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a5ea4eb3ed255f8df54291228de8577ff} 
+void it.\+unisa.\+sgbu.\+domain.\+Utente\+Test.\+test\+Aggiungi\+Prestito (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del metodo aggiungi\+Prestito(). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000005}{Test}}]Verifica la corretta aggiunta di un prestito alla lista\+:
+\begin{DoxyEnumerate}
+\item Aggiunta valida\+: la dimensione della lista deve incrementare.
+\item Aggiunta oltre limite\+: se l\textquotesingle{}utente ha già 3 prestiti, il quarto non deve essere inserito.
+\item Robustezza\+: l\textquotesingle{}aggiunta di un oggetto null non deve modificare la lista. 
+\end{DoxyEnumerate}\end{DoxyRefDesc}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a6c76a508269a924203ec1231d80bc3b8}\index{it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}!testRimuoviPrestito@{testRimuoviPrestito}}
+\index{testRimuoviPrestito@{testRimuoviPrestito}!it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}}
+\doxysubsubsection{\texorpdfstring{testRimuoviPrestito()}{testRimuoviPrestito()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a6c76a508269a924203ec1231d80bc3b8} 
+void it.\+unisa.\+sgbu.\+domain.\+Utente\+Test.\+test\+Rimuovi\+Prestito (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del metodo rimuovi\+Prestito(). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000006}{Test}}]Verifica la rimozione di un prestito dalla lista\+:
+\begin{DoxyEnumerate}
+\item Rimozione valida\+: un prestito esistente viene rimosso e il contatore decresce.
+\item Rimozione non valida\+: tentare di rimuovere un prestito non presente non deve alterare la lista. 
+\end{DoxyEnumerate}\end{DoxyRefDesc}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a82d6c13f0680814a6b49122d2d1e7b76}\index{it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}!testToString@{testToString}}
+\index{testToString@{testToString}!it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}}
+\doxysubsubsection{\texorpdfstring{testToString()}{testToString()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a82d6c13f0680814a6b49122d2d1e7b76} 
+void it.\+unisa.\+sgbu.\+domain.\+Utente\+Test.\+test\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del metodo to\+String(). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000007}{Test}}]Verifica che il metodo to\+String restituisca la matricola dell\textquotesingle{}utente, come atteso per la rappresentazione testuale dell\textquotesingle{}oggetto (es. nelle tabelle o log). \end{DoxyRefDesc}
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a55f586319472cc52259d249eed92861e}\index{it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}!testVerificaLimite@{testVerificaLimite}}
+\index{testVerificaLimite@{testVerificaLimite}!it.unisa.sgbu.domain.UtenteTest@{it.unisa.sgbu.domain.UtenteTest}}
+\doxysubsubsection{\texorpdfstring{testVerificaLimite()}{testVerificaLimite()}}
+{\footnotesize\ttfamily \label{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente_test_a55f586319472cc52259d249eed92861e} 
+void it.\+unisa.\+sgbu.\+domain.\+Utente\+Test.\+test\+Verifica\+Limite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Test del metodo verifica\+Limite(). 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000004}{Test}}]Verifica il comportamento del controllo limiti in tre scenari\+:
+\begin{DoxyEnumerate}
+\item \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con 0 prestiti (Sotto soglia) -\/\texorpdfstring{$>$}{>} Deve restituire TRUE.
+\item \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con 2 prestiti (Sotto soglia) -\/\texorpdfstring{$>$}{>} Deve restituire TRUE.
+\item \doxylink{classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente}{Utente} con 3 prestiti (Limite raggiunto) -\/\texorpdfstring{$>$}{>} Deve restituire FALSE. 
+\end{DoxyEnumerate}\end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/test/java/it/unisa/sgbu/domain/Utente\+Test.\+java\end{DoxyCompactItemize}

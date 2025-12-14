@@ -92,49 +92,57 @@ $(function(){initNavTree('classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.h
 </div><!--header-->
 <div class="contents">
 
-<p>Controller principale del sistema (Pattern MVC).  
+<p>Controller principale del sistema.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a326f5bc587ef2e3099a93586f74596b4" id="r_a326f5bc587ef2e3099a93586f74596b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a326f5bc587ef2e3099a93586f74596b4">GUIController</a> (<a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati.html">IArchivioDati</a> archivio, <a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger.html">ILogger</a> logger, <a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore.html">IAutenticatore</a> autenticatore, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html">Catalogo</a> catalogo, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html">Anagrafica</a> anagrafica, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html">RegistroPrestiti</a> registro, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati.html">ValidatoreDati</a> valida)</td></tr>
-<tr class="memdesc:a326f5bc587ef2e3099a93586f74596b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Costruttore della classe <a class="el" href="classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html" title="Controller principale del sistema (Pattern MVC).">GUIController</a>.  <br /></td></tr>
+<tr class="memdesc:a326f5bc587ef2e3099a93586f74596b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Costruttore: Inietta tutte le dipendenze e inizializza il logging.  <br /></td></tr>
 <tr class="memitem:ac5c4ef95ea32cf64cdec2c4ac473eb84" id="r_ac5c4ef95ea32cf64cdec2c4ac473eb84"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5c4ef95ea32cf64cdec2c4ac473eb84">avviaSistema</a> ()</td></tr>
 <tr class="memdesc:ac5c4ef95ea32cf64cdec2c4ac473eb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avvia il sistema caricando i dati persistenti.  <br /></td></tr>
 <tr class="memitem:affeddc30bea0bca290709212a4fb059c" id="r_affeddc30bea0bca290709212a4fb059c"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affeddc30bea0bca290709212a4fb059c">chiudiSistema</a> ()</td></tr>
-<tr class="memdesc:affeddc30bea0bca290709212a4fb059c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chiude il sistema salvando lo stato corrente.  <br /></td></tr>
+<tr class="memdesc:affeddc30bea0bca290709212a4fb059c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue la procedura di shutdown sicuro del sistema.  <br /></td></tr>
 <tr class="memitem:a30ff520d961595504707f14309a2aa12" id="r_a30ff520d961595504707f14309a2aa12"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30ff520d961595504707f14309a2aa12">aggiungiUtente</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> u)</td></tr>
-<tr class="memdesc:a30ff520d961595504707f14309a2aa12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordina l'aggiunta di un nuovo utente.  <br /></td></tr>
-<tr class="memitem:a4d898759877c0b6fe073e217dd747c35" id="r_a4d898759877c0b6fe073e217dd747c35"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d898759877c0b6fe073e217dd747c35">aggiungiLibro</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> l)</td></tr>
-<tr class="memdesc:a4d898759877c0b6fe073e217dd747c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordina l'aggiunta di un nuovo libro.  <br /></td></tr>
+<tr class="memdesc:a30ff520d961595504707f14309a2aa12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un nuovo utente al sistema.  <br /></td></tr>
 <tr class="memitem:ad23f7f05e3216f3a048ce8422e46397f" id="r_ad23f7f05e3216f3a048ce8422e46397f"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad23f7f05e3216f3a048ce8422e46397f">modificaUtente</a> (String matrOriginale, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> uNuovo)</td></tr>
-<tr class="memdesc:ad23f7f05e3216f3a048ce8422e46397f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordina la modifica di un utente esistente.  <br /></td></tr>
-<tr class="memitem:a76d31726fa70878a9dc6e17395caf84c" id="r_a76d31726fa70878a9dc6e17395caf84c"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76d31726fa70878a9dc6e17395caf84c">modificaLibro</a> (String isbnOriginale, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> lNuovo)</td></tr>
-<tr class="memdesc:a76d31726fa70878a9dc6e17395caf84c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordina la modifica di un libro esistente.  <br /></td></tr>
-<tr class="memitem:a113a33dbacb9fef7f597a17e8289ee68" id="r_a113a33dbacb9fef7f597a17e8289ee68"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a113a33dbacb9fef7f597a17e8289ee68">cercaLibro</a> (String query, String campo)</td></tr>
-<tr class="memdesc:a113a33dbacb9fef7f597a17e8289ee68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue la ricerca di libri nel catalogo.  <br /></td></tr>
-<tr class="memitem:a92e03ceac78317f70f215f2f04f218b0" id="r_a92e03ceac78317f70f215f2f04f218b0"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92e03ceac78317f70f215f2f04f218b0">cercaUtente</a> (String query, String campo)</td></tr>
-<tr class="memdesc:a92e03ceac78317f70f215f2f04f218b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue la ricerca di utenti nell'anagrafica.  <br /></td></tr>
+<tr class="memdesc:ad23f7f05e3216f3a048ce8422e46397f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifica i dati di un utente esistente.  <br /></td></tr>
 <tr class="memitem:a92e3bf7cbd93a477307345fb95c6d575" id="r_a92e3bf7cbd93a477307345fb95c6d575"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92e3bf7cbd93a477307345fb95c6d575">rimuoviUtente</a> (String matr)</td></tr>
-<tr class="memdesc:a92e3bf7cbd93a477307345fb95c6d575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordina la rimozione di un utente.  <br /></td></tr>
-<tr class="memitem:af6614560e5cf161edac4fede376d40e0" id="r_af6614560e5cf161edac4fede376d40e0"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6614560e5cf161edac4fede376d40e0">rimuoviLibro</a> (String isbn)</td></tr>
-<tr class="memdesc:af6614560e5cf161edac4fede376d40e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordina la rimozione di un libro.  <br /></td></tr>
-<tr class="memitem:a7578596f7cddde24ddda9d85aaa885c3" id="r_a7578596f7cddde24ddda9d85aaa885c3"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7578596f7cddde24ddda9d85aaa885c3">gestisciPrestito</a> (String isbn, String matricola, LocalDate dataPrevistaRestituzione)</td></tr>
-<tr class="memdesc:a7578596f7cddde24ddda9d85aaa885c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'intero flusso di registrazione di un prestito.  <br /></td></tr>
-<tr class="memitem:a673a6a9fb6ca4be6031d835ea13ea181" id="r_a673a6a9fb6ca4be6031d835ea13ea181"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a673a6a9fb6ca4be6031d835ea13ea181">gestisciRestituzione</a> (int idPrestito, LocalDate dataEffettivaRestituzione)</td></tr>
-<tr class="memdesc:a673a6a9fb6ca4be6031d835ea13ea181"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce il flusso di restituzione di un libro.  <br /></td></tr>
-<tr class="memitem:a4ac7b0adaa34f5db0ccdc48ede2789bf" id="r_a4ac7b0adaa34f5db0ccdc48ede2789bf"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ac7b0adaa34f5db0ccdc48ede2789bf">ottieniReportPrestiti</a> ()</td></tr>
-<tr class="memdesc:a4ac7b0adaa34f5db0ccdc48ede2789bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupera il report dei prestiti attivi.  <br /></td></tr>
-<tr class="memitem:a0ba85116566dd49032472d5009793a31" id="r_a0ba85116566dd49032472d5009793a31"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ba85116566dd49032472d5009793a31">ottieniCatalogoOrdinato</a> ()</td></tr>
-<tr class="memdesc:a0ba85116566dd49032472d5009793a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupera il catalogo completo per la visualizzazione.  <br /></td></tr>
+<tr class="memdesc:a92e3bf7cbd93a477307345fb95c6d575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove un utente dal sistema.  <br /></td></tr>
+<tr class="memitem:a92e03ceac78317f70f215f2f04f218b0" id="r_a92e03ceac78317f70f215f2f04f218b0"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92e03ceac78317f70f215f2f04f218b0">cercaUtente</a> (String query, String campo)</td></tr>
+<tr class="memdesc:a92e03ceac78317f70f215f2f04f218b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue una ricerca tra gli utenti registrati.  <br /></td></tr>
 <tr class="memitem:a393b938a8850bc01e2f698d83de4aca3" id="r_a393b938a8850bc01e2f698d83de4aca3"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a393b938a8850bc01e2f698d83de4aca3">ottieniAnagraficaOrdinata</a> ()</td></tr>
-<tr class="memdesc:a393b938a8850bc01e2f698d83de4aca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupera l'elenco utenti per la visualizzazione.  <br /></td></tr>
+<tr class="memdesc:a393b938a8850bc01e2f698d83de4aca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce l'intera anagrafica utenti.  <br /></td></tr>
+<tr class="memitem:a4d898759877c0b6fe073e217dd747c35" id="r_a4d898759877c0b6fe073e217dd747c35"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d898759877c0b6fe073e217dd747c35">aggiungiLibro</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> l)</td></tr>
+<tr class="memdesc:a4d898759877c0b6fe073e217dd747c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un nuovo libro al catalogo.  <br /></td></tr>
+<tr class="memitem:a76d31726fa70878a9dc6e17395caf84c" id="r_a76d31726fa70878a9dc6e17395caf84c"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76d31726fa70878a9dc6e17395caf84c">modificaLibro</a> (String isbnOriginale, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> lNuovo)</td></tr>
+<tr class="memdesc:a76d31726fa70878a9dc6e17395caf84c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifica i dati di un libro esistente.  <br /></td></tr>
+<tr class="memitem:af6614560e5cf161edac4fede376d40e0" id="r_af6614560e5cf161edac4fede376d40e0"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6614560e5cf161edac4fede376d40e0">rimuoviLibro</a> (String isbn)</td></tr>
+<tr class="memdesc:af6614560e5cf161edac4fede376d40e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove un libro dal catalogo.  <br /></td></tr>
+<tr class="memitem:a113a33dbacb9fef7f597a17e8289ee68" id="r_a113a33dbacb9fef7f597a17e8289ee68"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a113a33dbacb9fef7f597a17e8289ee68">cercaLibro</a> (String query, String campo)</td></tr>
+<tr class="memdesc:a113a33dbacb9fef7f597a17e8289ee68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue una ricerca nel catalogo libri.  <br /></td></tr>
+<tr class="memitem:a0ba85116566dd49032472d5009793a31" id="r_a0ba85116566dd49032472d5009793a31"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html">Libro</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ba85116566dd49032472d5009793a31">ottieniCatalogoOrdinato</a> ()</td></tr>
+<tr class="memdesc:a0ba85116566dd49032472d5009793a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce l'intero catalogo libri.  <br /></td></tr>
+<tr class="memitem:a7578596f7cddde24ddda9d85aaa885c3" id="r_a7578596f7cddde24ddda9d85aaa885c3"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7578596f7cddde24ddda9d85aaa885c3">gestisciPrestito</a> (String isbn, String matricola, LocalDate dataPrevistaRestituzione)</td></tr>
+<tr class="memdesc:a7578596f7cddde24ddda9d85aaa885c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra un nuovo prestito.  <br /></td></tr>
+<tr class="memitem:a673a6a9fb6ca4be6031d835ea13ea181" id="r_a673a6a9fb6ca4be6031d835ea13ea181"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a673a6a9fb6ca4be6031d835ea13ea181">gestisciRestituzione</a> (int idPrestito, LocalDate dataEffettivaRestituzione)</td></tr>
+<tr class="memdesc:a673a6a9fb6ca4be6031d835ea13ea181"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra la restituzione di un libro.  <br /></td></tr>
+<tr class="memitem:a4ac7b0adaa34f5db0ccdc48ede2789bf" id="r_a4ac7b0adaa34f5db0ccdc48ede2789bf"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ac7b0adaa34f5db0ccdc48ede2789bf">ottieniReportPrestiti</a> ()</td></tr>
+<tr class="memdesc:a4ac7b0adaa34f5db0ccdc48ede2789bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupera la lista dei prestiti attivi nel sistema.  <br /></td></tr>
+<tr class="memitem:a3364ad1ec1e43291218fd129b9f94775" id="r_a3364ad1ec1e43291218fd129b9f94775"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3364ad1ec1e43291218fd129b9f94775">ottieniAuditTrail</a> ()</td></tr>
+<tr class="memdesc:a3364ad1ec1e43291218fd129b9f94775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la lista osservabile dei log per il data-binding.  <br /></td></tr>
 <tr class="memitem:a7b1a009caa95c7559e292a1b8e0f188f" id="r_a7b1a009caa95c7559e292a1b8e0f188f"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b1a009caa95c7559e292a1b8e0f188f">gestisciLogin</a> (String user, String pass)</td></tr>
-<tr class="memdesc:a7b1a009caa95c7559e292a1b8e0f188f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce la procedura di login del Bibliotecario.  <br /></td></tr>
+<tr class="memdesc:a7b1a009caa95c7559e292a1b8e0f188f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'autenticazione dell'operatore.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Controller principale del sistema (Pattern MVC). </p>
-<p>Questa classe funge da orchestratore centrale per la logica applicativa. Riceve gli input dall'interfaccia utente (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_view.html" title="Classe Boundary che gestisce l&#39;interfaccia utente (View).">GUIView</a>), coordina le operazioni di validazione tramite le Utility, delega l'esecuzione della logica di business ai servizi (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a>, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a>) e gestisce gli aspetti trasversali come il Logging e la Persistenza. Implementa il principio di "Inversione delle Dipendenze" interagendo con i servizi esterni tramite interfacce (<a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_archivio_dati.html" title="Interfaccia per la gestione della persistenza dei dati.">IArchivioDati</a>, <a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_logger.html" title="Interfaccia per il sistema di tracciamento (Logging).">ILogger</a>, <a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore.html" title="Interfaccia per il servizio di autenticazione del sistema.">IAutenticatore</a>). </p>
+<div class="textblock"><p>Controller principale del sistema. </p>
+<p>Questa classe funge da orchestratore centrale e punto di ingresso per tutte le operazioni logiche richieste dall'interfaccia grafica.</p>
+<p>Le sue responsabilità includono:</p><ul>
+<li>Coordinamento tra GUI e logica di dominio (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a>, Registro).</li>
+<li>Gestione della persistenza dei dati (Caricamento/Salvataggio).</li>
+<li>Validazione dei dati in ingresso tramite <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati.html" title="Classe di utilità per la validazione sintattica e logica dei dati di input.">ValidatoreDati</a>.</li>
+<li>Sincronizzazione del logging tra file su disco e visualizzazione a schermo. </li>
+</ul>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a326f5bc587ef2e3099a93586f74596b4" name="a326f5bc587ef2e3099a93586f74596b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a326f5bc587ef2e3099a93586f74596b4">&#9670;&#160;</a></span>GUIController()</h2>
@@ -180,20 +188,24 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Costruttore della classe <a class="el" href="classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html" title="Controller principale del sistema (Pattern MVC).">GUIController</a>. </p>
-<p>Inizializza il controller iniettando tutte le dipendenze necessarie.</p>
+<p>Costruttore: Inietta tutte le dipendenze e inizializza il logging. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">archivio</td><td>Il gestore della persistenza dei dati. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">logger</td><td>Il gestore del tracciamento delle operazioni (Audit Trail). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">autenticatore</td><td>Il servizio per la verifica delle credenziali. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">catalogo</td><td>Il gestore del catalogo libri. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">anagrafica</td><td>Il gestore dell'anagrafica utenti. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">registro</td><td>Il gestore delle transazioni di prestito. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">valida</td><td>Il componente per la validazione formale dei dati. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">archivio</td><td>Implementazione per la persistenza dei dati. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">logger</td><td>Implementazione per la registrazione degli eventi. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">autenticatore</td><td>Modulo per la verifica delle credenziali. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">catalogo</td><td>Gestore del catalogo libri. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anagrafica</td><td>Gestore degli utenti. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">registro</td><td>Gestore dei prestiti. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">valida</td><td>Componente utility per la validazione dei formati.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>I log esistenti vengono caricati dal file.</li>
+<li>Viene creata una ObservableList invertita (dal più recente al più vecchio) per la GUI. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -213,15 +225,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Coordina l'aggiunta di un nuovo libro. </p>
-<p>Esegue la validazione formale dei dati e delega l'inserimento al <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>. Se l'operazione ha successo, registra l'evento nel Log.</p>
+<p>Aggiunge un nuovo libro al catalogo. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>L'oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html" title="Rappresenta un libro all&#39;interno del catalogo della biblioteca.">Libro</a> da aggiungere.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>Oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html" title="Rappresenta un libro all&#39;interno del catalogo della biblioteca.">Libro</a> da aggiungere.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se il libro è stato aggiunto, false se i dati non sono validi o l'ISBN è duplicato. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>ISBN valido.</li>
+<li>Anno pubblicazione valido.</li>
+<li>Titolo non vuoto.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se aggiunto con successo. </dd></dl>
 
 </div>
 </div>
@@ -240,15 +257,25 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Coordina l'aggiunta di un nuovo utente. </p>
-<p>Esegue la validazione formale dei dati tramite <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_validatore_dati.html" title="Classe di utilità per la validazione sintattica e logica dei dati di input.">ValidatoreDati</a> e, se superata, delega l'inserimento all'<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a>. Se l'operazione ha successo, registra l'evento nel Log.</p>
+<p>Aggiunge un nuovo utente al sistema. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">u</td><td>L'oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html" title="Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo no...">Utente</a> da aggiungere.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">u</td><td>Oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html" title="Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo no...">Utente</a> da aggiungere.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se l'utente è stato aggiunto, false se i dati non sono validi o la matricola è duplicata. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>Matricola deve rispettare il formato (10 cifre).</li>
+<li>Email deve essere valida.</li>
+<li>Nome e Cognome devono contenere solo caratteri alfabetici.</li>
+</ul>
+</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>Se valido e non duplicato: l'utente è aggiunto e l'azione è loggata.</li>
+<li>Se invalido o duplicato: l'operazione è annullata e l'errore loggato.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se l'aggiunta ha successo. </dd></dl>
 
 </div>
 </div>
@@ -268,8 +295,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Avvia il sistema caricando i dati persistenti. </p>
-<p>Implementa il Caso d'Uso "Gestione persistenza dati" (Avvio). Tenta di recuperare lo stato salvato (Libri, Utenti, Prestiti) tramite l'archivio. Rispetta il requisito sui tempi di caricamento.</p>
-<dl class="section return"><dt>Returns</dt><dd>true se il sistema è avviato correttamente (dati caricati o nuovo archivio inizializzato), false in caso di errore critico. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>I file "libri.dat", "utenti.dat", "prestiti.dat" vengono deserializzati.</li>
+<li>Le dipendenze circolari (Registro -&gt; Catalogo/Anagrafica) vengono risolte.</li>
+<li>In caso di errore, l'eccezione viene catturata e loggata.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se il caricamento ha successo, false altrimenti. </dd></dl>
 
 </div>
 </div>
@@ -292,15 +324,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Esegue la ricerca di libri nel catalogo. </p>
+<p>Esegue una ricerca nel catalogo libri. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">query</td><td>La stringa da cercare. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">campo</td><td>Il campo su cui filtrare (es. Titolo, Autore).</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">campo</td><td>Il criterio.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Una lista di libri che corrispondono ai criteri. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Una lista di libri che soddisfano i criteri. </dd></dl>
 
 </div>
 </div>
@@ -323,15 +355,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Esegue la ricerca di utenti nell'anagrafica. </p>
+<p>Esegue una ricerca tra gli utenti registrati. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">query</td><td>La stringa da cercare. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">campo</td><td>Il campo su cui filtrare (es. Cognome, Matricola).</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">campo</td><td>Il criterio di ricerca.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Una lista di utenti che corrispondono ai criteri. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Una lista di utenti che soddisfano i criteri di ricerca. </dd></dl>
 
 </div>
 </div>
@@ -350,8 +382,12 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Chiude il sistema salvando lo stato corrente. </p>
-<p>Implementa il Caso d'Uso "Gestione persistenza dati" (Chiusura). Serializza lo stato attuale dei gestori (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a>, Registro) su file.</p>
+<p>Esegue la procedura di shutdown sicuro del sistema. </p>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>Lo stato corrente di <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a> e Registro viene serializzato su file.</li>
+<li>Il buffer dei log viene scaricato su file di testo.</li>
+</ul>
+</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true se il salvataggio ha successo, false altrimenti. </dd></dl>
 
 </div>
@@ -375,16 +411,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gestisce la procedura di login del Bibliotecario. </p>
-<p>Soddisfa il relativo requisito. Delega la verifica delle credenziali al componente <a class="el" href="interfaceit_1_1unisa_1_1sgbu_1_1io_1_1_i_autenticatore.html" title="Interfaccia per il servizio di autenticazione del sistema.">IAutenticatore</a>.</p>
+<p>Gestisce l'autenticazione dell'operatore. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">user</td><td>Username inserito. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pass</td><td>Password inserita.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">user</td><td>Username. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pass</td><td>Password.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se le credenziali sono valide, false altrimenti. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se le credenziali sono valide. </dd></dl>
 
 </div>
 </div>
@@ -412,21 +447,28 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gestisce l'intero flusso di registrazione di un prestito. </p>
-<p>Implementa relativo il Caso d'Uso.</p><ol type="1">
-<li>Valida i formati di ISBN e Matricola.</li>
-<li>Delega al <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a> la verifica dei vincoli di business (Disponibilità, Limite <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html" title="Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo no...">Utente</a>) e la creazione.</li>
-<li>Se il prestito viene creato, invoca il Logger per il tracciamento.</li>
-</ol>
+<p>Registra un nuovo prestito. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">isbn</td><td>Codice del libro. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">matricola</td><td>Matricola dell'utente. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isbn</td><td>ISBN del libro richiesto. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">matricola</td><td>Matricola dell'utente richiedente. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dataPrevistaRestituzione</td><td>Data di scadenza del prestito.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se il prestito è registrato, false se falliscono i controlli. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>ISBN e Matricola validi nel formato.</li>
+<li><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html" title="Rappresenta un utente della biblioteca e mantiene il tracciamento logico dei prestiti attivi a suo no...">Utente</a> non deve aver superato il limite di prestiti (5).</li>
+<li><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_libro.html" title="Rappresenta un libro all&#39;interno del catalogo della biblioteca.">Libro</a> deve avere copie disponibili (&gt; 0).</li>
+</ul>
+</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>Crea un oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html" title="Rappresenta una transazione di prestito attiva o conclusa.">Prestito</a>.</li>
+<li>Decrementa le copie disponibili del libro.</li>
+<li>Salva lo stato del catalogo su file.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se il prestito è registrato con successo. </dd></dl>
 
 </div>
 </div>
@@ -449,16 +491,21 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gestisce il flusso di restituzione di un libro. </p>
-<p>Implementa il relativo Caso d'Uso. Delega al <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a> la chiusura del prestito e l'aggiornamento delle disponibilità. Se l'operazione ha successo, registra l'evento nel Log.</p>
+<p>Registra la restituzione di un libro. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">idPrestito</td><td>Identificativo univoco del prestito. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataEffettivaRestituzione</td><td>Data del rientro.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">idPrestito</td><td>ID univoco del prestito. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataEffettivaRestituzione</td><td>Data in cui avviene la riconsegna.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se la restituzione è registrata, false altrimenti. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>Aggiorna la data di restituzione nel prestito.</li>
+<li>Incrementa le copie disponibili del libro.</li>
+<li>Aggiorna il file del catalogo.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se la restituzione è registrata, false se ID non trovato o già chiuso. </dd></dl>
 
 </div>
 </div>
@@ -481,16 +528,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Coordina la modifica di un libro esistente. </p>
-<p>Implementa il relativo Business Flow. Verifica la validità dei nuovi dati e delega l'aggiornamento al <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>.</p>
+<p>Modifica i dati di un libro esistente. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">isbnOriginale</td><td>L'ISBN originale del libro da modificare. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">lNuovo</td><td>L'oggetto con i dati aggiornati.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isbnOriginale</td><td>ISBN attuale del libro. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lNuovo</td><td>Oggetto con i nuovi dati.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se la modifica ha successo, false altrimenti. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>Se l'ISBN cambia, il libro NON deve essere attualmente in prestito.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se la modifica ha successo. </dd></dl>
 
 </div>
 </div>
@@ -513,16 +563,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Coordina la modifica di un utente esistente. </p>
-<p>Implementa il relativo Business Flow. Verifica la validità dei nuovi dati e delega l'aggiornamento all'<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a>.</p>
+<p>Modifica i dati di un utente esistente. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">matrOriginale</td><td>La matricola originale dell'utente da modificare. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">uNuovo</td><td>L'oggetto con i dati aggiornati.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">matrOriginale</td><td>Matricola attuale dell'utente (chiave di ricerca). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">uNuovo</td><td>Oggetto contenente i nuovi dati.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se la modifica ha successo, false altrimenti. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>I nuovi dati devono superare la validazione formale.</li>
+<li>Se si tenta di cambiare la Matricola, l'utente NON deve avere prestiti attivi.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se la modifica ha successo. </dd></dl>
 
 </div>
 </div>
@@ -541,8 +595,28 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Recupera l'elenco utenti per la visualizzazione. </p>
-<dl class="section return"><dt>Returns</dt><dd>Lista di utenti ordinata per Cognome. </dd></dl>
+<p>Restituisce l'intera anagrafica utenti. </p>
+<dl class="section return"><dt>Returns</dt><dd>Una lista di tutti gli utenti ordinata (default per Cognome). </dd></dl>
+
+</div>
+</div>
+<a id="a3364ad1ec1e43291218fd129b9f94775" name="a3364ad1ec1e43291218fd129b9f94775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3364ad1ec1e43291218fd129b9f94775">&#9670;&#160;</a></span>ottieniAuditTrail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObservableList&lt; String &gt; it.unisa.sgbu.gui.GUIController.ottieniAuditTrail </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la lista osservabile dei log per il data-binding. </p>
+<dl class="section return"><dt>Returns</dt><dd>ObservableList contenente le stringhe di log (Audit Trail). </dd></dl>
 
 </div>
 </div>
@@ -561,8 +635,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Recupera il catalogo completo per la visualizzazione. </p>
-<dl class="section return"><dt>Returns</dt><dd>Lista di libri ordinata per Titolo. </dd></dl>
+<p>Restituisce l'intero catalogo libri. </p>
+<dl class="section return"><dt>Returns</dt><dd>Una lista di tutti i libri ordinata (default per Titolo). </dd></dl>
 
 </div>
 </div>
@@ -581,8 +655,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Recupera il report dei prestiti attivi. </p>
-<dl class="section return"><dt>Returns</dt><dd>Lista di prestiti ordinata per data di scadenza. </dd></dl>
+<p>Recupera la lista dei prestiti attivi nel sistema. </p>
+<p>Questo metodo è utilizzato per popolare la tabella dei prestiti nella Dashboard. Delega la chiamata al <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>Una lista di oggetti <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html" title="Rappresenta una transazione di prestito attiva o conclusa.">Prestito</a> non ancora conclusi (senza data restituzione effettiva). </dd></dl>
 
 </div>
 </div>
@@ -601,15 +676,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Coordina la rimozione di un libro. </p>
-<p>Verifica il vincolo di integrità referenziale (nessun prestito attivo per questo libro) prima di chiamare il <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a> per la rimozione. Se la rimozione avviene, l'azione viene loggata.</p>
+<p>Rimuove un libro dal catalogo. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">isbn</td><td>L'ISBN del libro da rimuovere.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isbn</td><td>Codice del libro da rimuovere.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se rimosso con successo, false se il libro è in prestito o non esiste. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>Il libro NON deve essere attualmente in prestito.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se rimosso, false se in uso o non trovato. </dd></dl>
 
 </div>
 </div>
@@ -628,18 +706,22 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Coordina la rimozione di un utente. </p>
-<p>Prima di delegare la rimozione all'<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html" title="Gestisce il registro (anagrafica) degli utenti della biblioteca.">Anagrafica</a>, interroga il <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a> per verificare che l'utente non abbia prestiti attivi. Se la rimozione avviene, l'azione viene loggata.</p>
-<ul>
-<li><dl class="params"><dt>Parameters</dt><dd>
+<p>Rimuove un utente dal sistema. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">matr</td><td>La matricola dell'utente da rimuovere.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">matr</td><td>Matricola dell'utente da rimuovere.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se rimosso con successo, false se l'utente ha prestiti attivi o non esiste. </dd></dl>
-</li>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>L'utente non deve avere prestiti attivi (libri non restituiti).</li>
 </ul>
+</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>Se non ha prestiti: rimosso dall'anagrafica.</li>
+</ul>
+</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true se rimosso correttamente, false se ha pendenze o non esiste. </dd></dl>
 
 </div>
 </div>

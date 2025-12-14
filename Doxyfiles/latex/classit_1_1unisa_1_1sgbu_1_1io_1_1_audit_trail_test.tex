@@ -1,0 +1,25 @@
+\doxysection{it.\+unisa.\+sgbu.\+io.\+Audit\+Trail\+Test Class Reference}
+\hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test}{}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test}\index{it.unisa.sgbu.io.AuditTrailTest@{it.unisa.sgbu.io.AuditTrailTest}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_a469ceb0588a8f2b0b89815a38391f6b1}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_a469ceb0588a8f2b0b89815a38391f6b1} 
+void {\bfseries set\+Up} ()
+\begin{DoxyCompactList}\small\item\em Fixture di test\+: Configurazione iniziale. Questo metodo viene eseguito automaticamente prima di ogni singolo test. Si occupa di istanziare un nuovo oggetto \doxylink{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail}{Audit\+Trail}. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_a626a55cb3739fa2aa6a29a435df1423d}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_a626a55cb3739fa2aa6a29a435df1423d} 
+void {\bfseries test\+Registra\+Azione} ()
+\begin{DoxyCompactList}\small\item\em Test registrazione azione. Verifica che la lista cresca e che il messaggio contenga il timestamp. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_af59030274956c7032a901ec356ee9b3e}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_af59030274956c7032a901ec356ee9b3e} 
+void {\bfseries test\+Persistenza\+Log} ()
+\begin{DoxyCompactList}\small\item\em Test persistenza (Salvataggio e Caricamento). \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_ae584d632d4bb6bb1c29aa1d8e6985c50}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_ae584d632d4bb6bb1c29aa1d8e6985c50} 
+void {\bfseries test\+Input\+Non\+Validi} ()
+\begin{DoxyCompactList}\small\item\em Test Robustezza (Input null o vuoti). \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_a9103d624dc5bd45a61f35e2eeb46b50b}\label{classit_1_1unisa_1_1sgbu_1_1io_1_1_audit_trail_test_a9103d624dc5bd45a61f35e2eeb46b50b} 
+void {\bfseries test\+Recupero\+File\+Corrotto} ()
+\begin{DoxyCompactList}\small\item\em Test Recupero da File Corrotto. Verifica che il sistema non crashi e riparta da una lista vuota se il file di log contiene oggetti non validi (es. non una List$<$\+String$>$). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Biblioteca/src/test/java/it/unisa/sgbu/io/Audit\+Trail\+Test.\+java\end{DoxyCompactItemize}

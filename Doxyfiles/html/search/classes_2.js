@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['filearchivio_0',['FileArchivio',['../classit_1_1unisa_1_1sgbu_1_1io_1_1_file_archivio.html',1,'it::unisa::sgbu::io']]],
-  ['fileautenticatore_1',['FileAutenticatore',['../classit_1_1unisa_1_1sgbu_1_1io_1_1_file_autenticatore.html',1,'it::unisa::sgbu::io']]]
+  ['dashboardcontroller_0',['DashboardController',['../classit_1_1unisa_1_1sgbu_1_1gui_1_1_dashboard_controller.html',1,'it::unisa::sgbu::gui']]]
 ];

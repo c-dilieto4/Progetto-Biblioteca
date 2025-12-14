@@ -94,278 +94,46 @@ $(function(){initNavTree('classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prest
 
 <p>Gestore centrale delle operazioni di prestito e restituzione.  
  <a href="#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for it.unisa.sgbu.service.RegistroPrestiti:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4519f5eb9c692a3910f2c4a279c22085" id="r_a4519f5eb9c692a3910f2c4a279c22085"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4519f5eb9c692a3910f2c4a279c22085">RegistroPrestiti</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html">Catalogo</a> catologo, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html">Anagrafica</a> anagrafica)</td></tr>
-<tr class="memdesc:a4519f5eb9c692a3910f2c4a279c22085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Costruttore della classe <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a>.  <br /></td></tr>
-<tr class="memitem:a7f1cd94ab16a94c4a638d7d166d65e36" id="r_a7f1cd94ab16a94c4a638d7d166d65e36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f1cd94ab16a94c4a638d7d166d65e36">registraPrestito</a> (String isbn, String matr, LocalDate dataPrev)</td></tr>
-<tr class="memdesc:a7f1cd94ab16a94c4a638d7d166d65e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue la registrazione di un nuovo prestito.  <br /></td></tr>
-<tr class="memitem:a208c809c0df56e71e5c7d32be447495a" id="r_a208c809c0df56e71e5c7d32be447495a"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a208c809c0df56e71e5c7d32be447495a">registraRestituzione</a> (int idPrestito, LocalDate dataEff)</td></tr>
-<tr class="memdesc:a208c809c0df56e71e5c7d32be447495a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra la restituzione di un libro.  <br /></td></tr>
-<tr class="memitem:a0bbcd093287dd5a654d69d95a5fec695" id="r_a0bbcd093287dd5a654d69d95a5fec695"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bbcd093287dd5a654d69d95a5fec695">getPrestitiAttivi</a> ()</td></tr>
-<tr class="memdesc:a0bbcd093287dd5a654d69d95a5fec695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce l'elenco di tutti i prestiti attivi.  <br /></td></tr>
-<tr class="memitem:a8dd874a7d7bf7c3ba3300d6e3a0a471f" id="r_a8dd874a7d7bf7c3ba3300d6e3a0a471f"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dd874a7d7bf7c3ba3300d6e3a0a471f">getPrestitiAttivi</a> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> u)</td></tr>
-<tr class="memdesc:a8dd874a7d7bf7c3ba3300d6e3a0a471f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce i prestiti attivi di uno specifico utente.  <br /></td></tr>
-<tr class="memitem:a744bacf4d20770d7402612b3da3ae68d" id="r_a744bacf4d20770d7402612b3da3ae68d"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a744bacf4d20770d7402612b3da3ae68d">getPrestitiInRitardo</a> ()</td></tr>
-<tr class="memdesc:a744bacf4d20770d7402612b3da3ae68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifica e restituisce i prestiti in ritardo.  <br /></td></tr>
-<tr class="memitem:ad4ed3ac833f648c9e217397750cde4e4" id="r_ad4ed3ac833f648c9e217397750cde4e4"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4ed3ac833f648c9e217397750cde4e4">haPrestitiAttivi</a> (String matricola)</td></tr>
-<tr class="memdesc:ad4ed3ac833f648c9e217397750cde4e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un utente ha prestiti in corso.  <br /></td></tr>
-<tr class="memitem:a3750da6e32f528d09134a2f769e64acb" id="r_a3750da6e32f528d09134a2f769e64acb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3750da6e32f528d09134a2f769e64acb">trovaPrestito</a> (int idPrestito)</td></tr>
-<tr class="memdesc:a3750da6e32f528d09134a2f769e64acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ricerca un prestito tramite il suo ID.  <br /></td></tr>
+<tr class="memitem:ac0c0718596bb0216b398ae6aa90db417" id="r_ac0c0718596bb0216b398ae6aa90db417"><td class="memItemLeft" align="right" valign="top"><a id="ac0c0718596bb0216b398ae6aa90db417" name="ac0c0718596bb0216b398ae6aa90db417"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RegistroPrestiti</b> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html">Catalogo</a> catalogo, <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html">Anagrafica</a> anagrafica)</td></tr>
+<tr class="memdesc:ac0c0718596bb0216b398ae6aa90db417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Costruttore della classe <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a>. <br /></td></tr>
+<tr class="memitem:a7f1cd94ab16a94c4a638d7d166d65e36" id="r_a7f1cd94ab16a94c4a638d7d166d65e36"><td class="memItemLeft" align="right" valign="top"><a id="a7f1cd94ab16a94c4a638d7d166d65e36" name="a7f1cd94ab16a94c4a638d7d166d65e36"></a>
+<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a>&#160;</td><td class="memItemRight" valign="bottom"><b>registraPrestito</b> (String isbn, String matr, LocalDate dataPrev)</td></tr>
+<tr class="memdesc:a7f1cd94ab16a94c4a638d7d166d65e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue la registrazione di un nuovo prestito. <br /></td></tr>
+<tr class="memitem:a208c809c0df56e71e5c7d32be447495a" id="r_a208c809c0df56e71e5c7d32be447495a"><td class="memItemLeft" align="right" valign="top"><a id="a208c809c0df56e71e5c7d32be447495a" name="a208c809c0df56e71e5c7d32be447495a"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>registraRestituzione</b> (int idPrestito, LocalDate dataEff)</td></tr>
+<tr class="memdesc:a208c809c0df56e71e5c7d32be447495a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra la restituzione di un libro. <br /></td></tr>
+<tr class="memitem:a0bbcd093287dd5a654d69d95a5fec695" id="r_a0bbcd093287dd5a654d69d95a5fec695"><td class="memItemLeft" align="right" valign="top"><a id="a0bbcd093287dd5a654d69d95a5fec695" name="a0bbcd093287dd5a654d69d95a5fec695"></a>
+List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPrestitiAttivi</b> ()</td></tr>
+<tr class="memdesc:a0bbcd093287dd5a654d69d95a5fec695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce l'elenco di tutti i prestiti attivi. <br /></td></tr>
+<tr class="memitem:a8dd874a7d7bf7c3ba3300d6e3a0a471f" id="r_a8dd874a7d7bf7c3ba3300d6e3a0a471f"><td class="memItemLeft" align="right" valign="top"><a id="a8dd874a7d7bf7c3ba3300d6e3a0a471f" name="a8dd874a7d7bf7c3ba3300d6e3a0a471f"></a>
+List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPrestitiAttivi</b> (<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a> u)</td></tr>
+<tr class="memdesc:a8dd874a7d7bf7c3ba3300d6e3a0a471f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce i prestiti attivi di uno specifico utente. <br /></td></tr>
+<tr class="memitem:a744bacf4d20770d7402612b3da3ae68d" id="r_a744bacf4d20770d7402612b3da3ae68d"><td class="memItemLeft" align="right" valign="top"><a id="a744bacf4d20770d7402612b3da3ae68d" name="a744bacf4d20770d7402612b3da3ae68d"></a>
+List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPrestitiInRitardo</b> ()</td></tr>
+<tr class="memdesc:a744bacf4d20770d7402612b3da3ae68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifica e restituisce i prestiti in ritardo. <br /></td></tr>
+<tr class="memitem:ad4ed3ac833f648c9e217397750cde4e4" id="r_ad4ed3ac833f648c9e217397750cde4e4"><td class="memItemLeft" align="right" valign="top"><a id="ad4ed3ac833f648c9e217397750cde4e4" name="ad4ed3ac833f648c9e217397750cde4e4"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>haPrestitiAttivi</b> (String matricola)</td></tr>
+<tr class="memdesc:ad4ed3ac833f648c9e217397750cde4e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un utente ha prestiti in corso. <br /></td></tr>
+<tr class="memitem:a3750da6e32f528d09134a2f769e64acb" id="r_a3750da6e32f528d09134a2f769e64acb"><td class="memItemLeft" align="right" valign="top"><a id="a3750da6e32f528d09134a2f769e64acb" name="a3750da6e32f528d09134a2f769e64acb"></a>
+<a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a>&#160;</td><td class="memItemRight" valign="bottom"><b>trovaPrestito</b> (int idPrestito)</td></tr>
+<tr class="memdesc:a3750da6e32f528d09134a2f769e64acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ricerca un prestito tramite il suo ID. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Gestore centrale delle operazioni di prestito e restituzione. </p>
-<p>Questa classe implementa la logica per la "Gestione prestiti" e coordina i flussi operativi principali descritti nei relativi Business Flow, verificando i vincoli trasversali prima di autorizzare le transazioni. </p>
-</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4519f5eb9c692a3910f2c4a279c22085" name="a4519f5eb9c692a3910f2c4a279c22085"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4519f5eb9c692a3910f2c4a279c22085">&#9670;&#160;</a></span>RegistroPrestiti()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">it.unisa.sgbu.service.RegistroPrestiti.RegistroPrestiti </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html">Catalogo</a></td>          <td class="paramname"><span class="paramname"><em>catologo</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_anagrafica.html">Anagrafica</a></td>          <td class="paramname"><span class="paramname"><em>anagrafica</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Costruttore della classe <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_registro_prestiti.html" title="Gestore centrale delle operazioni di prestito e restituzione.">RegistroPrestiti</a>. </p>
-<p>Inizializza il registro e inietta le dipendenze necessarie per operare.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">catologo</td><td>Istanza valida del catalogo libri. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">anagrafica</td><td>Istanza valida dell'anagrafica utenti. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a0bbcd093287dd5a654d69d95a5fec695" name="a0bbcd093287dd5a654d69d95a5fec695"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bbcd093287dd5a654d69d95a5fec695">&#9670;&#160;</a></span>getPrestitiAttivi() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt; it.unisa.sgbu.service.RegistroPrestiti.getPrestitiAttivi </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Restituisce l'elenco di tutti i prestiti attivi. </p>
-<p>Implementa il requisito funzionale. La lista restituita deve essere ordinata per data prevista di restituzione per facilitare il monitoraggio delle scadenze.</p>
-<dl class="section return"><dt>Returns</dt><dd>Lista di oggetti <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html" title="Rappresenta una transazione di prestito attiva o conclusa.">Prestito</a> non ancora chiusi. </dd></dl>
-
-</div>
-</div>
-<a id="a8dd874a7d7bf7c3ba3300d6e3a0a471f" name="a8dd874a7d7bf7c3ba3300d6e3a0a471f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dd874a7d7bf7c3ba3300d6e3a0a471f">&#9670;&#160;</a></span>getPrestitiAttivi() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt; it.unisa.sgbu.service.RegistroPrestiti.getPrestitiAttivi </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>u</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Restituisce i prestiti attivi di uno specifico utente. </p>
-<p>Utilizzato per verificare il vincolo sul numero massimo di prestiti [FC-2] e per visualizzare la situazione del singolo utente.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">u</td><td>L'utente di cui cercare i prestiti.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Lista dei prestiti associati all'utente. </dd></dl>
-
-</div>
-</div>
-<a id="a744bacf4d20770d7402612b3da3ae68d" name="a744bacf4d20770d7402612b3da3ae68d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a744bacf4d20770d7402612b3da3ae68d">&#9670;&#160;</a></span>getPrestitiInRitardo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt; <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> &gt; it.unisa.sgbu.service.RegistroPrestiti.getPrestitiInRitardo </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Identifica e restituisce i prestiti in ritardo. </p>
-<p>Filtra i prestiti attivi confrontando la data prevista di restituzione con la data corrente, supportando la funzionalità "Gestione dei ritardi".</p>
-<dl class="section return"><dt>Returns</dt><dd>Lista di prestiti scaduti. </dd></dl>
-
-</div>
-</div>
-<a id="ad4ed3ac833f648c9e217397750cde4e4" name="ad4ed3ac833f648c9e217397750cde4e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4ed3ac833f648c9e217397750cde4e4">&#9670;&#160;</a></span>haPrestitiAttivi()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">boolean it.unisa.sgbu.service.RegistroPrestiti.haPrestitiAttivi </td>
-          <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>matricola</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Verifica se un utente ha prestiti in corso. </p>
-<p>Controllo critico richiesto per il "Vincolo cancellazione dati". Impedisce l'eliminazione di un utente dall'anagrafica se questi detiene ancora libri della biblioteca.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">matricola</td><td>La matricola dell'utente da controllare.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true se esistono prestiti attivi, false altrimenti. </dd></dl>
-
-</div>
-</div>
-<a id="a7f1cd94ab16a94c4a638d7d166d65e36" name="a7f1cd94ab16a94c4a638d7d166d65e36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f1cd94ab16a94c4a638d7d166d65e36">&#9670;&#160;</a></span>registraPrestito()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> it.unisa.sgbu.service.RegistroPrestiti.registraPrestito </td>
-          <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>isbn</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>matr</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LocalDate</td>          <td class="paramname"><span class="paramname"><em>dataPrev</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Esegue la registrazione di un nuovo prestito. </p>
-<p>Implementa il "Flusso di registrazione nuovo prestito" e il relativo Caso d'Uso.</p>
-<p>Esegue le seguenti verifiche obbligatorie:</p><ol type="1">
-<li>Verifica disponibilità copie libro tramite <a class="el" href="classit_1_1unisa_1_1sgbu_1_1service_1_1_catalogo.html" title="Gestisce il catalogo dei libri della biblioteca.">Catalogo</a>.</li>
-<li>Verifica che l'utente non abbia raggiunto il LimitePrestiti.</li>
-</ol>
-<p>Se i vincoli sono soddisfatti, crea il prestito, aggiorna le copie disponibili del libro e associa il prestito all'utente.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">isbn</td><td>Codice ISBN del libro da prestare. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">matr</td><td>Matricola dell'utente richiedente. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataPrev</td><td>Data prevista per la restituzione.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>L'oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html" title="Rappresenta una transazione di prestito attiva o conclusa.">Prestito</a> creato se l'operazione ha successo, null se sono violati i vincoli.</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd><ul>
-<li>isbn e matr devono corrispondere a entità esistenti.</li>
-<li>Il libro deve avere <span class="tt">copieDisponibili &gt; 0</span>.</li>
-<li>L'utente deve avere <span class="tt">prestitiAttivi &lt; 3</span>.</li>
+<ul>
+<li>Questa classe implementa la logica per la "Gestione prestiti" e coordina i flussi operativi principali descritti nei relativi Business Flow. </li>
 </ul>
-</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd><ul>
-<li>Viene creato un nuovo record di prestito attivo.</li>
-<li><span class="tt">Libro.copieDisponibili</span> viene decrementato di 1. </li>
-</ul>
-</dd></dl>
-
-</div>
-</div>
-<a id="a208c809c0df56e71e5c7d32be447495a" name="a208c809c0df56e71e5c7d32be447495a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a208c809c0df56e71e5c7d32be447495a">&#9670;&#160;</a></span>registraRestituzione()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">boolean it.unisa.sgbu.service.RegistroPrestiti.registraRestituzione </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idPrestito</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LocalDate</td>          <td class="paramname"><span class="paramname"><em>dataEff</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Registra la restituzione di un libro. </p>
-<p>Implementa il "Flusso di registrazione restituzione" e il relativo Caso d'Uso. Chiude il prestito attivo e incrementa le copie disponibili del libro. Innesca automaticamente il controllo per il "Flusso di segnalazione ritardo" se la data effettiva è successiva a quella prevista.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">idPrestito</td><td>Identificativo del prestito da chiudere. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataEff</td><td>Data effettiva di riconsegna.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true se la restituzione è registrata con successo, false se il prestito non esiste.</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd><ul>
-<li>Il record prestito viene chiuso (data effettiva impostata).</li>
-<li><span class="tt">Libro.copieDisponibili</span> viene incrementato di 1.</li>
-<li>Se in ritardo, lo stato del prestito viene aggiornato. </li>
-</ul>
-</dd></dl>
-
-</div>
-</div>
-<a id="a3750da6e32f528d09134a2f769e64acb" name="a3750da6e32f528d09134a2f769e64acb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3750da6e32f528d09134a2f769e64acb">&#9670;&#160;</a></span>trovaPrestito()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html">Prestito</a> it.unisa.sgbu.service.RegistroPrestiti.trovaPrestito </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idPrestito</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ricerca un prestito tramite il suo ID. </p>
-<p>Metodo di utilità per recuperare l'oggetto prestito necessario per effettuare la restituzione.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">idPrestito</td><td>L'identificativo univoco del prestito.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>L'oggetto <a class="el" href="classit_1_1unisa_1_1sgbu_1_1domain_1_1_prestito.html" title="Rappresenta una transazione di prestito attiva o conclusa.">Prestito</a> se trovato, null altrimenti. </dd></dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Biblioteca/src/main/java/it/unisa/sgbu/service/<b>RegistroPrestiti.java</b></li>
 </ul>
 </div><!-- contents -->

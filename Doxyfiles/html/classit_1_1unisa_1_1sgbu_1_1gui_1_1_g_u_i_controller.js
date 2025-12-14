@@ -13,6 +13,7 @@ var classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller =
     [ "modificaLibro", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#a76d31726fa70878a9dc6e17395caf84c", null ],
     [ "modificaUtente", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#ad23f7f05e3216f3a048ce8422e46397f", null ],
     [ "ottieniAnagraficaOrdinata", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#a393b938a8850bc01e2f698d83de4aca3", null ],
+    [ "ottieniAuditTrail", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#a3364ad1ec1e43291218fd129b9f94775", null ],
     [ "ottieniCatalogoOrdinato", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#a0ba85116566dd49032472d5009793a31", null ],
     [ "ottieniReportPrestiti", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#a4ac7b0adaa34f5db0ccdc48ede2789bf", null ],
     [ "rimuoviLibro", "classit_1_1unisa_1_1sgbu_1_1gui_1_1_g_u_i_controller.html#af6614560e5cf161edac4fede376d40e0", null ],
