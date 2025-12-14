@@ -67,15 +67,7 @@ public class Main extends Application {
             }
             ILogger logger = new AuditTrail(logs, archivio);            
             
-            controller = new GUIController(
-                    archivio, 
-                    logger, 
-                    autenticatore, 
-                    catalogo, 
-                    anagrafica, 
-                    registro, 
-                    validatore
-            );
+            controller = new GUIController(archivio, logger, autenticatore, catalogo, anagrafica, registro, validatore);
             
             // Avvio il sistema: qui avviene il caricamento vero e proprio dei dati
             boolean avviato = controller.avviaSistema();

@@ -117,5 +117,16 @@ public class UtenteTest {
     }
 
     
-    
+    /**
+     * @brief Test del metodo toString().
+     * @test Verifica che il metodo toString restituisca la matricola dell'utente,
+     * come atteso per la rappresentazione testuale dell'oggetto (es. nelle tabelle o log).
+     */
+    @Test
+    public void testToString() {
+        // Il metodo toString() è stato sovrascritto per restituire la Matricola
+        String risultatoAtteso = "0123456789";
+        
+        assertEquals(risultatoAtteso, utente.toString(), "Il metodo toString() dovrebbe restituire la matricola dell'utente");
+    }
 }

@@ -67,6 +67,8 @@ public class LibroTest {
         // Verifica Copie Totali e Disponibili
         assertEquals(2, libro.getCopieTotali(), "Le copie totali non corrispondono");
         assertEquals(2, libro.getCopieDisponibili(), "getCopieDisponibili iniziale deve essere uguale al totale");
+        
+        assertEquals(2018, libro.getAnno(), "L'anno di pubblicazione non corrisponde");
     }
 
     /**
@@ -119,6 +121,20 @@ public class LibroTest {
         libro.decrementaDisponibilità();
         libro.decrementaDisponibilità();
         assertFalse(libro.isDisponibile(), "Il libro non dovrebbe essere disponibile con 0 copie");
+    }
+    
+    
+    /**
+     * @brief Test del metodo toString().
+     * @test Verifica che il metodo toString restituisca l'ISBN del libro,
+     * come ci si aspetta per la visualizzazione nelle interfacce testuali o di log.
+     */
+    @Test
+    public void testToString() {
+        // Il metodo toString() è stato sovrascritto per restituire l'ISBN
+        String risultatoAtteso = "978-0134685991";
+        
+        assertEquals(risultatoAtteso, libro.toString(), "Il metodo toString() dovrebbe restituire l'ISBN del libro");
     }
     
 }

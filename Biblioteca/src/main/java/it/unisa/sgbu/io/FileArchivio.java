@@ -73,8 +73,7 @@ public class FileArchivio implements IArchivioDati{
         File fileDestinazione = new File(this.pathDati, nomeFile);
         
         // Catena di Stream: File -> Buffer -> Object 
-        try (ObjectOutputStream oos = new ObjectOutputStream(
-                new BufferedOutputStream(new FileOutputStream(fileDestinazione)))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream( new BufferedOutputStream(new FileOutputStream(fileDestinazione)))) {
             
             oos.writeObject(dati); // Serializza l'intero oggetto
             return true;
@@ -111,10 +110,10 @@ public class FileArchivio implements IArchivioDati{
         if (nomeFile == null || this.pathDati == null) return null;
         
         File fileSorgente = new File(this.pathDati, nomeFile);
+        
         if (!fileSorgente.exists()) return null;
         
-        try (ObjectInputStream ois = new ObjectInputStream(
-                new BufferedInputStream(new FileInputStream(fileSorgente)))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileSorgente)))) {
             
             return ois.readObject();
             

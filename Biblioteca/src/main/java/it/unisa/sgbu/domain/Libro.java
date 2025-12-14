@@ -166,4 +166,10 @@ public class Libro implements Serializable{
     public boolean isDisponibile(){
         return copieDisponibili > 0;
     }
+    
+    
+    @Override
+    public String toString() {
+        return this.isbn; // O this.titolo, quello che preferisci vedere
+    }
 }

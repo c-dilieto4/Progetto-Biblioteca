@@ -91,6 +91,30 @@ public class AuditTrailTest {
         assertEquals(0, auditTrail.visualizzaLog().size(), "Input null o vuoti non devono generare log");
     }
     
+    
+    /**
+     * @brief Test Recupero da File Corrotto.
+     * Verifica che il sistema non crashi e riparta da una lista vuota
+     * se il file di log contiene oggetti non validi (es. non una List<String>).
+     */
+    @Test
+    public void testRecuperoFileCorrotto() {
+      
+        archivio.salvaStato(12345, "audit_log.dat"); 
+        
+        
+        AuditTrail nuovoAudit = new AuditTrail(null, archivio);
+        List<String> logs = nuovoAudit.caricaLog();
+        
+        
+        assertNotNull(logs, "La lista log non deve essere null anche se il file è corrotto");
+        assertTrue(logs.isEmpty(), "La lista log deve essere reinizializzata vuota");
+        
+        nuovoAudit.registraAzione("Nuova Azione dopo crash");
+        assertEquals(1, nuovoAudit.visualizzaLog().size());
+    }
+    
+    
     @AfterEach
     public void tearDown() {
         // PULIZIA

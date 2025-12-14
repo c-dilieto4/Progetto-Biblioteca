@@ -34,12 +34,6 @@ public class RegistroPrestiti implements Serializable {
         this.anagrafica = anagrafica;
         this.prestitiAttivi = new ArrayList<>();
     }
-    
-    // =========================================================================
-    // METODI AGGIUNTI PER LA PERSISTENZA (SETTERS)
-    // Questi metodi vengono chiamati dal GUIController dopo il caricamento da file
-    // per ripristinare i collegamenti persi a causa di 'transient'.
-    // =========================================================================
 
     public void setCatalogo(Catalogo catalogo) {
         this.catalogo = catalogo;
@@ -71,11 +65,11 @@ public class RegistroPrestiti implements Serializable {
         
         // Verifica Vincoli
         if (!libro.isDisponibile()) {
-            return null; // Violazione [FC-1]
+            return null; 
         }
         
         if (!utente.verificaLimite()) {
-            return null; // Violazione [FC-2]
+            return null;
         }
         
         // Creazione Prestito
@@ -102,19 +96,17 @@ public class RegistroPrestiti implements Serializable {
             return false;
         }
         
-        // 1. Recupero il libro 'fantasma' memorizzato nel prestito
+        
         Libro libroNelPrestito = prestito.getLibro();
         
-        // 2. MODIFICA FONDAMENTALE: 
-        // Uso l'ISBN per recuperare il libro 'reale' dal Catalogo attuale
-        // Questo assicura che l'aggiornamento sia visibile nella Tabella Libri
+       
         Libro libroRealeNelCatalogo = catalogo.getLibro(libroNelPrestito.getISBN());
         
-        // 3. Aggiorno la disponibilità sul libro del catalogo (se esiste)
+        
         if (libroRealeNelCatalogo != null) {
             libroRealeNelCatalogo.incrementaDisponibilità();
         } else {
-            // Fallback: se per assurdo non c'è nel catalogo, aggiorno quello del prestito
+
             libroNelPrestito.incrementaDisponibilità();
         }
 

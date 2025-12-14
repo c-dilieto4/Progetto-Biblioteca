@@ -97,4 +97,7 @@ public class PrestitoTest {
         prestito.chiudiPrestito(dataTardi);
         assertTrue(prestito.verificaRitardo(), "Dovrebbe rilevare il ritardo sulla data effettiva");
     }
+    
+    
+    
 }

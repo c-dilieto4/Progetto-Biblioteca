@@ -147,4 +147,83 @@ public class RegistroPrestitiTest {
         assertEquals(0, registro.getPrestitiAttivi().size());
     }
     
+    
+    /**
+     * @brief Test del metodo getPrestitiInRitardo.
+     * Verifica che il registro identifichi correttamente solo i prestiti scaduti.
+     */
+    @Test
+    public void testGetPrestitiInRitardo() {
+        LocalDate dataIeri = LocalDate.now().minusDays(1);
+        Prestito pScaduto = new Prestito(1, libroTest, utenteTest, LocalDate.now().minusDays(30), dataIeri);
+        
+       
+        Prestito p = registro.registraPrestito("ISBN-123", "MATR-001", LocalDate.now().minusDays(1)); // Scaduto ieri
+        
+       
+        List<Prestito> ritardi = registro.getPrestitiInRitardo();
+        
+        assertNotNull(ritardi);
+        assertEquals(1, ritardi.size(), "Dovrebbe esserci un prestito in ritardo");
+        assertEquals(p, ritardi.get(0));
+    }
+
+    
+    /**
+     * @brief Test del metodo trovaPrestito.
+     * Verifica la ricerca per ID.
+     */
+    @Test
+    public void testTrovaPrestito() {
+        Prestito p = registro.registraPrestito("ISBN-123", "MATR-001", LocalDate.now().plusDays(30));
+        int id = p.getIdPrestito();
+        
+        // Ricerca con ID corretto
+        Prestito trovato = registro.trovaPrestito(id);
+        assertNotNull(trovato);
+        assertEquals(p, trovato);
+        
+        // Ricerca con ID inesistente
+        Prestito inesistente = registro.trovaPrestito(999);
+        assertNull(inesistente, "La ricerca di un ID inesistente deve restituire null");
+    }
+
+    
+    /**
+     * @brief Test del metodo haPrestitiAttivi.
+     * Verifica se un utente ha libri in carico.
+     */
+    @Test
+    public void testHaPrestitiAttivi() {
+        // Caso 1: Nessun prestito
+        assertFalse(registro.haPrestitiAttivi("MATR-001"), "All'inizio non ci sono prestiti");
+        
+        // Caso 2: Con prestito attivo
+        registro.registraPrestito("ISBN-123", "MATR-001", LocalDate.now().plusDays(30));
+        assertTrue(registro.haPrestitiAttivi("MATR-001"), "Ora l'utente ha un prestito");
+        
+        // Caso 3: Utente inesistente
+        assertFalse(registro.haPrestitiAttivi("MATR-INESISTENTE"), "Utente non esistente deve restituire false");
+    }
+    
+    
+    /**
+     * @brief Test del metodo getPrestitiAttivi(Utente).
+     * Verifica il filtro per utente.
+     */
+    @Test
+    public void testGetPrestitiAttiviUtente() {
+        // Utente 1 prende un libro
+        registro.registraPrestito("ISBN-123", "MATR-001", LocalDate.now().plusDays(30));
+        
+        // Utente 2 (creato al volo)
+        Utente u2 = new Utente("MATR-002", "Luigi", "Bianchi", "l.b@test.it");
+        anagrafica.aggiungiUtente(u2);
+        
+        List<Prestito> listaU1 = registro.getPrestitiAttivi(utenteTest);
+        List<Prestito> listaU2 = registro.getPrestitiAttivi(u2);
+        
+        assertEquals(1, listaU1.size(), "Utente 1 deve avere 1 prestito");
+        assertEquals(0, listaU2.size(), "Utente 2 deve avere 0 prestiti");
+    }
 }

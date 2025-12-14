@@ -21,8 +21,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
 
+
 /**
  * @brief Classe Boundary che gestisce l'interfaccia utente (View).
+ * 
+ * Questa classe orchestra la visualizzazione delle finestre (Login, Dashboard),
+ * la creazione delle finestre di dialogo (Input/Alert) e l'aggiornamento dei
+ * componenti grafici delegando al DashboardController.
  */
 public class GUIView {
     
@@ -33,12 +38,35 @@ public class GUIView {
     
     private DashboardController dashboardController;
 
+    
+    /**
+     * @brief Costruttore della View principale.
+     * 
+     * @param[in] sistema Istanza del controller logico.
+     * @param[in] primaryStage Lo Stage primario di JavaFX.
+     * 
+     * @post 
+     * - I riferimenti interni sono inizializzati.
+     */
     public GUIView(GUIController sistema, Stage primaryStage){
         this.sistema = sistema;
         this.messaggi = new MessaggiInterfaccia();
         this.primaryStage = primaryStage;
     }
     
+    
+    /**
+     * @brief Carica e mostra la Dashboard principale (dopo il login).
+     * 
+     * @pre 
+     * - Il file "DashboardView.fxml" deve essere presente nelle risorse.
+     * 
+     * @post 
+     * - Il file FXML viene caricato.
+     * - Il DashboardController viene inizializzato e collegato.
+     * - Le tabelle vengono popolate con i dati attuali.
+     * - La scena viene impostata sullo stage primario e mostrata.
+     */
     public void avviaInterfaccia(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DashboardView.fxml")); 
@@ -62,9 +90,14 @@ public class GUIView {
         }
     }
 
-    // =========================================================================
-    // METODO HELPER PER AGGIUNGERE ICONE AI PULSANTI DEI POPUP
-    // =========================================================================
+    
+    /**
+     * @brief Metodo di utilità per stilizzare i pulsanti delle dialog.
+     * 
+     * Applica stili CSS (Verde per Conferma, Rosso per Annulla) ai pulsanti standard.
+     * 
+     * @param[in] dialog La finestra di dialogo da stilizzare.
+     */
     private void stilaPulsantiDialogo(Dialog<?> dialog) {
         DialogPane pane = dialog.getDialogPane();
         
@@ -83,10 +116,16 @@ public class GUIView {
         }
     }
     
-    // =========================================================================
-    // GESTIONE DIALOGHI (PULITI E DELEGATI)
-    // =========================================================================
 
+    /**
+     * @brief Gestisce il flusso di aggiunta di un nuovo libro.
+     * 
+     * @post 
+     * - Viene mostrata una dialog con form di inserimento.
+     * - Se confermato: invoca sistema.aggiungiLibro().
+     * - In caso di successo: aggiorna la tabella libri e mostra conferma.
+     * - In caso di errore: mostra alert di errore.
+     */
     public void gestisciAggiuntaLibro(){
         Dialog<Libro> dialog = new Dialog<>();
         dialog.setTitle("Aggiungi Libro");
@@ -94,19 +133,30 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
-        TextField isbn = new TextField(); isbn.setPromptText("ISBN");
-        TextField titolo = new TextField(); titolo.setPromptText("Titolo");
-        TextField autore = new TextField(); autore.setPromptText("Autori (separati da virgola)");
-        TextField anno = new TextField(); anno.setPromptText("Anno");
-        TextField copie = new TextField(); copie.setPromptText("Copie");
+        TextField isbn = new TextField(); 
+        isbn.setPromptText("ISBN");
+        TextField titolo = new TextField(); 
+        titolo.setPromptText("Titolo");
+        TextField autore = new TextField(); 
+        autore.setPromptText("Autori (separati da virgola)");
+        TextField anno = new TextField(); 
+        anno.setPromptText("Anno");
+        TextField copie = new TextField(); 
+        copie.setPromptText("Copie");
 
-        grid.add(new Label("ISBN:"), 0, 0); grid.add(isbn, 1, 0);
-        grid.add(new Label("Titolo:"), 0, 1); grid.add(titolo, 1, 1);
-        grid.add(new Label("Autore:"), 0, 2); grid.add(autore, 1, 2);
-        grid.add(new Label("Anno:"), 0, 3); grid.add(anno, 1, 3);
-        grid.add(new Label("Copie:"), 0, 4); grid.add(copie, 1, 4);
+        grid.add(new Label("ISBN:"), 0, 0); 
+        grid.add(isbn, 1, 0);
+        grid.add(new Label("Titolo:"), 0, 1); 
+        grid.add(titolo, 1, 1);
+        grid.add(new Label("Autore:"), 0, 2); 
+        grid.add(autore, 1, 2);
+        grid.add(new Label("Anno:"), 0, 3); 
+        grid.add(anno, 1, 3);
+        grid.add(new Label("Copie:"), 0, 4); 
+        grid.add(copie, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -116,7 +166,9 @@ public class GUIView {
                 try {
                     List<String> autori = Arrays.asList(autore.getText().split(","));
                     return new Libro(isbn.getText(), titolo.getText(), autori, Integer.parseInt(anno.getText()), Integer.parseInt(copie.getText()));
-                } catch (Exception e) { return null; }
+                } catch (Exception e) { 
+                    return null; 
+                }
             }
             return null;
         });
@@ -133,6 +185,15 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Gestisce il flusso di aggiunta di un nuovo utente.
+     * 
+     * @post 
+     * - Viene mostrata una dialog con form di inserimento.
+     * - Se confermato: invoca sistema.aggiungiUtente().
+     * - In caso di successo: aggiorna la tabella utenti e mostra conferma.
+     */
     public void gestisciAggiuntaUtente(){
         Dialog<Utente> dialog = new Dialog<>();
         dialog.setTitle("Nuovo Utente");
@@ -140,17 +201,26 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10);
+        grid.setHgap(10); 
+        grid.setVgap(10);
         
-        TextField matricola = new TextField(); matricola.setPromptText("Matricola");
-        TextField nome = new TextField(); nome.setPromptText("Nome");
-        TextField cognome = new TextField(); cognome.setPromptText("Cognome");
-        TextField email = new TextField(); email.setPromptText("Email");
+        TextField matricola = new TextField(); 
+        matricola.setPromptText("Matricola");
+        TextField nome = new TextField(); 
+        nome.setPromptText("Nome");
+        TextField cognome = new TextField(); 
+        cognome.setPromptText("Cognome");
+        TextField email = new TextField(); 
+        email.setPromptText("Email");
 
-        grid.add(new Label("Matricola:"), 0, 0); grid.add(matricola, 1, 0);
-        grid.add(new Label("Nome:"), 0, 1); grid.add(nome, 1, 1);
-        grid.add(new Label("Cognome:"), 0, 2); grid.add(cognome, 1, 2);
-        grid.add(new Label("Email:"), 0, 3); grid.add(email, 1, 3);
+        grid.add(new Label("Matricola:"), 0, 0); 
+        grid.add(matricola, 1, 0);
+        grid.add(new Label("Nome:"), 0, 1); 
+        grid.add(nome, 1, 1);
+        grid.add(new Label("Cognome:"), 0, 2); 
+        grid.add(cognome, 1, 2);
+        grid.add(new Label("Email:"), 0, 3); 
+        grid.add(email, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -162,7 +232,7 @@ public class GUIView {
 
         Optional<Utente> res = dialog.showAndWait();
         res.ifPresent(u -> {
-            // DELEGA TOTALE: Il ValidatoreDati nel controller gestisce Regex Email e Matricola.
+            // Il ValidatoreDati nel controller gestisce Regex Email e Matricola.
             if (sistema.aggiungiUtente(u)) {
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
                 mostraMessaggio(MessaggiInterfaccia.SUCCESSO_AGGIUNTA_UTENTE); 
@@ -175,6 +245,17 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Gestisce la modifica di un libro esistente.
+     * 
+     * @pre 
+     * - Deve essere selezionato un libro nella tabella della Dashboard.
+     * 
+     * @post 
+     * - Mostra dialog pre-compilata con i dati attuali.
+     * - Se modificato e confermato: invoca sistema.modificaLibro().
+     */
     public void gestisciModificaLibro(){
         Libro libroSelezionato = dashboardController.getLibroSelezionato();
         
@@ -191,7 +272,9 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); 
+        grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextField isbn = new TextField(libroSelezionato.getISBN());
         TextField titolo = new TextField(libroSelezionato.getTitolo());
@@ -202,11 +285,16 @@ public class GUIView {
         TextField anno = new TextField(String.valueOf(libroSelezionato.getAnno()));
         TextField copie = new TextField(String.valueOf(libroSelezionato.getCopieTotali()));
 
-        grid.add(new Label("ISBN:"), 0, 0); grid.add(isbn, 1, 0);
-        grid.add(new Label("Titolo:"), 0, 1); grid.add(titolo, 1, 1);
-        grid.add(new Label("Autore:"), 0, 2); grid.add(autore, 1, 2);
-        grid.add(new Label("Anno:"), 0, 3); grid.add(anno, 1, 3);
-        grid.add(new Label("Copie Totali:"), 0, 4); grid.add(copie, 1, 4);
+        grid.add(new Label("ISBN:"), 0, 0); 
+        grid.add(isbn, 1, 0);
+        grid.add(new Label("Titolo:"), 0, 1); 
+        grid.add(titolo, 1, 1);
+        grid.add(new Label("Autore:"), 0, 2); 
+        grid.add(autore, 1, 2);
+        grid.add(new Label("Anno:"), 0, 3); 
+        grid.add(anno, 1, 3);
+        grid.add(new Label("Copie Totali:"), 0, 4); 
+        grid.add(copie, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -216,14 +304,16 @@ public class GUIView {
                 try {
                     List<String> autoriList = Arrays.asList(autore.getText().split(","));
                     return new Libro(isbn.getText(), titolo.getText(), autoriList, Integer.parseInt(anno.getText()), Integer.parseInt(copie.getText()));
-                } catch (Exception e) { return null; }
+                } catch (Exception e) { 
+                    return null; 
+                }
             }
             return null;
         });
 
         Optional<Libro> result = dialog.showAndWait();
         result.ifPresent(lNuovo -> {
-            // DELEGA TOTALE
+          
             if (sistema.modificaLibro(isbnOriginale, lNuovo)) {
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
                 mostraMessaggio(MessaggiInterfaccia.SUCCESSO_MODIFICA_LIBRO);
@@ -233,6 +323,17 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Gestisce la modifica di un utente esistente.
+     * 
+     * @pre 
+     * - Deve essere selezionato un utente nella tabella della Dashboard.
+     * 
+     * @post 
+     * - Mostra dialog pre-compilata.
+     * - Se confermato: invoca sistema.modificaUtente().
+     */
     public void gestisciModificaUtente(){
         Utente utenteSelezionato = dashboardController.getUtenteSelezionato();
         
@@ -249,17 +350,22 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10);
+        grid.setHgap(10); 
+        grid.setVgap(10);
         
         TextField matricola = new TextField(utenteSelezionato.getMatricola());
         TextField nome = new TextField(utenteSelezionato.getNome());
         TextField cognome = new TextField(utenteSelezionato.getCognome());
         TextField email = new TextField(utenteSelezionato.getEmail());
 
-        grid.add(new Label("Matricola:"), 0, 0); grid.add(matricola, 1, 0);
-        grid.add(new Label("Nome:"), 0, 1); grid.add(nome, 1, 1);
-        grid.add(new Label("Cognome:"), 0, 2); grid.add(cognome, 1, 2);
-        grid.add(new Label("Email:"), 0, 3); grid.add(email, 1, 3);
+        grid.add(new Label("Matricola:"), 0, 0); 
+        grid.add(matricola, 1, 0);
+        grid.add(new Label("Nome:"), 0, 1); 
+        grid.add(nome, 1, 1);
+        grid.add(new Label("Cognome:"), 0, 2); 
+        grid.add(cognome, 1, 2);
+        grid.add(new Label("Email:"), 0, 3); 
+        grid.add(email, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
@@ -271,7 +377,7 @@ public class GUIView {
 
         Optional<Utente> res = dialog.showAndWait();
         res.ifPresent(uNuovo -> {
-            // DELEGA TOTALE
+
             if(sistema.modificaUtente(matricolaOriginale, uNuovo)){
                 mostraListaUtenti(sistema.ottieniAnagraficaOrdinata());
                 mostraMessaggio(MessaggiInterfaccia.SUCCESSO_MODIFICA_UTENTE);
@@ -281,6 +387,14 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Gestisce l'eliminazione di un utente.
+     * 
+     * @post 
+     * - Richiede conferma tramite inserimento della matricola.
+     * - Se confermato: invoca sistema.rimuoviUtente().
+     */
     public void gestisciEliminazioneUtente(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Elimina Utente");
@@ -302,6 +416,14 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Gestisce l'eliminazione di un libro.
+     * 
+     * @post 
+     * - Richiede conferma tramite inserimento ISBN.
+     * - Se confermato: invoca sistema.rimuoviLibro().
+     */
     public void gestisciEliminazioneLibro(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Elimina Libro");
@@ -323,6 +445,15 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Gestisce la creazione di un nuovo prestito.
+     * 
+     * @post 
+     * - Mostra dialog per inserire ISBN, Matricola e Data Scadenza.
+     * - Invoca sistema.gestisciPrestito().
+     * - Aggiorna tabelle e mostra esito.
+     */
     public void gestisciRegistrazionePrestito(){
         Dialog<Boolean> dialog = new Dialog<>();
         dialog.setTitle("Nuovo Prestito");
@@ -330,43 +461,61 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
         
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10);
+        grid.setHgap(10); 
+        grid.setVgap(10);
         
-        TextField isbn = new TextField(); isbn.setPromptText("ISBN Libro");
-        TextField matr = new TextField(); matr.setPromptText("Matricola Utente");
+        TextField isbn = new TextField(); 
+        isbn.setPromptText("ISBN Libro");
+        TextField matr = new TextField(); 
+        matr.setPromptText("Matricola Utente");
         DatePicker data = new DatePicker(LocalDate.now().plusDays(30));
         
-        grid.add(new Label("ISBN:"), 0, 0); grid.add(isbn, 1, 0);
-        grid.add(new Label("Matricola:"), 0, 1); grid.add(matr, 1, 1);
-        grid.add(new Label("Scadenza:"), 0, 2); grid.add(data, 1, 2);
+        grid.add(new Label("ISBN:"), 0, 0); 
+        grid.add(isbn, 1, 0);
+        grid.add(new Label("Matricola:"), 0, 1); 
+        grid.add(matr, 1, 1);
+        grid.add(new Label("Scadenza:"), 0, 2); 
+        grid.add(data, 1, 2);
         
         dialog.getDialogPane().setContent(grid);
         stilaPulsantiDialogo(dialog); 
         
         dialog.setResultConverter(b -> {
             if (b == ButtonType.OK) {
-                // Passiamo i dati grezzi. Il controller restituirà false se ISBN/Matricola sono invalidi.
+                //Il controller restituirà false se ISBN/Matricola sono invalidi.
                 return sistema.gestisciPrestito(isbn.getText(), matr.getText(), data.getValue());
             }
-            return null; // Annulla
+            return null;
         });
         
         Optional<Boolean> esito = dialog.showAndWait();
         
         if (esito.isPresent()) {
             if (esito.get()) {
-                // Successo
+                
                 mostraListaPrestiti(sistema.ottieniReportPrestiti());
                 mostraListaLibri(sistema.ottieniCatalogoOrdinato());
                 String msg = String.format(MessaggiInterfaccia.SUCCESSO_PRESTITO, 0);
-                mostraMessaggio(new MessaggiInterfaccia() { @Override public String toString() { return msg; }});
+                mostraMessaggio(new MessaggiInterfaccia() { 
+                    @Override public String toString() { 
+                        return msg; 
+                    }
+                });
             } else {
-                // Errore: il controller ha restituito false (dati non validi o vincoli violati)
+                
                 mostraMessaggio(MessaggiInterfaccia.ERRORE_REGISTRAZIONE_PRESTITO);
             }
         }
     }
     
+    
+    /**
+     * @brief Gestisce la restituzione di un prestito.
+     * 
+     * @post 
+     * - Richiede ID prestito (se selezionato in tabella, lo prepopola).
+     * - Invoca sistema.gestisciRestituzione().
+     */
     public void gestisciRestituzionePrestito(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Restituzione");
@@ -394,6 +543,13 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Dialog per la ricerca libri.
+     * 
+     * @post 
+     * - Filtra la lista libri nella dashboard in base ai criteri scelti.
+     */
     public void gestisciRicercaLibro(){
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Ricerca Libri");
@@ -401,7 +557,9 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); 
+        grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         ComboBox<String> comboCriterio = new ComboBox<>();
         comboCriterio.getItems().addAll("Titolo", "Autore", "ISBN");
@@ -435,6 +593,13 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Dialog per la ricerca utenti.
+     * 
+     * @post 
+     * - Filtra la lista utenti nella dashboard.
+     */
     public void gestisciRicercaUtente(){
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Ricerca Utenti");
@@ -442,10 +607,12 @@ public class GUIView {
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(10); 
+        grid.setVgap(10); 
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         ComboBox<String> comboCriterio = new ComboBox<>();
-        comboCriterio.getItems().addAll("Cognome", "Nome", "Matricola");
+        comboCriterio.getItems().addAll("Cognome", "Matricola");
         comboCriterio.setValue("Cognome"); 
 
         TextField txtQuery = new TextField();
@@ -476,21 +643,45 @@ public class GUIView {
         });
     }
     
+    
+    /**
+     * @brief Aggiorna la tabella Libri nella Dashboard.
+     * 
+     * @param[in] lista Lista di libri da visualizzare.
+     */
     public void mostraListaLibri(List<Libro> lista){
         if (dashboardController != null && dashboardController.getTableLibri() != null)
             dashboardController.getTableLibri().getItems().setAll(lista);
     }
     
+    
+    /**
+     * @brief Aggiorna la tabella Utenti nella Dashboard.
+     * 
+     * @param[in] lista Lista di utenti da visualizzare.
+     */
     public void mostraListaUtenti(List<Utente> lista){
         if (dashboardController != null && dashboardController.getTableUtenti() != null)
             dashboardController.getTableUtenti().getItems().setAll(lista);
     }
     
+    
+    /**
+     * @brief Aggiorna la tabella Prestiti nella Dashboard.
+     * 
+     * @param[in] lista Lista di prestiti da visualizzare.
+     */
     public void mostraListaPrestiti(List<Prestito> lista){
         if (dashboardController != null && dashboardController.getTablePrestiti() != null)
             dashboardController.getTablePrestiti().getItems().setAll(lista);
     }
     
+    
+    /**
+     * @brief Aggiorna la tabella Audit Trail nella Dashboard.
+     * 
+     * @param[in] lista Lista di log (stringhe) da visualizzare.
+     */
     public void mostraListaAuditTrail(List<String> lista) {
         if (lista == null) {
             lista = new ArrayList<>(); 
@@ -500,10 +691,22 @@ public class GUIView {
         }
     }
     
+    
+    /**
+     * @brief Mostra un alert con le info di un utente.
+     * 
+     * @param[in] u Utente da mostrare.
+     */
     public void mostraReportUtente(Utente u){
         mostraMessaggio("Report: " + u.getMatricola());
     }
     
+    
+    /**
+     * @brief Mostra un messaggio di avviso generico (Alert).
+     * 
+     * @param[in] msg Oggetto messaggio (convertito in stringa).
+     */
     public void mostraMessaggio(Object msg){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("SGBU Info");
@@ -513,6 +716,15 @@ public class GUIView {
         alert.showAndWait();
     }
     
+    
+    /**
+     * @brief Carica e mostra la finestra di Login iniziale.
+     * 
+     * @post 
+     * - Carica "LoginView.fxml".
+     * - Imposta LoginController.
+     * - Mostra la scena di login.
+     */
     public void mostraFinestraLogin(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginView.fxml")); 
@@ -527,6 +739,12 @@ public class GUIView {
         }
     }
     
+    
+    /**
+     * @brief Mostra il log di sistema in una finestra separata.
+     * 
+     * @param[in] log Lista di stringhe del log.
+     */
     public void mostraLogDiSistema(List<String> log){
         TextArea area = new TextArea();
         for(String s : log) area.appendText(s + "\n");
