@@ -311,9 +311,9 @@ GUIView ..> LoginController
 
 DashboardController "1" --> "1" GUIController
 DashboardController "1" -- "1" GUIView
-DashboardController "1" ..> Libro
-DashboardController "1" ..> Utente
-DashboardController "1" ..> Prestito
+DashboardController ..> Libro
+DashboardController ..> Utente
+DashboardController ..> Prestito
 LoginController "1" --> "1" GUIController
 LoginController "1" --> "1" GUIView
 
