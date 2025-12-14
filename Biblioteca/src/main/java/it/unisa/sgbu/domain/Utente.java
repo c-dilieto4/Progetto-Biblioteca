@@ -164,4 +164,9 @@ public class Utente implements Serializable {
     public boolean verificaLimite(){
         return this.prestitiAttivi.size() < 3;
     }
+    
+    @Override
+    public String toString() {
+        return this.matricola; // O this.nome + " " + this.cognome
+    }
 }
